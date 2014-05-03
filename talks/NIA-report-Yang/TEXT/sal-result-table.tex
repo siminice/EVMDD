@@ -1,0 +1,36 @@
+\FOIL{New SAL vs. EVMDD-SMC}
+
+\begin{table}[htb]
+\begin{center}
+\small
+%\begin{tabular}{|r||r|r||r|r|}
+\begin{tabular}{|r||r||r|r|r|r|}
+\hline
+\multicolumn{1}{|c||}{Model} & \multicolumn{1}{c||}{Reachable} & \multicolumn{2}{|c|}{EVMDD-SMC} & \multicolumn{2}{|c|}{new SAL} \\
+\multicolumn{1}{|c||}{size}  & \multicolumn{1}{c||}{states} & ss (in s) & total (in s) & ss (in s) & total(in s) \\
+\hline
+kanban 20 	& $8 \times 10^{11}$  & $0.01$ & $0.03$ & $0.01$ & $0.26$ \\  
+kanban 100 	& $1 \times 10^{19}$  & $0.88$ & $2.99$ & $0.87$ & $1.25$ \\  
+kanban 400 	& $6 \times 10^{25}$  & $74.33$ & $273.43$ & $73.28$ & $76.72$ \\  
+knights 5 	& $6 \times 10^{7}$   & $0.19$ & $0.27$ & $0.22$ & $0.74$ \\  
+knights 7 	& $1 \times 10^{15}$  & $2.00$ & $2.94$ & $1.95$ & $3.28$ \\  
+knights 9 	& $8 \times 10^{24}$  & $9.43$ & $15.43$ & $9.43$ & $13.40$ \\  
+phils 300 	& $1 \times 10^{188}$  & $0.01$ & $0.17$ & $0.01$ & $66.57$ \\  
+phils 400 	& $6 \times 10^{250}$  & $0.01$ & $0.29$ & $0.02$ & $120.80$ \\  
+phils 500 	& $3 \times 10^{313}$  & $0.01$ & $0.39$ & $0.03$ & $200.07$ \\  
+robin 40 	& $9 \times 10^{13}$  & $0.06$ & $0.21$ & $0.07$ & $2.51$ \\  
+robin 100 	& $2 \times 10^{32}$  & $0.96$ & $2.92$ & $0.95$ & $17.63$ \\  
+robin 200 	& $7 \times 10^{62}$  & $7.52$ & $25.21$ & $7.63$ & $94.43$ \\  
+slot 100 	& $2 \times 10^{105}$  & $3.1$ & $3.92$ & $3.33$ & $25.56$ \\  
+slot 200 	& $8 \times 10^{211}$  & $26.14$ & $34.28$ & $26.64$ & $150.53$ \\  
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{center}
+{
+\footnotesize
+$\star$ Old SAL can not complete any of these models in $1500$ seconds.
+}
+\end{center}

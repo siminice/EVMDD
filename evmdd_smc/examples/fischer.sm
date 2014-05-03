@@ -1,0 +1,66 @@
+int DELTA1  := 2;
+int DELTA2  := 4;
+
+spn fischer(int n) := {
+
+  place lock;
+//  partition(div(n,4)+1:lock);
+  partition(1:lock);
+
+  for (int i in {0..n-1}) {
+    place 
+      sleeping[i], 
+      waiting[i],
+      trying[i],
+      critical[i];
+ 
+    trans
+      wakeup[i],
+      request[i],
+      retry[i],
+      enter[i],
+      exit[i];
+
+    init(sleeping[i]:1);
+//    partition(1+div(i,2)+div(1+div(i,2*div(n,4)),2):sleeping[i]:waiting[i]:trying[i]:critical[i]);
+    partition(div(i,2)+2:sleeping[i]:waiting[i]:trying[i]:critical[i]);
+  }
+  for (int i in {0..n-1}) {
+    arcs(
+      sleeping[i]:wakeup[i], wakeup[i]:waiting[i],
+      waiting[i]:request[i], request[i]:trying[i],
+        lock:request[i]:tk(lock), request[i]:lock:i+1,
+      trying[i]:enter[i], enter[i]:critical[i],
+      trying[i]:retry[i], retry[i]:sleeping[i],
+      critical[i]:exit[i], exit[i]:sleeping[i],
+        lock:exit[i]:tk(lock)
+    );
+    inhibit(lock:request[i]);
+    guard(retry[i]:tk(lock)!=i+1);
+    guard(enter[i]:tk(lock)==i+1);
+  }
+
+  bigint ns := num_states(false);
+  bool   db := debug;
+};
+
+# StateStorage MDD_SATURATION
+# MaxCacheSize 100000
+# Report true
+# Verbose true
+
+int N := read_int("Number of processes");
+//fischer(N).db;
+print("Number of states: ", fischer(N).ns, "\n");
+
+ 
+
+
+
+
+
+
+
+
+
+ National Institute of Aerospace: This e-mail message (including all attachments transmitted with it, if any) is intended solely for the use of the addressee and may contain company proprietary information. If you are not the person to whom this e-mail is addressed, or an employee or agent responsible for delivering this message to the person to whom it is addressed, you are hereby notified that any dissemination, distribution, copying, or other use of this message or its attachments is strictly prohibited. If you have received this e-mail in error, please notify the sender immediately by e-mail reply, then please delete this e-mail, together with any attachments to it, from your computer. 

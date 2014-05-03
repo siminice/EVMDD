@@ -1,0 +1,6 @@
+Variables
+  x  [1, 10]
+  y  [1, 10]
+  z  [1, 10]
+Equations
+  x^3 + y^3 + z^3 = 80

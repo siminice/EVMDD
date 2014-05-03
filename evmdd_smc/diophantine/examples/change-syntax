@@ -1,0 +1,9 @@
+#!/bin/bash
+
+for f in *.sm
+do
+ echo 'Editting '$f'...'
+# sed -e 's/Declarations/Variables/' $f > temp
+ sed -e 's/Expressions/Equations/' $f > temp
+ mv -f temp $f
+done

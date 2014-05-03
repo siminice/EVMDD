@@ -1,0 +1,6 @@
+Variables
+  p5 [0, 1]
+  p6 [0, 1]
+  p4 [0, 1]
+Equations
+  2-p4-p5-p6 < 0

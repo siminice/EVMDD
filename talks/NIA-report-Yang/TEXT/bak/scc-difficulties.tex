@@ -1,0 +1,29 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\FOIL{Difficulties and approaches}
+
+\vfill
+Two difficulties:
+
+\LIST{
+\CIRC \RED{huge state spaces}:
+the primary obstacle to formal verification
+%due to the obvious limitation of computational resources.
+\CIRC \RED{potentially large number of (terminal) SCCs}:
+a bottleneck for SCC enumeration algorithms
+}
+
+
+\vfill
+
+We propose two approaches based on previous ideas:
+\STRESS{the Xie-Beerel algorithm} and \STRESS{transitive closure}
+\LIST{
+\BULL \STRESS{Saturation} helps cope with the complexity of state-space exploration
+\BULL To cope with a large number of SCCs,
+we use a \STRESS{transitive closure}-based algorithm:
+    \LIST{
+    \CIRC Computing transitive closure based on saturation
+    \CIRC Can support the computation of recurrent states 
+    }
+}
+\vfill

@@ -1,0 +1,34 @@
+\FOIL{Summary and future work}
+\vfill
+\STRESS{Summary: }
+
+\LIST{
+\BULL Saturation is effective in speeding up the SCC and terminal SCC computations within the framework of the Xie-Beerel algorithm.
+
+\BULL Our new saturation-based $TC$ computation can tackle some complex models with up to $10^{150}$ states.
+
+\BULL For models with huge numbers of SCCs, the $TC$-based SCC computation
+has advantages over Lockstep, which symbolically explores one SCC at a time.
+
+\BULL \BLUE{The shortest witness can be found symbolically by
+combining EVMDD and saturation algorithm.} }
+
+Our $TC$-based approach is not a replacement for Lockstep, but
+is an alternative worth further research.
+
+For models with unknown number of SCCs, employing both approaches
+concurrently could be ideal.
+
+\STRESS{Future work: }
+
+\LIST{
+\BULL It is reasonable
+to run the two algorithms concurrently, possibly sharing
+some of the common data structures, such as the MDDs encoding the state space
+and next-state functions.
+
+\BULL \BLUE{EVMDD provides an elegant way of encoding numerical
+functions on large state spaces, which can be employed in many
+memory-intensive problems.} }
+
+\vfill

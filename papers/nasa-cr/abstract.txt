@@ -1,0 +1,20 @@
+We describe an algebra of Edge-Valued Decision Diagrams (EVMDDs) to
+encode arithmetic functions and its implementation in a model checking
+library along with state-of-the-art algorithms for building the
+transition relation and the state space of discrete state systems.
+
+We provide efficient algorithms for manipulating EVMDDs and give upper
+bounds of the theoretical time complexity of these algorithms for all
+basic arithmetic and relational operators. We also demonstrate that the
+time complexity of the generic recursive algorithm for applying a binary
+operator on EVMDDs is no worse than that of Multi-Terminal Decision
+Diagrams.
+
+We have implemented a new symbolic model checker with the intention to
+represent in one formalism the best techniques available at the moment
+across a spectrum of existing tools: EVMDDs for encoding arithmetic
+expressions, identity-reduced MDDs for representing the transition
+relation, and the saturation algorithm for reachability analysis. We
+compare our new symbolic model checking EVMDD library with the widely
+used CUDD package and show that, in many cases, our tool is several
+orders of magnitude faster than CUDD.

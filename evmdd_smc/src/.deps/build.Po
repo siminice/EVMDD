@@ -1,0 +1,68 @@
+build.o build.o: build.c /usr/include/stdio.h /usr/include/_types.h \
+  /usr/include/sys/_types.h /usr/include/sys/cdefs.h \
+  /usr/include/machine/_types.h /usr/include/i386/_types.h \
+  /usr/include/secure/_stdio.h /usr/include/secure/_common.h \
+  /usr/include/assert.h build.h /usr/local/include/evmdd/mdd_manager.h \
+  /usr/local/include/evmdd/evmdd_node.h \
+  /usr/local/include/evmdd/mdd_manager.h \
+  /usr/local/include/evmdd/bigint.h ast.h \
+  /usr/local/include/evmdd/mdd_node.h /usr/local/include/evmdd/mdd_ops.h \
+  /usr/local/include/evmdd/mdd_node.h \
+  /usr/local/include/evmdd/evmdd_ops.h \
+  /usr/local/include/evmdd/evmdd_node.h ctl.h env.h clock.h \
+  /usr/include/sys/resource.h /usr/include/sys/appleapiopts.h \
+  /usr/include/sys/_structs.h utils.h
+
+/usr/include/stdio.h:
+
+/usr/include/_types.h:
+
+/usr/include/sys/_types.h:
+
+/usr/include/sys/cdefs.h:
+
+/usr/include/machine/_types.h:
+
+/usr/include/i386/_types.h:
+
+/usr/include/secure/_stdio.h:
+
+/usr/include/secure/_common.h:
+
+/usr/include/assert.h:
+
+build.h:
+
+/usr/local/include/evmdd/mdd_manager.h:
+
+/usr/local/include/evmdd/evmdd_node.h:
+
+/usr/local/include/evmdd/mdd_manager.h:
+
+/usr/local/include/evmdd/bigint.h:
+
+ast.h:
+
+/usr/local/include/evmdd/mdd_node.h:
+
+/usr/local/include/evmdd/mdd_ops.h:
+
+/usr/local/include/evmdd/mdd_node.h:
+
+/usr/local/include/evmdd/evmdd_ops.h:
+
+/usr/local/include/evmdd/evmdd_node.h:
+
+ctl.h:
+
+env.h:
+
+clock.h:
+
+/usr/include/sys/resource.h:
+
+/usr/include/sys/appleapiopts.h:
+
+/usr/include/sys/_structs.h:
+
+utils.h:

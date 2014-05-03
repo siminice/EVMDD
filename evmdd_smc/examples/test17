@@ -1,0 +1,11 @@
+Variables
+  p4 [1, 2]
+  p5 [1, 4]
+  p6 [1, 4]
+Initial states
+  p4 = 2
+  p5 = 3
+  p6 = 3
+Transitions
+  r: p5' = p6
+  b: p6' = 12-p4-p5-p6

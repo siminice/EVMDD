@@ -1,0 +1,1005 @@
+Declarations
+   fork0 [0, 1]
+   phil0 [0, 4]
+   fork1 [0, 1]
+   phil1 [0, 4]
+   fork2 [0, 1]
+   phil2 [0, 4]
+   fork3 [0, 1]
+   phil3 [0, 4]
+   fork4 [0, 1]
+   phil4 [0, 4]
+   fork5 [0, 1]
+   phil5 [0, 4]
+   fork6 [0, 1]
+   phil6 [0, 4]
+   fork7 [0, 1]
+   phil7 [0, 4]
+   fork8 [0, 1]
+   phil8 [0, 4]
+   fork9 [0, 1]
+   phil9 [0, 4]
+   fork10 [0, 1]
+   phil10 [0, 4]
+   fork11 [0, 1]
+   phil11 [0, 4]
+   fork12 [0, 1]
+   phil12 [0, 4]
+   fork13 [0, 1]
+   phil13 [0, 4]
+   fork14 [0, 1]
+   phil14 [0, 4]
+   fork15 [0, 1]
+   phil15 [0, 4]
+   fork16 [0, 1]
+   phil16 [0, 4]
+   fork17 [0, 1]
+   phil17 [0, 4]
+   fork18 [0, 1]
+   phil18 [0, 4]
+   fork19 [0, 1]
+   phil19 [0, 4]
+   fork20 [0, 1]
+   phil20 [0, 4]
+   fork21 [0, 1]
+   phil21 [0, 4]
+   fork22 [0, 1]
+   phil22 [0, 4]
+   fork23 [0, 1]
+   phil23 [0, 4]
+   fork24 [0, 1]
+   phil24 [0, 4]
+   fork25 [0, 1]
+   phil25 [0, 4]
+   fork26 [0, 1]
+   phil26 [0, 4]
+   fork27 [0, 1]
+   phil27 [0, 4]
+   fork28 [0, 1]
+   phil28 [0, 4]
+   fork29 [0, 1]
+   phil29 [0, 4]
+   fork30 [0, 1]
+   phil30 [0, 4]
+   fork31 [0, 1]
+   phil31 [0, 4]
+   fork32 [0, 1]
+   phil32 [0, 4]
+   fork33 [0, 1]
+   phil33 [0, 4]
+   fork34 [0, 1]
+   phil34 [0, 4]
+   fork35 [0, 1]
+   phil35 [0, 4]
+   fork36 [0, 1]
+   phil36 [0, 4]
+   fork37 [0, 1]
+   phil37 [0, 4]
+   fork38 [0, 1]
+   phil38 [0, 4]
+   fork39 [0, 1]
+   phil39 [0, 4]
+   fork40 [0, 1]
+   phil40 [0, 4]
+   fork41 [0, 1]
+   phil41 [0, 4]
+   fork42 [0, 1]
+   phil42 [0, 4]
+   fork43 [0, 1]
+   phil43 [0, 4]
+   fork44 [0, 1]
+   phil44 [0, 4]
+   fork45 [0, 1]
+   phil45 [0, 4]
+   fork46 [0, 1]
+   phil46 [0, 4]
+   fork47 [0, 1]
+   phil47 [0, 4]
+   fork48 [0, 1]
+   phil48 [0, 4]
+   fork49 [0, 1]
+   phil49 [0, 4]
+   fork50 [0, 1]
+   phil50 [0, 4]
+   fork51 [0, 1]
+   phil51 [0, 4]
+   fork52 [0, 1]
+   phil52 [0, 4]
+   fork53 [0, 1]
+   phil53 [0, 4]
+   fork54 [0, 1]
+   phil54 [0, 4]
+   fork55 [0, 1]
+   phil55 [0, 4]
+   fork56 [0, 1]
+   phil56 [0, 4]
+   fork57 [0, 1]
+   phil57 [0, 4]
+   fork58 [0, 1]
+   phil58 [0, 4]
+   fork59 [0, 1]
+   phil59 [0, 4]
+   fork60 [0, 1]
+   phil60 [0, 4]
+   fork61 [0, 1]
+   phil61 [0, 4]
+   fork62 [0, 1]
+   phil62 [0, 4]
+   fork63 [0, 1]
+   phil63 [0, 4]
+   fork64 [0, 1]
+   phil64 [0, 4]
+   fork65 [0, 1]
+   phil65 [0, 4]
+   fork66 [0, 1]
+   phil66 [0, 4]
+   fork67 [0, 1]
+   phil67 [0, 4]
+   fork68 [0, 1]
+   phil68 [0, 4]
+   fork69 [0, 1]
+   phil69 [0, 4]
+   fork70 [0, 1]
+   phil70 [0, 4]
+   fork71 [0, 1]
+   phil71 [0, 4]
+   fork72 [0, 1]
+   phil72 [0, 4]
+   fork73 [0, 1]
+   phil73 [0, 4]
+   fork74 [0, 1]
+   phil74 [0, 4]
+   fork75 [0, 1]
+   phil75 [0, 4]
+   fork76 [0, 1]
+   phil76 [0, 4]
+   fork77 [0, 1]
+   phil77 [0, 4]
+   fork78 [0, 1]
+   phil78 [0, 4]
+   fork79 [0, 1]
+   phil79 [0, 4]
+   fork80 [0, 1]
+   phil80 [0, 4]
+   fork81 [0, 1]
+   phil81 [0, 4]
+   fork82 [0, 1]
+   phil82 [0, 4]
+   fork83 [0, 1]
+   phil83 [0, 4]
+   fork84 [0, 1]
+   phil84 [0, 4]
+   fork85 [0, 1]
+   phil85 [0, 4]
+   fork86 [0, 1]
+   phil86 [0, 4]
+   fork87 [0, 1]
+   phil87 [0, 4]
+   fork88 [0, 1]
+   phil88 [0, 4]
+   fork89 [0, 1]
+   phil89 [0, 4]
+   fork90 [0, 1]
+   phil90 [0, 4]
+   fork91 [0, 1]
+   phil91 [0, 4]
+   fork92 [0, 1]
+   phil92 [0, 4]
+   fork93 [0, 1]
+   phil93 [0, 4]
+   fork94 [0, 1]
+   phil94 [0, 4]
+   fork95 [0, 1]
+   phil95 [0, 4]
+   fork96 [0, 1]
+   phil96 [0, 4]
+   fork97 [0, 1]
+   phil97 [0, 4]
+   fork98 [0, 1]
+   phil98 [0, 4]
+   fork99 [0, 1]
+   phil99 [0, 4]
+Initial states
+   fork0 = 0
+   phil0 = 0
+   fork1 = 0
+   phil1 = 0
+   fork2 = 0
+   phil2 = 0
+   fork3 = 0
+   phil3 = 0
+   fork4 = 0
+   phil4 = 0
+   fork5 = 0
+   phil5 = 0
+   fork6 = 0
+   phil6 = 0
+   fork7 = 0
+   phil7 = 0
+   fork8 = 0
+   phil8 = 0
+   fork9 = 0
+   phil9 = 0
+   fork10 = 0
+   phil10 = 0
+   fork11 = 0
+   phil11 = 0
+   fork12 = 0
+   phil12 = 0
+   fork13 = 0
+   phil13 = 0
+   fork14 = 0
+   phil14 = 0
+   fork15 = 0
+   phil15 = 0
+   fork16 = 0
+   phil16 = 0
+   fork17 = 0
+   phil17 = 0
+   fork18 = 0
+   phil18 = 0
+   fork19 = 0
+   phil19 = 0
+   fork20 = 0
+   phil20 = 0
+   fork21 = 0
+   phil21 = 0
+   fork22 = 0
+   phil22 = 0
+   fork23 = 0
+   phil23 = 0
+   fork24 = 0
+   phil24 = 0
+   fork25 = 0
+   phil25 = 0
+   fork26 = 0
+   phil26 = 0
+   fork27 = 0
+   phil27 = 0
+   fork28 = 0
+   phil28 = 0
+   fork29 = 0
+   phil29 = 0
+   fork30 = 0
+   phil30 = 0
+   fork31 = 0
+   phil31 = 0
+   fork32 = 0
+   phil32 = 0
+   fork33 = 0
+   phil33 = 0
+   fork34 = 0
+   phil34 = 0
+   fork35 = 0
+   phil35 = 0
+   fork36 = 0
+   phil36 = 0
+   fork37 = 0
+   phil37 = 0
+   fork38 = 0
+   phil38 = 0
+   fork39 = 0
+   phil39 = 0
+   fork40 = 0
+   phil40 = 0
+   fork41 = 0
+   phil41 = 0
+   fork42 = 0
+   phil42 = 0
+   fork43 = 0
+   phil43 = 0
+   fork44 = 0
+   phil44 = 0
+   fork45 = 0
+   phil45 = 0
+   fork46 = 0
+   phil46 = 0
+   fork47 = 0
+   phil47 = 0
+   fork48 = 0
+   phil48 = 0
+   fork49 = 0
+   phil49 = 0
+   fork50 = 0
+   phil50 = 0
+   fork51 = 0
+   phil51 = 0
+   fork52 = 0
+   phil52 = 0
+   fork53 = 0
+   phil53 = 0
+   fork54 = 0
+   phil54 = 0
+   fork55 = 0
+   phil55 = 0
+   fork56 = 0
+   phil56 = 0
+   fork57 = 0
+   phil57 = 0
+   fork58 = 0
+   phil58 = 0
+   fork59 = 0
+   phil59 = 0
+   fork60 = 0
+   phil60 = 0
+   fork61 = 0
+   phil61 = 0
+   fork62 = 0
+   phil62 = 0
+   fork63 = 0
+   phil63 = 0
+   fork64 = 0
+   phil64 = 0
+   fork65 = 0
+   phil65 = 0
+   fork66 = 0
+   phil66 = 0
+   fork67 = 0
+   phil67 = 0
+   fork68 = 0
+   phil68 = 0
+   fork69 = 0
+   phil69 = 0
+   fork70 = 0
+   phil70 = 0
+   fork71 = 0
+   phil71 = 0
+   fork72 = 0
+   phil72 = 0
+   fork73 = 0
+   phil73 = 0
+   fork74 = 0
+   phil74 = 0
+   fork75 = 0
+   phil75 = 0
+   fork76 = 0
+   phil76 = 0
+   fork77 = 0
+   phil77 = 0
+   fork78 = 0
+   phil78 = 0
+   fork79 = 0
+   phil79 = 0
+   fork80 = 0
+   phil80 = 0
+   fork81 = 0
+   phil81 = 0
+   fork82 = 0
+   phil82 = 0
+   fork83 = 0
+   phil83 = 0
+   fork84 = 0
+   phil84 = 0
+   fork85 = 0
+   phil85 = 0
+   fork86 = 0
+   phil86 = 0
+   fork87 = 0
+   phil87 = 0
+   fork88 = 0
+   phil88 = 0
+   fork89 = 0
+   phil89 = 0
+   fork90 = 0
+   phil90 = 0
+   fork91 = 0
+   phil91 = 0
+   fork92 = 0
+   phil92 = 0
+   fork93 = 0
+   phil93 = 0
+   fork94 = 0
+   phil94 = 0
+   fork95 = 0
+   phil95 = 0
+   fork96 = 0
+   phil96 = 0
+   fork97 = 0
+   phil97 = 0
+   fork98 = 0
+   phil98 = 0
+   fork99 = 0
+   phil99 = 0
+Transitions
+  phil0 = 0 -> phil0' = 1
+  phil0 = 1 /\ fork0 = 0 -> phil0' = 2 /\ fork0' = 1
+  phil0 = 1 /\ fork1 = 0 -> phil0' = 3 /\ fork1' = 1
+  phil0 = 2 /\ fork1 = 0 -> phil0' = 4 /\ fork1' = 1
+  phil0 = 3 /\ fork0 = 0 -> phil0' = 4 /\ fork0' = 1
+  phil0 = 4 -> phil0' = 0 /\ fork0' = 0 /\ fork1' = 0
+  phil1 = 0 -> phil1' = 1
+  phil1 = 1 /\ fork1 = 0 -> phil1' = 2 /\ fork1' = 1
+  phil1 = 1 /\ fork2 = 0 -> phil1' = 3 /\ fork2' = 1
+  phil1 = 2 /\ fork2 = 0 -> phil1' = 4 /\ fork2' = 1
+  phil1 = 3 /\ fork1 = 0 -> phil1' = 4 /\ fork1' = 1
+  phil1 = 4 -> phil1' = 0 /\ fork1' = 0 /\ fork2' = 0
+  phil2 = 0 -> phil2' = 1
+  phil2 = 1 /\ fork2 = 0 -> phil2' = 2 /\ fork2' = 1
+  phil2 = 1 /\ fork3 = 0 -> phil2' = 3 /\ fork3' = 1
+  phil2 = 2 /\ fork3 = 0 -> phil2' = 4 /\ fork3' = 1
+  phil2 = 3 /\ fork2 = 0 -> phil2' = 4 /\ fork2' = 1
+  phil2 = 4 -> phil2' = 0 /\ fork2' = 0 /\ fork3' = 0
+  phil3 = 0 -> phil3' = 1
+  phil3 = 1 /\ fork3 = 0 -> phil3' = 2 /\ fork3' = 1
+  phil3 = 1 /\ fork4 = 0 -> phil3' = 3 /\ fork4' = 1
+  phil3 = 2 /\ fork4 = 0 -> phil3' = 4 /\ fork4' = 1
+  phil3 = 3 /\ fork3 = 0 -> phil3' = 4 /\ fork3' = 1
+  phil3 = 4 -> phil3' = 0 /\ fork3' = 0 /\ fork4' = 0
+  phil4 = 0 -> phil4' = 1
+  phil4 = 1 /\ fork4 = 0 -> phil4' = 2 /\ fork4' = 1
+  phil4 = 1 /\ fork5 = 0 -> phil4' = 3 /\ fork5' = 1
+  phil4 = 2 /\ fork5 = 0 -> phil4' = 4 /\ fork5' = 1
+  phil4 = 3 /\ fork4 = 0 -> phil4' = 4 /\ fork4' = 1
+  phil4 = 4 -> phil4' = 0 /\ fork4' = 0 /\ fork5' = 0
+  phil5 = 0 -> phil5' = 1
+  phil5 = 1 /\ fork5 = 0 -> phil5' = 2 /\ fork5' = 1
+  phil5 = 1 /\ fork6 = 0 -> phil5' = 3 /\ fork6' = 1
+  phil5 = 2 /\ fork6 = 0 -> phil5' = 4 /\ fork6' = 1
+  phil5 = 3 /\ fork5 = 0 -> phil5' = 4 /\ fork5' = 1
+  phil5 = 4 -> phil5' = 0 /\ fork5' = 0 /\ fork6' = 0
+  phil6 = 0 -> phil6' = 1
+  phil6 = 1 /\ fork6 = 0 -> phil6' = 2 /\ fork6' = 1
+  phil6 = 1 /\ fork7 = 0 -> phil6' = 3 /\ fork7' = 1
+  phil6 = 2 /\ fork7 = 0 -> phil6' = 4 /\ fork7' = 1
+  phil6 = 3 /\ fork6 = 0 -> phil6' = 4 /\ fork6' = 1
+  phil6 = 4 -> phil6' = 0 /\ fork6' = 0 /\ fork7' = 0
+  phil7 = 0 -> phil7' = 1
+  phil7 = 1 /\ fork7 = 0 -> phil7' = 2 /\ fork7' = 1
+  phil7 = 1 /\ fork8 = 0 -> phil7' = 3 /\ fork8' = 1
+  phil7 = 2 /\ fork8 = 0 -> phil7' = 4 /\ fork8' = 1
+  phil7 = 3 /\ fork7 = 0 -> phil7' = 4 /\ fork7' = 1
+  phil7 = 4 -> phil7' = 0 /\ fork7' = 0 /\ fork8' = 0
+  phil8 = 0 -> phil8' = 1
+  phil8 = 1 /\ fork8 = 0 -> phil8' = 2 /\ fork8' = 1
+  phil8 = 1 /\ fork9 = 0 -> phil8' = 3 /\ fork9' = 1
+  phil8 = 2 /\ fork9 = 0 -> phil8' = 4 /\ fork9' = 1
+  phil8 = 3 /\ fork8 = 0 -> phil8' = 4 /\ fork8' = 1
+  phil8 = 4 -> phil8' = 0 /\ fork8' = 0 /\ fork9' = 0
+  phil9 = 0 -> phil9' = 1
+  phil9 = 1 /\ fork9 = 0 -> phil9' = 2 /\ fork9' = 1
+  phil9 = 1 /\ fork10 = 0 -> phil9' = 3 /\ fork10' = 1
+  phil9 = 2 /\ fork10 = 0 -> phil9' = 4 /\ fork10' = 1
+  phil9 = 3 /\ fork9 = 0 -> phil9' = 4 /\ fork9' = 1
+  phil9 = 4 -> phil9' = 0 /\ fork9' = 0 /\ fork10' = 0
+  phil10 = 0 -> phil10' = 1
+  phil10 = 1 /\ fork10 = 0 -> phil10' = 2 /\ fork10' = 1
+  phil10 = 1 /\ fork11 = 0 -> phil10' = 3 /\ fork11' = 1
+  phil10 = 2 /\ fork11 = 0 -> phil10' = 4 /\ fork11' = 1
+  phil10 = 3 /\ fork10 = 0 -> phil10' = 4 /\ fork10' = 1
+  phil10 = 4 -> phil10' = 0 /\ fork10' = 0 /\ fork11' = 0
+  phil11 = 0 -> phil11' = 1
+  phil11 = 1 /\ fork11 = 0 -> phil11' = 2 /\ fork11' = 1
+  phil11 = 1 /\ fork12 = 0 -> phil11' = 3 /\ fork12' = 1
+  phil11 = 2 /\ fork12 = 0 -> phil11' = 4 /\ fork12' = 1
+  phil11 = 3 /\ fork11 = 0 -> phil11' = 4 /\ fork11' = 1
+  phil11 = 4 -> phil11' = 0 /\ fork11' = 0 /\ fork12' = 0
+  phil12 = 0 -> phil12' = 1
+  phil12 = 1 /\ fork12 = 0 -> phil12' = 2 /\ fork12' = 1
+  phil12 = 1 /\ fork13 = 0 -> phil12' = 3 /\ fork13' = 1
+  phil12 = 2 /\ fork13 = 0 -> phil12' = 4 /\ fork13' = 1
+  phil12 = 3 /\ fork12 = 0 -> phil12' = 4 /\ fork12' = 1
+  phil12 = 4 -> phil12' = 0 /\ fork12' = 0 /\ fork13' = 0
+  phil13 = 0 -> phil13' = 1
+  phil13 = 1 /\ fork13 = 0 -> phil13' = 2 /\ fork13' = 1
+  phil13 = 1 /\ fork14 = 0 -> phil13' = 3 /\ fork14' = 1
+  phil13 = 2 /\ fork14 = 0 -> phil13' = 4 /\ fork14' = 1
+  phil13 = 3 /\ fork13 = 0 -> phil13' = 4 /\ fork13' = 1
+  phil13 = 4 -> phil13' = 0 /\ fork13' = 0 /\ fork14' = 0
+  phil14 = 0 -> phil14' = 1
+  phil14 = 1 /\ fork14 = 0 -> phil14' = 2 /\ fork14' = 1
+  phil14 = 1 /\ fork15 = 0 -> phil14' = 3 /\ fork15' = 1
+  phil14 = 2 /\ fork15 = 0 -> phil14' = 4 /\ fork15' = 1
+  phil14 = 3 /\ fork14 = 0 -> phil14' = 4 /\ fork14' = 1
+  phil14 = 4 -> phil14' = 0 /\ fork14' = 0 /\ fork15' = 0
+  phil15 = 0 -> phil15' = 1
+  phil15 = 1 /\ fork15 = 0 -> phil15' = 2 /\ fork15' = 1
+  phil15 = 1 /\ fork16 = 0 -> phil15' = 3 /\ fork16' = 1
+  phil15 = 2 /\ fork16 = 0 -> phil15' = 4 /\ fork16' = 1
+  phil15 = 3 /\ fork15 = 0 -> phil15' = 4 /\ fork15' = 1
+  phil15 = 4 -> phil15' = 0 /\ fork15' = 0 /\ fork16' = 0
+  phil16 = 0 -> phil16' = 1
+  phil16 = 1 /\ fork16 = 0 -> phil16' = 2 /\ fork16' = 1
+  phil16 = 1 /\ fork17 = 0 -> phil16' = 3 /\ fork17' = 1
+  phil16 = 2 /\ fork17 = 0 -> phil16' = 4 /\ fork17' = 1
+  phil16 = 3 /\ fork16 = 0 -> phil16' = 4 /\ fork16' = 1
+  phil16 = 4 -> phil16' = 0 /\ fork16' = 0 /\ fork17' = 0
+  phil17 = 0 -> phil17' = 1
+  phil17 = 1 /\ fork17 = 0 -> phil17' = 2 /\ fork17' = 1
+  phil17 = 1 /\ fork18 = 0 -> phil17' = 3 /\ fork18' = 1
+  phil17 = 2 /\ fork18 = 0 -> phil17' = 4 /\ fork18' = 1
+  phil17 = 3 /\ fork17 = 0 -> phil17' = 4 /\ fork17' = 1
+  phil17 = 4 -> phil17' = 0 /\ fork17' = 0 /\ fork18' = 0
+  phil18 = 0 -> phil18' = 1
+  phil18 = 1 /\ fork18 = 0 -> phil18' = 2 /\ fork18' = 1
+  phil18 = 1 /\ fork19 = 0 -> phil18' = 3 /\ fork19' = 1
+  phil18 = 2 /\ fork19 = 0 -> phil18' = 4 /\ fork19' = 1
+  phil18 = 3 /\ fork18 = 0 -> phil18' = 4 /\ fork18' = 1
+  phil18 = 4 -> phil18' = 0 /\ fork18' = 0 /\ fork19' = 0
+  phil19 = 0 -> phil19' = 1
+  phil19 = 1 /\ fork19 = 0 -> phil19' = 2 /\ fork19' = 1
+  phil19 = 1 /\ fork20 = 0 -> phil19' = 3 /\ fork20' = 1
+  phil19 = 2 /\ fork20 = 0 -> phil19' = 4 /\ fork20' = 1
+  phil19 = 3 /\ fork19 = 0 -> phil19' = 4 /\ fork19' = 1
+  phil19 = 4 -> phil19' = 0 /\ fork19' = 0 /\ fork20' = 0
+  phil20 = 0 -> phil20' = 1
+  phil20 = 1 /\ fork20 = 0 -> phil20' = 2 /\ fork20' = 1
+  phil20 = 1 /\ fork21 = 0 -> phil20' = 3 /\ fork21' = 1
+  phil20 = 2 /\ fork21 = 0 -> phil20' = 4 /\ fork21' = 1
+  phil20 = 3 /\ fork20 = 0 -> phil20' = 4 /\ fork20' = 1
+  phil20 = 4 -> phil20' = 0 /\ fork20' = 0 /\ fork21' = 0
+  phil21 = 0 -> phil21' = 1
+  phil21 = 1 /\ fork21 = 0 -> phil21' = 2 /\ fork21' = 1
+  phil21 = 1 /\ fork22 = 0 -> phil21' = 3 /\ fork22' = 1
+  phil21 = 2 /\ fork22 = 0 -> phil21' = 4 /\ fork22' = 1
+  phil21 = 3 /\ fork21 = 0 -> phil21' = 4 /\ fork21' = 1
+  phil21 = 4 -> phil21' = 0 /\ fork21' = 0 /\ fork22' = 0
+  phil22 = 0 -> phil22' = 1
+  phil22 = 1 /\ fork22 = 0 -> phil22' = 2 /\ fork22' = 1
+  phil22 = 1 /\ fork23 = 0 -> phil22' = 3 /\ fork23' = 1
+  phil22 = 2 /\ fork23 = 0 -> phil22' = 4 /\ fork23' = 1
+  phil22 = 3 /\ fork22 = 0 -> phil22' = 4 /\ fork22' = 1
+  phil22 = 4 -> phil22' = 0 /\ fork22' = 0 /\ fork23' = 0
+  phil23 = 0 -> phil23' = 1
+  phil23 = 1 /\ fork23 = 0 -> phil23' = 2 /\ fork23' = 1
+  phil23 = 1 /\ fork24 = 0 -> phil23' = 3 /\ fork24' = 1
+  phil23 = 2 /\ fork24 = 0 -> phil23' = 4 /\ fork24' = 1
+  phil23 = 3 /\ fork23 = 0 -> phil23' = 4 /\ fork23' = 1
+  phil23 = 4 -> phil23' = 0 /\ fork23' = 0 /\ fork24' = 0
+  phil24 = 0 -> phil24' = 1
+  phil24 = 1 /\ fork24 = 0 -> phil24' = 2 /\ fork24' = 1
+  phil24 = 1 /\ fork25 = 0 -> phil24' = 3 /\ fork25' = 1
+  phil24 = 2 /\ fork25 = 0 -> phil24' = 4 /\ fork25' = 1
+  phil24 = 3 /\ fork24 = 0 -> phil24' = 4 /\ fork24' = 1
+  phil24 = 4 -> phil24' = 0 /\ fork24' = 0 /\ fork25' = 0
+  phil25 = 0 -> phil25' = 1
+  phil25 = 1 /\ fork25 = 0 -> phil25' = 2 /\ fork25' = 1
+  phil25 = 1 /\ fork26 = 0 -> phil25' = 3 /\ fork26' = 1
+  phil25 = 2 /\ fork26 = 0 -> phil25' = 4 /\ fork26' = 1
+  phil25 = 3 /\ fork25 = 0 -> phil25' = 4 /\ fork25' = 1
+  phil25 = 4 -> phil25' = 0 /\ fork25' = 0 /\ fork26' = 0
+  phil26 = 0 -> phil26' = 1
+  phil26 = 1 /\ fork26 = 0 -> phil26' = 2 /\ fork26' = 1
+  phil26 = 1 /\ fork27 = 0 -> phil26' = 3 /\ fork27' = 1
+  phil26 = 2 /\ fork27 = 0 -> phil26' = 4 /\ fork27' = 1
+  phil26 = 3 /\ fork26 = 0 -> phil26' = 4 /\ fork26' = 1
+  phil26 = 4 -> phil26' = 0 /\ fork26' = 0 /\ fork27' = 0
+  phil27 = 0 -> phil27' = 1
+  phil27 = 1 /\ fork27 = 0 -> phil27' = 2 /\ fork27' = 1
+  phil27 = 1 /\ fork28 = 0 -> phil27' = 3 /\ fork28' = 1
+  phil27 = 2 /\ fork28 = 0 -> phil27' = 4 /\ fork28' = 1
+  phil27 = 3 /\ fork27 = 0 -> phil27' = 4 /\ fork27' = 1
+  phil27 = 4 -> phil27' = 0 /\ fork27' = 0 /\ fork28' = 0
+  phil28 = 0 -> phil28' = 1
+  phil28 = 1 /\ fork28 = 0 -> phil28' = 2 /\ fork28' = 1
+  phil28 = 1 /\ fork29 = 0 -> phil28' = 3 /\ fork29' = 1
+  phil28 = 2 /\ fork29 = 0 -> phil28' = 4 /\ fork29' = 1
+  phil28 = 3 /\ fork28 = 0 -> phil28' = 4 /\ fork28' = 1
+  phil28 = 4 -> phil28' = 0 /\ fork28' = 0 /\ fork29' = 0
+  phil29 = 0 -> phil29' = 1
+  phil29 = 1 /\ fork29 = 0 -> phil29' = 2 /\ fork29' = 1
+  phil29 = 1 /\ fork30 = 0 -> phil29' = 3 /\ fork30' = 1
+  phil29 = 2 /\ fork30 = 0 -> phil29' = 4 /\ fork30' = 1
+  phil29 = 3 /\ fork29 = 0 -> phil29' = 4 /\ fork29' = 1
+  phil29 = 4 -> phil29' = 0 /\ fork29' = 0 /\ fork30' = 0
+  phil30 = 0 -> phil30' = 1
+  phil30 = 1 /\ fork30 = 0 -> phil30' = 2 /\ fork30' = 1
+  phil30 = 1 /\ fork31 = 0 -> phil30' = 3 /\ fork31' = 1
+  phil30 = 2 /\ fork31 = 0 -> phil30' = 4 /\ fork31' = 1
+  phil30 = 3 /\ fork30 = 0 -> phil30' = 4 /\ fork30' = 1
+  phil30 = 4 -> phil30' = 0 /\ fork30' = 0 /\ fork31' = 0
+  phil31 = 0 -> phil31' = 1
+  phil31 = 1 /\ fork31 = 0 -> phil31' = 2 /\ fork31' = 1
+  phil31 = 1 /\ fork32 = 0 -> phil31' = 3 /\ fork32' = 1
+  phil31 = 2 /\ fork32 = 0 -> phil31' = 4 /\ fork32' = 1
+  phil31 = 3 /\ fork31 = 0 -> phil31' = 4 /\ fork31' = 1
+  phil31 = 4 -> phil31' = 0 /\ fork31' = 0 /\ fork32' = 0
+  phil32 = 0 -> phil32' = 1
+  phil32 = 1 /\ fork32 = 0 -> phil32' = 2 /\ fork32' = 1
+  phil32 = 1 /\ fork33 = 0 -> phil32' = 3 /\ fork33' = 1
+  phil32 = 2 /\ fork33 = 0 -> phil32' = 4 /\ fork33' = 1
+  phil32 = 3 /\ fork32 = 0 -> phil32' = 4 /\ fork32' = 1
+  phil32 = 4 -> phil32' = 0 /\ fork32' = 0 /\ fork33' = 0
+  phil33 = 0 -> phil33' = 1
+  phil33 = 1 /\ fork33 = 0 -> phil33' = 2 /\ fork33' = 1
+  phil33 = 1 /\ fork34 = 0 -> phil33' = 3 /\ fork34' = 1
+  phil33 = 2 /\ fork34 = 0 -> phil33' = 4 /\ fork34' = 1
+  phil33 = 3 /\ fork33 = 0 -> phil33' = 4 /\ fork33' = 1
+  phil33 = 4 -> phil33' = 0 /\ fork33' = 0 /\ fork34' = 0
+  phil34 = 0 -> phil34' = 1
+  phil34 = 1 /\ fork34 = 0 -> phil34' = 2 /\ fork34' = 1
+  phil34 = 1 /\ fork35 = 0 -> phil34' = 3 /\ fork35' = 1
+  phil34 = 2 /\ fork35 = 0 -> phil34' = 4 /\ fork35' = 1
+  phil34 = 3 /\ fork34 = 0 -> phil34' = 4 /\ fork34' = 1
+  phil34 = 4 -> phil34' = 0 /\ fork34' = 0 /\ fork35' = 0
+  phil35 = 0 -> phil35' = 1
+  phil35 = 1 /\ fork35 = 0 -> phil35' = 2 /\ fork35' = 1
+  phil35 = 1 /\ fork36 = 0 -> phil35' = 3 /\ fork36' = 1
+  phil35 = 2 /\ fork36 = 0 -> phil35' = 4 /\ fork36' = 1
+  phil35 = 3 /\ fork35 = 0 -> phil35' = 4 /\ fork35' = 1
+  phil35 = 4 -> phil35' = 0 /\ fork35' = 0 /\ fork36' = 0
+  phil36 = 0 -> phil36' = 1
+  phil36 = 1 /\ fork36 = 0 -> phil36' = 2 /\ fork36' = 1
+  phil36 = 1 /\ fork37 = 0 -> phil36' = 3 /\ fork37' = 1
+  phil36 = 2 /\ fork37 = 0 -> phil36' = 4 /\ fork37' = 1
+  phil36 = 3 /\ fork36 = 0 -> phil36' = 4 /\ fork36' = 1
+  phil36 = 4 -> phil36' = 0 /\ fork36' = 0 /\ fork37' = 0
+  phil37 = 0 -> phil37' = 1
+  phil37 = 1 /\ fork37 = 0 -> phil37' = 2 /\ fork37' = 1
+  phil37 = 1 /\ fork38 = 0 -> phil37' = 3 /\ fork38' = 1
+  phil37 = 2 /\ fork38 = 0 -> phil37' = 4 /\ fork38' = 1
+  phil37 = 3 /\ fork37 = 0 -> phil37' = 4 /\ fork37' = 1
+  phil37 = 4 -> phil37' = 0 /\ fork37' = 0 /\ fork38' = 0
+  phil38 = 0 -> phil38' = 1
+  phil38 = 1 /\ fork38 = 0 -> phil38' = 2 /\ fork38' = 1
+  phil38 = 1 /\ fork39 = 0 -> phil38' = 3 /\ fork39' = 1
+  phil38 = 2 /\ fork39 = 0 -> phil38' = 4 /\ fork39' = 1
+  phil38 = 3 /\ fork38 = 0 -> phil38' = 4 /\ fork38' = 1
+  phil38 = 4 -> phil38' = 0 /\ fork38' = 0 /\ fork39' = 0
+  phil39 = 0 -> phil39' = 1
+  phil39 = 1 /\ fork39 = 0 -> phil39' = 2 /\ fork39' = 1
+  phil39 = 1 /\ fork40 = 0 -> phil39' = 3 /\ fork40' = 1
+  phil39 = 2 /\ fork40 = 0 -> phil39' = 4 /\ fork40' = 1
+  phil39 = 3 /\ fork39 = 0 -> phil39' = 4 /\ fork39' = 1
+  phil39 = 4 -> phil39' = 0 /\ fork39' = 0 /\ fork40' = 0
+  phil40 = 0 -> phil40' = 1
+  phil40 = 1 /\ fork40 = 0 -> phil40' = 2 /\ fork40' = 1
+  phil40 = 1 /\ fork41 = 0 -> phil40' = 3 /\ fork41' = 1
+  phil40 = 2 /\ fork41 = 0 -> phil40' = 4 /\ fork41' = 1
+  phil40 = 3 /\ fork40 = 0 -> phil40' = 4 /\ fork40' = 1
+  phil40 = 4 -> phil40' = 0 /\ fork40' = 0 /\ fork41' = 0
+  phil41 = 0 -> phil41' = 1
+  phil41 = 1 /\ fork41 = 0 -> phil41' = 2 /\ fork41' = 1
+  phil41 = 1 /\ fork42 = 0 -> phil41' = 3 /\ fork42' = 1
+  phil41 = 2 /\ fork42 = 0 -> phil41' = 4 /\ fork42' = 1
+  phil41 = 3 /\ fork41 = 0 -> phil41' = 4 /\ fork41' = 1
+  phil41 = 4 -> phil41' = 0 /\ fork41' = 0 /\ fork42' = 0
+  phil42 = 0 -> phil42' = 1
+  phil42 = 1 /\ fork42 = 0 -> phil42' = 2 /\ fork42' = 1
+  phil42 = 1 /\ fork43 = 0 -> phil42' = 3 /\ fork43' = 1
+  phil42 = 2 /\ fork43 = 0 -> phil42' = 4 /\ fork43' = 1
+  phil42 = 3 /\ fork42 = 0 -> phil42' = 4 /\ fork42' = 1
+  phil42 = 4 -> phil42' = 0 /\ fork42' = 0 /\ fork43' = 0
+  phil43 = 0 -> phil43' = 1
+  phil43 = 1 /\ fork43 = 0 -> phil43' = 2 /\ fork43' = 1
+  phil43 = 1 /\ fork44 = 0 -> phil43' = 3 /\ fork44' = 1
+  phil43 = 2 /\ fork44 = 0 -> phil43' = 4 /\ fork44' = 1
+  phil43 = 3 /\ fork43 = 0 -> phil43' = 4 /\ fork43' = 1
+  phil43 = 4 -> phil43' = 0 /\ fork43' = 0 /\ fork44' = 0
+  phil44 = 0 -> phil44' = 1
+  phil44 = 1 /\ fork44 = 0 -> phil44' = 2 /\ fork44' = 1
+  phil44 = 1 /\ fork45 = 0 -> phil44' = 3 /\ fork45' = 1
+  phil44 = 2 /\ fork45 = 0 -> phil44' = 4 /\ fork45' = 1
+  phil44 = 3 /\ fork44 = 0 -> phil44' = 4 /\ fork44' = 1
+  phil44 = 4 -> phil44' = 0 /\ fork44' = 0 /\ fork45' = 0
+  phil45 = 0 -> phil45' = 1
+  phil45 = 1 /\ fork45 = 0 -> phil45' = 2 /\ fork45' = 1
+  phil45 = 1 /\ fork46 = 0 -> phil45' = 3 /\ fork46' = 1
+  phil45 = 2 /\ fork46 = 0 -> phil45' = 4 /\ fork46' = 1
+  phil45 = 3 /\ fork45 = 0 -> phil45' = 4 /\ fork45' = 1
+  phil45 = 4 -> phil45' = 0 /\ fork45' = 0 /\ fork46' = 0
+  phil46 = 0 -> phil46' = 1
+  phil46 = 1 /\ fork46 = 0 -> phil46' = 2 /\ fork46' = 1
+  phil46 = 1 /\ fork47 = 0 -> phil46' = 3 /\ fork47' = 1
+  phil46 = 2 /\ fork47 = 0 -> phil46' = 4 /\ fork47' = 1
+  phil46 = 3 /\ fork46 = 0 -> phil46' = 4 /\ fork46' = 1
+  phil46 = 4 -> phil46' = 0 /\ fork46' = 0 /\ fork47' = 0
+  phil47 = 0 -> phil47' = 1
+  phil47 = 1 /\ fork47 = 0 -> phil47' = 2 /\ fork47' = 1
+  phil47 = 1 /\ fork48 = 0 -> phil47' = 3 /\ fork48' = 1
+  phil47 = 2 /\ fork48 = 0 -> phil47' = 4 /\ fork48' = 1
+  phil47 = 3 /\ fork47 = 0 -> phil47' = 4 /\ fork47' = 1
+  phil47 = 4 -> phil47' = 0 /\ fork47' = 0 /\ fork48' = 0
+  phil48 = 0 -> phil48' = 1
+  phil48 = 1 /\ fork48 = 0 -> phil48' = 2 /\ fork48' = 1
+  phil48 = 1 /\ fork49 = 0 -> phil48' = 3 /\ fork49' = 1
+  phil48 = 2 /\ fork49 = 0 -> phil48' = 4 /\ fork49' = 1
+  phil48 = 3 /\ fork48 = 0 -> phil48' = 4 /\ fork48' = 1
+  phil48 = 4 -> phil48' = 0 /\ fork48' = 0 /\ fork49' = 0
+  phil49 = 0 -> phil49' = 1
+  phil49 = 1 /\ fork49 = 0 -> phil49' = 2 /\ fork49' = 1
+  phil49 = 1 /\ fork50 = 0 -> phil49' = 3 /\ fork50' = 1
+  phil49 = 2 /\ fork50 = 0 -> phil49' = 4 /\ fork50' = 1
+  phil49 = 3 /\ fork49 = 0 -> phil49' = 4 /\ fork49' = 1
+  phil49 = 4 -> phil49' = 0 /\ fork49' = 0 /\ fork50' = 0
+  phil50 = 0 -> phil50' = 1
+  phil50 = 1 /\ fork50 = 0 -> phil50' = 2 /\ fork50' = 1
+  phil50 = 1 /\ fork51 = 0 -> phil50' = 3 /\ fork51' = 1
+  phil50 = 2 /\ fork51 = 0 -> phil50' = 4 /\ fork51' = 1
+  phil50 = 3 /\ fork50 = 0 -> phil50' = 4 /\ fork50' = 1
+  phil50 = 4 -> phil50' = 0 /\ fork50' = 0 /\ fork51' = 0
+  phil51 = 0 -> phil51' = 1
+  phil51 = 1 /\ fork51 = 0 -> phil51' = 2 /\ fork51' = 1
+  phil51 = 1 /\ fork52 = 0 -> phil51' = 3 /\ fork52' = 1
+  phil51 = 2 /\ fork52 = 0 -> phil51' = 4 /\ fork52' = 1
+  phil51 = 3 /\ fork51 = 0 -> phil51' = 4 /\ fork51' = 1
+  phil51 = 4 -> phil51' = 0 /\ fork51' = 0 /\ fork52' = 0
+  phil52 = 0 -> phil52' = 1
+  phil52 = 1 /\ fork52 = 0 -> phil52' = 2 /\ fork52' = 1
+  phil52 = 1 /\ fork53 = 0 -> phil52' = 3 /\ fork53' = 1
+  phil52 = 2 /\ fork53 = 0 -> phil52' = 4 /\ fork53' = 1
+  phil52 = 3 /\ fork52 = 0 -> phil52' = 4 /\ fork52' = 1
+  phil52 = 4 -> phil52' = 0 /\ fork52' = 0 /\ fork53' = 0
+  phil53 = 0 -> phil53' = 1
+  phil53 = 1 /\ fork53 = 0 -> phil53' = 2 /\ fork53' = 1
+  phil53 = 1 /\ fork54 = 0 -> phil53' = 3 /\ fork54' = 1
+  phil53 = 2 /\ fork54 = 0 -> phil53' = 4 /\ fork54' = 1
+  phil53 = 3 /\ fork53 = 0 -> phil53' = 4 /\ fork53' = 1
+  phil53 = 4 -> phil53' = 0 /\ fork53' = 0 /\ fork54' = 0
+  phil54 = 0 -> phil54' = 1
+  phil54 = 1 /\ fork54 = 0 -> phil54' = 2 /\ fork54' = 1
+  phil54 = 1 /\ fork55 = 0 -> phil54' = 3 /\ fork55' = 1
+  phil54 = 2 /\ fork55 = 0 -> phil54' = 4 /\ fork55' = 1
+  phil54 = 3 /\ fork54 = 0 -> phil54' = 4 /\ fork54' = 1
+  phil54 = 4 -> phil54' = 0 /\ fork54' = 0 /\ fork55' = 0
+  phil55 = 0 -> phil55' = 1
+  phil55 = 1 /\ fork55 = 0 -> phil55' = 2 /\ fork55' = 1
+  phil55 = 1 /\ fork56 = 0 -> phil55' = 3 /\ fork56' = 1
+  phil55 = 2 /\ fork56 = 0 -> phil55' = 4 /\ fork56' = 1
+  phil55 = 3 /\ fork55 = 0 -> phil55' = 4 /\ fork55' = 1
+  phil55 = 4 -> phil55' = 0 /\ fork55' = 0 /\ fork56' = 0
+  phil56 = 0 -> phil56' = 1
+  phil56 = 1 /\ fork56 = 0 -> phil56' = 2 /\ fork56' = 1
+  phil56 = 1 /\ fork57 = 0 -> phil56' = 3 /\ fork57' = 1
+  phil56 = 2 /\ fork57 = 0 -> phil56' = 4 /\ fork57' = 1
+  phil56 = 3 /\ fork56 = 0 -> phil56' = 4 /\ fork56' = 1
+  phil56 = 4 -> phil56' = 0 /\ fork56' = 0 /\ fork57' = 0
+  phil57 = 0 -> phil57' = 1
+  phil57 = 1 /\ fork57 = 0 -> phil57' = 2 /\ fork57' = 1
+  phil57 = 1 /\ fork58 = 0 -> phil57' = 3 /\ fork58' = 1
+  phil57 = 2 /\ fork58 = 0 -> phil57' = 4 /\ fork58' = 1
+  phil57 = 3 /\ fork57 = 0 -> phil57' = 4 /\ fork57' = 1
+  phil57 = 4 -> phil57' = 0 /\ fork57' = 0 /\ fork58' = 0
+  phil58 = 0 -> phil58' = 1
+  phil58 = 1 /\ fork58 = 0 -> phil58' = 2 /\ fork58' = 1
+  phil58 = 1 /\ fork59 = 0 -> phil58' = 3 /\ fork59' = 1
+  phil58 = 2 /\ fork59 = 0 -> phil58' = 4 /\ fork59' = 1
+  phil58 = 3 /\ fork58 = 0 -> phil58' = 4 /\ fork58' = 1
+  phil58 = 4 -> phil58' = 0 /\ fork58' = 0 /\ fork59' = 0
+  phil59 = 0 -> phil59' = 1
+  phil59 = 1 /\ fork59 = 0 -> phil59' = 2 /\ fork59' = 1
+  phil59 = 1 /\ fork60 = 0 -> phil59' = 3 /\ fork60' = 1
+  phil59 = 2 /\ fork60 = 0 -> phil59' = 4 /\ fork60' = 1
+  phil59 = 3 /\ fork59 = 0 -> phil59' = 4 /\ fork59' = 1
+  phil59 = 4 -> phil59' = 0 /\ fork59' = 0 /\ fork60' = 0
+  phil60 = 0 -> phil60' = 1
+  phil60 = 1 /\ fork60 = 0 -> phil60' = 2 /\ fork60' = 1
+  phil60 = 1 /\ fork61 = 0 -> phil60' = 3 /\ fork61' = 1
+  phil60 = 2 /\ fork61 = 0 -> phil60' = 4 /\ fork61' = 1
+  phil60 = 3 /\ fork60 = 0 -> phil60' = 4 /\ fork60' = 1
+  phil60 = 4 -> phil60' = 0 /\ fork60' = 0 /\ fork61' = 0
+  phil61 = 0 -> phil61' = 1
+  phil61 = 1 /\ fork61 = 0 -> phil61' = 2 /\ fork61' = 1
+  phil61 = 1 /\ fork62 = 0 -> phil61' = 3 /\ fork62' = 1
+  phil61 = 2 /\ fork62 = 0 -> phil61' = 4 /\ fork62' = 1
+  phil61 = 3 /\ fork61 = 0 -> phil61' = 4 /\ fork61' = 1
+  phil61 = 4 -> phil61' = 0 /\ fork61' = 0 /\ fork62' = 0
+  phil62 = 0 -> phil62' = 1
+  phil62 = 1 /\ fork62 = 0 -> phil62' = 2 /\ fork62' = 1
+  phil62 = 1 /\ fork63 = 0 -> phil62' = 3 /\ fork63' = 1
+  phil62 = 2 /\ fork63 = 0 -> phil62' = 4 /\ fork63' = 1
+  phil62 = 3 /\ fork62 = 0 -> phil62' = 4 /\ fork62' = 1
+  phil62 = 4 -> phil62' = 0 /\ fork62' = 0 /\ fork63' = 0
+  phil63 = 0 -> phil63' = 1
+  phil63 = 1 /\ fork63 = 0 -> phil63' = 2 /\ fork63' = 1
+  phil63 = 1 /\ fork64 = 0 -> phil63' = 3 /\ fork64' = 1
+  phil63 = 2 /\ fork64 = 0 -> phil63' = 4 /\ fork64' = 1
+  phil63 = 3 /\ fork63 = 0 -> phil63' = 4 /\ fork63' = 1
+  phil63 = 4 -> phil63' = 0 /\ fork63' = 0 /\ fork64' = 0
+  phil64 = 0 -> phil64' = 1
+  phil64 = 1 /\ fork64 = 0 -> phil64' = 2 /\ fork64' = 1
+  phil64 = 1 /\ fork65 = 0 -> phil64' = 3 /\ fork65' = 1
+  phil64 = 2 /\ fork65 = 0 -> phil64' = 4 /\ fork65' = 1
+  phil64 = 3 /\ fork64 = 0 -> phil64' = 4 /\ fork64' = 1
+  phil64 = 4 -> phil64' = 0 /\ fork64' = 0 /\ fork65' = 0
+  phil65 = 0 -> phil65' = 1
+  phil65 = 1 /\ fork65 = 0 -> phil65' = 2 /\ fork65' = 1
+  phil65 = 1 /\ fork66 = 0 -> phil65' = 3 /\ fork66' = 1
+  phil65 = 2 /\ fork66 = 0 -> phil65' = 4 /\ fork66' = 1
+  phil65 = 3 /\ fork65 = 0 -> phil65' = 4 /\ fork65' = 1
+  phil65 = 4 -> phil65' = 0 /\ fork65' = 0 /\ fork66' = 0
+  phil66 = 0 -> phil66' = 1
+  phil66 = 1 /\ fork66 = 0 -> phil66' = 2 /\ fork66' = 1
+  phil66 = 1 /\ fork67 = 0 -> phil66' = 3 /\ fork67' = 1
+  phil66 = 2 /\ fork67 = 0 -> phil66' = 4 /\ fork67' = 1
+  phil66 = 3 /\ fork66 = 0 -> phil66' = 4 /\ fork66' = 1
+  phil66 = 4 -> phil66' = 0 /\ fork66' = 0 /\ fork67' = 0
+  phil67 = 0 -> phil67' = 1
+  phil67 = 1 /\ fork67 = 0 -> phil67' = 2 /\ fork67' = 1
+  phil67 = 1 /\ fork68 = 0 -> phil67' = 3 /\ fork68' = 1
+  phil67 = 2 /\ fork68 = 0 -> phil67' = 4 /\ fork68' = 1
+  phil67 = 3 /\ fork67 = 0 -> phil67' = 4 /\ fork67' = 1
+  phil67 = 4 -> phil67' = 0 /\ fork67' = 0 /\ fork68' = 0
+  phil68 = 0 -> phil68' = 1
+  phil68 = 1 /\ fork68 = 0 -> phil68' = 2 /\ fork68' = 1
+  phil68 = 1 /\ fork69 = 0 -> phil68' = 3 /\ fork69' = 1
+  phil68 = 2 /\ fork69 = 0 -> phil68' = 4 /\ fork69' = 1
+  phil68 = 3 /\ fork68 = 0 -> phil68' = 4 /\ fork68' = 1
+  phil68 = 4 -> phil68' = 0 /\ fork68' = 0 /\ fork69' = 0
+  phil69 = 0 -> phil69' = 1
+  phil69 = 1 /\ fork69 = 0 -> phil69' = 2 /\ fork69' = 1
+  phil69 = 1 /\ fork70 = 0 -> phil69' = 3 /\ fork70' = 1
+  phil69 = 2 /\ fork70 = 0 -> phil69' = 4 /\ fork70' = 1
+  phil69 = 3 /\ fork69 = 0 -> phil69' = 4 /\ fork69' = 1
+  phil69 = 4 -> phil69' = 0 /\ fork69' = 0 /\ fork70' = 0
+  phil70 = 0 -> phil70' = 1
+  phil70 = 1 /\ fork70 = 0 -> phil70' = 2 /\ fork70' = 1
+  phil70 = 1 /\ fork71 = 0 -> phil70' = 3 /\ fork71' = 1
+  phil70 = 2 /\ fork71 = 0 -> phil70' = 4 /\ fork71' = 1
+  phil70 = 3 /\ fork70 = 0 -> phil70' = 4 /\ fork70' = 1
+  phil70 = 4 -> phil70' = 0 /\ fork70' = 0 /\ fork71' = 0
+  phil71 = 0 -> phil71' = 1
+  phil71 = 1 /\ fork71 = 0 -> phil71' = 2 /\ fork71' = 1
+  phil71 = 1 /\ fork72 = 0 -> phil71' = 3 /\ fork72' = 1
+  phil71 = 2 /\ fork72 = 0 -> phil71' = 4 /\ fork72' = 1
+  phil71 = 3 /\ fork71 = 0 -> phil71' = 4 /\ fork71' = 1
+  phil71 = 4 -> phil71' = 0 /\ fork71' = 0 /\ fork72' = 0
+  phil72 = 0 -> phil72' = 1
+  phil72 = 1 /\ fork72 = 0 -> phil72' = 2 /\ fork72' = 1
+  phil72 = 1 /\ fork73 = 0 -> phil72' = 3 /\ fork73' = 1
+  phil72 = 2 /\ fork73 = 0 -> phil72' = 4 /\ fork73' = 1
+  phil72 = 3 /\ fork72 = 0 -> phil72' = 4 /\ fork72' = 1
+  phil72 = 4 -> phil72' = 0 /\ fork72' = 0 /\ fork73' = 0
+  phil73 = 0 -> phil73' = 1
+  phil73 = 1 /\ fork73 = 0 -> phil73' = 2 /\ fork73' = 1
+  phil73 = 1 /\ fork74 = 0 -> phil73' = 3 /\ fork74' = 1
+  phil73 = 2 /\ fork74 = 0 -> phil73' = 4 /\ fork74' = 1
+  phil73 = 3 /\ fork73 = 0 -> phil73' = 4 /\ fork73' = 1
+  phil73 = 4 -> phil73' = 0 /\ fork73' = 0 /\ fork74' = 0
+  phil74 = 0 -> phil74' = 1
+  phil74 = 1 /\ fork74 = 0 -> phil74' = 2 /\ fork74' = 1
+  phil74 = 1 /\ fork75 = 0 -> phil74' = 3 /\ fork75' = 1
+  phil74 = 2 /\ fork75 = 0 -> phil74' = 4 /\ fork75' = 1
+  phil74 = 3 /\ fork74 = 0 -> phil74' = 4 /\ fork74' = 1
+  phil74 = 4 -> phil74' = 0 /\ fork74' = 0 /\ fork75' = 0
+  phil75 = 0 -> phil75' = 1
+  phil75 = 1 /\ fork75 = 0 -> phil75' = 2 /\ fork75' = 1
+  phil75 = 1 /\ fork76 = 0 -> phil75' = 3 /\ fork76' = 1
+  phil75 = 2 /\ fork76 = 0 -> phil75' = 4 /\ fork76' = 1
+  phil75 = 3 /\ fork75 = 0 -> phil75' = 4 /\ fork75' = 1
+  phil75 = 4 -> phil75' = 0 /\ fork75' = 0 /\ fork76' = 0
+  phil76 = 0 -> phil76' = 1
+  phil76 = 1 /\ fork76 = 0 -> phil76' = 2 /\ fork76' = 1
+  phil76 = 1 /\ fork77 = 0 -> phil76' = 3 /\ fork77' = 1
+  phil76 = 2 /\ fork77 = 0 -> phil76' = 4 /\ fork77' = 1
+  phil76 = 3 /\ fork76 = 0 -> phil76' = 4 /\ fork76' = 1
+  phil76 = 4 -> phil76' = 0 /\ fork76' = 0 /\ fork77' = 0
+  phil77 = 0 -> phil77' = 1
+  phil77 = 1 /\ fork77 = 0 -> phil77' = 2 /\ fork77' = 1
+  phil77 = 1 /\ fork78 = 0 -> phil77' = 3 /\ fork78' = 1
+  phil77 = 2 /\ fork78 = 0 -> phil77' = 4 /\ fork78' = 1
+  phil77 = 3 /\ fork77 = 0 -> phil77' = 4 /\ fork77' = 1
+  phil77 = 4 -> phil77' = 0 /\ fork77' = 0 /\ fork78' = 0
+  phil78 = 0 -> phil78' = 1
+  phil78 = 1 /\ fork78 = 0 -> phil78' = 2 /\ fork78' = 1
+  phil78 = 1 /\ fork79 = 0 -> phil78' = 3 /\ fork79' = 1
+  phil78 = 2 /\ fork79 = 0 -> phil78' = 4 /\ fork79' = 1
+  phil78 = 3 /\ fork78 = 0 -> phil78' = 4 /\ fork78' = 1
+  phil78 = 4 -> phil78' = 0 /\ fork78' = 0 /\ fork79' = 0
+  phil79 = 0 -> phil79' = 1
+  phil79 = 1 /\ fork79 = 0 -> phil79' = 2 /\ fork79' = 1
+  phil79 = 1 /\ fork80 = 0 -> phil79' = 3 /\ fork80' = 1
+  phil79 = 2 /\ fork80 = 0 -> phil79' = 4 /\ fork80' = 1
+  phil79 = 3 /\ fork79 = 0 -> phil79' = 4 /\ fork79' = 1
+  phil79 = 4 -> phil79' = 0 /\ fork79' = 0 /\ fork80' = 0
+  phil80 = 0 -> phil80' = 1
+  phil80 = 1 /\ fork80 = 0 -> phil80' = 2 /\ fork80' = 1
+  phil80 = 1 /\ fork81 = 0 -> phil80' = 3 /\ fork81' = 1
+  phil80 = 2 /\ fork81 = 0 -> phil80' = 4 /\ fork81' = 1
+  phil80 = 3 /\ fork80 = 0 -> phil80' = 4 /\ fork80' = 1
+  phil80 = 4 -> phil80' = 0 /\ fork80' = 0 /\ fork81' = 0
+  phil81 = 0 -> phil81' = 1
+  phil81 = 1 /\ fork81 = 0 -> phil81' = 2 /\ fork81' = 1
+  phil81 = 1 /\ fork82 = 0 -> phil81' = 3 /\ fork82' = 1
+  phil81 = 2 /\ fork82 = 0 -> phil81' = 4 /\ fork82' = 1
+  phil81 = 3 /\ fork81 = 0 -> phil81' = 4 /\ fork81' = 1
+  phil81 = 4 -> phil81' = 0 /\ fork81' = 0 /\ fork82' = 0
+  phil82 = 0 -> phil82' = 1
+  phil82 = 1 /\ fork82 = 0 -> phil82' = 2 /\ fork82' = 1
+  phil82 = 1 /\ fork83 = 0 -> phil82' = 3 /\ fork83' = 1
+  phil82 = 2 /\ fork83 = 0 -> phil82' = 4 /\ fork83' = 1
+  phil82 = 3 /\ fork82 = 0 -> phil82' = 4 /\ fork82' = 1
+  phil82 = 4 -> phil82' = 0 /\ fork82' = 0 /\ fork83' = 0
+  phil83 = 0 -> phil83' = 1
+  phil83 = 1 /\ fork83 = 0 -> phil83' = 2 /\ fork83' = 1
+  phil83 = 1 /\ fork84 = 0 -> phil83' = 3 /\ fork84' = 1
+  phil83 = 2 /\ fork84 = 0 -> phil83' = 4 /\ fork84' = 1
+  phil83 = 3 /\ fork83 = 0 -> phil83' = 4 /\ fork83' = 1
+  phil83 = 4 -> phil83' = 0 /\ fork83' = 0 /\ fork84' = 0
+  phil84 = 0 -> phil84' = 1
+  phil84 = 1 /\ fork84 = 0 -> phil84' = 2 /\ fork84' = 1
+  phil84 = 1 /\ fork85 = 0 -> phil84' = 3 /\ fork85' = 1
+  phil84 = 2 /\ fork85 = 0 -> phil84' = 4 /\ fork85' = 1
+  phil84 = 3 /\ fork84 = 0 -> phil84' = 4 /\ fork84' = 1
+  phil84 = 4 -> phil84' = 0 /\ fork84' = 0 /\ fork85' = 0
+  phil85 = 0 -> phil85' = 1
+  phil85 = 1 /\ fork85 = 0 -> phil85' = 2 /\ fork85' = 1
+  phil85 = 1 /\ fork86 = 0 -> phil85' = 3 /\ fork86' = 1
+  phil85 = 2 /\ fork86 = 0 -> phil85' = 4 /\ fork86' = 1
+  phil85 = 3 /\ fork85 = 0 -> phil85' = 4 /\ fork85' = 1
+  phil85 = 4 -> phil85' = 0 /\ fork85' = 0 /\ fork86' = 0
+  phil86 = 0 -> phil86' = 1
+  phil86 = 1 /\ fork86 = 0 -> phil86' = 2 /\ fork86' = 1
+  phil86 = 1 /\ fork87 = 0 -> phil86' = 3 /\ fork87' = 1
+  phil86 = 2 /\ fork87 = 0 -> phil86' = 4 /\ fork87' = 1
+  phil86 = 3 /\ fork86 = 0 -> phil86' = 4 /\ fork86' = 1
+  phil86 = 4 -> phil86' = 0 /\ fork86' = 0 /\ fork87' = 0
+  phil87 = 0 -> phil87' = 1
+  phil87 = 1 /\ fork87 = 0 -> phil87' = 2 /\ fork87' = 1
+  phil87 = 1 /\ fork88 = 0 -> phil87' = 3 /\ fork88' = 1
+  phil87 = 2 /\ fork88 = 0 -> phil87' = 4 /\ fork88' = 1
+  phil87 = 3 /\ fork87 = 0 -> phil87' = 4 /\ fork87' = 1
+  phil87 = 4 -> phil87' = 0 /\ fork87' = 0 /\ fork88' = 0
+  phil88 = 0 -> phil88' = 1
+  phil88 = 1 /\ fork88 = 0 -> phil88' = 2 /\ fork88' = 1
+  phil88 = 1 /\ fork89 = 0 -> phil88' = 3 /\ fork89' = 1
+  phil88 = 2 /\ fork89 = 0 -> phil88' = 4 /\ fork89' = 1
+  phil88 = 3 /\ fork88 = 0 -> phil88' = 4 /\ fork88' = 1
+  phil88 = 4 -> phil88' = 0 /\ fork88' = 0 /\ fork89' = 0
+  phil89 = 0 -> phil89' = 1
+  phil89 = 1 /\ fork89 = 0 -> phil89' = 2 /\ fork89' = 1
+  phil89 = 1 /\ fork90 = 0 -> phil89' = 3 /\ fork90' = 1
+  phil89 = 2 /\ fork90 = 0 -> phil89' = 4 /\ fork90' = 1
+  phil89 = 3 /\ fork89 = 0 -> phil89' = 4 /\ fork89' = 1
+  phil89 = 4 -> phil89' = 0 /\ fork89' = 0 /\ fork90' = 0
+  phil90 = 0 -> phil90' = 1
+  phil90 = 1 /\ fork90 = 0 -> phil90' = 2 /\ fork90' = 1
+  phil90 = 1 /\ fork91 = 0 -> phil90' = 3 /\ fork91' = 1
+  phil90 = 2 /\ fork91 = 0 -> phil90' = 4 /\ fork91' = 1
+  phil90 = 3 /\ fork90 = 0 -> phil90' = 4 /\ fork90' = 1
+  phil90 = 4 -> phil90' = 0 /\ fork90' = 0 /\ fork91' = 0
+  phil91 = 0 -> phil91' = 1
+  phil91 = 1 /\ fork91 = 0 -> phil91' = 2 /\ fork91' = 1
+  phil91 = 1 /\ fork92 = 0 -> phil91' = 3 /\ fork92' = 1
+  phil91 = 2 /\ fork92 = 0 -> phil91' = 4 /\ fork92' = 1
+  phil91 = 3 /\ fork91 = 0 -> phil91' = 4 /\ fork91' = 1
+  phil91 = 4 -> phil91' = 0 /\ fork91' = 0 /\ fork92' = 0
+  phil92 = 0 -> phil92' = 1
+  phil92 = 1 /\ fork92 = 0 -> phil92' = 2 /\ fork92' = 1
+  phil92 = 1 /\ fork93 = 0 -> phil92' = 3 /\ fork93' = 1
+  phil92 = 2 /\ fork93 = 0 -> phil92' = 4 /\ fork93' = 1
+  phil92 = 3 /\ fork92 = 0 -> phil92' = 4 /\ fork92' = 1
+  phil92 = 4 -> phil92' = 0 /\ fork92' = 0 /\ fork93' = 0
+  phil93 = 0 -> phil93' = 1
+  phil93 = 1 /\ fork93 = 0 -> phil93' = 2 /\ fork93' = 1
+  phil93 = 1 /\ fork94 = 0 -> phil93' = 3 /\ fork94' = 1
+  phil93 = 2 /\ fork94 = 0 -> phil93' = 4 /\ fork94' = 1
+  phil93 = 3 /\ fork93 = 0 -> phil93' = 4 /\ fork93' = 1
+  phil93 = 4 -> phil93' = 0 /\ fork93' = 0 /\ fork94' = 0
+  phil94 = 0 -> phil94' = 1
+  phil94 = 1 /\ fork94 = 0 -> phil94' = 2 /\ fork94' = 1
+  phil94 = 1 /\ fork95 = 0 -> phil94' = 3 /\ fork95' = 1
+  phil94 = 2 /\ fork95 = 0 -> phil94' = 4 /\ fork95' = 1
+  phil94 = 3 /\ fork94 = 0 -> phil94' = 4 /\ fork94' = 1
+  phil94 = 4 -> phil94' = 0 /\ fork94' = 0 /\ fork95' = 0
+  phil95 = 0 -> phil95' = 1
+  phil95 = 1 /\ fork95 = 0 -> phil95' = 2 /\ fork95' = 1
+  phil95 = 1 /\ fork96 = 0 -> phil95' = 3 /\ fork96' = 1
+  phil95 = 2 /\ fork96 = 0 -> phil95' = 4 /\ fork96' = 1
+  phil95 = 3 /\ fork95 = 0 -> phil95' = 4 /\ fork95' = 1
+  phil95 = 4 -> phil95' = 0 /\ fork95' = 0 /\ fork96' = 0
+  phil96 = 0 -> phil96' = 1
+  phil96 = 1 /\ fork96 = 0 -> phil96' = 2 /\ fork96' = 1
+  phil96 = 1 /\ fork97 = 0 -> phil96' = 3 /\ fork97' = 1
+  phil96 = 2 /\ fork97 = 0 -> phil96' = 4 /\ fork97' = 1
+  phil96 = 3 /\ fork96 = 0 -> phil96' = 4 /\ fork96' = 1
+  phil96 = 4 -> phil96' = 0 /\ fork96' = 0 /\ fork97' = 0
+  phil97 = 0 -> phil97' = 1
+  phil97 = 1 /\ fork97 = 0 -> phil97' = 2 /\ fork97' = 1
+  phil97 = 1 /\ fork98 = 0 -> phil97' = 3 /\ fork98' = 1
+  phil97 = 2 /\ fork98 = 0 -> phil97' = 4 /\ fork98' = 1
+  phil97 = 3 /\ fork97 = 0 -> phil97' = 4 /\ fork97' = 1
+  phil97 = 4 -> phil97' = 0 /\ fork97' = 0 /\ fork98' = 0
+  phil98 = 0 -> phil98' = 1
+  phil98 = 1 /\ fork98 = 0 -> phil98' = 2 /\ fork98' = 1
+  phil98 = 1 /\ fork99 = 0 -> phil98' = 3 /\ fork99' = 1
+  phil98 = 2 /\ fork99 = 0 -> phil98' = 4 /\ fork99' = 1
+  phil98 = 3 /\ fork98 = 0 -> phil98' = 4 /\ fork98' = 1
+  phil98 = 4 -> phil98' = 0 /\ fork98' = 0 /\ fork99' = 0
+  phil99 = 0 -> phil99' = 1
+  phil99 = 1 /\ fork99 = 0 -> phil99' = 2 /\ fork99' = 1
+  phil99 = 1 /\ fork0 = 0 -> phil99' = 3 /\ fork0' = 1
+  phil99 = 2 /\ fork0 = 0 -> phil99' = 4 /\ fork0' = 1
+  phil99 = 3 /\ fork99 = 0 -> phil99' = 4 /\ fork99' = 1
+  phil99 = 4 -> phil99' = 0 /\ fork99' = 0 /\ fork0' = 0
+Properties
+  !EX(true)

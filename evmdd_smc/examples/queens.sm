@@ -1,0 +1,54 @@
+// FILE: queens.sm
+// An example of state-space generation and model checking queries.
+
+print("*** The N-queen placement problem ***\n\n");
+
+spn queens(int N) := {
+  // i-th queen is in p[i][N] until placed on the chessboard
+  for (int i in {0..N-1}) {
+    for (int j in {0..N}) { place p[i][j]; partition(N-i:p[i][j]); }
+    for (int j in {0..N-1}) { trans t[i][j]; firing(t[i][j]:expo(1.0)); }
+    init(p[i][N]:1);
+  } 
+  for (int i in {0..N-1}) {
+    for (int j in {0..N-1}) { arcs(p[i][N]:t[i][j], t[i][j]:p[i][j]); }
+  } 
+  for (int i in {0..N-2}) {
+    for (int j in {0..N-1}) {
+  // order-enforcing inhibitor arcs
+      for (int k in {i+1..N-1..1}) { inhibit(p[k][N]:t[i][j]); }
+  // vertical inhibitiors
+      for (int k in {i+1..N-1..1}) { inhibit(p[k][j]:t[i][j]); }
+    }
+  // upper right first diagonal inhibitiors
+    for (int j in {i..N-2}) {
+      for (int k in {j+1..N-1..1}) { inhibit(p[k+i-j][k]:t[i][j]); }
+    }
+  // upper left second diagonal inhibitiors
+    for (int j in {1..N-1-i}) {
+      for (int k in {0..j-1..1}) { inhibit(p[i+j-k][k]:t[i][j]); }
+    }
+  } 
+  // lower left first diagonal inhibitiors
+  for (int i in {1..N-2}) {
+    for (int j in {0..i-1}) {
+      for (int k in {i+1..N-1..1}) { inhibit(p[k][k+j-i]:t[i][j]); }
+    }
+  // lower right second diagonal inhibitiors
+    for (int j in {N-i..N-1..1}) {
+      for (int k in {i+1..N-1..1}) { inhibit(p[k][i+j-k]:t[i][j]); }
+    }
+  } 
+  bigint numstates := num_states(false);
+  bigint countany  := card(reachable);
+  stateset Z    := potential(tk(p[0][N])==0);
+  bigint countall  := card(intersection(Z, reachable));
+};
+
+# StateStorage MDD_SATURATION
+
+int N := read_int("the number of queens (>3) ");
+print("Ways to put up to ",N," non-attacking queens on the first 1,2,...,", N, " rows of a ");
+print(N,"x",N," board: ",queens(N).countany,".\n");
+print("Ways to put exactly ",N," non-attacking queens on an ");
+print(N,"x",N," board: ",queens(N).countall,".\n");

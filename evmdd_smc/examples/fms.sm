@@ -1,0 +1,77 @@
+// FILE: fms.sm
+// An example of state-space generation.
+
+print("*** A flexible manufacturing system close to the one in    ***\n"); 
+print("*** Ciardo and Trivedi's paper ``A decomposition approach  ***\n"); 
+print("*** for stochastic reward net models''                     ***\n");
+print("*** (set Verbose to true to obtain the exact runtimes).    ***\n\n");
+
+real recip(int r) := cond(r==0, 1.0, 1.0 / r);
+real npr(int n, int r) := min(1.0, 1.5*n*recip(r));
+
+spn fms(int n, bool rough) := { 
+  place Pr, Pnr, P1, P1wM1, P1M1, M1, P1d, P1s, Pmid1,  
+	P12s, P12M3, M3, P12wM3, P12, P1wP2, P2wP1, Ptop, Pbot,
+	P2, P2wM2, P2M2, M2, P2d, P2s, Pmid2, P3, P3M2, P3s; 
+  trans tP1, tM1, tP1M1, tP1e, tP1s, tP1j, tP12s, tP12M3, tM3, tP12, tx, tP2j,
+	tP2, tM2, tP2M2, tP2e, tP2s, tP3, tP3M2, tP3s; 
+  cond(rough,
+  partition(P1:P1wM1:P1M1:M1:P1d:P1s:Pmid1,
+	P12s:P12M3:M3:P12wM3:P12:P1wP2:P2wP1:Ptop:Pbot,
+	P2:P2wM2:P2M2:M2:P2d:P2s:Pmid2,
+	P3:P3M2:P3s,
+	Pr:Pnr),
+  partition(P1, P1wM1:P1M1:M1, P1d, P1s, Pmid1, P12s, P12M3:M3:P12wM3,
+        P12, P1wP2, P2wP1, Ptop, Pbot, P2, P2wM2:P2M2:M2, P2d, P2s, Pmid2,
+	P3, P3M2, P3s, Pr:Pnr));
+  firing(tP1    : expo(tk(P1)*npr(n, tk(Pr))),
+         tP2    : expo(tk(P2)*npr(n, tk(Pr))),
+	 tP3    : expo(tk(P3)*npr(n, tk(Pr))),
+	 tP12   : expo(tk(P12)*npr(n, tk(Pr))),
+	 tP1M1  : expo(tk(P1M1)/4),
+	 tP2M2  : expo(1/6),
+	 tP3M2  : expo(1/2),
+	 tP12M3 : expo(tk(P12M3)),
+	 tP1s   : expo(tk(P1s)/60),
+	 tP2s   : expo(tk(P2s)/60),
+	 tP3s   : expo(tk(P3s)/60),
+	 tP12s  : expo(tk(P12s)/60),
+	 tP1e   : expo(80),
+	 tP1j   : expo(20),
+	 tP2e   : expo(60),
+	 tP2j   : expo(40),
+	 tx     : expo(100));
+  immediate(tM1,tM2,tM3);
+  weight(tM1:1.0, tM2:1.0, tM3:1.0); 
+  arcs( tP12s:P1, tP1s:P1, P1:tP1, tP1:P1wM1, P1wM1:tM1, tP1M1:M1, M1:tM1, 
+	tM1:P1M1, P1M1:tP1M1, tP1M1:P1d, P1d:tP1e, P1d:tP1j, tP1e:P1s, P1s:tP1s,
+	tP1j:Pmid1, Pmid1:tP12s, tP1j:P1wP2, P1wP2:tx, tP2j:P2wP1, P2wP1:tx, 
+	tx:P12, P12:tP12, tP12:P12wM3, P12wM3:tM3, tP12M3:M3, M3:tM3, 
+	tM3:P12M3, P12M3:tP12M3, tP12M3:P12s, P12s:tP12s, tP12s:Ptop, Ptop:tP1j,
+	tP12s:Pbot, Pbot:tP2j, tP12s:P2, tP2s:P2, P2:tP2, tP2:P2wM2, P2wM2:tM2,
+	tP2M2:M2, tP3M2:M2, M2:tM2, M2:tP3M2, tM2:P2M2, P2M2:tP2M2, tP2M2:P2d,
+        P2d:tP2e, P2d:tP2j, tP2e:P2s, P2s:tP2s, tP2j:Pmid2, Pmid2:tP12s, 
+	tP3s:P3, P3:tP3, tP3:P3M2, P3M2:tP3M2, tP3M2:P3s, P3s:tP3s, tP1s:Pr,
+        tP2s:Pr, tP12s:Pr:2, tP3s:Pr, tx:Pr, Pr:tP1, Pr:tP2, Pr:tP12, Pr:tP3,
+	tP1:Pnr, tP2:Pnr, tP12:Pnr, tP3:Pnr, Pnr:tP1s, Pnr:tP2s, Pnr:tP12s:2,
+        Pnr:tP3s, Pnr:tx ); 
+  init( P1:n, P2:n, P3:n, Pbot:n, Ptop:n, Pr:3*n, M1:3, M2:1, M3:2 ); 
+  int m1 := Test;
+  bigint m2 := num_states(false);
+  bigint m3 := num_arcs(false); 
+  real  t1:= avg_ss( rate(tP1) );
+  real t12:= avg_ss( rate(tP12) );
+  real  t2:= avg_ss( rate(tP2) );
+  real  t3:= avg_ss( rate(tP3) );
+};
+
+int N := read_int("N");
+# StateStorage SPLAY
+print("*** Using SPLAY\n");
+print("*** Number of states : ", fms(N,false).m2,"\n");
+# StateStorage MDD_SATURATION
+print("*** Using a rough partition\n");
+print("*** Number of states : ", fms(N,true).m2,"\n");
+# Verbose true
+print("*** Using a fine partition\n");
+print("*** Number of states : ", fms(N,false).m2,"\n");

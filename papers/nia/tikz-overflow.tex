@@ -1,0 +1,22 @@
+\begin{tikzpicture}
+  [scale=2, auto]
+  \begin{scope}
+    \node                 (top)       at ( 0, 2) {};
+    \node [mdd node=3]    (l1n0)      at ( 0, 1) {$x$\nodepart{two}0\nodepart{three}1};
+    \node [terminal node] (terminal0) at (-1, 0) {-2,000,000,000};
+    \node [terminal node] (terminal1) at ( 1, 0) { 2,000,000,000};
+    
+    \draw [regular edge]  (l1n0.two   |- l1n0.south) to (terminal0);
+    \draw [regular edge]  (l1n0.three |- l1n0.south) to (terminal1);
+  \end{scope}
+  
+  \begin{scope}[xshift=4cm]
+    \node                 (top')      at ( 0, 2) {};
+    \node [mdd node=3]    (l1n0')     at ( 0, 1) {$x$\nodepart{two}0\nodepart{three}1};
+    \node [terminal node] (terminal') at ( 0, 0) {0};
+    
+    \draw [regular edge]  (top')                       to node        {-2,000,000,000} (l1n0');
+    \draw [regular edge]  (l1n0'.two   |- l1n0'.south) to node [swap] {             0} (terminal');
+    \draw [regular edge]  (l1n0'.three |- l1n0'.south) to node        {  -294,967,296} (terminal');
+  \end{scope}
+\end{tikzpicture}

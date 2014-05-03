@@ -1,0 +1,32 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\FOIL{Strongly Connected Components}
+
+\vfill
+\LIST {
+\BULL Finding \STRESS{strongly connected components (SCCs)} is a basic problem in formal verification: 
+    \LIST{
+    \CIRC LTL and CTL model checking
+    \CIRC Language emptiness check for $\omega$-automata
+    }
+
+\medskip
+
+\BULL In Markov chain analysis, we need to partition the state
+space into \STRESS{transient} vs.\ \STRESS{recurrent} states
+\\
+(recurrent states are those that belong to \STRESS{terminal SCCs})
+
+\medskip
+
+\BULL It is impractical to enumerate SCCs using explicit algorithms for large
+discrete-state models
+\\
+$\THEN$ ~ use symbolic computation of SCCs
+
+\medskip
+
+\BULL Objectives: symbolically build the set of states in non-trivial
+(terminal) SCCs
+}
+
+\vfill

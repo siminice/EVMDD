@@ -1,0 +1,32 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\FOIL{Motivation}
+
+\vfill
+\LIST {
+\BULL Symbolic model checking is one of the state-of-the-art approaches to the
+verification of complex systems.
+    \LIST{
+    \CIRC State-space generation (reachability analysis)
+    \CIRC CTL and LTL model checking
+	\CIRC $\cdots$
+    }
+
+\BULL Many symbolic model checkers have been developed, and most of them are based on
+\STRESS{binary decision diagrams (BDDs)} manipulation. 
+And \STRESS{CUDD} is the most widely used BDD library.
+    \LIST{
+    \CIRC NuSMV, VIS, SAL, $\cdots$
+	}
+
+\BULL \STRESS{Edge-valued decision diagrams (EVMDDs)} and \STRESS{saturation
+algorithm} provide a more efficient approach to state-space generation
+and CTL model checking.
+
+\medskip
+
+\BULL \STRESS{Objectives}: 
+integrating the EVMDD-based algorithms in the existing model checker SAL, and comparing them with
+existing BDD algorithms.
+}
+
+\vfill

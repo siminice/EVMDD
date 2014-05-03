@@ -1,0 +1,30 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\FOIL{The improved Xie-Beerel algorithm: Lockstep}
+\vfill
+
+\ALGORITHM{$mdd ~~ \id{Lockstep}(mdd~P)$} {
+\LISTING{0}{
+\LL $\cdots$
+\LL while($F_{front} \neq \emptyset$ and $B_{front} \neq \emptyset$)
+\LLx $F_{front} \!\ASSIGN\! \nset(F_{front}) \cap \pset \setminus F$;~$B_{front} \!\ASSIGN\! \nset^{-1}(B_{front}) \cap \pset \setminus B$;
+\LLx $F \!\ASSIGN\! F \cup F_{front}$; ~~~~ $B \!\ASSIGN\! B \cup B_{front}$;
+\LL endwhile
+\LL if($F_{front}=\emptyset$) then \REMARK{$F$ converges earlier than $B$}
+\LLx $mdd~ \id{Conv} \!\ASSIGN\! F$;
+\LLx while($B_{front} \cap F \neq \emptyset$) do
+\LLxx $B_{front} \!\ASSIGN\! \nset^{-1}(B_{front}) \cap \pset \setminus B$;
+\LLxx $B \!\ASSIGN\! B \cup B_{front}$;
+\LLx endwhile
+\LL else
+\LL $\cdots$
+}}
+
+\vfill
+Lockstep reduces \STRESS{the number of image computations} w.r.t.\ the Xie-Beerel algorithm.
+\LIST{
+\BULL It interleaves one forward and one backward step to compute
+forward and backward reachable states.
+\BULL It uses the earlier converged set of states to bound the other. 
+\BULL Lockstep achieves \STRESS{$O(n \log n)$} complexity in the terms of steps.
+}
+

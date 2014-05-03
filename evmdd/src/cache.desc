@@ -1,0 +1,53 @@
+# This file is processed by cache_generator to give cache.c and cache_priv.h
+#
+# Each line describe a cache: name ": " types " -> " types
+# where:
+#    name ::= [a-zA-Z][a-zA-Z0-9_]*
+#   types ::= type | types ", " type
+#    type ::= "mdd" | "evmdd" | "val" | "bigint"
+# Types before the arrow describe inputs
+# whereas types after it describe the outputs.
+#
+# Lines beginning by a '#' (as the *first* character) are comments.
+# Please also note that *all* non comment lines have to follow
+# the pattern "name: types -> types" and that *not any* space
+# is allowed before the ':'.
+#
+VAR: val -> val, evmdd
+NOT: mdd -> mdd
+UNION: mdd, mdd -> mdd
+INTER: mdd, mdd -> mdd
+NEXT: mdd, mdd -> mdd
+PREV: mdd, mdd -> mdd
+FIRE: mdd, mdd -> mdd
+FIRE_DIST: evmdd, mdd, mdd -> val, evmdd
+FIRE_DIST2: evmdd, mdd, evmdd, val -> val, evmdd
+FIRE_BOUND: evmdd, mdd, val -> val, evmdd
+ADD: evmdd, evmdd -> val, evmdd
+MULT: evmdd, evmdd -> evmdd
+MOD: evmdd, val, evmdd, val -> val, evmdd
+MULT_SCALAR_P: evmdd, val -> evmdd
+MULT_SCALAR_N: evmdd, val -> val, evmdd
+DIV_SCALAR: evmdd, val, val -> evmdd
+MOD_SCALAR: evmdd, val, val -> val, evmdd
+DIV: evmdd, val, evmdd, val -> val, evmdd
+LT: evmdd, val -> mdd
+EQ: evmdd, val -> mdd
+QLT: evmdd, val -> mdd
+QEQ: evmdd, val -> mdd
+EVMDD_FROM_MDD: mdd -> val, evmdd
+MAX: evmdd -> val
+MAX_FINITE: evmdd -> val
+CARDINAL: mdd -> bigint
+CARDINAL_EVMDD: evmdd -> bigint
+ADD_IDENTITIES: mdd -> mdd
+UNREDUCE: mdd -> mdd
+REDUCE: mdd -> mdd
+UNREDUCE_DIST: mdd -> val, evmdd
+UNREDUCE_EVMDD_DIST: evmdd -> evmdd
+UNION_UNREDUCED: mdd, mdd -> mdd
+UNION_MIN: evmdd, evmdd, val -> evmdd
+UNION_IDENTITY_REDUCED: mdd, mdd -> mdd
+BOUND: evmdd, val -> evmdd
+READ: mdd -> mdd
+READ_EVMDD: evmdd -> evmdd

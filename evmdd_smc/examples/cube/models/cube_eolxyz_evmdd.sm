@@ -1,0 +1,41 @@
+Variables
+Initial states
+  /* Initialize cube edges */
+  Edge001 = 0
+  Edge010 = 1
+  Edge012 = 2
+  Edge021 = 3
+  Edge100 = 4
+  Edge102 = 5
+  Edge120 = 6
+  Edge122 = 7
+  Edge201 = 8
+  Edge210 = 9
+  Edge212 = 10
+  Edge221 = 11
+  /* Initialize cube edge orientations */
+  EdgeOr001 = 0
+  EdgeOr010 = 0
+  EdgeOr012 = 0
+  EdgeOr021 = 0
+  EdgeOr100 = 0
+  EdgeOr102 = 0
+  EdgeOr120 = 0
+  EdgeOr122 = 0
+  EdgeOr201 = 0
+  EdgeOr210 = 0
+  EdgeOr212 = 0
+  EdgeOr221 = 0
+Transitions
+  /* left, clockwise quarter turn */
+  Edge010' = Edge001 /\ Edge021' = Edge010 /\ Edge001' = Edge012 /\ Edge012' = Edge021 /\ EdgeOr010' = 1-EdgeOr001 /\ EdgeOr021' = 1-EdgeOr010 /\ EdgeOr001' = 1-EdgeOr012 /\ EdgeOr012' = 1-EdgeOr021
+  /* right, clockwise quarter turn */
+  Edge212' = Edge201 /\ Edge201' = Edge210 /\ Edge221' = Edge212 /\ Edge210' = Edge221 /\ EdgeOr212' = 1-EdgeOr201 /\ EdgeOr201' = 1-EdgeOr210 /\ EdgeOr221' = 1-EdgeOr212 /\ EdgeOr210' = 1-EdgeOr221
+  /* front, clockwise quarter turn */
+  Edge100' = Edge001 /\ Edge201' = Edge100 /\ Edge001' = Edge102 /\ Edge102' = Edge201 /\ EdgeOr100' = EdgeOr001 /\ EdgeOr201' = EdgeOr100 /\ EdgeOr001' = EdgeOr102 /\ EdgeOr102' = EdgeOr201
+  /* back, clockwise quarter turn */
+  Edge122' = Edge021 /\ Edge021' = Edge120 /\ Edge221' = Edge122 /\ Edge120' = Edge221 /\ EdgeOr122' = EdgeOr021 /\ EdgeOr021' = EdgeOr120 /\ EdgeOr221' = EdgeOr122 /\ EdgeOr120' = EdgeOr221
+  /* down, clockwise quarter turn */
+  Edge100' = Edge010 /\ Edge210' = Edge100 /\ Edge010' = Edge120 /\ Edge120' = Edge210 /\ EdgeOr100' = EdgeOr010 /\ EdgeOr210' = EdgeOr100 /\ EdgeOr010' = EdgeOr120 /\ EdgeOr120' = EdgeOr210
+  /* up, clockwise quarter turn */
+  Edge122' = Edge012 /\ Edge012' = Edge102 /\ Edge212' = Edge122 /\ Edge102' = Edge212 /\ EdgeOr122' = EdgeOr012 /\ EdgeOr012' = EdgeOr102 /\ EdgeOr212' = EdgeOr122 /\ EdgeOr102' = EdgeOr212

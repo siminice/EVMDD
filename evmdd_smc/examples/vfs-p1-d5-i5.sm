@@ -1,0 +1,1568 @@
+Variables
+  d_allocated_1 [0, 1]
+  d_count_1     [0, 2]
+  d_lock_1      [0, 1]
+  d_subdirs_1   [0, 5]
+  d_parent_1    [0, 5]
+  d_inode_1     [0, 5]
+
+  d_allocated_2 [0, 1]
+  d_count_2     [0, 2]
+  d_lock_2      [0, 1]
+  d_subdirs_2   [0, 5]
+  d_parent_2    [0, 5]
+  d_inode_2     [0, 5]
+
+  d_allocated_3 [0, 1]
+  d_count_3     [0, 2]
+  d_lock_3      [0, 1]
+  d_subdirs_3   [0, 5]
+  d_parent_3    [0, 5]
+  d_inode_3     [0, 5]
+
+  d_allocated_4 [0, 1]
+  d_count_4     [0, 2]
+  d_lock_4      [0, 1]
+  d_subdirs_4   [0, 5]
+  d_parent_4    [0, 5]
+  d_inode_4     [0, 5]
+
+  d_allocated_5 [0, 1]
+  d_count_5     [0, 2]
+  d_lock_5      [0, 1]
+  d_subdirs_5   [0, 5]
+  d_parent_5    [0, 5]
+  d_inode_5     [0, 5]
+
+  i_allocated_1 [0, 1]
+  i_count_1     [0, 2]
+  i_lock_1      [0, 1]
+  i_state_1     [0, 1]
+  i_mutex_1     [0, 1]
+
+  i_allocated_2 [0, 1]
+  i_count_2     [0, 2]
+  i_lock_2      [0, 1]
+  i_state_2     [0, 1]
+  i_mutex_2     [0, 1]
+
+  i_allocated_3 [0, 1]
+  i_count_3     [0, 2]
+  i_lock_3      [0, 1]
+  i_state_3     [0, 1]
+  i_mutex_3     [0, 1]
+
+  i_allocated_4 [0, 1]
+  i_count_4     [0, 2]
+  i_lock_4      [0, 1]
+  i_state_4     [0, 1]
+  i_mutex_4     [0, 1]
+
+  i_allocated_5 [0, 1]
+  i_count_5     [0, 2]
+  i_lock_5      [0, 1]
+  i_state_5     [0, 1]
+  i_mutex_5     [0, 1]
+
+  p_begin_1  [0, 4]
+  p_parent_1 [0, 5]
+  p_file_1   [0, 5]
+  p_inode_1  [0, 5]
+  p_create_pc_1 [0, 34]
+  p_unlink_pc_1 [0, 23]
+  p_mkdir_pc_1  [0, 30]
+  p_rmdir_pc_1  [0, 39]
+  p_rmdir_wait_1  [0, 1]
+
+  dcache_lock [0, 1]
+  inode_lock  [0, 1]
+
+Initial states
+  dcache_lock = 1
+  inode_lock  = 1
+
+  d_allocated_1  = 1
+  d_parent_1     = 1
+  d_count_1      = 1
+  d_lock_1       = 1
+  d_inode_1      = 1
+  d_subdirs_1    = 2
+
+  d_allocated_2  = 1
+  d_parent_2     = 1
+  d_count_2      = 1
+  d_lock_2       = 1
+  d_inode_2      = 2
+  d_subdirs_2    = 1
+
+  d_allocated_3  = 0
+  d_parent_3     = 0
+  d_count_3      = 0
+  d_lock_3       = 1
+  d_inode_3      = 0
+  d_subdirs_3    = 0
+
+  d_allocated_4  = 0
+  d_parent_4     = 0
+  d_count_4      = 0
+  d_lock_4       = 1
+  d_inode_4      = 0
+  d_subdirs_4    = 0
+
+  d_allocated_5  = 0
+  d_parent_5     = 0
+  d_count_5      = 0
+  d_lock_5       = 1
+  d_inode_5      = 0
+  d_subdirs_5    = 0
+
+  i_allocated_1  = 1
+  i_count_1      = 1
+  i_lock_1       = 1
+  i_state_1      = 0
+  i_mutex_1      = 1
+
+  i_allocated_2  = 1
+  i_count_2      = 1
+  i_lock_2       = 1
+  i_state_2      = 0
+  i_mutex_2      = 1
+
+  i_allocated_3  = 0
+  i_count_3      = 0
+  i_lock_3       = 1
+  i_state_3      = 0
+  i_mutex_3      = 1
+
+  i_allocated_4  = 0
+  i_count_4      = 0
+  i_lock_4       = 1
+  i_state_4      = 0
+  i_mutex_4      = 1
+
+  i_allocated_5  = 0
+  i_count_5      = 0
+  i_lock_5       = 1
+  i_state_5      = 0
+  i_mutex_5      = 1
+
+  p_begin_1  = 0
+  p_parent_1 = 0
+  p_file_1   = 0
+  p_inode_1  = 0
+  p_create_pc_1 = 0
+  p_unlink_pc_1 = 0
+  p_mkdir_pc_1  = 0
+  p_rmdir_pc_1  = 0
+  p_rmdir_wait_1  = 0
+
+Transitions
+  p_begin_1 = 0  ->  p_begin_1' > 0 /\ p_file_1' > 1 /\ p_parent_1' > 0 /\ p_inode_1' > 1
+
+  p_begin_1 = 1 /\ p_create_pc_1 = 0 /\ p_file_1 = 2 /\ p_parent_1 = 1 /\ dcache_lock > 0  ->  p_create_pc_1' = 1 /\ d_count_1' = d_count_1 + d_allocated_1 /\ d_count_2' = d_count_2 + d_allocated_2
+  p_begin_1 = 1 /\ p_create_pc_1 = 0 /\ p_file_1 = 2 /\ p_parent_1 = 2 /\ dcache_lock > 0  ->  p_create_pc_1' = 1 /\ d_count_2' = d_count_2 + d_allocated_2
+  p_begin_1 = 1 /\ p_create_pc_1 = 0 /\ p_file_1 = 2 /\ p_parent_1 = 3 /\ dcache_lock > 0  ->  p_create_pc_1' = 1 /\ d_count_3' = d_count_3 + d_allocated_3 /\ d_count_2' = d_count_2 + d_allocated_2
+  p_begin_1 = 1 /\ p_create_pc_1 = 0 /\ p_file_1 = 2 /\ p_parent_1 = 4 /\ dcache_lock > 0  ->  p_create_pc_1' = 1 /\ d_count_4' = d_count_4 + d_allocated_4 /\ d_count_2' = d_count_2 + d_allocated_2
+  p_begin_1 = 1 /\ p_create_pc_1 = 0 /\ p_file_1 = 2 /\ p_parent_1 = 5 /\ dcache_lock > 0  ->  p_create_pc_1' = 1 /\ d_count_5' = d_count_5 + d_allocated_5 /\ d_count_2' = d_count_2 + d_allocated_2
+  p_begin_1 = 1 /\ p_create_pc_1 = 0 /\ p_file_1 = 3 /\ p_parent_1 = 1 /\ dcache_lock > 0  ->  p_create_pc_1' = 1 /\ d_count_1' = d_count_1 + d_allocated_1 /\ d_count_3' = d_count_3 + d_allocated_3
+  p_begin_1 = 1 /\ p_create_pc_1 = 0 /\ p_file_1 = 3 /\ p_parent_1 = 2 /\ dcache_lock > 0  ->  p_create_pc_1' = 1 /\ d_count_2' = d_count_2 + d_allocated_2 /\ d_count_3' = d_count_3 + d_allocated_3
+  p_begin_1 = 1 /\ p_create_pc_1 = 0 /\ p_file_1 = 3 /\ p_parent_1 = 3 /\ dcache_lock > 0  ->  p_create_pc_1' = 1 /\ d_count_3' = d_count_3 + d_allocated_3
+  p_begin_1 = 1 /\ p_create_pc_1 = 0 /\ p_file_1 = 3 /\ p_parent_1 = 4 /\ dcache_lock > 0  ->  p_create_pc_1' = 1 /\ d_count_4' = d_count_4 + d_allocated_4 /\ d_count_3' = d_count_3 + d_allocated_3
+  p_begin_1 = 1 /\ p_create_pc_1 = 0 /\ p_file_1 = 3 /\ p_parent_1 = 5 /\ dcache_lock > 0  ->  p_create_pc_1' = 1 /\ d_count_5' = d_count_5 + d_allocated_5 /\ d_count_3' = d_count_3 + d_allocated_3
+  p_begin_1 = 1 /\ p_create_pc_1 = 0 /\ p_file_1 = 4 /\ p_parent_1 = 1 /\ dcache_lock > 0  ->  p_create_pc_1' = 1 /\ d_count_1' = d_count_1 + d_allocated_1 /\ d_count_4' = d_count_4 + d_allocated_4
+  p_begin_1 = 1 /\ p_create_pc_1 = 0 /\ p_file_1 = 4 /\ p_parent_1 = 2 /\ dcache_lock > 0  ->  p_create_pc_1' = 1 /\ d_count_2' = d_count_2 + d_allocated_2 /\ d_count_4' = d_count_4 + d_allocated_4
+  p_begin_1 = 1 /\ p_create_pc_1 = 0 /\ p_file_1 = 4 /\ p_parent_1 = 3 /\ dcache_lock > 0  ->  p_create_pc_1' = 1 /\ d_count_3' = d_count_3 + d_allocated_3 /\ d_count_4' = d_count_4 + d_allocated_4
+  p_begin_1 = 1 /\ p_create_pc_1 = 0 /\ p_file_1 = 4 /\ p_parent_1 = 4 /\ dcache_lock > 0  ->  p_create_pc_1' = 1 /\ d_count_4' = d_count_4 + d_allocated_4
+  p_begin_1 = 1 /\ p_create_pc_1 = 0 /\ p_file_1 = 4 /\ p_parent_1 = 5 /\ dcache_lock > 0  ->  p_create_pc_1' = 1 /\ d_count_5' = d_count_5 + d_allocated_5 /\ d_count_4' = d_count_4 + d_allocated_4
+  p_begin_1 = 1 /\ p_create_pc_1 = 0 /\ p_file_1 = 5 /\ p_parent_1 = 1 /\ dcache_lock > 0  ->  p_create_pc_1' = 1 /\ d_count_1' = d_count_1 + d_allocated_1 /\ d_count_5' = d_count_5 + d_allocated_5
+  p_begin_1 = 1 /\ p_create_pc_1 = 0 /\ p_file_1 = 5 /\ p_parent_1 = 2 /\ dcache_lock > 0  ->  p_create_pc_1' = 1 /\ d_count_2' = d_count_2 + d_allocated_2 /\ d_count_5' = d_count_5 + d_allocated_5
+  p_begin_1 = 1 /\ p_create_pc_1 = 0 /\ p_file_1 = 5 /\ p_parent_1 = 3 /\ dcache_lock > 0  ->  p_create_pc_1' = 1 /\ d_count_3' = d_count_3 + d_allocated_3 /\ d_count_5' = d_count_5 + d_allocated_5
+  p_begin_1 = 1 /\ p_create_pc_1 = 0 /\ p_file_1 = 5 /\ p_parent_1 = 4 /\ dcache_lock > 0  ->  p_create_pc_1' = 1 /\ d_count_4' = d_count_4 + d_allocated_4 /\ d_count_5' = d_count_5 + d_allocated_5
+  p_begin_1 = 1 /\ p_create_pc_1 = 0 /\ p_file_1 = 5 /\ p_parent_1 = 5 /\ dcache_lock > 0  ->  p_create_pc_1' = 1 /\ d_count_5' = d_count_5 + d_allocated_5
+  p_create_pc_1 = 1 /\ p_file_1 = 2 /\ p_parent_1 = 1 /\ d_allocated_1 > 0 /\ d_subdirs_1 = 0  ->  d_count_2' = d_count_2 - d_allocated_2 /\ d_count_1' = d_count_1 - 1 /\ p_create_pc_1' = 2
+  p_create_pc_1 = 1 /\ p_file_1 = 2 /\ p_parent_1 = 1 /\ d_allocated_1 = 0  ->  p_create_pc_1' = 2 /\ d_count_2' = d_count_2 - d_allocated_2
+  p_create_pc_1 = 1 /\ p_file_1 = 2 /\ p_parent_1 = 1 /\ d_allocated_1 > 0 /\ d_subdirs_1 > 0  ->  p_create_pc_1' = 3
+  p_create_pc_1 = 1 /\ p_file_1 = 2 /\ p_parent_1 = 2 /\ d_allocated_2 > 0 /\ d_subdirs_2 = 0  ->  d_count_2' = d_count_2 - d_allocated_2 /\ p_create_pc_1' = 2
+  p_create_pc_1 = 1 /\ p_file_1 = 2 /\ p_parent_1 = 2 /\ d_allocated_2 = 0  ->  p_create_pc_1' = 2 /\ d_count_2' = d_count_2 - d_allocated_2
+  p_create_pc_1 = 1 /\ p_file_1 = 2 /\ p_parent_1 = 2 /\ d_allocated_2 > 0 /\ d_subdirs_2 > 0  ->  p_create_pc_1' = 3
+  p_create_pc_1 = 1 /\ p_file_1 = 2 /\ p_parent_1 = 3 /\ d_allocated_3 > 0 /\ d_subdirs_3 = 0  ->  d_count_2' = d_count_2 - d_allocated_2 /\ d_count_3' = d_count_3 - 1 /\ p_create_pc_1' = 2
+  p_create_pc_1 = 1 /\ p_file_1 = 2 /\ p_parent_1 = 3 /\ d_allocated_3 = 0  ->  p_create_pc_1' = 2 /\ d_count_2' = d_count_2 - d_allocated_2
+  p_create_pc_1 = 1 /\ p_file_1 = 2 /\ p_parent_1 = 3 /\ d_allocated_3 > 0 /\ d_subdirs_3 > 0  ->  p_create_pc_1' = 3
+  p_create_pc_1 = 1 /\ p_file_1 = 2 /\ p_parent_1 = 4 /\ d_allocated_4 > 0 /\ d_subdirs_4 = 0  ->  d_count_2' = d_count_2 - d_allocated_2 /\ d_count_4' = d_count_4 - 1 /\ p_create_pc_1' = 2
+  p_create_pc_1 = 1 /\ p_file_1 = 2 /\ p_parent_1 = 4 /\ d_allocated_4 = 0  ->  p_create_pc_1' = 2 /\ d_count_2' = d_count_2 - d_allocated_2
+  p_create_pc_1 = 1 /\ p_file_1 = 2 /\ p_parent_1 = 4 /\ d_allocated_4 > 0 /\ d_subdirs_4 > 0  ->  p_create_pc_1' = 3
+  p_create_pc_1 = 1 /\ p_file_1 = 2 /\ p_parent_1 = 5 /\ d_allocated_5 > 0 /\ d_subdirs_5 = 0  ->  d_count_2' = d_count_2 - d_allocated_2 /\ d_count_5' = d_count_5 - 1 /\ p_create_pc_1' = 2
+  p_create_pc_1 = 1 /\ p_file_1 = 2 /\ p_parent_1 = 5 /\ d_allocated_5 = 0  ->  p_create_pc_1' = 2 /\ d_count_2' = d_count_2 - d_allocated_2
+  p_create_pc_1 = 1 /\ p_file_1 = 2 /\ p_parent_1 = 5 /\ d_allocated_5 > 0 /\ d_subdirs_5 > 0  ->  p_create_pc_1' = 3
+  p_create_pc_1 = 1 /\ p_file_1 = 3 /\ p_parent_1 = 1 /\ d_allocated_1 > 0 /\ d_subdirs_1 = 0  ->  d_count_3' = d_count_3 - d_allocated_3 /\ d_count_1' = d_count_1 - 1 /\ p_create_pc_1' = 2
+  p_create_pc_1 = 1 /\ p_file_1 = 3 /\ p_parent_1 = 1 /\ d_allocated_1 = 0  ->  p_create_pc_1' = 2 /\ d_count_3' = d_count_3 - d_allocated_3
+  p_create_pc_1 = 1 /\ p_file_1 = 3 /\ p_parent_1 = 1 /\ d_allocated_1 > 0 /\ d_subdirs_1 > 0  ->  p_create_pc_1' = 3
+  p_create_pc_1 = 1 /\ p_file_1 = 3 /\ p_parent_1 = 2 /\ d_allocated_2 > 0 /\ d_subdirs_2 = 0  ->  d_count_3' = d_count_3 - d_allocated_3 /\ d_count_2' = d_count_2 - 1 /\ p_create_pc_1' = 2
+  p_create_pc_1 = 1 /\ p_file_1 = 3 /\ p_parent_1 = 2 /\ d_allocated_2 = 0  ->  p_create_pc_1' = 2 /\ d_count_3' = d_count_3 - d_allocated_3
+  p_create_pc_1 = 1 /\ p_file_1 = 3 /\ p_parent_1 = 2 /\ d_allocated_2 > 0 /\ d_subdirs_2 > 0  ->  p_create_pc_1' = 3
+  p_create_pc_1 = 1 /\ p_file_1 = 3 /\ p_parent_1 = 3 /\ d_allocated_3 > 0 /\ d_subdirs_3 = 0  ->  d_count_3' = d_count_3 - d_allocated_3 /\ p_create_pc_1' = 2
+  p_create_pc_1 = 1 /\ p_file_1 = 3 /\ p_parent_1 = 3 /\ d_allocated_3 = 0  ->  p_create_pc_1' = 2 /\ d_count_3' = d_count_3 - d_allocated_3
+  p_create_pc_1 = 1 /\ p_file_1 = 3 /\ p_parent_1 = 3 /\ d_allocated_3 > 0 /\ d_subdirs_3 > 0  ->  p_create_pc_1' = 3
+  p_create_pc_1 = 1 /\ p_file_1 = 3 /\ p_parent_1 = 4 /\ d_allocated_4 > 0 /\ d_subdirs_4 = 0  ->  d_count_3' = d_count_3 - d_allocated_3 /\ d_count_4' = d_count_4 - 1 /\ p_create_pc_1' = 2
+  p_create_pc_1 = 1 /\ p_file_1 = 3 /\ p_parent_1 = 4 /\ d_allocated_4 = 0  ->  p_create_pc_1' = 2 /\ d_count_3' = d_count_3 - d_allocated_3
+  p_create_pc_1 = 1 /\ p_file_1 = 3 /\ p_parent_1 = 4 /\ d_allocated_4 > 0 /\ d_subdirs_4 > 0  ->  p_create_pc_1' = 3
+  p_create_pc_1 = 1 /\ p_file_1 = 3 /\ p_parent_1 = 5 /\ d_allocated_5 > 0 /\ d_subdirs_5 = 0  ->  d_count_3' = d_count_3 - d_allocated_3 /\ d_count_5' = d_count_5 - 1 /\ p_create_pc_1' = 2
+  p_create_pc_1 = 1 /\ p_file_1 = 3 /\ p_parent_1 = 5 /\ d_allocated_5 = 0  ->  p_create_pc_1' = 2 /\ d_count_3' = d_count_3 - d_allocated_3
+  p_create_pc_1 = 1 /\ p_file_1 = 3 /\ p_parent_1 = 5 /\ d_allocated_5 > 0 /\ d_subdirs_5 > 0  ->  p_create_pc_1' = 3
+  p_create_pc_1 = 1 /\ p_file_1 = 4 /\ p_parent_1 = 1 /\ d_allocated_1 > 0 /\ d_subdirs_1 = 0  ->  d_count_4' = d_count_4 - d_allocated_4 /\ d_count_1' = d_count_1 - 1 /\ p_create_pc_1' = 2
+  p_create_pc_1 = 1 /\ p_file_1 = 4 /\ p_parent_1 = 1 /\ d_allocated_1 = 0  ->  p_create_pc_1' = 2 /\ d_count_4' = d_count_4 - d_allocated_4
+  p_create_pc_1 = 1 /\ p_file_1 = 4 /\ p_parent_1 = 1 /\ d_allocated_1 > 0 /\ d_subdirs_1 > 0  ->  p_create_pc_1' = 3
+  p_create_pc_1 = 1 /\ p_file_1 = 4 /\ p_parent_1 = 2 /\ d_allocated_2 > 0 /\ d_subdirs_2 = 0  ->  d_count_4' = d_count_4 - d_allocated_4 /\ d_count_2' = d_count_2 - 1 /\ p_create_pc_1' = 2
+  p_create_pc_1 = 1 /\ p_file_1 = 4 /\ p_parent_1 = 2 /\ d_allocated_2 = 0  ->  p_create_pc_1' = 2 /\ d_count_4' = d_count_4 - d_allocated_4
+  p_create_pc_1 = 1 /\ p_file_1 = 4 /\ p_parent_1 = 2 /\ d_allocated_2 > 0 /\ d_subdirs_2 > 0  ->  p_create_pc_1' = 3
+  p_create_pc_1 = 1 /\ p_file_1 = 4 /\ p_parent_1 = 3 /\ d_allocated_3 > 0 /\ d_subdirs_3 = 0  ->  d_count_4' = d_count_4 - d_allocated_4 /\ d_count_3' = d_count_3 - 1 /\ p_create_pc_1' = 2
+  p_create_pc_1 = 1 /\ p_file_1 = 4 /\ p_parent_1 = 3 /\ d_allocated_3 = 0  ->  p_create_pc_1' = 2 /\ d_count_4' = d_count_4 - d_allocated_4
+  p_create_pc_1 = 1 /\ p_file_1 = 4 /\ p_parent_1 = 3 /\ d_allocated_3 > 0 /\ d_subdirs_3 > 0  ->  p_create_pc_1' = 3
+  p_create_pc_1 = 1 /\ p_file_1 = 4 /\ p_parent_1 = 4 /\ d_allocated_4 > 0 /\ d_subdirs_4 = 0  ->  d_count_4' = d_count_4 - d_allocated_4 /\ p_create_pc_1' = 2
+  p_create_pc_1 = 1 /\ p_file_1 = 4 /\ p_parent_1 = 4 /\ d_allocated_4 = 0  ->  p_create_pc_1' = 2 /\ d_count_4' = d_count_4 - d_allocated_4
+  p_create_pc_1 = 1 /\ p_file_1 = 4 /\ p_parent_1 = 4 /\ d_allocated_4 > 0 /\ d_subdirs_4 > 0  ->  p_create_pc_1' = 3
+  p_create_pc_1 = 1 /\ p_file_1 = 4 /\ p_parent_1 = 5 /\ d_allocated_5 > 0 /\ d_subdirs_5 = 0  ->  d_count_4' = d_count_4 - d_allocated_4 /\ d_count_5' = d_count_5 - 1 /\ p_create_pc_1' = 2
+  p_create_pc_1 = 1 /\ p_file_1 = 4 /\ p_parent_1 = 5 /\ d_allocated_5 = 0  ->  p_create_pc_1' = 2 /\ d_count_4' = d_count_4 - d_allocated_4
+  p_create_pc_1 = 1 /\ p_file_1 = 4 /\ p_parent_1 = 5 /\ d_allocated_5 > 0 /\ d_subdirs_5 > 0  ->  p_create_pc_1' = 3
+  p_create_pc_1 = 1 /\ p_file_1 = 5 /\ p_parent_1 = 1 /\ d_allocated_1 > 0 /\ d_subdirs_1 = 0  ->  d_count_5' = d_count_5 - d_allocated_5 /\ d_count_1' = d_count_1 - 1 /\ p_create_pc_1' = 2
+  p_create_pc_1 = 1 /\ p_file_1 = 5 /\ p_parent_1 = 1 /\ d_allocated_1 = 0  ->  p_create_pc_1' = 2 /\ d_count_5' = d_count_5 - d_allocated_5
+  p_create_pc_1 = 1 /\ p_file_1 = 5 /\ p_parent_1 = 1 /\ d_allocated_1 > 0 /\ d_subdirs_1 > 0  ->  p_create_pc_1' = 3
+  p_create_pc_1 = 1 /\ p_file_1 = 5 /\ p_parent_1 = 2 /\ d_allocated_2 > 0 /\ d_subdirs_2 = 0  ->  d_count_5' = d_count_5 - d_allocated_5 /\ d_count_2' = d_count_2 - 1 /\ p_create_pc_1' = 2
+  p_create_pc_1 = 1 /\ p_file_1 = 5 /\ p_parent_1 = 2 /\ d_allocated_2 = 0  ->  p_create_pc_1' = 2 /\ d_count_5' = d_count_5 - d_allocated_5
+  p_create_pc_1 = 1 /\ p_file_1 = 5 /\ p_parent_1 = 2 /\ d_allocated_2 > 0 /\ d_subdirs_2 > 0  ->  p_create_pc_1' = 3
+  p_create_pc_1 = 1 /\ p_file_1 = 5 /\ p_parent_1 = 3 /\ d_allocated_3 > 0 /\ d_subdirs_3 = 0  ->  d_count_5' = d_count_5 - d_allocated_5 /\ d_count_3' = d_count_3 - 1 /\ p_create_pc_1' = 2
+  p_create_pc_1 = 1 /\ p_file_1 = 5 /\ p_parent_1 = 3 /\ d_allocated_3 = 0  ->  p_create_pc_1' = 2 /\ d_count_5' = d_count_5 - d_allocated_5
+  p_create_pc_1 = 1 /\ p_file_1 = 5 /\ p_parent_1 = 3 /\ d_allocated_3 > 0 /\ d_subdirs_3 > 0  ->  p_create_pc_1' = 3
+  p_create_pc_1 = 1 /\ p_file_1 = 5 /\ p_parent_1 = 4 /\ d_allocated_4 > 0 /\ d_subdirs_4 = 0  ->  d_count_5' = d_count_5 - d_allocated_5 /\ d_count_4' = d_count_4 - 1 /\ p_create_pc_1' = 2
+  p_create_pc_1 = 1 /\ p_file_1 = 5 /\ p_parent_1 = 4 /\ d_allocated_4 = 0  ->  p_create_pc_1' = 2 /\ d_count_5' = d_count_5 - d_allocated_5
+  p_create_pc_1 = 1 /\ p_file_1 = 5 /\ p_parent_1 = 4 /\ d_allocated_4 > 0 /\ d_subdirs_4 > 0  ->  p_create_pc_1' = 3
+  p_create_pc_1 = 1 /\ p_file_1 = 5 /\ p_parent_1 = 5 /\ d_allocated_5 > 0 /\ d_subdirs_5 = 0  ->  d_count_5' = d_count_5 - d_allocated_5 /\ p_create_pc_1' = 2
+  p_create_pc_1 = 1 /\ p_file_1 = 5 /\ p_parent_1 = 5 /\ d_allocated_5 = 0  ->  p_create_pc_1' = 2 /\ d_count_5' = d_count_5 - d_allocated_5
+  p_create_pc_1 = 1 /\ p_file_1 = 5 /\ p_parent_1 = 5 /\ d_allocated_5 > 0 /\ d_subdirs_5 > 0  ->  p_create_pc_1' = 3
+  p_create_pc_1 = 2  ->  p_create_pc_1' = 0 /\ p_begin_1' = 0
+  p_create_pc_1 = 3 /\ p_parent_1 = 1 /\ d_inode_1 = 1 /\ i_mutex_1 > 0  ->  p_create_pc_1' = 4 /\ i_mutex_1' = i_mutex_1 - 1
+  p_create_pc_1 = 3 /\ p_parent_1 = 1 /\ d_inode_1 = 2 /\ i_mutex_2 > 0  ->  p_create_pc_1' = 4 /\ i_mutex_2' = i_mutex_2 - 1
+  p_create_pc_1 = 3 /\ p_parent_1 = 1 /\ d_inode_1 = 3 /\ i_mutex_3 > 0  ->  p_create_pc_1' = 4 /\ i_mutex_3' = i_mutex_3 - 1
+  p_create_pc_1 = 3 /\ p_parent_1 = 1 /\ d_inode_1 = 4 /\ i_mutex_4 > 0  ->  p_create_pc_1' = 4 /\ i_mutex_4' = i_mutex_4 - 1
+  p_create_pc_1 = 3 /\ p_parent_1 = 1 /\ d_inode_1 = 5 /\ i_mutex_5 > 0  ->  p_create_pc_1' = 4 /\ i_mutex_5' = i_mutex_5 - 1
+  p_create_pc_1 = 3 /\ p_parent_1 = 2 /\ d_inode_2 = 1 /\ i_mutex_1 > 0  ->  p_create_pc_1' = 4 /\ i_mutex_1' = i_mutex_1 - 1
+  p_create_pc_1 = 3 /\ p_parent_1 = 2 /\ d_inode_2 = 2 /\ i_mutex_2 > 0  ->  p_create_pc_1' = 4 /\ i_mutex_2' = i_mutex_2 - 1
+  p_create_pc_1 = 3 /\ p_parent_1 = 2 /\ d_inode_2 = 3 /\ i_mutex_3 > 0  ->  p_create_pc_1' = 4 /\ i_mutex_3' = i_mutex_3 - 1
+  p_create_pc_1 = 3 /\ p_parent_1 = 2 /\ d_inode_2 = 4 /\ i_mutex_4 > 0  ->  p_create_pc_1' = 4 /\ i_mutex_4' = i_mutex_4 - 1
+  p_create_pc_1 = 3 /\ p_parent_1 = 2 /\ d_inode_2 = 5 /\ i_mutex_5 > 0  ->  p_create_pc_1' = 4 /\ i_mutex_5' = i_mutex_5 - 1
+  p_create_pc_1 = 3 /\ p_parent_1 = 3 /\ d_inode_3 = 1 /\ i_mutex_1 > 0  ->  p_create_pc_1' = 4 /\ i_mutex_1' = i_mutex_1 - 1
+  p_create_pc_1 = 3 /\ p_parent_1 = 3 /\ d_inode_3 = 2 /\ i_mutex_2 > 0  ->  p_create_pc_1' = 4 /\ i_mutex_2' = i_mutex_2 - 1
+  p_create_pc_1 = 3 /\ p_parent_1 = 3 /\ d_inode_3 = 3 /\ i_mutex_3 > 0  ->  p_create_pc_1' = 4 /\ i_mutex_3' = i_mutex_3 - 1
+  p_create_pc_1 = 3 /\ p_parent_1 = 3 /\ d_inode_3 = 4 /\ i_mutex_4 > 0  ->  p_create_pc_1' = 4 /\ i_mutex_4' = i_mutex_4 - 1
+  p_create_pc_1 = 3 /\ p_parent_1 = 3 /\ d_inode_3 = 5 /\ i_mutex_5 > 0  ->  p_create_pc_1' = 4 /\ i_mutex_5' = i_mutex_5 - 1
+  p_create_pc_1 = 3 /\ p_parent_1 = 4 /\ d_inode_4 = 1 /\ i_mutex_1 > 0  ->  p_create_pc_1' = 4 /\ i_mutex_1' = i_mutex_1 - 1
+  p_create_pc_1 = 3 /\ p_parent_1 = 4 /\ d_inode_4 = 2 /\ i_mutex_2 > 0  ->  p_create_pc_1' = 4 /\ i_mutex_2' = i_mutex_2 - 1
+  p_create_pc_1 = 3 /\ p_parent_1 = 4 /\ d_inode_4 = 3 /\ i_mutex_3 > 0  ->  p_create_pc_1' = 4 /\ i_mutex_3' = i_mutex_3 - 1
+  p_create_pc_1 = 3 /\ p_parent_1 = 4 /\ d_inode_4 = 4 /\ i_mutex_4 > 0  ->  p_create_pc_1' = 4 /\ i_mutex_4' = i_mutex_4 - 1
+  p_create_pc_1 = 3 /\ p_parent_1 = 4 /\ d_inode_4 = 5 /\ i_mutex_5 > 0  ->  p_create_pc_1' = 4 /\ i_mutex_5' = i_mutex_5 - 1
+  p_create_pc_1 = 3 /\ p_parent_1 = 5 /\ d_inode_5 = 1 /\ i_mutex_1 > 0  ->  p_create_pc_1' = 4 /\ i_mutex_1' = i_mutex_1 - 1
+  p_create_pc_1 = 3 /\ p_parent_1 = 5 /\ d_inode_5 = 2 /\ i_mutex_2 > 0  ->  p_create_pc_1' = 4 /\ i_mutex_2' = i_mutex_2 - 1
+  p_create_pc_1 = 3 /\ p_parent_1 = 5 /\ d_inode_5 = 3 /\ i_mutex_3 > 0  ->  p_create_pc_1' = 4 /\ i_mutex_3' = i_mutex_3 - 1
+  p_create_pc_1 = 3 /\ p_parent_1 = 5 /\ d_inode_5 = 4 /\ i_mutex_4 > 0  ->  p_create_pc_1' = 4 /\ i_mutex_4' = i_mutex_4 - 1
+  p_create_pc_1 = 3 /\ p_parent_1 = 5 /\ d_inode_5 = 5 /\ i_mutex_5 > 0  ->  p_create_pc_1' = 4 /\ i_mutex_5' = i_mutex_5 - 1
+  p_create_pc_1 = 4 /\ p_file_1 = 2 /\ d_allocated_2 > 0 /\ d_subdirs_2 = 0  ->  p_create_pc_1' = 5
+  p_create_pc_1 = 4 /\ p_file_1 = 2 /\ !(d_allocated_2 > 0 /\ d_subdirs_2 = 0)  ->  p_create_pc_1' = 8
+  p_create_pc_1 = 4 /\ p_file_1 = 3 /\ d_allocated_3 > 0 /\ d_subdirs_3 = 0  ->  p_create_pc_1' = 5
+  p_create_pc_1 = 4 /\ p_file_1 = 3 /\ !(d_allocated_3 > 0 /\ d_subdirs_3 = 0)  ->  p_create_pc_1' = 8
+  p_create_pc_1 = 4 /\ p_file_1 = 4 /\ d_allocated_4 > 0 /\ d_subdirs_4 = 0  ->  p_create_pc_1' = 5
+  p_create_pc_1 = 4 /\ p_file_1 = 4 /\ !(d_allocated_4 > 0 /\ d_subdirs_4 = 0)  ->  p_create_pc_1' = 8
+  p_create_pc_1 = 4 /\ p_file_1 = 5 /\ d_allocated_5 > 0 /\ d_subdirs_5 = 0  ->  p_create_pc_1' = 5
+  p_create_pc_1 = 4 /\ p_file_1 = 5 /\ !(d_allocated_5 > 0 /\ d_subdirs_5 = 0)  ->  p_create_pc_1' = 8
+  p_create_pc_1 = 5 /\ p_parent_1 = 1 /\ d_inode_1 = 1  ->  p_create_pc_1' = 6 /\ i_mutex_1' = i_mutex_1 + 1
+  p_create_pc_1 = 5 /\ p_parent_1 = 1 /\ d_inode_1 = 2  ->  p_create_pc_1' = 6 /\ i_mutex_2' = i_mutex_2 + 1
+  p_create_pc_1 = 5 /\ p_parent_1 = 1 /\ d_inode_1 = 3  ->  p_create_pc_1' = 6 /\ i_mutex_3' = i_mutex_3 + 1
+  p_create_pc_1 = 5 /\ p_parent_1 = 1 /\ d_inode_1 = 4  ->  p_create_pc_1' = 6 /\ i_mutex_4' = i_mutex_4 + 1
+  p_create_pc_1 = 5 /\ p_parent_1 = 1 /\ d_inode_1 = 5  ->  p_create_pc_1' = 6 /\ i_mutex_5' = i_mutex_5 + 1
+  p_create_pc_1 = 5 /\ p_parent_1 = 2 /\ d_inode_2 = 1  ->  p_create_pc_1' = 6 /\ i_mutex_1' = i_mutex_1 + 1
+  p_create_pc_1 = 5 /\ p_parent_1 = 2 /\ d_inode_2 = 2  ->  p_create_pc_1' = 6 /\ i_mutex_2' = i_mutex_2 + 1
+  p_create_pc_1 = 5 /\ p_parent_1 = 2 /\ d_inode_2 = 3  ->  p_create_pc_1' = 6 /\ i_mutex_3' = i_mutex_3 + 1
+  p_create_pc_1 = 5 /\ p_parent_1 = 2 /\ d_inode_2 = 4  ->  p_create_pc_1' = 6 /\ i_mutex_4' = i_mutex_4 + 1
+  p_create_pc_1 = 5 /\ p_parent_1 = 2 /\ d_inode_2 = 5  ->  p_create_pc_1' = 6 /\ i_mutex_5' = i_mutex_5 + 1
+  p_create_pc_1 = 5 /\ p_parent_1 = 3 /\ d_inode_3 = 1  ->  p_create_pc_1' = 6 /\ i_mutex_1' = i_mutex_1 + 1
+  p_create_pc_1 = 5 /\ p_parent_1 = 3 /\ d_inode_3 = 2  ->  p_create_pc_1' = 6 /\ i_mutex_2' = i_mutex_2 + 1
+  p_create_pc_1 = 5 /\ p_parent_1 = 3 /\ d_inode_3 = 3  ->  p_create_pc_1' = 6 /\ i_mutex_3' = i_mutex_3 + 1
+  p_create_pc_1 = 5 /\ p_parent_1 = 3 /\ d_inode_3 = 4  ->  p_create_pc_1' = 6 /\ i_mutex_4' = i_mutex_4 + 1
+  p_create_pc_1 = 5 /\ p_parent_1 = 3 /\ d_inode_3 = 5  ->  p_create_pc_1' = 6 /\ i_mutex_5' = i_mutex_5 + 1
+  p_create_pc_1 = 5 /\ p_parent_1 = 4 /\ d_inode_4 = 1  ->  p_create_pc_1' = 6 /\ i_mutex_1' = i_mutex_1 + 1
+  p_create_pc_1 = 5 /\ p_parent_1 = 4 /\ d_inode_4 = 2  ->  p_create_pc_1' = 6 /\ i_mutex_2' = i_mutex_2 + 1
+  p_create_pc_1 = 5 /\ p_parent_1 = 4 /\ d_inode_4 = 3  ->  p_create_pc_1' = 6 /\ i_mutex_3' = i_mutex_3 + 1
+  p_create_pc_1 = 5 /\ p_parent_1 = 4 /\ d_inode_4 = 4  ->  p_create_pc_1' = 6 /\ i_mutex_4' = i_mutex_4 + 1
+  p_create_pc_1 = 5 /\ p_parent_1 = 4 /\ d_inode_4 = 5  ->  p_create_pc_1' = 6 /\ i_mutex_5' = i_mutex_5 + 1
+  p_create_pc_1 = 5 /\ p_parent_1 = 5 /\ d_inode_5 = 1  ->  p_create_pc_1' = 6 /\ i_mutex_1' = i_mutex_1 + 1
+  p_create_pc_1 = 5 /\ p_parent_1 = 5 /\ d_inode_5 = 2  ->  p_create_pc_1' = 6 /\ i_mutex_2' = i_mutex_2 + 1
+  p_create_pc_1 = 5 /\ p_parent_1 = 5 /\ d_inode_5 = 3  ->  p_create_pc_1' = 6 /\ i_mutex_3' = i_mutex_3 + 1
+  p_create_pc_1 = 5 /\ p_parent_1 = 5 /\ d_inode_5 = 4  ->  p_create_pc_1' = 6 /\ i_mutex_4' = i_mutex_4 + 1
+  p_create_pc_1 = 5 /\ p_parent_1 = 5 /\ d_inode_5 = 5  ->  p_create_pc_1' = 6 /\ i_mutex_5' = i_mutex_5 + 1
+  p_create_pc_1 = 6 /\ p_file_1 = 2 /\ p_parent_1 = 1  ->  p_create_pc_1' = 7 /\ d_count_2' = d_count_2 - d_allocated_2 /\ d_count_1' = d_count_1 - d_allocated_1
+  p_create_pc_1 = 6 /\ p_file_1 = 2 /\ p_parent_1 = 2  ->  p_create_pc_1' = 7 /\ d_count_2' = d_count_2 - d_allocated_2
+  p_create_pc_1 = 6 /\ p_file_1 = 2 /\ p_parent_1 = 3  ->  p_create_pc_1' = 7 /\ d_count_2' = d_count_2 - d_allocated_2 /\ d_count_3' = d_count_3 - d_allocated_3
+  p_create_pc_1 = 6 /\ p_file_1 = 2 /\ p_parent_1 = 4  ->  p_create_pc_1' = 7 /\ d_count_2' = d_count_2 - d_allocated_2 /\ d_count_4' = d_count_4 - d_allocated_4
+  p_create_pc_1 = 6 /\ p_file_1 = 2 /\ p_parent_1 = 5  ->  p_create_pc_1' = 7 /\ d_count_2' = d_count_2 - d_allocated_2 /\ d_count_5' = d_count_5 - d_allocated_5
+  p_create_pc_1 = 6 /\ p_file_1 = 3 /\ p_parent_1 = 1  ->  p_create_pc_1' = 7 /\ d_count_3' = d_count_3 - d_allocated_3 /\ d_count_1' = d_count_1 - d_allocated_1
+  p_create_pc_1 = 6 /\ p_file_1 = 3 /\ p_parent_1 = 2  ->  p_create_pc_1' = 7 /\ d_count_3' = d_count_3 - d_allocated_3 /\ d_count_2' = d_count_2 - d_allocated_2
+  p_create_pc_1 = 6 /\ p_file_1 = 3 /\ p_parent_1 = 3  ->  p_create_pc_1' = 7 /\ d_count_3' = d_count_3 - d_allocated_3
+  p_create_pc_1 = 6 /\ p_file_1 = 3 /\ p_parent_1 = 4  ->  p_create_pc_1' = 7 /\ d_count_3' = d_count_3 - d_allocated_3 /\ d_count_4' = d_count_4 - d_allocated_4
+  p_create_pc_1 = 6 /\ p_file_1 = 3 /\ p_parent_1 = 5  ->  p_create_pc_1' = 7 /\ d_count_3' = d_count_3 - d_allocated_3 /\ d_count_5' = d_count_5 - d_allocated_5
+  p_create_pc_1 = 6 /\ p_file_1 = 4 /\ p_parent_1 = 1  ->  p_create_pc_1' = 7 /\ d_count_4' = d_count_4 - d_allocated_4 /\ d_count_1' = d_count_1 - d_allocated_1
+  p_create_pc_1 = 6 /\ p_file_1 = 4 /\ p_parent_1 = 2  ->  p_create_pc_1' = 7 /\ d_count_4' = d_count_4 - d_allocated_4 /\ d_count_2' = d_count_2 - d_allocated_2
+  p_create_pc_1 = 6 /\ p_file_1 = 4 /\ p_parent_1 = 3  ->  p_create_pc_1' = 7 /\ d_count_4' = d_count_4 - d_allocated_4 /\ d_count_3' = d_count_3 - d_allocated_3
+  p_create_pc_1 = 6 /\ p_file_1 = 4 /\ p_parent_1 = 4  ->  p_create_pc_1' = 7 /\ d_count_4' = d_count_4 - d_allocated_4
+  p_create_pc_1 = 6 /\ p_file_1 = 4 /\ p_parent_1 = 5  ->  p_create_pc_1' = 7 /\ d_count_4' = d_count_4 - d_allocated_4 /\ d_count_5' = d_count_5 - d_allocated_5
+  p_create_pc_1 = 6 /\ p_file_1 = 5 /\ p_parent_1 = 1  ->  p_create_pc_1' = 7 /\ d_count_5' = d_count_5 - d_allocated_5 /\ d_count_1' = d_count_1 - d_allocated_1
+  p_create_pc_1 = 6 /\ p_file_1 = 5 /\ p_parent_1 = 2  ->  p_create_pc_1' = 7 /\ d_count_5' = d_count_5 - d_allocated_5 /\ d_count_2' = d_count_2 - d_allocated_2
+  p_create_pc_1 = 6 /\ p_file_1 = 5 /\ p_parent_1 = 3  ->  p_create_pc_1' = 7 /\ d_count_5' = d_count_5 - d_allocated_5 /\ d_count_3' = d_count_3 - d_allocated_3
+  p_create_pc_1 = 6 /\ p_file_1 = 5 /\ p_parent_1 = 4  ->  p_create_pc_1' = 7 /\ d_count_5' = d_count_5 - d_allocated_5 /\ d_count_4' = d_count_4 - d_allocated_4
+  p_create_pc_1 = 6 /\ p_file_1 = 5 /\ p_parent_1 = 5  ->  p_create_pc_1' = 7 /\ d_count_5' = d_count_5 - d_allocated_5
+  p_create_pc_1 = 7  ->  p_create_pc_1' = 0 /\ p_begin_1' = 0
+  p_create_pc_1 = 8 /\ p_file_1 = 2 /\ d_allocated_2 > 0 /\ d_subdirs_2 > 0  ->  p_create_pc_1' = 9
+  p_create_pc_1 = 8 /\ p_file_1 = 2 /\ !(d_allocated_2 > 0 /\ d_subdirs_2 > 0)  ->  p_create_pc_1' = 12
+  p_create_pc_1 = 8 /\ p_file_1 = 3 /\ d_allocated_3 > 0 /\ d_subdirs_3 > 0  ->  p_create_pc_1' = 9
+  p_create_pc_1 = 8 /\ p_file_1 = 3 /\ !(d_allocated_3 > 0 /\ d_subdirs_3 > 0)  ->  p_create_pc_1' = 12
+  p_create_pc_1 = 8 /\ p_file_1 = 4 /\ d_allocated_4 > 0 /\ d_subdirs_4 > 0  ->  p_create_pc_1' = 9
+  p_create_pc_1 = 8 /\ p_file_1 = 4 /\ !(d_allocated_4 > 0 /\ d_subdirs_4 > 0)  ->  p_create_pc_1' = 12
+  p_create_pc_1 = 8 /\ p_file_1 = 5 /\ d_allocated_5 > 0 /\ d_subdirs_5 > 0  ->  p_create_pc_1' = 9
+  p_create_pc_1 = 8 /\ p_file_1 = 5 /\ !(d_allocated_5 > 0 /\ d_subdirs_5 > 0)  ->  p_create_pc_1' = 12
+  p_create_pc_1 = 9 /\ p_parent_1 = 1 /\ d_inode_1 = 1  ->  p_create_pc_1' = 10 /\ i_mutex_1' = i_mutex_1 + 1
+  p_create_pc_1 = 9 /\ p_parent_1 = 1 /\ d_inode_1 = 2  ->  p_create_pc_1' = 10 /\ i_mutex_2' = i_mutex_2 + 1
+  p_create_pc_1 = 9 /\ p_parent_1 = 1 /\ d_inode_1 = 3  ->  p_create_pc_1' = 10 /\ i_mutex_3' = i_mutex_3 + 1
+  p_create_pc_1 = 9 /\ p_parent_1 = 1 /\ d_inode_1 = 4  ->  p_create_pc_1' = 10 /\ i_mutex_4' = i_mutex_4 + 1
+  p_create_pc_1 = 9 /\ p_parent_1 = 1 /\ d_inode_1 = 5  ->  p_create_pc_1' = 10 /\ i_mutex_5' = i_mutex_5 + 1
+  p_create_pc_1 = 9 /\ p_parent_1 = 2 /\ d_inode_2 = 1  ->  p_create_pc_1' = 10 /\ i_mutex_1' = i_mutex_1 + 1
+  p_create_pc_1 = 9 /\ p_parent_1 = 2 /\ d_inode_2 = 2  ->  p_create_pc_1' = 10 /\ i_mutex_2' = i_mutex_2 + 1
+  p_create_pc_1 = 9 /\ p_parent_1 = 2 /\ d_inode_2 = 3  ->  p_create_pc_1' = 10 /\ i_mutex_3' = i_mutex_3 + 1
+  p_create_pc_1 = 9 /\ p_parent_1 = 2 /\ d_inode_2 = 4  ->  p_create_pc_1' = 10 /\ i_mutex_4' = i_mutex_4 + 1
+  p_create_pc_1 = 9 /\ p_parent_1 = 2 /\ d_inode_2 = 5  ->  p_create_pc_1' = 10 /\ i_mutex_5' = i_mutex_5 + 1
+  p_create_pc_1 = 9 /\ p_parent_1 = 3 /\ d_inode_3 = 1  ->  p_create_pc_1' = 10 /\ i_mutex_1' = i_mutex_1 + 1
+  p_create_pc_1 = 9 /\ p_parent_1 = 3 /\ d_inode_3 = 2  ->  p_create_pc_1' = 10 /\ i_mutex_2' = i_mutex_2 + 1
+  p_create_pc_1 = 9 /\ p_parent_1 = 3 /\ d_inode_3 = 3  ->  p_create_pc_1' = 10 /\ i_mutex_3' = i_mutex_3 + 1
+  p_create_pc_1 = 9 /\ p_parent_1 = 3 /\ d_inode_3 = 4  ->  p_create_pc_1' = 10 /\ i_mutex_4' = i_mutex_4 + 1
+  p_create_pc_1 = 9 /\ p_parent_1 = 3 /\ d_inode_3 = 5  ->  p_create_pc_1' = 10 /\ i_mutex_5' = i_mutex_5 + 1
+  p_create_pc_1 = 9 /\ p_parent_1 = 4 /\ d_inode_4 = 1  ->  p_create_pc_1' = 10 /\ i_mutex_1' = i_mutex_1 + 1
+  p_create_pc_1 = 9 /\ p_parent_1 = 4 /\ d_inode_4 = 2  ->  p_create_pc_1' = 10 /\ i_mutex_2' = i_mutex_2 + 1
+  p_create_pc_1 = 9 /\ p_parent_1 = 4 /\ d_inode_4 = 3  ->  p_create_pc_1' = 10 /\ i_mutex_3' = i_mutex_3 + 1
+  p_create_pc_1 = 9 /\ p_parent_1 = 4 /\ d_inode_4 = 4  ->  p_create_pc_1' = 10 /\ i_mutex_4' = i_mutex_4 + 1
+  p_create_pc_1 = 9 /\ p_parent_1 = 4 /\ d_inode_4 = 5  ->  p_create_pc_1' = 10 /\ i_mutex_5' = i_mutex_5 + 1
+  p_create_pc_1 = 9 /\ p_parent_1 = 5 /\ d_inode_5 = 1  ->  p_create_pc_1' = 10 /\ i_mutex_1' = i_mutex_1 + 1
+  p_create_pc_1 = 9 /\ p_parent_1 = 5 /\ d_inode_5 = 2  ->  p_create_pc_1' = 10 /\ i_mutex_2' = i_mutex_2 + 1
+  p_create_pc_1 = 9 /\ p_parent_1 = 5 /\ d_inode_5 = 3  ->  p_create_pc_1' = 10 /\ i_mutex_3' = i_mutex_3 + 1
+  p_create_pc_1 = 9 /\ p_parent_1 = 5 /\ d_inode_5 = 4  ->  p_create_pc_1' = 10 /\ i_mutex_4' = i_mutex_4 + 1
+  p_create_pc_1 = 9 /\ p_parent_1 = 5 /\ d_inode_5 = 5  ->  p_create_pc_1' = 10 /\ i_mutex_5' = i_mutex_5 + 1
+  p_create_pc_1 = 10 /\ p_file_1 = 2 /\ p_parent_1 = 1  ->  p_create_pc_1' = 11 /\ d_count_2' = d_count_2 - d_allocated_2 /\ d_count_1' = d_count_1 - d_allocated_1
+  p_create_pc_1 = 10 /\ p_file_1 = 2 /\ p_parent_1 = 2  ->  p_create_pc_1' = 11 /\ d_count_2' = d_count_2 - d_allocated_2
+  p_create_pc_1 = 10 /\ p_file_1 = 2 /\ p_parent_1 = 3  ->  p_create_pc_1' = 11 /\ d_count_2' = d_count_2 - d_allocated_2 /\ d_count_3' = d_count_3 - d_allocated_3
+  p_create_pc_1 = 10 /\ p_file_1 = 2 /\ p_parent_1 = 4  ->  p_create_pc_1' = 11 /\ d_count_2' = d_count_2 - d_allocated_2 /\ d_count_4' = d_count_4 - d_allocated_4
+  p_create_pc_1 = 10 /\ p_file_1 = 2 /\ p_parent_1 = 5  ->  p_create_pc_1' = 11 /\ d_count_2' = d_count_2 - d_allocated_2 /\ d_count_5' = d_count_5 - d_allocated_5
+  p_create_pc_1 = 10 /\ p_file_1 = 3 /\ p_parent_1 = 1  ->  p_create_pc_1' = 11 /\ d_count_3' = d_count_3 - d_allocated_3 /\ d_count_1' = d_count_1 - d_allocated_1
+  p_create_pc_1 = 10 /\ p_file_1 = 3 /\ p_parent_1 = 2  ->  p_create_pc_1' = 11 /\ d_count_3' = d_count_3 - d_allocated_3 /\ d_count_2' = d_count_2 - d_allocated_2
+  p_create_pc_1 = 10 /\ p_file_1 = 3 /\ p_parent_1 = 3  ->  p_create_pc_1' = 11 /\ d_count_3' = d_count_3 - d_allocated_3
+  p_create_pc_1 = 10 /\ p_file_1 = 3 /\ p_parent_1 = 4  ->  p_create_pc_1' = 11 /\ d_count_3' = d_count_3 - d_allocated_3 /\ d_count_4' = d_count_4 - d_allocated_4
+  p_create_pc_1 = 10 /\ p_file_1 = 3 /\ p_parent_1 = 5  ->  p_create_pc_1' = 11 /\ d_count_3' = d_count_3 - d_allocated_3 /\ d_count_5' = d_count_5 - d_allocated_5
+  p_create_pc_1 = 10 /\ p_file_1 = 4 /\ p_parent_1 = 1  ->  p_create_pc_1' = 11 /\ d_count_4' = d_count_4 - d_allocated_4 /\ d_count_1' = d_count_1 - d_allocated_1
+  p_create_pc_1 = 10 /\ p_file_1 = 4 /\ p_parent_1 = 2  ->  p_create_pc_1' = 11 /\ d_count_4' = d_count_4 - d_allocated_4 /\ d_count_2' = d_count_2 - d_allocated_2
+  p_create_pc_1 = 10 /\ p_file_1 = 4 /\ p_parent_1 = 3  ->  p_create_pc_1' = 11 /\ d_count_4' = d_count_4 - d_allocated_4 /\ d_count_3' = d_count_3 - d_allocated_3
+  p_create_pc_1 = 10 /\ p_file_1 = 4 /\ p_parent_1 = 4  ->  p_create_pc_1' = 11 /\ d_count_4' = d_count_4 - d_allocated_4
+  p_create_pc_1 = 10 /\ p_file_1 = 4 /\ p_parent_1 = 5  ->  p_create_pc_1' = 11 /\ d_count_4' = d_count_4 - d_allocated_4 /\ d_count_5' = d_count_5 - d_allocated_5
+  p_create_pc_1 = 10 /\ p_file_1 = 5 /\ p_parent_1 = 1  ->  p_create_pc_1' = 11 /\ d_count_5' = d_count_5 - d_allocated_5 /\ d_count_1' = d_count_1 - d_allocated_1
+  p_create_pc_1 = 10 /\ p_file_1 = 5 /\ p_parent_1 = 2  ->  p_create_pc_1' = 11 /\ d_count_5' = d_count_5 - d_allocated_5 /\ d_count_2' = d_count_2 - d_allocated_2
+  p_create_pc_1 = 10 /\ p_file_1 = 5 /\ p_parent_1 = 3  ->  p_create_pc_1' = 11 /\ d_count_5' = d_count_5 - d_allocated_5 /\ d_count_3' = d_count_3 - d_allocated_3
+  p_create_pc_1 = 10 /\ p_file_1 = 5 /\ p_parent_1 = 4  ->  p_create_pc_1' = 11 /\ d_count_5' = d_count_5 - d_allocated_5 /\ d_count_4' = d_count_4 - d_allocated_4
+  p_create_pc_1 = 10 /\ p_file_1 = 5 /\ p_parent_1 = 5  ->  p_create_pc_1' = 11 /\ d_count_5' = d_count_5 - d_allocated_5
+  p_create_pc_1 = 11  ->  p_create_pc_1' = 0 /\ p_begin_1' = 0
+  p_create_pc_1 = 12 /\ dcache_lock > 0  ->  p_create_pc_1' = 13 /\ dcache_lock' = dcache_lock - 1
+  p_create_pc_1 = 13 /\ p_file_1 = 2 /\ p_parent_1 = 1 /\ d_allocated_2 = 0  ->  p_create_pc_1' = 14 /\ d_allocated_2' = 1 /\ d_count_2' = 1 /\ d_lock_2' = 1 /\ d_parent_2' = 1
+  p_create_pc_1 = 13 /\ p_file_1 = 2 /\ p_parent_1 = 2 /\ d_allocated_2 = 0  ->  p_create_pc_1' = 14 /\ d_allocated_2' = 1 /\ d_count_2' = 1 /\ d_lock_2' = 1 /\ d_parent_2' = 2
+  p_create_pc_1 = 13 /\ p_file_1 = 2 /\ p_parent_1 = 3 /\ d_allocated_2 = 0  ->  p_create_pc_1' = 14 /\ d_allocated_2' = 1 /\ d_count_2' = 1 /\ d_lock_2' = 1 /\ d_parent_2' = 3
+  p_create_pc_1 = 13 /\ p_file_1 = 2 /\ p_parent_1 = 4 /\ d_allocated_2 = 0  ->  p_create_pc_1' = 14 /\ d_allocated_2' = 1 /\ d_count_2' = 1 /\ d_lock_2' = 1 /\ d_parent_2' = 4
+  p_create_pc_1 = 13 /\ p_file_1 = 2 /\ p_parent_1 = 5 /\ d_allocated_2 = 0  ->  p_create_pc_1' = 14 /\ d_allocated_2' = 1 /\ d_count_2' = 1 /\ d_lock_2' = 1 /\ d_parent_2' = 5
+  p_create_pc_1 = 13 /\ p_file_1 = 3 /\ p_parent_1 = 1 /\ d_allocated_3 = 0  ->  p_create_pc_1' = 14 /\ d_allocated_3' = 1 /\ d_count_3' = 1 /\ d_lock_3' = 1 /\ d_parent_3' = 1
+  p_create_pc_1 = 13 /\ p_file_1 = 3 /\ p_parent_1 = 2 /\ d_allocated_3 = 0  ->  p_create_pc_1' = 14 /\ d_allocated_3' = 1 /\ d_count_3' = 1 /\ d_lock_3' = 1 /\ d_parent_3' = 2
+  p_create_pc_1 = 13 /\ p_file_1 = 3 /\ p_parent_1 = 3 /\ d_allocated_3 = 0  ->  p_create_pc_1' = 14 /\ d_allocated_3' = 1 /\ d_count_3' = 1 /\ d_lock_3' = 1 /\ d_parent_3' = 3
+  p_create_pc_1 = 13 /\ p_file_1 = 3 /\ p_parent_1 = 4 /\ d_allocated_3 = 0  ->  p_create_pc_1' = 14 /\ d_allocated_3' = 1 /\ d_count_3' = 1 /\ d_lock_3' = 1 /\ d_parent_3' = 4
+  p_create_pc_1 = 13 /\ p_file_1 = 3 /\ p_parent_1 = 5 /\ d_allocated_3 = 0  ->  p_create_pc_1' = 14 /\ d_allocated_3' = 1 /\ d_count_3' = 1 /\ d_lock_3' = 1 /\ d_parent_3' = 5
+  p_create_pc_1 = 13 /\ p_file_1 = 4 /\ p_parent_1 = 1 /\ d_allocated_4 = 0  ->  p_create_pc_1' = 14 /\ d_allocated_4' = 1 /\ d_count_4' = 1 /\ d_lock_4' = 1 /\ d_parent_4' = 1
+  p_create_pc_1 = 13 /\ p_file_1 = 4 /\ p_parent_1 = 2 /\ d_allocated_4 = 0  ->  p_create_pc_1' = 14 /\ d_allocated_4' = 1 /\ d_count_4' = 1 /\ d_lock_4' = 1 /\ d_parent_4' = 2
+  p_create_pc_1 = 13 /\ p_file_1 = 4 /\ p_parent_1 = 3 /\ d_allocated_4 = 0  ->  p_create_pc_1' = 14 /\ d_allocated_4' = 1 /\ d_count_4' = 1 /\ d_lock_4' = 1 /\ d_parent_4' = 3
+  p_create_pc_1 = 13 /\ p_file_1 = 4 /\ p_parent_1 = 4 /\ d_allocated_4 = 0  ->  p_create_pc_1' = 14 /\ d_allocated_4' = 1 /\ d_count_4' = 1 /\ d_lock_4' = 1 /\ d_parent_4' = 4
+  p_create_pc_1 = 13 /\ p_file_1 = 4 /\ p_parent_1 = 5 /\ d_allocated_4 = 0  ->  p_create_pc_1' = 14 /\ d_allocated_4' = 1 /\ d_count_4' = 1 /\ d_lock_4' = 1 /\ d_parent_4' = 5
+  p_create_pc_1 = 13 /\ p_file_1 = 5 /\ p_parent_1 = 1 /\ d_allocated_5 = 0  ->  p_create_pc_1' = 14 /\ d_allocated_5' = 1 /\ d_count_5' = 1 /\ d_lock_5' = 1 /\ d_parent_5' = 1
+  p_create_pc_1 = 13 /\ p_file_1 = 5 /\ p_parent_1 = 2 /\ d_allocated_5 = 0  ->  p_create_pc_1' = 14 /\ d_allocated_5' = 1 /\ d_count_5' = 1 /\ d_lock_5' = 1 /\ d_parent_5' = 2
+  p_create_pc_1 = 13 /\ p_file_1 = 5 /\ p_parent_1 = 3 /\ d_allocated_5 = 0  ->  p_create_pc_1' = 14 /\ d_allocated_5' = 1 /\ d_count_5' = 1 /\ d_lock_5' = 1 /\ d_parent_5' = 3
+  p_create_pc_1 = 13 /\ p_file_1 = 5 /\ p_parent_1 = 4 /\ d_allocated_5 = 0  ->  p_create_pc_1' = 14 /\ d_allocated_5' = 1 /\ d_count_5' = 1 /\ d_lock_5' = 1 /\ d_parent_5' = 4
+  p_create_pc_1 = 13 /\ p_file_1 = 5 /\ p_parent_1 = 5 /\ d_allocated_5 = 0  ->  p_create_pc_1' = 14 /\ d_allocated_5' = 1 /\ d_count_5' = 1 /\ d_lock_5' = 1 /\ d_parent_5' = 5
+  p_create_pc_1 = 13 /\ p_file_1 = 2 /\ d_allocated_2 > 0  ->  p_create_pc_1' = 15
+  p_create_pc_1 = 13 /\ p_file_1 = 3 /\ d_allocated_3 > 0  ->  p_create_pc_1' = 15
+  p_create_pc_1 = 13 /\ p_file_1 = 4 /\ d_allocated_4 > 0  ->  p_create_pc_1' = 15
+  p_create_pc_1 = 13 /\ p_file_1 = 5 /\ d_allocated_5 > 0  ->  p_create_pc_1' = 15
+  p_create_pc_1 = 14 /\ p_parent_1 = 1 /\ d_subdirs_1 = 0  ->  p_create_pc_1' = 15
+  p_create_pc_1 = 14 /\ p_parent_1 = 1 /\ d_subdirs_1 > 0  ->  p_create_pc_1' = 19
+  p_create_pc_1 = 14 /\ p_parent_1 = 2 /\ d_subdirs_2 = 0  ->  p_create_pc_1' = 15
+  p_create_pc_1 = 14 /\ p_parent_1 = 2 /\ d_subdirs_2 > 0  ->  p_create_pc_1' = 19
+  p_create_pc_1 = 14 /\ p_parent_1 = 3 /\ d_subdirs_3 = 0  ->  p_create_pc_1' = 15
+  p_create_pc_1 = 14 /\ p_parent_1 = 3 /\ d_subdirs_3 > 0  ->  p_create_pc_1' = 19
+  p_create_pc_1 = 14 /\ p_parent_1 = 4 /\ d_subdirs_4 = 0  ->  p_create_pc_1' = 15
+  p_create_pc_1 = 14 /\ p_parent_1 = 4 /\ d_subdirs_4 > 0  ->  p_create_pc_1' = 19
+  p_create_pc_1 = 14 /\ p_parent_1 = 5 /\ d_subdirs_5 = 0  ->  p_create_pc_1' = 15
+  p_create_pc_1 = 14 /\ p_parent_1 = 5 /\ d_subdirs_5 > 0  ->  p_create_pc_1' = 19
+  p_create_pc_1 = 15  ->  p_create_pc_1' = 16 /\ dcache_lock' = dcache_lock + 1
+  p_create_pc_1 = 16 /\ p_parent_1 = 1 /\ d_inode_1 = 1  ->  p_create_pc_1' = 17 /\ i_mutex_1' = i_mutex_1 + 1
+  p_create_pc_1 = 16 /\ p_parent_1 = 1 /\ d_inode_1 = 2  ->  p_create_pc_1' = 17 /\ i_mutex_2' = i_mutex_2 + 1
+  p_create_pc_1 = 16 /\ p_parent_1 = 1 /\ d_inode_1 = 3  ->  p_create_pc_1' = 17 /\ i_mutex_3' = i_mutex_3 + 1
+  p_create_pc_1 = 16 /\ p_parent_1 = 1 /\ d_inode_1 = 4  ->  p_create_pc_1' = 17 /\ i_mutex_4' = i_mutex_4 + 1
+  p_create_pc_1 = 16 /\ p_parent_1 = 1 /\ d_inode_1 = 5  ->  p_create_pc_1' = 17 /\ i_mutex_5' = i_mutex_5 + 1
+  p_create_pc_1 = 16 /\ p_parent_1 = 2 /\ d_inode_2 = 1  ->  p_create_pc_1' = 17 /\ i_mutex_1' = i_mutex_1 + 1
+  p_create_pc_1 = 16 /\ p_parent_1 = 2 /\ d_inode_2 = 2  ->  p_create_pc_1' = 17 /\ i_mutex_2' = i_mutex_2 + 1
+  p_create_pc_1 = 16 /\ p_parent_1 = 2 /\ d_inode_2 = 3  ->  p_create_pc_1' = 17 /\ i_mutex_3' = i_mutex_3 + 1
+  p_create_pc_1 = 16 /\ p_parent_1 = 2 /\ d_inode_2 = 4  ->  p_create_pc_1' = 17 /\ i_mutex_4' = i_mutex_4 + 1
+  p_create_pc_1 = 16 /\ p_parent_1 = 2 /\ d_inode_2 = 5  ->  p_create_pc_1' = 17 /\ i_mutex_5' = i_mutex_5 + 1
+  p_create_pc_1 = 16 /\ p_parent_1 = 3 /\ d_inode_3 = 1  ->  p_create_pc_1' = 17 /\ i_mutex_1' = i_mutex_1 + 1
+  p_create_pc_1 = 16 /\ p_parent_1 = 3 /\ d_inode_3 = 2  ->  p_create_pc_1' = 17 /\ i_mutex_2' = i_mutex_2 + 1
+  p_create_pc_1 = 16 /\ p_parent_1 = 3 /\ d_inode_3 = 3  ->  p_create_pc_1' = 17 /\ i_mutex_3' = i_mutex_3 + 1
+  p_create_pc_1 = 16 /\ p_parent_1 = 3 /\ d_inode_3 = 4  ->  p_create_pc_1' = 17 /\ i_mutex_4' = i_mutex_4 + 1
+  p_create_pc_1 = 16 /\ p_parent_1 = 3 /\ d_inode_3 = 5  ->  p_create_pc_1' = 17 /\ i_mutex_5' = i_mutex_5 + 1
+  p_create_pc_1 = 16 /\ p_parent_1 = 4 /\ d_inode_4 = 1  ->  p_create_pc_1' = 17 /\ i_mutex_1' = i_mutex_1 + 1
+  p_create_pc_1 = 16 /\ p_parent_1 = 4 /\ d_inode_4 = 2  ->  p_create_pc_1' = 17 /\ i_mutex_2' = i_mutex_2 + 1
+  p_create_pc_1 = 16 /\ p_parent_1 = 4 /\ d_inode_4 = 3  ->  p_create_pc_1' = 17 /\ i_mutex_3' = i_mutex_3 + 1
+  p_create_pc_1 = 16 /\ p_parent_1 = 4 /\ d_inode_4 = 4  ->  p_create_pc_1' = 17 /\ i_mutex_4' = i_mutex_4 + 1
+  p_create_pc_1 = 16 /\ p_parent_1 = 4 /\ d_inode_4 = 5  ->  p_create_pc_1' = 17 /\ i_mutex_5' = i_mutex_5 + 1
+  p_create_pc_1 = 16 /\ p_parent_1 = 5 /\ d_inode_5 = 1  ->  p_create_pc_1' = 17 /\ i_mutex_1' = i_mutex_1 + 1
+  p_create_pc_1 = 16 /\ p_parent_1 = 5 /\ d_inode_5 = 2  ->  p_create_pc_1' = 17 /\ i_mutex_2' = i_mutex_2 + 1
+  p_create_pc_1 = 16 /\ p_parent_1 = 5 /\ d_inode_5 = 3  ->  p_create_pc_1' = 17 /\ i_mutex_3' = i_mutex_3 + 1
+  p_create_pc_1 = 16 /\ p_parent_1 = 5 /\ d_inode_5 = 4  ->  p_create_pc_1' = 17 /\ i_mutex_4' = i_mutex_4 + 1
+  p_create_pc_1 = 16 /\ p_parent_1 = 5 /\ d_inode_5 = 5  ->  p_create_pc_1' = 17 /\ i_mutex_5' = i_mutex_5 + 1
+  p_create_pc_1 = 17 /\ p_parent_1 = 1 /\ d_lock_1 > 0 /\ d_count_1 > 0  ->  p_create_pc_1' = 18 /\ d_count_1' = d_count_1 - 1
+  p_create_pc_1 = 17 /\ p_parent_1 = 2 /\ d_lock_2 > 0 /\ d_count_2 > 0  ->  p_create_pc_1' = 18 /\ d_count_2' = d_count_2 - 1
+  p_create_pc_1 = 17 /\ p_parent_1 = 3 /\ d_lock_3 > 0 /\ d_count_3 > 0  ->  p_create_pc_1' = 18 /\ d_count_3' = d_count_3 - 1
+  p_create_pc_1 = 17 /\ p_parent_1 = 4 /\ d_lock_4 > 0 /\ d_count_4 > 0  ->  p_create_pc_1' = 18 /\ d_count_4' = d_count_4 - 1
+  p_create_pc_1 = 17 /\ p_parent_1 = 5 /\ d_lock_5 > 0 /\ d_count_5 > 0  ->  p_create_pc_1' = 18 /\ d_count_5' = d_count_5 - 1
+  p_create_pc_1 = 18  ->  p_create_pc_1' = 0 /\ p_begin_1' = 0
+  p_create_pc_1 = 19 /\ p_file_1 = 2 /\ d_lock_2 > 0  ->  p_create_pc_1' = 20 /\ d_count_2' = d_count_2 + 1
+  p_create_pc_1 = 19 /\ p_file_1 = 3 /\ d_lock_3 > 0  ->  p_create_pc_1' = 20 /\ d_count_3' = d_count_3 + 1
+  p_create_pc_1 = 19 /\ p_file_1 = 4 /\ d_lock_4 > 0  ->  p_create_pc_1' = 20 /\ d_count_4' = d_count_4 + 1
+  p_create_pc_1 = 19 /\ p_file_1 = 5 /\ d_lock_5 > 0  ->  p_create_pc_1' = 20 /\ d_count_5' = d_count_5 + 1
+  p_create_pc_1 = 20 /\ inode_lock > 0  ->  p_create_pc_1' = 21 /\ inode_lock' = inode_lock - 1
+  p_create_pc_1 = 21 /\ p_inode_1 = 2 /\ i_allocated_2 = 0  ->  p_create_pc_1' = 22 /\ i_count_2' = 1 /\ i_allocated_2' = 1 /\ i_mutex_2' = 1 /\ i_lock_2' = 1
+  p_create_pc_1 = 21 /\ p_inode_1 = 2 /\ i_allocated_2 > 0  ->  p_create_pc_1' = 22 /\ p_inode_1' = 0
+  p_create_pc_1 = 21 /\ p_inode_1 = 3 /\ i_allocated_3 = 0  ->  p_create_pc_1' = 22 /\ i_count_3' = 1 /\ i_allocated_3' = 1 /\ i_mutex_3' = 1 /\ i_lock_3' = 1
+  p_create_pc_1 = 21 /\ p_inode_1 = 3 /\ i_allocated_3 > 0  ->  p_create_pc_1' = 22 /\ p_inode_1' = 0
+  p_create_pc_1 = 21 /\ p_inode_1 = 4 /\ i_allocated_4 = 0  ->  p_create_pc_1' = 22 /\ i_count_4' = 1 /\ i_allocated_4' = 1 /\ i_mutex_4' = 1 /\ i_lock_4' = 1
+  p_create_pc_1 = 21 /\ p_inode_1 = 4 /\ i_allocated_4 > 0  ->  p_create_pc_1' = 22 /\ p_inode_1' = 0
+  p_create_pc_1 = 21 /\ p_inode_1 = 5 /\ i_allocated_5 = 0  ->  p_create_pc_1' = 22 /\ i_count_5' = 1 /\ i_allocated_5' = 1 /\ i_mutex_5' = 1 /\ i_lock_5' = 1
+  p_create_pc_1 = 21 /\ p_inode_1 = 5 /\ i_allocated_5 > 0  ->  p_create_pc_1' = 22 /\ p_inode_1' = 0
+  p_create_pc_1 = 22 /\ p_file_1 = 2 /\ p_inode_1 = 0  ->  p_create_pc_1' = 23 /\ d_inode_2' = 0
+  p_create_pc_1 = 22 /\ p_file_1 = 2 /\ p_inode_1 = 1  ->  p_create_pc_1' = 23 /\ d_inode_2' = 1
+  p_create_pc_1 = 22 /\ p_file_1 = 2 /\ p_inode_1 = 2  ->  p_create_pc_1' = 23 /\ d_inode_2' = 2
+  p_create_pc_1 = 22 /\ p_file_1 = 2 /\ p_inode_1 = 3  ->  p_create_pc_1' = 23 /\ d_inode_2' = 3
+  p_create_pc_1 = 22 /\ p_file_1 = 2 /\ p_inode_1 = 4  ->  p_create_pc_1' = 23 /\ d_inode_2' = 4
+  p_create_pc_1 = 22 /\ p_file_1 = 2 /\ p_inode_1 = 5  ->  p_create_pc_1' = 23 /\ d_inode_2' = 5
+  p_create_pc_1 = 22 /\ p_file_1 = 3 /\ p_inode_1 = 0  ->  p_create_pc_1' = 23 /\ d_inode_3' = 0
+  p_create_pc_1 = 22 /\ p_file_1 = 3 /\ p_inode_1 = 1  ->  p_create_pc_1' = 23 /\ d_inode_3' = 1
+  p_create_pc_1 = 22 /\ p_file_1 = 3 /\ p_inode_1 = 2  ->  p_create_pc_1' = 23 /\ d_inode_3' = 2
+  p_create_pc_1 = 22 /\ p_file_1 = 3 /\ p_inode_1 = 3  ->  p_create_pc_1' = 23 /\ d_inode_3' = 3
+  p_create_pc_1 = 22 /\ p_file_1 = 3 /\ p_inode_1 = 4  ->  p_create_pc_1' = 23 /\ d_inode_3' = 4
+  p_create_pc_1 = 22 /\ p_file_1 = 3 /\ p_inode_1 = 5  ->  p_create_pc_1' = 23 /\ d_inode_3' = 5
+  p_create_pc_1 = 22 /\ p_file_1 = 4 /\ p_inode_1 = 0  ->  p_create_pc_1' = 23 /\ d_inode_4' = 0
+  p_create_pc_1 = 22 /\ p_file_1 = 4 /\ p_inode_1 = 1  ->  p_create_pc_1' = 23 /\ d_inode_4' = 1
+  p_create_pc_1 = 22 /\ p_file_1 = 4 /\ p_inode_1 = 2  ->  p_create_pc_1' = 23 /\ d_inode_4' = 2
+  p_create_pc_1 = 22 /\ p_file_1 = 4 /\ p_inode_1 = 3  ->  p_create_pc_1' = 23 /\ d_inode_4' = 3
+  p_create_pc_1 = 22 /\ p_file_1 = 4 /\ p_inode_1 = 4  ->  p_create_pc_1' = 23 /\ d_inode_4' = 4
+  p_create_pc_1 = 22 /\ p_file_1 = 4 /\ p_inode_1 = 5  ->  p_create_pc_1' = 23 /\ d_inode_4' = 5
+  p_create_pc_1 = 22 /\ p_file_1 = 5 /\ p_inode_1 = 0  ->  p_create_pc_1' = 23 /\ d_inode_5' = 0
+  p_create_pc_1 = 22 /\ p_file_1 = 5 /\ p_inode_1 = 1  ->  p_create_pc_1' = 23 /\ d_inode_5' = 1
+  p_create_pc_1 = 22 /\ p_file_1 = 5 /\ p_inode_1 = 2  ->  p_create_pc_1' = 23 /\ d_inode_5' = 2
+  p_create_pc_1 = 22 /\ p_file_1 = 5 /\ p_inode_1 = 3  ->  p_create_pc_1' = 23 /\ d_inode_5' = 3
+  p_create_pc_1 = 22 /\ p_file_1 = 5 /\ p_inode_1 = 4  ->  p_create_pc_1' = 23 /\ d_inode_5' = 4
+  p_create_pc_1 = 22 /\ p_file_1 = 5 /\ p_inode_1 = 5  ->  p_create_pc_1' = 23 /\ d_inode_5' = 5
+  p_create_pc_1 = 23  ->  p_create_pc_1' = 24 /\ inode_lock' = inode_lock + 1
+  p_create_pc_1 = 24 /\ p_inode_1 = 0  ->  p_create_pc_1' = 25
+  p_create_pc_1 = 24 /\ p_inode_1 = 1 /\ i_allocated_1 = 0  ->  p_create_pc_1' = 25
+  p_create_pc_1 = 24 /\ p_inode_1 = 1 /\ i_allocated_1 > 0  ->  p_create_pc_1' = 30
+  p_create_pc_1 = 24 /\ p_inode_1 = 2 /\ i_allocated_2 = 0  ->  p_create_pc_1' = 25
+  p_create_pc_1 = 24 /\ p_inode_1 = 2 /\ i_allocated_2 > 0  ->  p_create_pc_1' = 30
+  p_create_pc_1 = 24 /\ p_inode_1 = 3 /\ i_allocated_3 = 0  ->  p_create_pc_1' = 25
+  p_create_pc_1 = 24 /\ p_inode_1 = 3 /\ i_allocated_3 > 0  ->  p_create_pc_1' = 30
+  p_create_pc_1 = 24 /\ p_inode_1 = 4 /\ i_allocated_4 = 0  ->  p_create_pc_1' = 25
+  p_create_pc_1 = 24 /\ p_inode_1 = 4 /\ i_allocated_4 > 0  ->  p_create_pc_1' = 30
+  p_create_pc_1 = 24 /\ p_inode_1 = 5 /\ i_allocated_5 = 0  ->  p_create_pc_1' = 25
+  p_create_pc_1 = 24 /\ p_inode_1 = 5 /\ i_allocated_5 > 0  ->  p_create_pc_1' = 30
+  p_create_pc_1 = 25 /\ p_file_1 = 2  ->  p_create_pc_1' = 26 /\ d_count_2' = 0 /\ d_allocated_2' = 0 /\ d_parent_2' = 0
+  p_create_pc_1 = 25 /\ p_file_1 = 3  ->  p_create_pc_1' = 26 /\ d_count_3' = 0 /\ d_allocated_3' = 0 /\ d_parent_3' = 0
+  p_create_pc_1 = 25 /\ p_file_1 = 4  ->  p_create_pc_1' = 26 /\ d_count_4' = 0 /\ d_allocated_4' = 0 /\ d_parent_4' = 0
+  p_create_pc_1 = 25 /\ p_file_1 = 5  ->  p_create_pc_1' = 26 /\ d_count_5' = 0 /\ d_allocated_5' = 0 /\ d_parent_5' = 0
+  p_create_pc_1 = 26 /\ p_parent_1 = 1 /\ d_lock_1 > 0 /\ d_count_1 > 0  ->  p_create_pc_1' = 27 /\ d_count_1' = d_count_1 - 1
+  p_create_pc_1 = 26 /\ p_parent_1 = 2 /\ d_lock_2 > 0 /\ d_count_2 > 0  ->  p_create_pc_1' = 27 /\ d_count_2' = d_count_2 - 1
+  p_create_pc_1 = 26 /\ p_parent_1 = 3 /\ d_lock_3 > 0 /\ d_count_3 > 0  ->  p_create_pc_1' = 27 /\ d_count_3' = d_count_3 - 1
+  p_create_pc_1 = 26 /\ p_parent_1 = 4 /\ d_lock_4 > 0 /\ d_count_4 > 0  ->  p_create_pc_1' = 27 /\ d_count_4' = d_count_4 - 1
+  p_create_pc_1 = 26 /\ p_parent_1 = 5 /\ d_lock_5 > 0 /\ d_count_5 > 0  ->  p_create_pc_1' = 27 /\ d_count_5' = d_count_5 - 1
+  p_create_pc_1 = 27  ->  p_create_pc_1' = 28 /\ dcache_lock' = dcache_lock + 1
+  p_create_pc_1 = 28 /\ p_parent_1 = 1 /\ d_inode_1 = 1  ->  p_create_pc_1' = 29 /\ i_mutex_1' = i_mutex_1 + 1
+  p_create_pc_1 = 28 /\ p_parent_1 = 1 /\ d_inode_1 = 2  ->  p_create_pc_1' = 29 /\ i_mutex_2' = i_mutex_2 + 1
+  p_create_pc_1 = 28 /\ p_parent_1 = 1 /\ d_inode_1 = 3  ->  p_create_pc_1' = 29 /\ i_mutex_3' = i_mutex_3 + 1
+  p_create_pc_1 = 28 /\ p_parent_1 = 1 /\ d_inode_1 = 4  ->  p_create_pc_1' = 29 /\ i_mutex_4' = i_mutex_4 + 1
+  p_create_pc_1 = 28 /\ p_parent_1 = 1 /\ d_inode_1 = 5  ->  p_create_pc_1' = 29 /\ i_mutex_5' = i_mutex_5 + 1
+  p_create_pc_1 = 28 /\ p_parent_1 = 2 /\ d_inode_2 = 1  ->  p_create_pc_1' = 29 /\ i_mutex_1' = i_mutex_1 + 1
+  p_create_pc_1 = 28 /\ p_parent_1 = 2 /\ d_inode_2 = 2  ->  p_create_pc_1' = 29 /\ i_mutex_2' = i_mutex_2 + 1
+  p_create_pc_1 = 28 /\ p_parent_1 = 2 /\ d_inode_2 = 3  ->  p_create_pc_1' = 29 /\ i_mutex_3' = i_mutex_3 + 1
+  p_create_pc_1 = 28 /\ p_parent_1 = 2 /\ d_inode_2 = 4  ->  p_create_pc_1' = 29 /\ i_mutex_4' = i_mutex_4 + 1
+  p_create_pc_1 = 28 /\ p_parent_1 = 2 /\ d_inode_2 = 5  ->  p_create_pc_1' = 29 /\ i_mutex_5' = i_mutex_5 + 1
+  p_create_pc_1 = 28 /\ p_parent_1 = 3 /\ d_inode_3 = 1  ->  p_create_pc_1' = 29 /\ i_mutex_1' = i_mutex_1 + 1
+  p_create_pc_1 = 28 /\ p_parent_1 = 3 /\ d_inode_3 = 2  ->  p_create_pc_1' = 29 /\ i_mutex_2' = i_mutex_2 + 1
+  p_create_pc_1 = 28 /\ p_parent_1 = 3 /\ d_inode_3 = 3  ->  p_create_pc_1' = 29 /\ i_mutex_3' = i_mutex_3 + 1
+  p_create_pc_1 = 28 /\ p_parent_1 = 3 /\ d_inode_3 = 4  ->  p_create_pc_1' = 29 /\ i_mutex_4' = i_mutex_4 + 1
+  p_create_pc_1 = 28 /\ p_parent_1 = 3 /\ d_inode_3 = 5  ->  p_create_pc_1' = 29 /\ i_mutex_5' = i_mutex_5 + 1
+  p_create_pc_1 = 28 /\ p_parent_1 = 4 /\ d_inode_4 = 1  ->  p_create_pc_1' = 29 /\ i_mutex_1' = i_mutex_1 + 1
+  p_create_pc_1 = 28 /\ p_parent_1 = 4 /\ d_inode_4 = 2  ->  p_create_pc_1' = 29 /\ i_mutex_2' = i_mutex_2 + 1
+  p_create_pc_1 = 28 /\ p_parent_1 = 4 /\ d_inode_4 = 3  ->  p_create_pc_1' = 29 /\ i_mutex_3' = i_mutex_3 + 1
+  p_create_pc_1 = 28 /\ p_parent_1 = 4 /\ d_inode_4 = 4  ->  p_create_pc_1' = 29 /\ i_mutex_4' = i_mutex_4 + 1
+  p_create_pc_1 = 28 /\ p_parent_1 = 4 /\ d_inode_4 = 5  ->  p_create_pc_1' = 29 /\ i_mutex_5' = i_mutex_5 + 1
+  p_create_pc_1 = 28 /\ p_parent_1 = 5 /\ d_inode_5 = 1  ->  p_create_pc_1' = 29 /\ i_mutex_1' = i_mutex_1 + 1
+  p_create_pc_1 = 28 /\ p_parent_1 = 5 /\ d_inode_5 = 2  ->  p_create_pc_1' = 29 /\ i_mutex_2' = i_mutex_2 + 1
+  p_create_pc_1 = 28 /\ p_parent_1 = 5 /\ d_inode_5 = 3  ->  p_create_pc_1' = 29 /\ i_mutex_3' = i_mutex_3 + 1
+  p_create_pc_1 = 28 /\ p_parent_1 = 5 /\ d_inode_5 = 4  ->  p_create_pc_1' = 29 /\ i_mutex_4' = i_mutex_4 + 1
+  p_create_pc_1 = 28 /\ p_parent_1 = 5 /\ d_inode_5 = 5  ->  p_create_pc_1' = 29 /\ i_mutex_5' = i_mutex_5 + 1
+  p_create_pc_1 = 29  ->  p_create_pc_1' = 0 /\ p_begin_1' = 0
+  p_create_pc_1 = 30 /\ p_parent_1 = 1  ->  p_create_pc_1' = 31 /\ d_subdirs_1' = d_subdirs_1 + 1
+  p_create_pc_1 = 30 /\ p_parent_1 = 2  ->  p_create_pc_1' = 31 /\ d_subdirs_2' = d_subdirs_2 + 1
+  p_create_pc_1 = 30 /\ p_parent_1 = 3  ->  p_create_pc_1' = 31 /\ d_subdirs_3' = d_subdirs_3 + 1
+  p_create_pc_1 = 30 /\ p_parent_1 = 4  ->  p_create_pc_1' = 31 /\ d_subdirs_4' = d_subdirs_4 + 1
+  p_create_pc_1 = 30 /\ p_parent_1 = 5  ->  p_create_pc_1' = 31 /\ d_subdirs_5' = d_subdirs_5 + 1
+  p_create_pc_1 = 31 /\ p_file_1 = 2 /\ p_parent_1 = 1  ->  p_create_pc_1' = 32 /\ d_count_2' = d_count_2 - 1 /\ d_count_1' = d_count_1 - 1
+  p_create_pc_1 = 31 /\ p_file_1 = 2 /\ p_parent_1 = 2  ->  p_create_pc_1' = 32 /\ d_count_2' = d_count_2 - 1
+  p_create_pc_1 = 31 /\ p_file_1 = 2 /\ p_parent_1 = 3  ->  p_create_pc_1' = 32 /\ d_count_2' = d_count_2 - 1 /\ d_count_3' = d_count_3 - 1
+  p_create_pc_1 = 31 /\ p_file_1 = 2 /\ p_parent_1 = 4  ->  p_create_pc_1' = 32 /\ d_count_2' = d_count_2 - 1 /\ d_count_4' = d_count_4 - 1
+  p_create_pc_1 = 31 /\ p_file_1 = 2 /\ p_parent_1 = 5  ->  p_create_pc_1' = 32 /\ d_count_2' = d_count_2 - 1 /\ d_count_5' = d_count_5 - 1
+  p_create_pc_1 = 31 /\ p_file_1 = 3 /\ p_parent_1 = 1  ->  p_create_pc_1' = 32 /\ d_count_3' = d_count_3 - 1 /\ d_count_1' = d_count_1 - 1
+  p_create_pc_1 = 31 /\ p_file_1 = 3 /\ p_parent_1 = 2  ->  p_create_pc_1' = 32 /\ d_count_3' = d_count_3 - 1 /\ d_count_2' = d_count_2 - 1
+  p_create_pc_1 = 31 /\ p_file_1 = 3 /\ p_parent_1 = 3  ->  p_create_pc_1' = 32 /\ d_count_3' = d_count_3 - 1
+  p_create_pc_1 = 31 /\ p_file_1 = 3 /\ p_parent_1 = 4  ->  p_create_pc_1' = 32 /\ d_count_3' = d_count_3 - 1 /\ d_count_4' = d_count_4 - 1
+  p_create_pc_1 = 31 /\ p_file_1 = 3 /\ p_parent_1 = 5  ->  p_create_pc_1' = 32 /\ d_count_3' = d_count_3 - 1 /\ d_count_5' = d_count_5 - 1
+  p_create_pc_1 = 31 /\ p_file_1 = 4 /\ p_parent_1 = 1  ->  p_create_pc_1' = 32 /\ d_count_4' = d_count_4 - 1 /\ d_count_1' = d_count_1 - 1
+  p_create_pc_1 = 31 /\ p_file_1 = 4 /\ p_parent_1 = 2  ->  p_create_pc_1' = 32 /\ d_count_4' = d_count_4 - 1 /\ d_count_2' = d_count_2 - 1
+  p_create_pc_1 = 31 /\ p_file_1 = 4 /\ p_parent_1 = 3  ->  p_create_pc_1' = 32 /\ d_count_4' = d_count_4 - 1 /\ d_count_3' = d_count_3 - 1
+  p_create_pc_1 = 31 /\ p_file_1 = 4 /\ p_parent_1 = 4  ->  p_create_pc_1' = 32 /\ d_count_4' = d_count_4 - 1
+  p_create_pc_1 = 31 /\ p_file_1 = 4 /\ p_parent_1 = 5  ->  p_create_pc_1' = 32 /\ d_count_4' = d_count_4 - 1 /\ d_count_5' = d_count_5 - 1
+  p_create_pc_1 = 31 /\ p_file_1 = 5 /\ p_parent_1 = 1  ->  p_create_pc_1' = 32 /\ d_count_5' = d_count_5 - 1 /\ d_count_1' = d_count_1 - 1
+  p_create_pc_1 = 31 /\ p_file_1 = 5 /\ p_parent_1 = 2  ->  p_create_pc_1' = 32 /\ d_count_5' = d_count_5 - 1 /\ d_count_2' = d_count_2 - 1
+  p_create_pc_1 = 31 /\ p_file_1 = 5 /\ p_parent_1 = 3  ->  p_create_pc_1' = 32 /\ d_count_5' = d_count_5 - 1 /\ d_count_3' = d_count_3 - 1
+  p_create_pc_1 = 31 /\ p_file_1 = 5 /\ p_parent_1 = 4  ->  p_create_pc_1' = 32 /\ d_count_5' = d_count_5 - 1 /\ d_count_4' = d_count_4 - 1
+  p_create_pc_1 = 31 /\ p_file_1 = 5 /\ p_parent_1 = 5  ->  p_create_pc_1' = 32 /\ d_count_5' = d_count_5 - 1
+  p_create_pc_1 = 32  ->  p_create_pc_1' = 33 /\ dcache_lock' = dcache_lock + 1
+  p_create_pc_1 = 33 /\ p_parent_1 = 1 /\ d_inode_1 = 1  ->  p_create_pc_1' = 34 /\ i_mutex_1' = i_mutex_1 + 1
+  p_create_pc_1 = 33 /\ p_parent_1 = 1 /\ d_inode_1 = 2  ->  p_create_pc_1' = 34 /\ i_mutex_2' = i_mutex_2 + 1
+  p_create_pc_1 = 33 /\ p_parent_1 = 1 /\ d_inode_1 = 3  ->  p_create_pc_1' = 34 /\ i_mutex_3' = i_mutex_3 + 1
+  p_create_pc_1 = 33 /\ p_parent_1 = 1 /\ d_inode_1 = 4  ->  p_create_pc_1' = 34 /\ i_mutex_4' = i_mutex_4 + 1
+  p_create_pc_1 = 33 /\ p_parent_1 = 1 /\ d_inode_1 = 5  ->  p_create_pc_1' = 34 /\ i_mutex_5' = i_mutex_5 + 1
+  p_create_pc_1 = 33 /\ p_parent_1 = 2 /\ d_inode_2 = 1  ->  p_create_pc_1' = 34 /\ i_mutex_1' = i_mutex_1 + 1
+  p_create_pc_1 = 33 /\ p_parent_1 = 2 /\ d_inode_2 = 2  ->  p_create_pc_1' = 34 /\ i_mutex_2' = i_mutex_2 + 1
+  p_create_pc_1 = 33 /\ p_parent_1 = 2 /\ d_inode_2 = 3  ->  p_create_pc_1' = 34 /\ i_mutex_3' = i_mutex_3 + 1
+  p_create_pc_1 = 33 /\ p_parent_1 = 2 /\ d_inode_2 = 4  ->  p_create_pc_1' = 34 /\ i_mutex_4' = i_mutex_4 + 1
+  p_create_pc_1 = 33 /\ p_parent_1 = 2 /\ d_inode_2 = 5  ->  p_create_pc_1' = 34 /\ i_mutex_5' = i_mutex_5 + 1
+  p_create_pc_1 = 33 /\ p_parent_1 = 3 /\ d_inode_3 = 1  ->  p_create_pc_1' = 34 /\ i_mutex_1' = i_mutex_1 + 1
+  p_create_pc_1 = 33 /\ p_parent_1 = 3 /\ d_inode_3 = 2  ->  p_create_pc_1' = 34 /\ i_mutex_2' = i_mutex_2 + 1
+  p_create_pc_1 = 33 /\ p_parent_1 = 3 /\ d_inode_3 = 3  ->  p_create_pc_1' = 34 /\ i_mutex_3' = i_mutex_3 + 1
+  p_create_pc_1 = 33 /\ p_parent_1 = 3 /\ d_inode_3 = 4  ->  p_create_pc_1' = 34 /\ i_mutex_4' = i_mutex_4 + 1
+  p_create_pc_1 = 33 /\ p_parent_1 = 3 /\ d_inode_3 = 5  ->  p_create_pc_1' = 34 /\ i_mutex_5' = i_mutex_5 + 1
+  p_create_pc_1 = 33 /\ p_parent_1 = 4 /\ d_inode_4 = 1  ->  p_create_pc_1' = 34 /\ i_mutex_1' = i_mutex_1 + 1
+  p_create_pc_1 = 33 /\ p_parent_1 = 4 /\ d_inode_4 = 2  ->  p_create_pc_1' = 34 /\ i_mutex_2' = i_mutex_2 + 1
+  p_create_pc_1 = 33 /\ p_parent_1 = 4 /\ d_inode_4 = 3  ->  p_create_pc_1' = 34 /\ i_mutex_3' = i_mutex_3 + 1
+  p_create_pc_1 = 33 /\ p_parent_1 = 4 /\ d_inode_4 = 4  ->  p_create_pc_1' = 34 /\ i_mutex_4' = i_mutex_4 + 1
+  p_create_pc_1 = 33 /\ p_parent_1 = 4 /\ d_inode_4 = 5  ->  p_create_pc_1' = 34 /\ i_mutex_5' = i_mutex_5 + 1
+  p_create_pc_1 = 33 /\ p_parent_1 = 5 /\ d_inode_5 = 1  ->  p_create_pc_1' = 34 /\ i_mutex_1' = i_mutex_1 + 1
+  p_create_pc_1 = 33 /\ p_parent_1 = 5 /\ d_inode_5 = 2  ->  p_create_pc_1' = 34 /\ i_mutex_2' = i_mutex_2 + 1
+  p_create_pc_1 = 33 /\ p_parent_1 = 5 /\ d_inode_5 = 3  ->  p_create_pc_1' = 34 /\ i_mutex_3' = i_mutex_3 + 1
+  p_create_pc_1 = 33 /\ p_parent_1 = 5 /\ d_inode_5 = 4  ->  p_create_pc_1' = 34 /\ i_mutex_4' = i_mutex_4 + 1
+  p_create_pc_1 = 33 /\ p_parent_1 = 5 /\ d_inode_5 = 5  ->  p_create_pc_1' = 34 /\ i_mutex_5' = i_mutex_5 + 1
+  p_create_pc_1 = 34  ->  p_create_pc_1' = 0 /\ p_begin_1' = 0
+
+  p_begin_1 = 2 /\ p_unlink_pc_1 = 0 /\ p_file_1 = 2 /\ d_allocated_2 = 0  ->  p_unlink_pc_1' = 1
+  p_begin_1 = 2 /\ p_unlink_pc_1 = 0 /\ p_file_1 = 2 /\ d_allocated_2 > 0  ->  p_unlink_pc_1' = 2
+  p_begin_1 = 2 /\ p_unlink_pc_1 = 0 /\ p_file_1 = 3 /\ d_allocated_3 = 0  ->  p_unlink_pc_1' = 1
+  p_begin_1 = 2 /\ p_unlink_pc_1 = 0 /\ p_file_1 = 3 /\ d_allocated_3 > 0  ->  p_unlink_pc_1' = 2
+  p_begin_1 = 2 /\ p_unlink_pc_1 = 0 /\ p_file_1 = 4 /\ d_allocated_4 = 0  ->  p_unlink_pc_1' = 1
+  p_begin_1 = 2 /\ p_unlink_pc_1 = 0 /\ p_file_1 = 4 /\ d_allocated_4 > 0  ->  p_unlink_pc_1' = 2
+  p_begin_1 = 2 /\ p_unlink_pc_1 = 0 /\ p_file_1 = 5 /\ d_allocated_5 = 0  ->  p_unlink_pc_1' = 1
+  p_begin_1 = 2 /\ p_unlink_pc_1 = 0 /\ p_file_1 = 5 /\ d_allocated_5 > 0  ->  p_unlink_pc_1' = 2
+  p_unlink_pc_1 = 1  ->  p_unlink_pc_1' = 0 /\ p_begin_1' = 0
+  p_unlink_pc_1 = 2 /\ p_file_1 = 2 /\ d_parent_2 = 1 /\ dcache_lock > 0  ->  p_unlink_pc_1' = 3 /\ p_parent_1' = d_parent_2 /\ d_count_1' = d_count_1 + d_allocated_1 /\ d_count_2' = d_count_2 + d_allocated_2
+  p_unlink_pc_1 = 2 /\ p_file_1 = 2 /\ d_parent_2 = 2 /\ dcache_lock > 0  ->  p_unlink_pc_1' = 3 /\ p_parent_1' = d_parent_2 /\ d_count_2' = d_count_2 + d_allocated_2
+  p_unlink_pc_1 = 2 /\ p_file_1 = 2 /\ d_parent_2 = 3 /\ dcache_lock > 0  ->  p_unlink_pc_1' = 3 /\ p_parent_1' = d_parent_2 /\ d_count_3' = d_count_3 + d_allocated_3 /\ d_count_2' = d_count_2 + d_allocated_2
+  p_unlink_pc_1 = 2 /\ p_file_1 = 2 /\ d_parent_2 = 4 /\ dcache_lock > 0  ->  p_unlink_pc_1' = 3 /\ p_parent_1' = d_parent_2 /\ d_count_4' = d_count_4 + d_allocated_4 /\ d_count_2' = d_count_2 + d_allocated_2
+  p_unlink_pc_1 = 2 /\ p_file_1 = 2 /\ d_parent_2 = 5 /\ dcache_lock > 0  ->  p_unlink_pc_1' = 3 /\ p_parent_1' = d_parent_2 /\ d_count_5' = d_count_5 + d_allocated_5 /\ d_count_2' = d_count_2 + d_allocated_2
+  p_unlink_pc_1 = 2 /\ p_file_1 = 3 /\ d_parent_3 = 1 /\ dcache_lock > 0  ->  p_unlink_pc_1' = 3 /\ p_parent_1' = d_parent_3 /\ d_count_1' = d_count_1 + d_allocated_1 /\ d_count_3' = d_count_3 + d_allocated_3
+  p_unlink_pc_1 = 2 /\ p_file_1 = 3 /\ d_parent_3 = 2 /\ dcache_lock > 0  ->  p_unlink_pc_1' = 3 /\ p_parent_1' = d_parent_3 /\ d_count_2' = d_count_2 + d_allocated_2 /\ d_count_3' = d_count_3 + d_allocated_3
+  p_unlink_pc_1 = 2 /\ p_file_1 = 3 /\ d_parent_3 = 3 /\ dcache_lock > 0  ->  p_unlink_pc_1' = 3 /\ p_parent_1' = d_parent_3 /\ d_count_3' = d_count_3 + d_allocated_3
+  p_unlink_pc_1 = 2 /\ p_file_1 = 3 /\ d_parent_3 = 4 /\ dcache_lock > 0  ->  p_unlink_pc_1' = 3 /\ p_parent_1' = d_parent_3 /\ d_count_4' = d_count_4 + d_allocated_4 /\ d_count_3' = d_count_3 + d_allocated_3
+  p_unlink_pc_1 = 2 /\ p_file_1 = 3 /\ d_parent_3 = 5 /\ dcache_lock > 0  ->  p_unlink_pc_1' = 3 /\ p_parent_1' = d_parent_3 /\ d_count_5' = d_count_5 + d_allocated_5 /\ d_count_3' = d_count_3 + d_allocated_3
+  p_unlink_pc_1 = 2 /\ p_file_1 = 4 /\ d_parent_4 = 1 /\ dcache_lock > 0  ->  p_unlink_pc_1' = 3 /\ p_parent_1' = d_parent_4 /\ d_count_1' = d_count_1 + d_allocated_1 /\ d_count_4' = d_count_4 + d_allocated_4
+  p_unlink_pc_1 = 2 /\ p_file_1 = 4 /\ d_parent_4 = 2 /\ dcache_lock > 0  ->  p_unlink_pc_1' = 3 /\ p_parent_1' = d_parent_4 /\ d_count_2' = d_count_2 + d_allocated_2 /\ d_count_4' = d_count_4 + d_allocated_4
+  p_unlink_pc_1 = 2 /\ p_file_1 = 4 /\ d_parent_4 = 3 /\ dcache_lock > 0  ->  p_unlink_pc_1' = 3 /\ p_parent_1' = d_parent_4 /\ d_count_3' = d_count_3 + d_allocated_3 /\ d_count_4' = d_count_4 + d_allocated_4
+  p_unlink_pc_1 = 2 /\ p_file_1 = 4 /\ d_parent_4 = 4 /\ dcache_lock > 0  ->  p_unlink_pc_1' = 3 /\ p_parent_1' = d_parent_4 /\ d_count_4' = d_count_4 + d_allocated_4
+  p_unlink_pc_1 = 2 /\ p_file_1 = 4 /\ d_parent_4 = 5 /\ dcache_lock > 0  ->  p_unlink_pc_1' = 3 /\ p_parent_1' = d_parent_4 /\ d_count_5' = d_count_5 + d_allocated_5 /\ d_count_4' = d_count_4 + d_allocated_4
+  p_unlink_pc_1 = 2 /\ p_file_1 = 5 /\ d_parent_5 = 1 /\ dcache_lock > 0  ->  p_unlink_pc_1' = 3 /\ p_parent_1' = d_parent_5 /\ d_count_1' = d_count_1 + d_allocated_1 /\ d_count_5' = d_count_5 + d_allocated_5
+  p_unlink_pc_1 = 2 /\ p_file_1 = 5 /\ d_parent_5 = 2 /\ dcache_lock > 0  ->  p_unlink_pc_1' = 3 /\ p_parent_1' = d_parent_5 /\ d_count_2' = d_count_2 + d_allocated_2 /\ d_count_5' = d_count_5 + d_allocated_5
+  p_unlink_pc_1 = 2 /\ p_file_1 = 5 /\ d_parent_5 = 3 /\ dcache_lock > 0  ->  p_unlink_pc_1' = 3 /\ p_parent_1' = d_parent_5 /\ d_count_3' = d_count_3 + d_allocated_3 /\ d_count_5' = d_count_5 + d_allocated_5
+  p_unlink_pc_1 = 2 /\ p_file_1 = 5 /\ d_parent_5 = 4 /\ dcache_lock > 0  ->  p_unlink_pc_1' = 3 /\ p_parent_1' = d_parent_5 /\ d_count_4' = d_count_4 + d_allocated_4 /\ d_count_5' = d_count_5 + d_allocated_5
+  p_unlink_pc_1 = 2 /\ p_file_1 = 5 /\ d_parent_5 = 5 /\ dcache_lock > 0  ->  p_unlink_pc_1' = 3 /\ p_parent_1' = d_parent_5 /\ d_count_5' = d_count_5 + d_allocated_5
+  p_unlink_pc_1 = 3 /\ p_file_1 = 2 /\ d_subdirs_2 > 0  ->  p_unlink_pc_1' = 4
+  p_unlink_pc_1 = 3 /\ p_file_1 = 2 /\ d_subdirs_2 = 0  ->  p_unlink_pc_1' = 6
+  p_unlink_pc_1 = 3 /\ p_file_1 = 3 /\ d_subdirs_3 > 0  ->  p_unlink_pc_1' = 4
+  p_unlink_pc_1 = 3 /\ p_file_1 = 3 /\ d_subdirs_3 = 0  ->  p_unlink_pc_1' = 6
+  p_unlink_pc_1 = 3 /\ p_file_1 = 4 /\ d_subdirs_4 > 0  ->  p_unlink_pc_1' = 4
+  p_unlink_pc_1 = 3 /\ p_file_1 = 4 /\ d_subdirs_4 = 0  ->  p_unlink_pc_1' = 6
+  p_unlink_pc_1 = 3 /\ p_file_1 = 5 /\ d_subdirs_5 > 0  ->  p_unlink_pc_1' = 4
+  p_unlink_pc_1 = 3 /\ p_file_1 = 5 /\ d_subdirs_5 = 0  ->  p_unlink_pc_1' = 6
+  p_unlink_pc_1 = 4 /\ p_file_1 = 2 /\ p_parent_1 = 1  ->  p_unlink_pc_1' = 5 /\ d_count_2' = d_count_2 - d_allocated_2 /\ d_count_1' = d_count_1 - d_allocated_1
+  p_unlink_pc_1 = 4 /\ p_file_1 = 2 /\ p_parent_1 = 2  ->  p_unlink_pc_1' = 5 /\ d_count_2' = d_count_2 - d_allocated_2
+  p_unlink_pc_1 = 4 /\ p_file_1 = 2 /\ p_parent_1 = 3  ->  p_unlink_pc_1' = 5 /\ d_count_2' = d_count_2 - d_allocated_2 /\ d_count_3' = d_count_3 - d_allocated_3
+  p_unlink_pc_1 = 4 /\ p_file_1 = 2 /\ p_parent_1 = 4  ->  p_unlink_pc_1' = 5 /\ d_count_2' = d_count_2 - d_allocated_2 /\ d_count_4' = d_count_4 - d_allocated_4
+  p_unlink_pc_1 = 4 /\ p_file_1 = 2 /\ p_parent_1 = 5  ->  p_unlink_pc_1' = 5 /\ d_count_2' = d_count_2 - d_allocated_2 /\ d_count_5' = d_count_5 - d_allocated_5
+  p_unlink_pc_1 = 4 /\ p_file_1 = 3 /\ p_parent_1 = 1  ->  p_unlink_pc_1' = 5 /\ d_count_3' = d_count_3 - d_allocated_3 /\ d_count_1' = d_count_1 - d_allocated_1
+  p_unlink_pc_1 = 4 /\ p_file_1 = 3 /\ p_parent_1 = 2  ->  p_unlink_pc_1' = 5 /\ d_count_3' = d_count_3 - d_allocated_3 /\ d_count_2' = d_count_2 - d_allocated_2
+  p_unlink_pc_1 = 4 /\ p_file_1 = 3 /\ p_parent_1 = 3  ->  p_unlink_pc_1' = 5 /\ d_count_3' = d_count_3 - d_allocated_3
+  p_unlink_pc_1 = 4 /\ p_file_1 = 3 /\ p_parent_1 = 4  ->  p_unlink_pc_1' = 5 /\ d_count_3' = d_count_3 - d_allocated_3 /\ d_count_4' = d_count_4 - d_allocated_4
+  p_unlink_pc_1 = 4 /\ p_file_1 = 3 /\ p_parent_1 = 5  ->  p_unlink_pc_1' = 5 /\ d_count_3' = d_count_3 - d_allocated_3 /\ d_count_5' = d_count_5 - d_allocated_5
+  p_unlink_pc_1 = 4 /\ p_file_1 = 4 /\ p_parent_1 = 1  ->  p_unlink_pc_1' = 5 /\ d_count_4' = d_count_4 - d_allocated_4 /\ d_count_1' = d_count_1 - d_allocated_1
+  p_unlink_pc_1 = 4 /\ p_file_1 = 4 /\ p_parent_1 = 2  ->  p_unlink_pc_1' = 5 /\ d_count_4' = d_count_4 - d_allocated_4 /\ d_count_2' = d_count_2 - d_allocated_2
+  p_unlink_pc_1 = 4 /\ p_file_1 = 4 /\ p_parent_1 = 3  ->  p_unlink_pc_1' = 5 /\ d_count_4' = d_count_4 - d_allocated_4 /\ d_count_3' = d_count_3 - d_allocated_3
+  p_unlink_pc_1 = 4 /\ p_file_1 = 4 /\ p_parent_1 = 4  ->  p_unlink_pc_1' = 5 /\ d_count_4' = d_count_4 - d_allocated_4
+  p_unlink_pc_1 = 4 /\ p_file_1 = 4 /\ p_parent_1 = 5  ->  p_unlink_pc_1' = 5 /\ d_count_4' = d_count_4 - d_allocated_4 /\ d_count_5' = d_count_5 - d_allocated_5
+  p_unlink_pc_1 = 4 /\ p_file_1 = 5 /\ p_parent_1 = 1  ->  p_unlink_pc_1' = 5 /\ d_count_5' = d_count_5 - d_allocated_5 /\ d_count_1' = d_count_1 - d_allocated_1
+  p_unlink_pc_1 = 4 /\ p_file_1 = 5 /\ p_parent_1 = 2  ->  p_unlink_pc_1' = 5 /\ d_count_5' = d_count_5 - d_allocated_5 /\ d_count_2' = d_count_2 - d_allocated_2
+  p_unlink_pc_1 = 4 /\ p_file_1 = 5 /\ p_parent_1 = 3  ->  p_unlink_pc_1' = 5 /\ d_count_5' = d_count_5 - d_allocated_5 /\ d_count_3' = d_count_3 - d_allocated_3
+  p_unlink_pc_1 = 4 /\ p_file_1 = 5 /\ p_parent_1 = 4  ->  p_unlink_pc_1' = 5 /\ d_count_5' = d_count_5 - d_allocated_5 /\ d_count_4' = d_count_4 - d_allocated_4
+  p_unlink_pc_1 = 4 /\ p_file_1 = 5 /\ p_parent_1 = 5  ->  p_unlink_pc_1' = 5 /\ d_count_5' = d_count_5 - d_allocated_5
+  p_unlink_pc_1 = 5  ->  p_unlink_pc_1' = 0 /\ p_begin_1' = 0
+  p_unlink_pc_1 = 6 /\ p_file_1 = 2 /\ d_inode_2 = 1 /\ i_mutex_1 > 0  ->  p_unlink_pc_1' = 7 /\ i_mutex_1' = i_mutex_1 - 1
+  p_unlink_pc_1 = 6 /\ p_file_1 = 2 /\ d_inode_2 = 2 /\ i_mutex_2 > 0  ->  p_unlink_pc_1' = 7 /\ i_mutex_2' = i_mutex_2 - 1
+  p_unlink_pc_1 = 6 /\ p_file_1 = 2 /\ d_inode_2 = 3 /\ i_mutex_3 > 0  ->  p_unlink_pc_1' = 7 /\ i_mutex_3' = i_mutex_3 - 1
+  p_unlink_pc_1 = 6 /\ p_file_1 = 2 /\ d_inode_2 = 4 /\ i_mutex_4 > 0  ->  p_unlink_pc_1' = 7 /\ i_mutex_4' = i_mutex_4 - 1
+  p_unlink_pc_1 = 6 /\ p_file_1 = 2 /\ d_inode_2 = 5 /\ i_mutex_5 > 0  ->  p_unlink_pc_1' = 7 /\ i_mutex_5' = i_mutex_5 - 1
+  p_unlink_pc_1 = 6 /\ p_file_1 = 3 /\ d_inode_3 = 1 /\ i_mutex_1 > 0  ->  p_unlink_pc_1' = 7 /\ i_mutex_1' = i_mutex_1 - 1
+  p_unlink_pc_1 = 6 /\ p_file_1 = 3 /\ d_inode_3 = 2 /\ i_mutex_2 > 0  ->  p_unlink_pc_1' = 7 /\ i_mutex_2' = i_mutex_2 - 1
+  p_unlink_pc_1 = 6 /\ p_file_1 = 3 /\ d_inode_3 = 3 /\ i_mutex_3 > 0  ->  p_unlink_pc_1' = 7 /\ i_mutex_3' = i_mutex_3 - 1
+  p_unlink_pc_1 = 6 /\ p_file_1 = 3 /\ d_inode_3 = 4 /\ i_mutex_4 > 0  ->  p_unlink_pc_1' = 7 /\ i_mutex_4' = i_mutex_4 - 1
+  p_unlink_pc_1 = 6 /\ p_file_1 = 3 /\ d_inode_3 = 5 /\ i_mutex_5 > 0  ->  p_unlink_pc_1' = 7 /\ i_mutex_5' = i_mutex_5 - 1
+  p_unlink_pc_1 = 6 /\ p_file_1 = 4 /\ d_inode_4 = 1 /\ i_mutex_1 > 0  ->  p_unlink_pc_1' = 7 /\ i_mutex_1' = i_mutex_1 - 1
+  p_unlink_pc_1 = 6 /\ p_file_1 = 4 /\ d_inode_4 = 2 /\ i_mutex_2 > 0  ->  p_unlink_pc_1' = 7 /\ i_mutex_2' = i_mutex_2 - 1
+  p_unlink_pc_1 = 6 /\ p_file_1 = 4 /\ d_inode_4 = 3 /\ i_mutex_3 > 0  ->  p_unlink_pc_1' = 7 /\ i_mutex_3' = i_mutex_3 - 1
+  p_unlink_pc_1 = 6 /\ p_file_1 = 4 /\ d_inode_4 = 4 /\ i_mutex_4 > 0  ->  p_unlink_pc_1' = 7 /\ i_mutex_4' = i_mutex_4 - 1
+  p_unlink_pc_1 = 6 /\ p_file_1 = 4 /\ d_inode_4 = 5 /\ i_mutex_5 > 0  ->  p_unlink_pc_1' = 7 /\ i_mutex_5' = i_mutex_5 - 1
+  p_unlink_pc_1 = 6 /\ p_file_1 = 5 /\ d_inode_5 = 1 /\ i_mutex_1 > 0  ->  p_unlink_pc_1' = 7 /\ i_mutex_1' = i_mutex_1 - 1
+  p_unlink_pc_1 = 6 /\ p_file_1 = 5 /\ d_inode_5 = 2 /\ i_mutex_2 > 0  ->  p_unlink_pc_1' = 7 /\ i_mutex_2' = i_mutex_2 - 1
+  p_unlink_pc_1 = 6 /\ p_file_1 = 5 /\ d_inode_5 = 3 /\ i_mutex_3 > 0  ->  p_unlink_pc_1' = 7 /\ i_mutex_3' = i_mutex_3 - 1
+  p_unlink_pc_1 = 6 /\ p_file_1 = 5 /\ d_inode_5 = 4 /\ i_mutex_4 > 0  ->  p_unlink_pc_1' = 7 /\ i_mutex_4' = i_mutex_4 - 1
+  p_unlink_pc_1 = 6 /\ p_file_1 = 5 /\ d_inode_5 = 5 /\ i_mutex_5 > 0  ->  p_unlink_pc_1' = 7 /\ i_mutex_5' = i_mutex_5 - 1
+  p_unlink_pc_1 = 7 /\ dcache_lock > 0  ->  p_unlink_pc_1' = 8 /\ dcache_lock' = dcache_lock - 1
+  p_unlink_pc_1 = 8 /\ p_file_1 = 2 /\ d_count_2 > 0  ->  p_unlink_pc_1' = 9
+  p_unlink_pc_1 = 8 /\ p_file_1 = 2 /\ d_count_2 = 0  ->  p_unlink_pc_1' = 13
+  p_unlink_pc_1 = 8 /\ p_file_1 = 3 /\ d_count_3 > 0  ->  p_unlink_pc_1' = 9
+  p_unlink_pc_1 = 8 /\ p_file_1 = 3 /\ d_count_3 = 0  ->  p_unlink_pc_1' = 13
+  p_unlink_pc_1 = 8 /\ p_file_1 = 4 /\ d_count_4 > 0  ->  p_unlink_pc_1' = 9
+  p_unlink_pc_1 = 8 /\ p_file_1 = 4 /\ d_count_4 = 0  ->  p_unlink_pc_1' = 13
+  p_unlink_pc_1 = 8 /\ p_file_1 = 5 /\ d_count_5 > 0  ->  p_unlink_pc_1' = 9
+  p_unlink_pc_1 = 8 /\ p_file_1 = 5 /\ d_count_5 = 0  ->  p_unlink_pc_1' = 13
+  p_unlink_pc_1 = 9 /\ p_file_1 = 2 /\ d_lock_2 > 0  ->  p_unlink_pc_1' = 10 /\ d_lock_2' = d_lock_2 - 1
+  p_unlink_pc_1 = 9 /\ p_file_1 = 3 /\ d_lock_3 > 0  ->  p_unlink_pc_1' = 10 /\ d_lock_3' = d_lock_3 - 1
+  p_unlink_pc_1 = 9 /\ p_file_1 = 4 /\ d_lock_4 > 0  ->  p_unlink_pc_1' = 10 /\ d_lock_4' = d_lock_4 - 1
+  p_unlink_pc_1 = 9 /\ p_file_1 = 5 /\ d_lock_5 > 0  ->  p_unlink_pc_1' = 10 /\ d_lock_5' = d_lock_5 - 1
+  p_unlink_pc_1 = 10 /\ p_file_1 = 2 /\ d_count_2 = 2  ->  p_unlink_pc_1' = 11
+  p_unlink_pc_1 = 10 /\ p_file_1 = 2 /\ d_count_2 != 2  ->  p_unlink_pc_1' = 12
+  p_unlink_pc_1 = 10 /\ p_file_1 = 3 /\ d_count_3 = 2  ->  p_unlink_pc_1' = 11
+  p_unlink_pc_1 = 10 /\ p_file_1 = 3 /\ d_count_3 != 2  ->  p_unlink_pc_1' = 12
+  p_unlink_pc_1 = 10 /\ p_file_1 = 4 /\ d_count_4 = 2  ->  p_unlink_pc_1' = 11
+  p_unlink_pc_1 = 10 /\ p_file_1 = 4 /\ d_count_4 != 2  ->  p_unlink_pc_1' = 12
+  p_unlink_pc_1 = 10 /\ p_file_1 = 5 /\ d_count_5 = 2  ->  p_unlink_pc_1' = 11
+  p_unlink_pc_1 = 10 /\ p_file_1 = 5 /\ d_count_5 != 2  ->  p_unlink_pc_1' = 12
+  p_unlink_pc_1 = 11 /\ p_file_1 = 2  ->  p_unlink_pc_1' = 12 /\ d_count_2' = 0 /\ d_allocated_2' = 0
+  p_unlink_pc_1 = 11 /\ p_file_1 = 3  ->  p_unlink_pc_1' = 12 /\ d_count_3' = 0 /\ d_allocated_3' = 0
+  p_unlink_pc_1 = 11 /\ p_file_1 = 4  ->  p_unlink_pc_1' = 12 /\ d_count_4' = 0 /\ d_allocated_4' = 0
+  p_unlink_pc_1 = 11 /\ p_file_1 = 5  ->  p_unlink_pc_1' = 12 /\ d_count_5' = 0 /\ d_allocated_5' = 0
+  p_unlink_pc_1 = 12 /\ p_file_1 = 2  ->  p_unlink_pc_1' = 8 /\ d_lock_2' = d_lock_2 + 1
+  p_unlink_pc_1 = 12 /\ p_file_1 = 3  ->  p_unlink_pc_1' = 8 /\ d_lock_3' = d_lock_3 + 1
+  p_unlink_pc_1 = 12 /\ p_file_1 = 4  ->  p_unlink_pc_1' = 8 /\ d_lock_4' = d_lock_4 + 1
+  p_unlink_pc_1 = 12 /\ p_file_1 = 5  ->  p_unlink_pc_1' = 8 /\ d_lock_5' = d_lock_5 + 1
+  p_unlink_pc_1 = 13 /\ inode_lock > 0  ->  p_unlink_pc_1' = 14 /\ inode_lock' = inode_lock - 1
+  p_unlink_pc_1 = 14 /\ p_file_1 = 2 /\ d_inode_2 = 1 /\ i_count_1 > 0  ->  p_unlink_pc_1' = 15
+  p_unlink_pc_1 = 14 /\ p_file_1 = 2 /\ d_inode_2 = 1 /\ i_count_1 = 0  ->  p_unlink_pc_1' = 19
+  p_unlink_pc_1 = 14 /\ p_file_1 = 2 /\ d_inode_2 = 2 /\ i_count_2 > 0  ->  p_unlink_pc_1' = 15
+  p_unlink_pc_1 = 14 /\ p_file_1 = 2 /\ d_inode_2 = 2 /\ i_count_2 = 0  ->  p_unlink_pc_1' = 19
+  p_unlink_pc_1 = 14 /\ p_file_1 = 2 /\ d_inode_2 = 3 /\ i_count_3 > 0  ->  p_unlink_pc_1' = 15
+  p_unlink_pc_1 = 14 /\ p_file_1 = 2 /\ d_inode_2 = 3 /\ i_count_3 = 0  ->  p_unlink_pc_1' = 19
+  p_unlink_pc_1 = 14 /\ p_file_1 = 2 /\ d_inode_2 = 4 /\ i_count_4 > 0  ->  p_unlink_pc_1' = 15
+  p_unlink_pc_1 = 14 /\ p_file_1 = 2 /\ d_inode_2 = 4 /\ i_count_4 = 0  ->  p_unlink_pc_1' = 19
+  p_unlink_pc_1 = 14 /\ p_file_1 = 2 /\ d_inode_2 = 5 /\ i_count_5 > 0  ->  p_unlink_pc_1' = 15
+  p_unlink_pc_1 = 14 /\ p_file_1 = 2 /\ d_inode_2 = 5 /\ i_count_5 = 0  ->  p_unlink_pc_1' = 19
+  p_unlink_pc_1 = 14 /\ p_file_1 = 3 /\ d_inode_3 = 1 /\ i_count_1 > 0  ->  p_unlink_pc_1' = 15
+  p_unlink_pc_1 = 14 /\ p_file_1 = 3 /\ d_inode_3 = 1 /\ i_count_1 = 0  ->  p_unlink_pc_1' = 19
+  p_unlink_pc_1 = 14 /\ p_file_1 = 3 /\ d_inode_3 = 2 /\ i_count_2 > 0  ->  p_unlink_pc_1' = 15
+  p_unlink_pc_1 = 14 /\ p_file_1 = 3 /\ d_inode_3 = 2 /\ i_count_2 = 0  ->  p_unlink_pc_1' = 19
+  p_unlink_pc_1 = 14 /\ p_file_1 = 3 /\ d_inode_3 = 3 /\ i_count_3 > 0  ->  p_unlink_pc_1' = 15
+  p_unlink_pc_1 = 14 /\ p_file_1 = 3 /\ d_inode_3 = 3 /\ i_count_3 = 0  ->  p_unlink_pc_1' = 19
+  p_unlink_pc_1 = 14 /\ p_file_1 = 3 /\ d_inode_3 = 4 /\ i_count_4 > 0  ->  p_unlink_pc_1' = 15
+  p_unlink_pc_1 = 14 /\ p_file_1 = 3 /\ d_inode_3 = 4 /\ i_count_4 = 0  ->  p_unlink_pc_1' = 19
+  p_unlink_pc_1 = 14 /\ p_file_1 = 3 /\ d_inode_3 = 5 /\ i_count_5 > 0  ->  p_unlink_pc_1' = 15
+  p_unlink_pc_1 = 14 /\ p_file_1 = 3 /\ d_inode_3 = 5 /\ i_count_5 = 0  ->  p_unlink_pc_1' = 19
+  p_unlink_pc_1 = 14 /\ p_file_1 = 4 /\ d_inode_4 = 1 /\ i_count_1 > 0  ->  p_unlink_pc_1' = 15
+  p_unlink_pc_1 = 14 /\ p_file_1 = 4 /\ d_inode_4 = 1 /\ i_count_1 = 0  ->  p_unlink_pc_1' = 19
+  p_unlink_pc_1 = 14 /\ p_file_1 = 4 /\ d_inode_4 = 2 /\ i_count_2 > 0  ->  p_unlink_pc_1' = 15
+  p_unlink_pc_1 = 14 /\ p_file_1 = 4 /\ d_inode_4 = 2 /\ i_count_2 = 0  ->  p_unlink_pc_1' = 19
+  p_unlink_pc_1 = 14 /\ p_file_1 = 4 /\ d_inode_4 = 3 /\ i_count_3 > 0  ->  p_unlink_pc_1' = 15
+  p_unlink_pc_1 = 14 /\ p_file_1 = 4 /\ d_inode_4 = 3 /\ i_count_3 = 0  ->  p_unlink_pc_1' = 19
+  p_unlink_pc_1 = 14 /\ p_file_1 = 4 /\ d_inode_4 = 4 /\ i_count_4 > 0  ->  p_unlink_pc_1' = 15
+  p_unlink_pc_1 = 14 /\ p_file_1 = 4 /\ d_inode_4 = 4 /\ i_count_4 = 0  ->  p_unlink_pc_1' = 19
+  p_unlink_pc_1 = 14 /\ p_file_1 = 4 /\ d_inode_4 = 5 /\ i_count_5 > 0  ->  p_unlink_pc_1' = 15
+  p_unlink_pc_1 = 14 /\ p_file_1 = 4 /\ d_inode_4 = 5 /\ i_count_5 = 0  ->  p_unlink_pc_1' = 19
+  p_unlink_pc_1 = 14 /\ p_file_1 = 5 /\ d_inode_5 = 1 /\ i_count_1 > 0  ->  p_unlink_pc_1' = 15
+  p_unlink_pc_1 = 14 /\ p_file_1 = 5 /\ d_inode_5 = 1 /\ i_count_1 = 0  ->  p_unlink_pc_1' = 19
+  p_unlink_pc_1 = 14 /\ p_file_1 = 5 /\ d_inode_5 = 2 /\ i_count_2 > 0  ->  p_unlink_pc_1' = 15
+  p_unlink_pc_1 = 14 /\ p_file_1 = 5 /\ d_inode_5 = 2 /\ i_count_2 = 0  ->  p_unlink_pc_1' = 19
+  p_unlink_pc_1 = 14 /\ p_file_1 = 5 /\ d_inode_5 = 3 /\ i_count_3 > 0  ->  p_unlink_pc_1' = 15
+  p_unlink_pc_1 = 14 /\ p_file_1 = 5 /\ d_inode_5 = 3 /\ i_count_3 = 0  ->  p_unlink_pc_1' = 19
+  p_unlink_pc_1 = 14 /\ p_file_1 = 5 /\ d_inode_5 = 4 /\ i_count_4 > 0  ->  p_unlink_pc_1' = 15
+  p_unlink_pc_1 = 14 /\ p_file_1 = 5 /\ d_inode_5 = 4 /\ i_count_4 = 0  ->  p_unlink_pc_1' = 19
+  p_unlink_pc_1 = 14 /\ p_file_1 = 5 /\ d_inode_5 = 5 /\ i_count_5 > 0  ->  p_unlink_pc_1' = 15
+  p_unlink_pc_1 = 14 /\ p_file_1 = 5 /\ d_inode_5 = 5 /\ i_count_5 = 0  ->  p_unlink_pc_1' = 19
+  p_unlink_pc_1 = 15 /\ p_file_1 = 2 /\ d_inode_2 = 1 /\ i_lock_1 > 0  ->  p_unlink_pc_1' = 16 /\ i_lock_1' = i_lock_1 - 1
+  p_unlink_pc_1 = 15 /\ p_file_1 = 2 /\ d_inode_2 = 2 /\ i_lock_2 > 0  ->  p_unlink_pc_1' = 16 /\ i_lock_2' = i_lock_2 - 1
+  p_unlink_pc_1 = 15 /\ p_file_1 = 2 /\ d_inode_2 = 3 /\ i_lock_3 > 0  ->  p_unlink_pc_1' = 16 /\ i_lock_3' = i_lock_3 - 1
+  p_unlink_pc_1 = 15 /\ p_file_1 = 2 /\ d_inode_2 = 4 /\ i_lock_4 > 0  ->  p_unlink_pc_1' = 16 /\ i_lock_4' = i_lock_4 - 1
+  p_unlink_pc_1 = 15 /\ p_file_1 = 2 /\ d_inode_2 = 5 /\ i_lock_5 > 0  ->  p_unlink_pc_1' = 16 /\ i_lock_5' = i_lock_5 - 1
+  p_unlink_pc_1 = 15 /\ p_file_1 = 3 /\ d_inode_3 = 1 /\ i_lock_1 > 0  ->  p_unlink_pc_1' = 16 /\ i_lock_1' = i_lock_1 - 1
+  p_unlink_pc_1 = 15 /\ p_file_1 = 3 /\ d_inode_3 = 2 /\ i_lock_2 > 0  ->  p_unlink_pc_1' = 16 /\ i_lock_2' = i_lock_2 - 1
+  p_unlink_pc_1 = 15 /\ p_file_1 = 3 /\ d_inode_3 = 3 /\ i_lock_3 > 0  ->  p_unlink_pc_1' = 16 /\ i_lock_3' = i_lock_3 - 1
+  p_unlink_pc_1 = 15 /\ p_file_1 = 3 /\ d_inode_3 = 4 /\ i_lock_4 > 0  ->  p_unlink_pc_1' = 16 /\ i_lock_4' = i_lock_4 - 1
+  p_unlink_pc_1 = 15 /\ p_file_1 = 3 /\ d_inode_3 = 5 /\ i_lock_5 > 0  ->  p_unlink_pc_1' = 16 /\ i_lock_5' = i_lock_5 - 1
+  p_unlink_pc_1 = 15 /\ p_file_1 = 4 /\ d_inode_4 = 1 /\ i_lock_1 > 0  ->  p_unlink_pc_1' = 16 /\ i_lock_1' = i_lock_1 - 1
+  p_unlink_pc_1 = 15 /\ p_file_1 = 4 /\ d_inode_4 = 2 /\ i_lock_2 > 0  ->  p_unlink_pc_1' = 16 /\ i_lock_2' = i_lock_2 - 1
+  p_unlink_pc_1 = 15 /\ p_file_1 = 4 /\ d_inode_4 = 3 /\ i_lock_3 > 0  ->  p_unlink_pc_1' = 16 /\ i_lock_3' = i_lock_3 - 1
+  p_unlink_pc_1 = 15 /\ p_file_1 = 4 /\ d_inode_4 = 4 /\ i_lock_4 > 0  ->  p_unlink_pc_1' = 16 /\ i_lock_4' = i_lock_4 - 1
+  p_unlink_pc_1 = 15 /\ p_file_1 = 4 /\ d_inode_4 = 5 /\ i_lock_5 > 0  ->  p_unlink_pc_1' = 16 /\ i_lock_5' = i_lock_5 - 1
+  p_unlink_pc_1 = 15 /\ p_file_1 = 5 /\ d_inode_5 = 1 /\ i_lock_1 > 0  ->  p_unlink_pc_1' = 16 /\ i_lock_1' = i_lock_1 - 1
+  p_unlink_pc_1 = 15 /\ p_file_1 = 5 /\ d_inode_5 = 2 /\ i_lock_2 > 0  ->  p_unlink_pc_1' = 16 /\ i_lock_2' = i_lock_2 - 1
+  p_unlink_pc_1 = 15 /\ p_file_1 = 5 /\ d_inode_5 = 3 /\ i_lock_3 > 0  ->  p_unlink_pc_1' = 16 /\ i_lock_3' = i_lock_3 - 1
+  p_unlink_pc_1 = 15 /\ p_file_1 = 5 /\ d_inode_5 = 4 /\ i_lock_4 > 0  ->  p_unlink_pc_1' = 16 /\ i_lock_4' = i_lock_4 - 1
+  p_unlink_pc_1 = 15 /\ p_file_1 = 5 /\ d_inode_5 = 5 /\ i_lock_5 > 0  ->  p_unlink_pc_1' = 16 /\ i_lock_5' = i_lock_5 - 1
+  p_unlink_pc_1 = 16 /\ p_file_1 = 2 /\ d_inode_2 = 1 /\ i_count_1 = 1  ->  p_unlink_pc_1' = 17
+  p_unlink_pc_1 = 16 /\ p_file_1 = 2 /\ d_inode_2 = 1 /\ i_count_1 != 1  ->  p_unlink_pc_1' = 18
+  p_unlink_pc_1 = 16 /\ p_file_1 = 2 /\ d_inode_2 = 2 /\ i_count_2 = 1  ->  p_unlink_pc_1' = 17
+  p_unlink_pc_1 = 16 /\ p_file_1 = 2 /\ d_inode_2 = 2 /\ i_count_2 != 1  ->  p_unlink_pc_1' = 18
+  p_unlink_pc_1 = 16 /\ p_file_1 = 2 /\ d_inode_2 = 3 /\ i_count_3 = 1  ->  p_unlink_pc_1' = 17
+  p_unlink_pc_1 = 16 /\ p_file_1 = 2 /\ d_inode_2 = 3 /\ i_count_3 != 1  ->  p_unlink_pc_1' = 18
+  p_unlink_pc_1 = 16 /\ p_file_1 = 2 /\ d_inode_2 = 4 /\ i_count_4 = 1  ->  p_unlink_pc_1' = 17
+  p_unlink_pc_1 = 16 /\ p_file_1 = 2 /\ d_inode_2 = 4 /\ i_count_4 != 1  ->  p_unlink_pc_1' = 18
+  p_unlink_pc_1 = 16 /\ p_file_1 = 2 /\ d_inode_2 = 5 /\ i_count_5 = 1  ->  p_unlink_pc_1' = 17
+  p_unlink_pc_1 = 16 /\ p_file_1 = 2 /\ d_inode_2 = 5 /\ i_count_5 != 1  ->  p_unlink_pc_1' = 18
+  p_unlink_pc_1 = 16 /\ p_file_1 = 3 /\ d_inode_3 = 1 /\ i_count_1 = 1  ->  p_unlink_pc_1' = 17
+  p_unlink_pc_1 = 16 /\ p_file_1 = 3 /\ d_inode_3 = 1 /\ i_count_1 != 1  ->  p_unlink_pc_1' = 18
+  p_unlink_pc_1 = 16 /\ p_file_1 = 3 /\ d_inode_3 = 2 /\ i_count_2 = 1  ->  p_unlink_pc_1' = 17
+  p_unlink_pc_1 = 16 /\ p_file_1 = 3 /\ d_inode_3 = 2 /\ i_count_2 != 1  ->  p_unlink_pc_1' = 18
+  p_unlink_pc_1 = 16 /\ p_file_1 = 3 /\ d_inode_3 = 3 /\ i_count_3 = 1  ->  p_unlink_pc_1' = 17
+  p_unlink_pc_1 = 16 /\ p_file_1 = 3 /\ d_inode_3 = 3 /\ i_count_3 != 1  ->  p_unlink_pc_1' = 18
+  p_unlink_pc_1 = 16 /\ p_file_1 = 3 /\ d_inode_3 = 4 /\ i_count_4 = 1  ->  p_unlink_pc_1' = 17
+  p_unlink_pc_1 = 16 /\ p_file_1 = 3 /\ d_inode_3 = 4 /\ i_count_4 != 1  ->  p_unlink_pc_1' = 18
+  p_unlink_pc_1 = 16 /\ p_file_1 = 3 /\ d_inode_3 = 5 /\ i_count_5 = 1  ->  p_unlink_pc_1' = 17
+  p_unlink_pc_1 = 16 /\ p_file_1 = 3 /\ d_inode_3 = 5 /\ i_count_5 != 1  ->  p_unlink_pc_1' = 18
+  p_unlink_pc_1 = 16 /\ p_file_1 = 4 /\ d_inode_4 = 1 /\ i_count_1 = 1  ->  p_unlink_pc_1' = 17
+  p_unlink_pc_1 = 16 /\ p_file_1 = 4 /\ d_inode_4 = 1 /\ i_count_1 != 1  ->  p_unlink_pc_1' = 18
+  p_unlink_pc_1 = 16 /\ p_file_1 = 4 /\ d_inode_4 = 2 /\ i_count_2 = 1  ->  p_unlink_pc_1' = 17
+  p_unlink_pc_1 = 16 /\ p_file_1 = 4 /\ d_inode_4 = 2 /\ i_count_2 != 1  ->  p_unlink_pc_1' = 18
+  p_unlink_pc_1 = 16 /\ p_file_1 = 4 /\ d_inode_4 = 3 /\ i_count_3 = 1  ->  p_unlink_pc_1' = 17
+  p_unlink_pc_1 = 16 /\ p_file_1 = 4 /\ d_inode_4 = 3 /\ i_count_3 != 1  ->  p_unlink_pc_1' = 18
+  p_unlink_pc_1 = 16 /\ p_file_1 = 4 /\ d_inode_4 = 4 /\ i_count_4 = 1  ->  p_unlink_pc_1' = 17
+  p_unlink_pc_1 = 16 /\ p_file_1 = 4 /\ d_inode_4 = 4 /\ i_count_4 != 1  ->  p_unlink_pc_1' = 18
+  p_unlink_pc_1 = 16 /\ p_file_1 = 4 /\ d_inode_4 = 5 /\ i_count_5 = 1  ->  p_unlink_pc_1' = 17
+  p_unlink_pc_1 = 16 /\ p_file_1 = 4 /\ d_inode_4 = 5 /\ i_count_5 != 1  ->  p_unlink_pc_1' = 18
+  p_unlink_pc_1 = 16 /\ p_file_1 = 5 /\ d_inode_5 = 1 /\ i_count_1 = 1  ->  p_unlink_pc_1' = 17
+  p_unlink_pc_1 = 16 /\ p_file_1 = 5 /\ d_inode_5 = 1 /\ i_count_1 != 1  ->  p_unlink_pc_1' = 18
+  p_unlink_pc_1 = 16 /\ p_file_1 = 5 /\ d_inode_5 = 2 /\ i_count_2 = 1  ->  p_unlink_pc_1' = 17
+  p_unlink_pc_1 = 16 /\ p_file_1 = 5 /\ d_inode_5 = 2 /\ i_count_2 != 1  ->  p_unlink_pc_1' = 18
+  p_unlink_pc_1 = 16 /\ p_file_1 = 5 /\ d_inode_5 = 3 /\ i_count_3 = 1  ->  p_unlink_pc_1' = 17
+  p_unlink_pc_1 = 16 /\ p_file_1 = 5 /\ d_inode_5 = 3 /\ i_count_3 != 1  ->  p_unlink_pc_1' = 18
+  p_unlink_pc_1 = 16 /\ p_file_1 = 5 /\ d_inode_5 = 4 /\ i_count_4 = 1  ->  p_unlink_pc_1' = 17
+  p_unlink_pc_1 = 16 /\ p_file_1 = 5 /\ d_inode_5 = 4 /\ i_count_4 != 1  ->  p_unlink_pc_1' = 18
+  p_unlink_pc_1 = 16 /\ p_file_1 = 5 /\ d_inode_5 = 5 /\ i_count_5 = 1  ->  p_unlink_pc_1' = 17
+  p_unlink_pc_1 = 16 /\ p_file_1 = 5 /\ d_inode_5 = 5 /\ i_count_5 != 1  ->  p_unlink_pc_1' = 18
+  p_unlink_pc_1 = 17 /\ p_file_1 = 2 /\ d_inode_2 = 1  ->  p_unlink_pc_1' = 18 /\ i_count_1' = 0 /\ i_allocated_1' = 0
+  p_unlink_pc_1 = 17 /\ p_file_1 = 2 /\ d_inode_2 = 2  ->  p_unlink_pc_1' = 18 /\ i_count_2' = 0 /\ i_allocated_2' = 0
+  p_unlink_pc_1 = 17 /\ p_file_1 = 2 /\ d_inode_2 = 3  ->  p_unlink_pc_1' = 18 /\ i_count_3' = 0 /\ i_allocated_3' = 0
+  p_unlink_pc_1 = 17 /\ p_file_1 = 2 /\ d_inode_2 = 4  ->  p_unlink_pc_1' = 18 /\ i_count_4' = 0 /\ i_allocated_4' = 0
+  p_unlink_pc_1 = 17 /\ p_file_1 = 2 /\ d_inode_2 = 5  ->  p_unlink_pc_1' = 18 /\ i_count_5' = 0 /\ i_allocated_5' = 0
+  p_unlink_pc_1 = 17 /\ p_file_1 = 3 /\ d_inode_3 = 1  ->  p_unlink_pc_1' = 18 /\ i_count_1' = 0 /\ i_allocated_1' = 0
+  p_unlink_pc_1 = 17 /\ p_file_1 = 3 /\ d_inode_3 = 2  ->  p_unlink_pc_1' = 18 /\ i_count_2' = 0 /\ i_allocated_2' = 0
+  p_unlink_pc_1 = 17 /\ p_file_1 = 3 /\ d_inode_3 = 3  ->  p_unlink_pc_1' = 18 /\ i_count_3' = 0 /\ i_allocated_3' = 0
+  p_unlink_pc_1 = 17 /\ p_file_1 = 3 /\ d_inode_3 = 4  ->  p_unlink_pc_1' = 18 /\ i_count_4' = 0 /\ i_allocated_4' = 0
+  p_unlink_pc_1 = 17 /\ p_file_1 = 3 /\ d_inode_3 = 5  ->  p_unlink_pc_1' = 18 /\ i_count_5' = 0 /\ i_allocated_5' = 0
+  p_unlink_pc_1 = 17 /\ p_file_1 = 4 /\ d_inode_4 = 1  ->  p_unlink_pc_1' = 18 /\ i_count_1' = 0 /\ i_allocated_1' = 0
+  p_unlink_pc_1 = 17 /\ p_file_1 = 4 /\ d_inode_4 = 2  ->  p_unlink_pc_1' = 18 /\ i_count_2' = 0 /\ i_allocated_2' = 0
+  p_unlink_pc_1 = 17 /\ p_file_1 = 4 /\ d_inode_4 = 3  ->  p_unlink_pc_1' = 18 /\ i_count_3' = 0 /\ i_allocated_3' = 0
+  p_unlink_pc_1 = 17 /\ p_file_1 = 4 /\ d_inode_4 = 4  ->  p_unlink_pc_1' = 18 /\ i_count_4' = 0 /\ i_allocated_4' = 0
+  p_unlink_pc_1 = 17 /\ p_file_1 = 4 /\ d_inode_4 = 5  ->  p_unlink_pc_1' = 18 /\ i_count_5' = 0 /\ i_allocated_5' = 0
+  p_unlink_pc_1 = 17 /\ p_file_1 = 5 /\ d_inode_5 = 1  ->  p_unlink_pc_1' = 18 /\ i_count_1' = 0 /\ i_allocated_1' = 0
+  p_unlink_pc_1 = 17 /\ p_file_1 = 5 /\ d_inode_5 = 2  ->  p_unlink_pc_1' = 18 /\ i_count_2' = 0 /\ i_allocated_2' = 0
+  p_unlink_pc_1 = 17 /\ p_file_1 = 5 /\ d_inode_5 = 3  ->  p_unlink_pc_1' = 18 /\ i_count_3' = 0 /\ i_allocated_3' = 0
+  p_unlink_pc_1 = 17 /\ p_file_1 = 5 /\ d_inode_5 = 4  ->  p_unlink_pc_1' = 18 /\ i_count_4' = 0 /\ i_allocated_4' = 0
+  p_unlink_pc_1 = 17 /\ p_file_1 = 5 /\ d_inode_5 = 5  ->  p_unlink_pc_1' = 18 /\ i_count_5' = 0 /\ i_allocated_5' = 0
+  p_unlink_pc_1 = 18 /\ p_file_1 = 2 /\ d_inode_2 = 1  ->  p_unlink_pc_1' = 19 /\ i_lock_1' = i_lock_1 + 1
+  p_unlink_pc_1 = 18 /\ p_file_1 = 2 /\ d_inode_2 = 2  ->  p_unlink_pc_1' = 19 /\ i_lock_2' = i_lock_2 + 1
+  p_unlink_pc_1 = 18 /\ p_file_1 = 2 /\ d_inode_2 = 3  ->  p_unlink_pc_1' = 19 /\ i_lock_3' = i_lock_3 + 1
+  p_unlink_pc_1 = 18 /\ p_file_1 = 2 /\ d_inode_2 = 4  ->  p_unlink_pc_1' = 19 /\ i_lock_4' = i_lock_4 + 1
+  p_unlink_pc_1 = 18 /\ p_file_1 = 2 /\ d_inode_2 = 5  ->  p_unlink_pc_1' = 19 /\ i_lock_5' = i_lock_5 + 1
+  p_unlink_pc_1 = 18 /\ p_file_1 = 3 /\ d_inode_3 = 1  ->  p_unlink_pc_1' = 19 /\ i_lock_1' = i_lock_1 + 1
+  p_unlink_pc_1 = 18 /\ p_file_1 = 3 /\ d_inode_3 = 2  ->  p_unlink_pc_1' = 19 /\ i_lock_2' = i_lock_2 + 1
+  p_unlink_pc_1 = 18 /\ p_file_1 = 3 /\ d_inode_3 = 3  ->  p_unlink_pc_1' = 19 /\ i_lock_3' = i_lock_3 + 1
+  p_unlink_pc_1 = 18 /\ p_file_1 = 3 /\ d_inode_3 = 4  ->  p_unlink_pc_1' = 19 /\ i_lock_4' = i_lock_4 + 1
+  p_unlink_pc_1 = 18 /\ p_file_1 = 3 /\ d_inode_3 = 5  ->  p_unlink_pc_1' = 19 /\ i_lock_5' = i_lock_5 + 1
+  p_unlink_pc_1 = 18 /\ p_file_1 = 4 /\ d_inode_4 = 1  ->  p_unlink_pc_1' = 19 /\ i_lock_1' = i_lock_1 + 1
+  p_unlink_pc_1 = 18 /\ p_file_1 = 4 /\ d_inode_4 = 2  ->  p_unlink_pc_1' = 19 /\ i_lock_2' = i_lock_2 + 1
+  p_unlink_pc_1 = 18 /\ p_file_1 = 4 /\ d_inode_4 = 3  ->  p_unlink_pc_1' = 19 /\ i_lock_3' = i_lock_3 + 1
+  p_unlink_pc_1 = 18 /\ p_file_1 = 4 /\ d_inode_4 = 4  ->  p_unlink_pc_1' = 19 /\ i_lock_4' = i_lock_4 + 1
+  p_unlink_pc_1 = 18 /\ p_file_1 = 4 /\ d_inode_4 = 5  ->  p_unlink_pc_1' = 19 /\ i_lock_5' = i_lock_5 + 1
+  p_unlink_pc_1 = 18 /\ p_file_1 = 5 /\ d_inode_5 = 1  ->  p_unlink_pc_1' = 19 /\ i_lock_1' = i_lock_1 + 1
+  p_unlink_pc_1 = 18 /\ p_file_1 = 5 /\ d_inode_5 = 2  ->  p_unlink_pc_1' = 19 /\ i_lock_2' = i_lock_2 + 1
+  p_unlink_pc_1 = 18 /\ p_file_1 = 5 /\ d_inode_5 = 3  ->  p_unlink_pc_1' = 19 /\ i_lock_3' = i_lock_3 + 1
+  p_unlink_pc_1 = 18 /\ p_file_1 = 5 /\ d_inode_5 = 4  ->  p_unlink_pc_1' = 19 /\ i_lock_4' = i_lock_4 + 1
+  p_unlink_pc_1 = 18 /\ p_file_1 = 5 /\ d_inode_5 = 5  ->  p_unlink_pc_1' = 19 /\ i_lock_5' = i_lock_5 + 1
+  p_unlink_pc_1 = 19  ->  p_unlink_pc_1' = 20 /\ inode_lock' = inode_lock + 1
+  p_unlink_pc_1 = 20 /\ p_parent_1 = 1 /\ d_subdirs_1 > 0  ->  p_unlink_pc_1' = 21 /\ d_subdirs_1' = d_subdirs_1 - 1
+  p_unlink_pc_1 = 20 /\ p_parent_1 = 2 /\ d_subdirs_2 > 0  ->  p_unlink_pc_1' = 21 /\ d_subdirs_2' = d_subdirs_2 - 1
+  p_unlink_pc_1 = 20 /\ p_parent_1 = 3 /\ d_subdirs_3 > 0  ->  p_unlink_pc_1' = 21 /\ d_subdirs_3' = d_subdirs_3 - 1
+  p_unlink_pc_1 = 20 /\ p_parent_1 = 4 /\ d_subdirs_4 > 0  ->  p_unlink_pc_1' = 21 /\ d_subdirs_4' = d_subdirs_4 - 1
+  p_unlink_pc_1 = 20 /\ p_parent_1 = 5 /\ d_subdirs_5 > 0  ->  p_unlink_pc_1' = 21 /\ d_subdirs_5' = d_subdirs_5 - 1
+  p_unlink_pc_1 = 21 /\ p_parent_1 = 1 /\ d_lock_1 > 0 /\ d_count_1 > 0  ->  p_unlink_pc_1' = 22 /\ d_count_1' = d_count_1 - 1
+  p_unlink_pc_1 = 21 /\ p_parent_1 = 2 /\ d_lock_2 > 0 /\ d_count_2 > 0  ->  p_unlink_pc_1' = 22 /\ d_count_2' = d_count_2 - 1
+  p_unlink_pc_1 = 21 /\ p_parent_1 = 3 /\ d_lock_3 > 0 /\ d_count_3 > 0  ->  p_unlink_pc_1' = 22 /\ d_count_3' = d_count_3 - 1
+  p_unlink_pc_1 = 21 /\ p_parent_1 = 4 /\ d_lock_4 > 0 /\ d_count_4 > 0  ->  p_unlink_pc_1' = 22 /\ d_count_4' = d_count_4 - 1
+  p_unlink_pc_1 = 21 /\ p_parent_1 = 5 /\ d_lock_5 > 0 /\ d_count_5 > 0  ->  p_unlink_pc_1' = 22 /\ d_count_5' = d_count_5 - 1
+  p_unlink_pc_1 = 22  ->  p_unlink_pc_1' = 23 /\ dcache_lock' = dcache_lock + 1
+  p_unlink_pc_1 = 23  ->  p_unlink_pc_1' = 0 /\ p_begin_1' = 0
+
+  p_begin_1 = 3 /\ p_mkdir_pc_1 = 0 /\ p_file_1 = 2 /\ p_parent_1 = 1 /\ dcache_lock > 0  ->  p_mkdir_pc_1' = 1 /\ d_count_1' = d_count_1 + d_allocated_1 /\ d_count_2' = d_count_2 + d_allocated_2
+  p_begin_1 = 3 /\ p_mkdir_pc_1 = 0 /\ p_file_1 = 2 /\ p_parent_1 = 2 /\ dcache_lock > 0  ->  p_mkdir_pc_1' = 1 /\ d_count_2' = d_count_2 + d_allocated_2
+  p_begin_1 = 3 /\ p_mkdir_pc_1 = 0 /\ p_file_1 = 2 /\ p_parent_1 = 3 /\ dcache_lock > 0  ->  p_mkdir_pc_1' = 1 /\ d_count_3' = d_count_3 + d_allocated_3 /\ d_count_2' = d_count_2 + d_allocated_2
+  p_begin_1 = 3 /\ p_mkdir_pc_1 = 0 /\ p_file_1 = 2 /\ p_parent_1 = 4 /\ dcache_lock > 0  ->  p_mkdir_pc_1' = 1 /\ d_count_4' = d_count_4 + d_allocated_4 /\ d_count_2' = d_count_2 + d_allocated_2
+  p_begin_1 = 3 /\ p_mkdir_pc_1 = 0 /\ p_file_1 = 2 /\ p_parent_1 = 5 /\ dcache_lock > 0  ->  p_mkdir_pc_1' = 1 /\ d_count_5' = d_count_5 + d_allocated_5 /\ d_count_2' = d_count_2 + d_allocated_2
+  p_begin_1 = 3 /\ p_mkdir_pc_1 = 0 /\ p_file_1 = 3 /\ p_parent_1 = 1 /\ dcache_lock > 0  ->  p_mkdir_pc_1' = 1 /\ d_count_1' = d_count_1 + d_allocated_1 /\ d_count_3' = d_count_3 + d_allocated_3
+  p_begin_1 = 3 /\ p_mkdir_pc_1 = 0 /\ p_file_1 = 3 /\ p_parent_1 = 2 /\ dcache_lock > 0  ->  p_mkdir_pc_1' = 1 /\ d_count_2' = d_count_2 + d_allocated_2 /\ d_count_3' = d_count_3 + d_allocated_3
+  p_begin_1 = 3 /\ p_mkdir_pc_1 = 0 /\ p_file_1 = 3 /\ p_parent_1 = 3 /\ dcache_lock > 0  ->  p_mkdir_pc_1' = 1 /\ d_count_3' = d_count_3 + d_allocated_3
+  p_begin_1 = 3 /\ p_mkdir_pc_1 = 0 /\ p_file_1 = 3 /\ p_parent_1 = 4 /\ dcache_lock > 0  ->  p_mkdir_pc_1' = 1 /\ d_count_4' = d_count_4 + d_allocated_4 /\ d_count_3' = d_count_3 + d_allocated_3
+  p_begin_1 = 3 /\ p_mkdir_pc_1 = 0 /\ p_file_1 = 3 /\ p_parent_1 = 5 /\ dcache_lock > 0  ->  p_mkdir_pc_1' = 1 /\ d_count_5' = d_count_5 + d_allocated_5 /\ d_count_3' = d_count_3 + d_allocated_3
+  p_begin_1 = 3 /\ p_mkdir_pc_1 = 0 /\ p_file_1 = 4 /\ p_parent_1 = 1 /\ dcache_lock > 0  ->  p_mkdir_pc_1' = 1 /\ d_count_1' = d_count_1 + d_allocated_1 /\ d_count_4' = d_count_4 + d_allocated_4
+  p_begin_1 = 3 /\ p_mkdir_pc_1 = 0 /\ p_file_1 = 4 /\ p_parent_1 = 2 /\ dcache_lock > 0  ->  p_mkdir_pc_1' = 1 /\ d_count_2' = d_count_2 + d_allocated_2 /\ d_count_4' = d_count_4 + d_allocated_4
+  p_begin_1 = 3 /\ p_mkdir_pc_1 = 0 /\ p_file_1 = 4 /\ p_parent_1 = 3 /\ dcache_lock > 0  ->  p_mkdir_pc_1' = 1 /\ d_count_3' = d_count_3 + d_allocated_3 /\ d_count_4' = d_count_4 + d_allocated_4
+  p_begin_1 = 3 /\ p_mkdir_pc_1 = 0 /\ p_file_1 = 4 /\ p_parent_1 = 4 /\ dcache_lock > 0  ->  p_mkdir_pc_1' = 1 /\ d_count_4' = d_count_4 + d_allocated_4
+  p_begin_1 = 3 /\ p_mkdir_pc_1 = 0 /\ p_file_1 = 4 /\ p_parent_1 = 5 /\ dcache_lock > 0  ->  p_mkdir_pc_1' = 1 /\ d_count_5' = d_count_5 + d_allocated_5 /\ d_count_4' = d_count_4 + d_allocated_4
+  p_begin_1 = 3 /\ p_mkdir_pc_1 = 0 /\ p_file_1 = 5 /\ p_parent_1 = 1 /\ dcache_lock > 0  ->  p_mkdir_pc_1' = 1 /\ d_count_1' = d_count_1 + d_allocated_1 /\ d_count_5' = d_count_5 + d_allocated_5
+  p_begin_1 = 3 /\ p_mkdir_pc_1 = 0 /\ p_file_1 = 5 /\ p_parent_1 = 2 /\ dcache_lock > 0  ->  p_mkdir_pc_1' = 1 /\ d_count_2' = d_count_2 + d_allocated_2 /\ d_count_5' = d_count_5 + d_allocated_5
+  p_begin_1 = 3 /\ p_mkdir_pc_1 = 0 /\ p_file_1 = 5 /\ p_parent_1 = 3 /\ dcache_lock > 0  ->  p_mkdir_pc_1' = 1 /\ d_count_3' = d_count_3 + d_allocated_3 /\ d_count_5' = d_count_5 + d_allocated_5
+  p_begin_1 = 3 /\ p_mkdir_pc_1 = 0 /\ p_file_1 = 5 /\ p_parent_1 = 4 /\ dcache_lock > 0  ->  p_mkdir_pc_1' = 1 /\ d_count_4' = d_count_4 + d_allocated_4 /\ d_count_5' = d_count_5 + d_allocated_5
+  p_begin_1 = 3 /\ p_mkdir_pc_1 = 0 /\ p_file_1 = 5 /\ p_parent_1 = 5 /\ dcache_lock > 0  ->  p_mkdir_pc_1' = 1 /\ d_count_5' = d_count_5 + d_allocated_5
+  p_mkdir_pc_1 = 1 /\ p_file_1 = 2 /\ d_allocated_2 > 0  ->  p_mkdir_pc_1' = 2
+  p_mkdir_pc_1 = 1 /\ p_file_1 = 2 /\ d_allocated_2 = 0  ->  p_mkdir_pc_1' = 4
+  p_mkdir_pc_1 = 1 /\ p_file_1 = 3 /\ d_allocated_3 > 0  ->  p_mkdir_pc_1' = 2
+  p_mkdir_pc_1 = 1 /\ p_file_1 = 3 /\ d_allocated_3 = 0  ->  p_mkdir_pc_1' = 4
+  p_mkdir_pc_1 = 1 /\ p_file_1 = 4 /\ d_allocated_4 > 0  ->  p_mkdir_pc_1' = 2
+  p_mkdir_pc_1 = 1 /\ p_file_1 = 4 /\ d_allocated_4 = 0  ->  p_mkdir_pc_1' = 4
+  p_mkdir_pc_1 = 1 /\ p_file_1 = 5 /\ d_allocated_5 > 0  ->  p_mkdir_pc_1' = 2
+  p_mkdir_pc_1 = 1 /\ p_file_1 = 5 /\ d_allocated_5 = 0  ->  p_mkdir_pc_1' = 4
+  p_mkdir_pc_1 = 2 /\ p_file_1 = 2 /\ p_parent_1 = 1  ->  p_mkdir_pc_1' = 3 /\ d_count_2' = d_count_2 - d_allocated_2 /\ d_count_1' = d_count_1 - d_allocated_1
+  p_mkdir_pc_1 = 2 /\ p_file_1 = 2 /\ p_parent_1 = 2  ->  p_mkdir_pc_1' = 3 /\ d_count_2' = d_count_2 - d_allocated_2
+  p_mkdir_pc_1 = 2 /\ p_file_1 = 2 /\ p_parent_1 = 3  ->  p_mkdir_pc_1' = 3 /\ d_count_2' = d_count_2 - d_allocated_2 /\ d_count_3' = d_count_3 - d_allocated_3
+  p_mkdir_pc_1 = 2 /\ p_file_1 = 2 /\ p_parent_1 = 4  ->  p_mkdir_pc_1' = 3 /\ d_count_2' = d_count_2 - d_allocated_2 /\ d_count_4' = d_count_4 - d_allocated_4
+  p_mkdir_pc_1 = 2 /\ p_file_1 = 2 /\ p_parent_1 = 5  ->  p_mkdir_pc_1' = 3 /\ d_count_2' = d_count_2 - d_allocated_2 /\ d_count_5' = d_count_5 - d_allocated_5
+  p_mkdir_pc_1 = 2 /\ p_file_1 = 3 /\ p_parent_1 = 1  ->  p_mkdir_pc_1' = 3 /\ d_count_3' = d_count_3 - d_allocated_3 /\ d_count_1' = d_count_1 - d_allocated_1
+  p_mkdir_pc_1 = 2 /\ p_file_1 = 3 /\ p_parent_1 = 2  ->  p_mkdir_pc_1' = 3 /\ d_count_3' = d_count_3 - d_allocated_3 /\ d_count_2' = d_count_2 - d_allocated_2
+  p_mkdir_pc_1 = 2 /\ p_file_1 = 3 /\ p_parent_1 = 3  ->  p_mkdir_pc_1' = 3 /\ d_count_3' = d_count_3 - d_allocated_3
+  p_mkdir_pc_1 = 2 /\ p_file_1 = 3 /\ p_parent_1 = 4  ->  p_mkdir_pc_1' = 3 /\ d_count_3' = d_count_3 - d_allocated_3 /\ d_count_4' = d_count_4 - d_allocated_4
+  p_mkdir_pc_1 = 2 /\ p_file_1 = 3 /\ p_parent_1 = 5  ->  p_mkdir_pc_1' = 3 /\ d_count_3' = d_count_3 - d_allocated_3 /\ d_count_5' = d_count_5 - d_allocated_5
+  p_mkdir_pc_1 = 2 /\ p_file_1 = 4 /\ p_parent_1 = 1  ->  p_mkdir_pc_1' = 3 /\ d_count_4' = d_count_4 - d_allocated_4 /\ d_count_1' = d_count_1 - d_allocated_1
+  p_mkdir_pc_1 = 2 /\ p_file_1 = 4 /\ p_parent_1 = 2  ->  p_mkdir_pc_1' = 3 /\ d_count_4' = d_count_4 - d_allocated_4 /\ d_count_2' = d_count_2 - d_allocated_2
+  p_mkdir_pc_1 = 2 /\ p_file_1 = 4 /\ p_parent_1 = 3  ->  p_mkdir_pc_1' = 3 /\ d_count_4' = d_count_4 - d_allocated_4 /\ d_count_3' = d_count_3 - d_allocated_3
+  p_mkdir_pc_1 = 2 /\ p_file_1 = 4 /\ p_parent_1 = 4  ->  p_mkdir_pc_1' = 3 /\ d_count_4' = d_count_4 - d_allocated_4
+  p_mkdir_pc_1 = 2 /\ p_file_1 = 4 /\ p_parent_1 = 5  ->  p_mkdir_pc_1' = 3 /\ d_count_4' = d_count_4 - d_allocated_4 /\ d_count_5' = d_count_5 - d_allocated_5
+  p_mkdir_pc_1 = 2 /\ p_file_1 = 5 /\ p_parent_1 = 1  ->  p_mkdir_pc_1' = 3 /\ d_count_5' = d_count_5 - d_allocated_5 /\ d_count_1' = d_count_1 - d_allocated_1
+  p_mkdir_pc_1 = 2 /\ p_file_1 = 5 /\ p_parent_1 = 2  ->  p_mkdir_pc_1' = 3 /\ d_count_5' = d_count_5 - d_allocated_5 /\ d_count_2' = d_count_2 - d_allocated_2
+  p_mkdir_pc_1 = 2 /\ p_file_1 = 5 /\ p_parent_1 = 3  ->  p_mkdir_pc_1' = 3 /\ d_count_5' = d_count_5 - d_allocated_5 /\ d_count_3' = d_count_3 - d_allocated_3
+  p_mkdir_pc_1 = 2 /\ p_file_1 = 5 /\ p_parent_1 = 4  ->  p_mkdir_pc_1' = 3 /\ d_count_5' = d_count_5 - d_allocated_5 /\ d_count_4' = d_count_4 - d_allocated_4
+  p_mkdir_pc_1 = 2 /\ p_file_1 = 5 /\ p_parent_1 = 5  ->  p_mkdir_pc_1' = 3 /\ d_count_5' = d_count_5 - d_allocated_5
+  p_mkdir_pc_1 = 3  ->  p_mkdir_pc_1' = 0 /\ p_begin_1' = 0
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 2 /\ p_parent_1 = 1 /\ d_allocated_1 > 0 /\ d_subdirs_1 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 2 /\ p_parent_1 = 1 /\ d_allocated_1 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 2 /\ p_parent_1 = 1 /\ d_allocated_1 > 0 /\ d_subdirs_1 > 0  ->  p_mkdir_pc_1' = 7
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 2 /\ p_parent_1 = 2 /\ d_allocated_2 > 0 /\ d_subdirs_2 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 2 /\ p_parent_1 = 2 /\ d_allocated_2 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 2 /\ p_parent_1 = 2 /\ d_allocated_2 > 0 /\ d_subdirs_2 > 0  ->  p_mkdir_pc_1' = 7
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 2 /\ p_parent_1 = 3 /\ d_allocated_3 > 0 /\ d_subdirs_3 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 2 /\ p_parent_1 = 3 /\ d_allocated_3 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 2 /\ p_parent_1 = 3 /\ d_allocated_3 > 0 /\ d_subdirs_3 > 0  ->  p_mkdir_pc_1' = 7
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 2 /\ p_parent_1 = 4 /\ d_allocated_4 > 0 /\ d_subdirs_4 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 2 /\ p_parent_1 = 4 /\ d_allocated_4 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 2 /\ p_parent_1 = 4 /\ d_allocated_4 > 0 /\ d_subdirs_4 > 0  ->  p_mkdir_pc_1' = 7
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 2 /\ p_parent_1 = 5 /\ d_allocated_5 > 0 /\ d_subdirs_5 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 2 /\ p_parent_1 = 5 /\ d_allocated_5 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 2 /\ p_parent_1 = 5 /\ d_allocated_5 > 0 /\ d_subdirs_5 > 0  ->  p_mkdir_pc_1' = 7
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 3 /\ p_parent_1 = 1 /\ d_allocated_1 > 0 /\ d_subdirs_1 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 3 /\ p_parent_1 = 1 /\ d_allocated_1 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 3 /\ p_parent_1 = 1 /\ d_allocated_1 > 0 /\ d_subdirs_1 > 0  ->  p_mkdir_pc_1' = 7
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 3 /\ p_parent_1 = 2 /\ d_allocated_2 > 0 /\ d_subdirs_2 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 3 /\ p_parent_1 = 2 /\ d_allocated_2 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 3 /\ p_parent_1 = 2 /\ d_allocated_2 > 0 /\ d_subdirs_2 > 0  ->  p_mkdir_pc_1' = 7
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 3 /\ p_parent_1 = 3 /\ d_allocated_3 > 0 /\ d_subdirs_3 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 3 /\ p_parent_1 = 3 /\ d_allocated_3 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 3 /\ p_parent_1 = 3 /\ d_allocated_3 > 0 /\ d_subdirs_3 > 0  ->  p_mkdir_pc_1' = 7
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 3 /\ p_parent_1 = 4 /\ d_allocated_4 > 0 /\ d_subdirs_4 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 3 /\ p_parent_1 = 4 /\ d_allocated_4 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 3 /\ p_parent_1 = 4 /\ d_allocated_4 > 0 /\ d_subdirs_4 > 0  ->  p_mkdir_pc_1' = 7
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 3 /\ p_parent_1 = 5 /\ d_allocated_5 > 0 /\ d_subdirs_5 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 3 /\ p_parent_1 = 5 /\ d_allocated_5 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 3 /\ p_parent_1 = 5 /\ d_allocated_5 > 0 /\ d_subdirs_5 > 0  ->  p_mkdir_pc_1' = 7
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 4 /\ p_parent_1 = 1 /\ d_allocated_1 > 0 /\ d_subdirs_1 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 4 /\ p_parent_1 = 1 /\ d_allocated_1 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 4 /\ p_parent_1 = 1 /\ d_allocated_1 > 0 /\ d_subdirs_1 > 0  ->  p_mkdir_pc_1' = 7
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 4 /\ p_parent_1 = 2 /\ d_allocated_2 > 0 /\ d_subdirs_2 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 4 /\ p_parent_1 = 2 /\ d_allocated_2 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 4 /\ p_parent_1 = 2 /\ d_allocated_2 > 0 /\ d_subdirs_2 > 0  ->  p_mkdir_pc_1' = 7
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 4 /\ p_parent_1 = 3 /\ d_allocated_3 > 0 /\ d_subdirs_3 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 4 /\ p_parent_1 = 3 /\ d_allocated_3 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 4 /\ p_parent_1 = 3 /\ d_allocated_3 > 0 /\ d_subdirs_3 > 0  ->  p_mkdir_pc_1' = 7
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 4 /\ p_parent_1 = 4 /\ d_allocated_4 > 0 /\ d_subdirs_4 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 4 /\ p_parent_1 = 4 /\ d_allocated_4 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 4 /\ p_parent_1 = 4 /\ d_allocated_4 > 0 /\ d_subdirs_4 > 0  ->  p_mkdir_pc_1' = 7
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 4 /\ p_parent_1 = 5 /\ d_allocated_5 > 0 /\ d_subdirs_5 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 4 /\ p_parent_1 = 5 /\ d_allocated_5 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 4 /\ p_parent_1 = 5 /\ d_allocated_5 > 0 /\ d_subdirs_5 > 0  ->  p_mkdir_pc_1' = 7
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 5 /\ p_parent_1 = 1 /\ d_allocated_1 > 0 /\ d_subdirs_1 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 5 /\ p_parent_1 = 1 /\ d_allocated_1 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 5 /\ p_parent_1 = 1 /\ d_allocated_1 > 0 /\ d_subdirs_1 > 0  ->  p_mkdir_pc_1' = 7
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 5 /\ p_parent_1 = 2 /\ d_allocated_2 > 0 /\ d_subdirs_2 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 5 /\ p_parent_1 = 2 /\ d_allocated_2 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 5 /\ p_parent_1 = 2 /\ d_allocated_2 > 0 /\ d_subdirs_2 > 0  ->  p_mkdir_pc_1' = 7
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 5 /\ p_parent_1 = 3 /\ d_allocated_3 > 0 /\ d_subdirs_3 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 5 /\ p_parent_1 = 3 /\ d_allocated_3 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 5 /\ p_parent_1 = 3 /\ d_allocated_3 > 0 /\ d_subdirs_3 > 0  ->  p_mkdir_pc_1' = 7
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 5 /\ p_parent_1 = 4 /\ d_allocated_4 > 0 /\ d_subdirs_4 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 5 /\ p_parent_1 = 4 /\ d_allocated_4 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 5 /\ p_parent_1 = 4 /\ d_allocated_4 > 0 /\ d_subdirs_4 > 0  ->  p_mkdir_pc_1' = 7
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 5 /\ p_parent_1 = 5 /\ d_allocated_5 > 0 /\ d_subdirs_5 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 5 /\ p_parent_1 = 5 /\ d_allocated_5 = 0  ->  p_mkdir_pc_1' = 5
+  p_mkdir_pc_1 = 4 /\ p_file_1 = 5 /\ p_parent_1 = 5 /\ d_allocated_5 > 0 /\ d_subdirs_5 > 0  ->  p_mkdir_pc_1' = 7
+  p_mkdir_pc_1 = 5 /\ p_file_1 = 2 /\ p_parent_1 = 1  ->  p_mkdir_pc_1' = 6 /\ d_count_2' = d_count_2 - d_allocated_2 /\ d_count_1' = d_count_1 - d_allocated_1
+  p_mkdir_pc_1 = 5 /\ p_file_1 = 2 /\ p_parent_1 = 2  ->  p_mkdir_pc_1' = 6 /\ d_count_2' = d_count_2 - d_allocated_2
+  p_mkdir_pc_1 = 5 /\ p_file_1 = 2 /\ p_parent_1 = 3  ->  p_mkdir_pc_1' = 6 /\ d_count_2' = d_count_2 - d_allocated_2 /\ d_count_3' = d_count_3 - d_allocated_3
+  p_mkdir_pc_1 = 5 /\ p_file_1 = 2 /\ p_parent_1 = 4  ->  p_mkdir_pc_1' = 6 /\ d_count_2' = d_count_2 - d_allocated_2 /\ d_count_4' = d_count_4 - d_allocated_4
+  p_mkdir_pc_1 = 5 /\ p_file_1 = 2 /\ p_parent_1 = 5  ->  p_mkdir_pc_1' = 6 /\ d_count_2' = d_count_2 - d_allocated_2 /\ d_count_5' = d_count_5 - d_allocated_5
+  p_mkdir_pc_1 = 5 /\ p_file_1 = 3 /\ p_parent_1 = 1  ->  p_mkdir_pc_1' = 6 /\ d_count_3' = d_count_3 - d_allocated_3 /\ d_count_1' = d_count_1 - d_allocated_1
+  p_mkdir_pc_1 = 5 /\ p_file_1 = 3 /\ p_parent_1 = 2  ->  p_mkdir_pc_1' = 6 /\ d_count_3' = d_count_3 - d_allocated_3 /\ d_count_2' = d_count_2 - d_allocated_2
+  p_mkdir_pc_1 = 5 /\ p_file_1 = 3 /\ p_parent_1 = 3  ->  p_mkdir_pc_1' = 6 /\ d_count_3' = d_count_3 - d_allocated_3
+  p_mkdir_pc_1 = 5 /\ p_file_1 = 3 /\ p_parent_1 = 4  ->  p_mkdir_pc_1' = 6 /\ d_count_3' = d_count_3 - d_allocated_3 /\ d_count_4' = d_count_4 - d_allocated_4
+  p_mkdir_pc_1 = 5 /\ p_file_1 = 3 /\ p_parent_1 = 5  ->  p_mkdir_pc_1' = 6 /\ d_count_3' = d_count_3 - d_allocated_3 /\ d_count_5' = d_count_5 - d_allocated_5
+  p_mkdir_pc_1 = 5 /\ p_file_1 = 4 /\ p_parent_1 = 1  ->  p_mkdir_pc_1' = 6 /\ d_count_4' = d_count_4 - d_allocated_4 /\ d_count_1' = d_count_1 - d_allocated_1
+  p_mkdir_pc_1 = 5 /\ p_file_1 = 4 /\ p_parent_1 = 2  ->  p_mkdir_pc_1' = 6 /\ d_count_4' = d_count_4 - d_allocated_4 /\ d_count_2' = d_count_2 - d_allocated_2
+  p_mkdir_pc_1 = 5 /\ p_file_1 = 4 /\ p_parent_1 = 3  ->  p_mkdir_pc_1' = 6 /\ d_count_4' = d_count_4 - d_allocated_4 /\ d_count_3' = d_count_3 - d_allocated_3
+  p_mkdir_pc_1 = 5 /\ p_file_1 = 4 /\ p_parent_1 = 4  ->  p_mkdir_pc_1' = 6 /\ d_count_4' = d_count_4 - d_allocated_4
+  p_mkdir_pc_1 = 5 /\ p_file_1 = 4 /\ p_parent_1 = 5  ->  p_mkdir_pc_1' = 6 /\ d_count_4' = d_count_4 - d_allocated_4 /\ d_count_5' = d_count_5 - d_allocated_5
+  p_mkdir_pc_1 = 5 /\ p_file_1 = 5 /\ p_parent_1 = 1  ->  p_mkdir_pc_1' = 6 /\ d_count_5' = d_count_5 - d_allocated_5 /\ d_count_1' = d_count_1 - d_allocated_1
+  p_mkdir_pc_1 = 5 /\ p_file_1 = 5 /\ p_parent_1 = 2  ->  p_mkdir_pc_1' = 6 /\ d_count_5' = d_count_5 - d_allocated_5 /\ d_count_2' = d_count_2 - d_allocated_2
+  p_mkdir_pc_1 = 5 /\ p_file_1 = 5 /\ p_parent_1 = 3  ->  p_mkdir_pc_1' = 6 /\ d_count_5' = d_count_5 - d_allocated_5 /\ d_count_3' = d_count_3 - d_allocated_3
+  p_mkdir_pc_1 = 5 /\ p_file_1 = 5 /\ p_parent_1 = 4  ->  p_mkdir_pc_1' = 6 /\ d_count_5' = d_count_5 - d_allocated_5 /\ d_count_4' = d_count_4 - d_allocated_4
+  p_mkdir_pc_1 = 5 /\ p_file_1 = 5 /\ p_parent_1 = 5  ->  p_mkdir_pc_1' = 6 /\ d_count_5' = d_count_5 - d_allocated_5
+  p_mkdir_pc_1 = 6  ->  p_mkdir_pc_1' = 0 /\ p_begin_1' = 0
+  p_mkdir_pc_1 = 7 /\ dcache_lock > 0  ->  p_mkdir_pc_1' = 8 /\ dcache_lock' = dcache_lock - 1
+  p_mkdir_pc_1 = 8 /\ p_file_1 = 2 /\ p_parent_1 = 1 /\ d_allocated_2 = 0  ->  p_mkdir_pc_1' = 9 /\ d_allocated_2' = 1 /\ d_count_2' = 1 /\ d_lock_2' = 1 /\ d_parent_2' = 1
+  p_mkdir_pc_1 = 8 /\ p_file_1 = 2 /\ p_parent_1 = 2 /\ d_allocated_2 = 0  ->  p_mkdir_pc_1' = 9 /\ d_allocated_2' = 1 /\ d_count_2' = 1 /\ d_lock_2' = 1 /\ d_parent_2' = 2
+  p_mkdir_pc_1 = 8 /\ p_file_1 = 2 /\ p_parent_1 = 3 /\ d_allocated_2 = 0  ->  p_mkdir_pc_1' = 9 /\ d_allocated_2' = 1 /\ d_count_2' = 1 /\ d_lock_2' = 1 /\ d_parent_2' = 3
+  p_mkdir_pc_1 = 8 /\ p_file_1 = 2 /\ p_parent_1 = 4 /\ d_allocated_2 = 0  ->  p_mkdir_pc_1' = 9 /\ d_allocated_2' = 1 /\ d_count_2' = 1 /\ d_lock_2' = 1 /\ d_parent_2' = 4
+  p_mkdir_pc_1 = 8 /\ p_file_1 = 2 /\ p_parent_1 = 5 /\ d_allocated_2 = 0  ->  p_mkdir_pc_1' = 9 /\ d_allocated_2' = 1 /\ d_count_2' = 1 /\ d_lock_2' = 1 /\ d_parent_2' = 5
+  p_mkdir_pc_1 = 8 /\ p_file_1 = 3 /\ p_parent_1 = 1 /\ d_allocated_3 = 0  ->  p_mkdir_pc_1' = 9 /\ d_allocated_3' = 1 /\ d_count_3' = 1 /\ d_lock_3' = 1 /\ d_parent_3' = 1
+  p_mkdir_pc_1 = 8 /\ p_file_1 = 3 /\ p_parent_1 = 2 /\ d_allocated_3 = 0  ->  p_mkdir_pc_1' = 9 /\ d_allocated_3' = 1 /\ d_count_3' = 1 /\ d_lock_3' = 1 /\ d_parent_3' = 2
+  p_mkdir_pc_1 = 8 /\ p_file_1 = 3 /\ p_parent_1 = 3 /\ d_allocated_3 = 0  ->  p_mkdir_pc_1' = 9 /\ d_allocated_3' = 1 /\ d_count_3' = 1 /\ d_lock_3' = 1 /\ d_parent_3' = 3
+  p_mkdir_pc_1 = 8 /\ p_file_1 = 3 /\ p_parent_1 = 4 /\ d_allocated_3 = 0  ->  p_mkdir_pc_1' = 9 /\ d_allocated_3' = 1 /\ d_count_3' = 1 /\ d_lock_3' = 1 /\ d_parent_3' = 4
+  p_mkdir_pc_1 = 8 /\ p_file_1 = 3 /\ p_parent_1 = 5 /\ d_allocated_3 = 0  ->  p_mkdir_pc_1' = 9 /\ d_allocated_3' = 1 /\ d_count_3' = 1 /\ d_lock_3' = 1 /\ d_parent_3' = 5
+  p_mkdir_pc_1 = 8 /\ p_file_1 = 4 /\ p_parent_1 = 1 /\ d_allocated_4 = 0  ->  p_mkdir_pc_1' = 9 /\ d_allocated_4' = 1 /\ d_count_4' = 1 /\ d_lock_4' = 1 /\ d_parent_4' = 1
+  p_mkdir_pc_1 = 8 /\ p_file_1 = 4 /\ p_parent_1 = 2 /\ d_allocated_4 = 0  ->  p_mkdir_pc_1' = 9 /\ d_allocated_4' = 1 /\ d_count_4' = 1 /\ d_lock_4' = 1 /\ d_parent_4' = 2
+  p_mkdir_pc_1 = 8 /\ p_file_1 = 4 /\ p_parent_1 = 3 /\ d_allocated_4 = 0  ->  p_mkdir_pc_1' = 9 /\ d_allocated_4' = 1 /\ d_count_4' = 1 /\ d_lock_4' = 1 /\ d_parent_4' = 3
+  p_mkdir_pc_1 = 8 /\ p_file_1 = 4 /\ p_parent_1 = 4 /\ d_allocated_4 = 0  ->  p_mkdir_pc_1' = 9 /\ d_allocated_4' = 1 /\ d_count_4' = 1 /\ d_lock_4' = 1 /\ d_parent_4' = 4
+  p_mkdir_pc_1 = 8 /\ p_file_1 = 4 /\ p_parent_1 = 5 /\ d_allocated_4 = 0  ->  p_mkdir_pc_1' = 9 /\ d_allocated_4' = 1 /\ d_count_4' = 1 /\ d_lock_4' = 1 /\ d_parent_4' = 5
+  p_mkdir_pc_1 = 8 /\ p_file_1 = 5 /\ p_parent_1 = 1 /\ d_allocated_5 = 0  ->  p_mkdir_pc_1' = 9 /\ d_allocated_5' = 1 /\ d_count_5' = 1 /\ d_lock_5' = 1 /\ d_parent_5' = 1
+  p_mkdir_pc_1 = 8 /\ p_file_1 = 5 /\ p_parent_1 = 2 /\ d_allocated_5 = 0  ->  p_mkdir_pc_1' = 9 /\ d_allocated_5' = 1 /\ d_count_5' = 1 /\ d_lock_5' = 1 /\ d_parent_5' = 2
+  p_mkdir_pc_1 = 8 /\ p_file_1 = 5 /\ p_parent_1 = 3 /\ d_allocated_5 = 0  ->  p_mkdir_pc_1' = 9 /\ d_allocated_5' = 1 /\ d_count_5' = 1 /\ d_lock_5' = 1 /\ d_parent_5' = 3
+  p_mkdir_pc_1 = 8 /\ p_file_1 = 5 /\ p_parent_1 = 4 /\ d_allocated_5 = 0  ->  p_mkdir_pc_1' = 9 /\ d_allocated_5' = 1 /\ d_count_5' = 1 /\ d_lock_5' = 1 /\ d_parent_5' = 4
+  p_mkdir_pc_1 = 8 /\ p_file_1 = 5 /\ p_parent_1 = 5 /\ d_allocated_5 = 0  ->  p_mkdir_pc_1' = 9 /\ d_allocated_5' = 1 /\ d_count_5' = 1 /\ d_lock_5' = 1 /\ d_parent_5' = 5
+  p_mkdir_pc_1 = 8 /\ p_file_1 = 2 /\ d_allocated_2 > 0  ->  p_mkdir_pc_1' = 10
+  p_mkdir_pc_1 = 8 /\ p_file_1 = 3 /\ d_allocated_3 > 0  ->  p_mkdir_pc_1' = 10
+  p_mkdir_pc_1 = 8 /\ p_file_1 = 4 /\ d_allocated_4 > 0  ->  p_mkdir_pc_1' = 10
+  p_mkdir_pc_1 = 8 /\ p_file_1 = 5 /\ d_allocated_5 > 0  ->  p_mkdir_pc_1' = 10
+  p_mkdir_pc_1 = 9 /\ p_parent_1 = 1 /\ d_subdirs_1 = 0  ->  p_mkdir_pc_1' = 10
+  p_mkdir_pc_1 = 9 /\ p_parent_1 = 1 /\ d_subdirs_1 > 0  ->  p_mkdir_pc_1' = 13
+  p_mkdir_pc_1 = 9 /\ p_parent_1 = 2 /\ d_subdirs_2 = 0  ->  p_mkdir_pc_1' = 10
+  p_mkdir_pc_1 = 9 /\ p_parent_1 = 2 /\ d_subdirs_2 > 0  ->  p_mkdir_pc_1' = 13
+  p_mkdir_pc_1 = 9 /\ p_parent_1 = 3 /\ d_subdirs_3 = 0  ->  p_mkdir_pc_1' = 10
+  p_mkdir_pc_1 = 9 /\ p_parent_1 = 3 /\ d_subdirs_3 > 0  ->  p_mkdir_pc_1' = 13
+  p_mkdir_pc_1 = 9 /\ p_parent_1 = 4 /\ d_subdirs_4 = 0  ->  p_mkdir_pc_1' = 10
+  p_mkdir_pc_1 = 9 /\ p_parent_1 = 4 /\ d_subdirs_4 > 0  ->  p_mkdir_pc_1' = 13
+  p_mkdir_pc_1 = 9 /\ p_parent_1 = 5 /\ d_subdirs_5 = 0  ->  p_mkdir_pc_1' = 10
+  p_mkdir_pc_1 = 9 /\ p_parent_1 = 5 /\ d_subdirs_5 > 0  ->  p_mkdir_pc_1' = 13
+  p_mkdir_pc_1 = 10  ->  p_mkdir_pc_1' = 11 /\ dcache_lock' = dcache_lock + 1
+  p_mkdir_pc_1 = 11 /\ p_parent_1 = 1 /\ d_lock_1 > 0 /\ d_count_1 > 0  ->  p_mkdir_pc_1' = 12 /\ d_count_1' = d_count_1 - 1
+  p_mkdir_pc_1 = 11 /\ p_parent_1 = 2 /\ d_lock_2 > 0 /\ d_count_2 > 0  ->  p_mkdir_pc_1' = 12 /\ d_count_2' = d_count_2 - 1
+  p_mkdir_pc_1 = 11 /\ p_parent_1 = 3 /\ d_lock_3 > 0 /\ d_count_3 > 0  ->  p_mkdir_pc_1' = 12 /\ d_count_3' = d_count_3 - 1
+  p_mkdir_pc_1 = 11 /\ p_parent_1 = 4 /\ d_lock_4 > 0 /\ d_count_4 > 0  ->  p_mkdir_pc_1' = 12 /\ d_count_4' = d_count_4 - 1
+  p_mkdir_pc_1 = 11 /\ p_parent_1 = 5 /\ d_lock_5 > 0 /\ d_count_5 > 0  ->  p_mkdir_pc_1' = 12 /\ d_count_5' = d_count_5 - 1
+  p_mkdir_pc_1 = 12  ->  p_mkdir_pc_1' = 0 /\ p_begin_1' = 0
+  p_mkdir_pc_1 = 13 /\ p_file_1 = 2 /\ d_lock_2 > 0  ->  p_mkdir_pc_1' = 14 /\ d_count_2' = d_count_2 + 1
+  p_mkdir_pc_1 = 13 /\ p_file_1 = 3 /\ d_lock_3 > 0  ->  p_mkdir_pc_1' = 14 /\ d_count_3' = d_count_3 + 1
+  p_mkdir_pc_1 = 13 /\ p_file_1 = 4 /\ d_lock_4 > 0  ->  p_mkdir_pc_1' = 14 /\ d_count_4' = d_count_4 + 1
+  p_mkdir_pc_1 = 13 /\ p_file_1 = 5 /\ d_lock_5 > 0  ->  p_mkdir_pc_1' = 14 /\ d_count_5' = d_count_5 + 1
+  p_mkdir_pc_1 = 14 /\ inode_lock > 0  ->  p_mkdir_pc_1' = 15 /\ inode_lock' = inode_lock - 1
+  p_mkdir_pc_1 = 15 /\ p_inode_1 = 2 /\ i_allocated_2 = 0  ->  p_mkdir_pc_1' = 16 /\ i_count_2' = 1 /\ i_allocated_2' = 1 /\ i_mutex_2' = 1 /\ i_lock_2' = 1
+  p_mkdir_pc_1 = 15 /\ p_inode_1 = 2 /\ i_allocated_2 > 0  ->  p_mkdir_pc_1' = 16 /\ p_inode_1' = 0
+  p_mkdir_pc_1 = 15 /\ p_inode_1 = 3 /\ i_allocated_3 = 0  ->  p_mkdir_pc_1' = 16 /\ i_count_3' = 1 /\ i_allocated_3' = 1 /\ i_mutex_3' = 1 /\ i_lock_3' = 1
+  p_mkdir_pc_1 = 15 /\ p_inode_1 = 3 /\ i_allocated_3 > 0  ->  p_mkdir_pc_1' = 16 /\ p_inode_1' = 0
+  p_mkdir_pc_1 = 15 /\ p_inode_1 = 4 /\ i_allocated_4 = 0  ->  p_mkdir_pc_1' = 16 /\ i_count_4' = 1 /\ i_allocated_4' = 1 /\ i_mutex_4' = 1 /\ i_lock_4' = 1
+  p_mkdir_pc_1 = 15 /\ p_inode_1 = 4 /\ i_allocated_4 > 0  ->  p_mkdir_pc_1' = 16 /\ p_inode_1' = 0
+  p_mkdir_pc_1 = 15 /\ p_inode_1 = 5 /\ i_allocated_5 = 0  ->  p_mkdir_pc_1' = 16 /\ i_count_5' = 1 /\ i_allocated_5' = 1 /\ i_mutex_5' = 1 /\ i_lock_5' = 1
+  p_mkdir_pc_1 = 15 /\ p_inode_1 = 5 /\ i_allocated_5 > 0  ->  p_mkdir_pc_1' = 16 /\ p_inode_1' = 0
+  p_mkdir_pc_1 = 16 /\ p_file_1 = 2 /\ p_inode_1 = 0  ->  p_mkdir_pc_1' = 17 /\ d_inode_2' = 0
+  p_mkdir_pc_1 = 16 /\ p_file_1 = 2 /\ p_inode_1 = 1  ->  p_mkdir_pc_1' = 17 /\ d_inode_2' = 1
+  p_mkdir_pc_1 = 16 /\ p_file_1 = 2 /\ p_inode_1 = 2  ->  p_mkdir_pc_1' = 17 /\ d_inode_2' = 2
+  p_mkdir_pc_1 = 16 /\ p_file_1 = 2 /\ p_inode_1 = 3  ->  p_mkdir_pc_1' = 17 /\ d_inode_2' = 3
+  p_mkdir_pc_1 = 16 /\ p_file_1 = 2 /\ p_inode_1 = 4  ->  p_mkdir_pc_1' = 17 /\ d_inode_2' = 4
+  p_mkdir_pc_1 = 16 /\ p_file_1 = 2 /\ p_inode_1 = 5  ->  p_mkdir_pc_1' = 17 /\ d_inode_2' = 5
+  p_mkdir_pc_1 = 16 /\ p_file_1 = 3 /\ p_inode_1 = 0  ->  p_mkdir_pc_1' = 17 /\ d_inode_3' = 0
+  p_mkdir_pc_1 = 16 /\ p_file_1 = 3 /\ p_inode_1 = 1  ->  p_mkdir_pc_1' = 17 /\ d_inode_3' = 1
+  p_mkdir_pc_1 = 16 /\ p_file_1 = 3 /\ p_inode_1 = 2  ->  p_mkdir_pc_1' = 17 /\ d_inode_3' = 2
+  p_mkdir_pc_1 = 16 /\ p_file_1 = 3 /\ p_inode_1 = 3  ->  p_mkdir_pc_1' = 17 /\ d_inode_3' = 3
+  p_mkdir_pc_1 = 16 /\ p_file_1 = 3 /\ p_inode_1 = 4  ->  p_mkdir_pc_1' = 17 /\ d_inode_3' = 4
+  p_mkdir_pc_1 = 16 /\ p_file_1 = 3 /\ p_inode_1 = 5  ->  p_mkdir_pc_1' = 17 /\ d_inode_3' = 5
+  p_mkdir_pc_1 = 16 /\ p_file_1 = 4 /\ p_inode_1 = 0  ->  p_mkdir_pc_1' = 17 /\ d_inode_4' = 0
+  p_mkdir_pc_1 = 16 /\ p_file_1 = 4 /\ p_inode_1 = 1  ->  p_mkdir_pc_1' = 17 /\ d_inode_4' = 1
+  p_mkdir_pc_1 = 16 /\ p_file_1 = 4 /\ p_inode_1 = 2  ->  p_mkdir_pc_1' = 17 /\ d_inode_4' = 2
+  p_mkdir_pc_1 = 16 /\ p_file_1 = 4 /\ p_inode_1 = 3  ->  p_mkdir_pc_1' = 17 /\ d_inode_4' = 3
+  p_mkdir_pc_1 = 16 /\ p_file_1 = 4 /\ p_inode_1 = 4  ->  p_mkdir_pc_1' = 17 /\ d_inode_4' = 4
+  p_mkdir_pc_1 = 16 /\ p_file_1 = 4 /\ p_inode_1 = 5  ->  p_mkdir_pc_1' = 17 /\ d_inode_4' = 5
+  p_mkdir_pc_1 = 16 /\ p_file_1 = 5 /\ p_inode_1 = 0  ->  p_mkdir_pc_1' = 17 /\ d_inode_5' = 0
+  p_mkdir_pc_1 = 16 /\ p_file_1 = 5 /\ p_inode_1 = 1  ->  p_mkdir_pc_1' = 17 /\ d_inode_5' = 1
+  p_mkdir_pc_1 = 16 /\ p_file_1 = 5 /\ p_inode_1 = 2  ->  p_mkdir_pc_1' = 17 /\ d_inode_5' = 2
+  p_mkdir_pc_1 = 16 /\ p_file_1 = 5 /\ p_inode_1 = 3  ->  p_mkdir_pc_1' = 17 /\ d_inode_5' = 3
+  p_mkdir_pc_1 = 16 /\ p_file_1 = 5 /\ p_inode_1 = 4  ->  p_mkdir_pc_1' = 17 /\ d_inode_5' = 4
+  p_mkdir_pc_1 = 16 /\ p_file_1 = 5 /\ p_inode_1 = 5  ->  p_mkdir_pc_1' = 17 /\ d_inode_5' = 5
+  p_mkdir_pc_1 = 17 /\ p_inode_1 = 0  ->  p_mkdir_pc_1' = 19
+  p_mkdir_pc_1 = 17 /\ p_inode_1 = 1 /\ i_allocated_1 = 0  ->  p_mkdir_pc_1' = 19
+  p_mkdir_pc_1 = 17 /\ p_inode_1 = 1 /\ i_allocated_1 > 0  ->  p_mkdir_pc_1' = 18
+  p_mkdir_pc_1 = 17 /\ p_inode_1 = 2 /\ i_allocated_2 = 0  ->  p_mkdir_pc_1' = 19
+  p_mkdir_pc_1 = 17 /\ p_inode_1 = 2 /\ i_allocated_2 > 0  ->  p_mkdir_pc_1' = 18
+  p_mkdir_pc_1 = 17 /\ p_inode_1 = 3 /\ i_allocated_3 = 0  ->  p_mkdir_pc_1' = 19
+  p_mkdir_pc_1 = 17 /\ p_inode_1 = 3 /\ i_allocated_3 > 0  ->  p_mkdir_pc_1' = 18
+  p_mkdir_pc_1 = 17 /\ p_inode_1 = 4 /\ i_allocated_4 = 0  ->  p_mkdir_pc_1' = 19
+  p_mkdir_pc_1 = 17 /\ p_inode_1 = 4 /\ i_allocated_4 > 0  ->  p_mkdir_pc_1' = 18
+  p_mkdir_pc_1 = 17 /\ p_inode_1 = 5 /\ i_allocated_5 = 0  ->  p_mkdir_pc_1' = 19
+  p_mkdir_pc_1 = 17 /\ p_inode_1 = 5 /\ i_allocated_5 > 0  ->  p_mkdir_pc_1' = 18
+  p_mkdir_pc_1 = 18 /\ p_file_1 = 2 /\ d_inode_2 = 1 /\ i_mutex_1 > 0  ->  p_mkdir_pc_1' = 19 /\ i_mutex_1' = i_mutex_1 - 1
+  p_mkdir_pc_1 = 18 /\ p_file_1 = 2 /\ d_inode_2 = 2 /\ i_mutex_2 > 0  ->  p_mkdir_pc_1' = 19 /\ i_mutex_2' = i_mutex_2 - 1
+  p_mkdir_pc_1 = 18 /\ p_file_1 = 2 /\ d_inode_2 = 3 /\ i_mutex_3 > 0  ->  p_mkdir_pc_1' = 19 /\ i_mutex_3' = i_mutex_3 - 1
+  p_mkdir_pc_1 = 18 /\ p_file_1 = 2 /\ d_inode_2 = 4 /\ i_mutex_4 > 0  ->  p_mkdir_pc_1' = 19 /\ i_mutex_4' = i_mutex_4 - 1
+  p_mkdir_pc_1 = 18 /\ p_file_1 = 2 /\ d_inode_2 = 5 /\ i_mutex_5 > 0  ->  p_mkdir_pc_1' = 19 /\ i_mutex_5' = i_mutex_5 - 1
+  p_mkdir_pc_1 = 18 /\ p_file_1 = 3 /\ d_inode_3 = 1 /\ i_mutex_1 > 0  ->  p_mkdir_pc_1' = 19 /\ i_mutex_1' = i_mutex_1 - 1
+  p_mkdir_pc_1 = 18 /\ p_file_1 = 3 /\ d_inode_3 = 2 /\ i_mutex_2 > 0  ->  p_mkdir_pc_1' = 19 /\ i_mutex_2' = i_mutex_2 - 1
+  p_mkdir_pc_1 = 18 /\ p_file_1 = 3 /\ d_inode_3 = 3 /\ i_mutex_3 > 0  ->  p_mkdir_pc_1' = 19 /\ i_mutex_3' = i_mutex_3 - 1
+  p_mkdir_pc_1 = 18 /\ p_file_1 = 3 /\ d_inode_3 = 4 /\ i_mutex_4 > 0  ->  p_mkdir_pc_1' = 19 /\ i_mutex_4' = i_mutex_4 - 1
+  p_mkdir_pc_1 = 18 /\ p_file_1 = 3 /\ d_inode_3 = 5 /\ i_mutex_5 > 0  ->  p_mkdir_pc_1' = 19 /\ i_mutex_5' = i_mutex_5 - 1
+  p_mkdir_pc_1 = 18 /\ p_file_1 = 4 /\ d_inode_4 = 1 /\ i_mutex_1 > 0  ->  p_mkdir_pc_1' = 19 /\ i_mutex_1' = i_mutex_1 - 1
+  p_mkdir_pc_1 = 18 /\ p_file_1 = 4 /\ d_inode_4 = 2 /\ i_mutex_2 > 0  ->  p_mkdir_pc_1' = 19 /\ i_mutex_2' = i_mutex_2 - 1
+  p_mkdir_pc_1 = 18 /\ p_file_1 = 4 /\ d_inode_4 = 3 /\ i_mutex_3 > 0  ->  p_mkdir_pc_1' = 19 /\ i_mutex_3' = i_mutex_3 - 1
+  p_mkdir_pc_1 = 18 /\ p_file_1 = 4 /\ d_inode_4 = 4 /\ i_mutex_4 > 0  ->  p_mkdir_pc_1' = 19 /\ i_mutex_4' = i_mutex_4 - 1
+  p_mkdir_pc_1 = 18 /\ p_file_1 = 4 /\ d_inode_4 = 5 /\ i_mutex_5 > 0  ->  p_mkdir_pc_1' = 19 /\ i_mutex_5' = i_mutex_5 - 1
+  p_mkdir_pc_1 = 18 /\ p_file_1 = 5 /\ d_inode_5 = 1 /\ i_mutex_1 > 0  ->  p_mkdir_pc_1' = 19 /\ i_mutex_1' = i_mutex_1 - 1
+  p_mkdir_pc_1 = 18 /\ p_file_1 = 5 /\ d_inode_5 = 2 /\ i_mutex_2 > 0  ->  p_mkdir_pc_1' = 19 /\ i_mutex_2' = i_mutex_2 - 1
+  p_mkdir_pc_1 = 18 /\ p_file_1 = 5 /\ d_inode_5 = 3 /\ i_mutex_3 > 0  ->  p_mkdir_pc_1' = 19 /\ i_mutex_3' = i_mutex_3 - 1
+  p_mkdir_pc_1 = 18 /\ p_file_1 = 5 /\ d_inode_5 = 4 /\ i_mutex_4 > 0  ->  p_mkdir_pc_1' = 19 /\ i_mutex_4' = i_mutex_4 - 1
+  p_mkdir_pc_1 = 18 /\ p_file_1 = 5 /\ d_inode_5 = 5 /\ i_mutex_5 > 0  ->  p_mkdir_pc_1' = 19 /\ i_mutex_5' = i_mutex_5 - 1
+  p_mkdir_pc_1 = 19  ->  p_mkdir_pc_1' = 20 /\ inode_lock' = inode_lock + 1
+  p_mkdir_pc_1 = 20 /\ p_inode_1 = 0  ->  p_mkdir_pc_1' = 21
+  p_mkdir_pc_1 = 20 /\ p_inode_1 = 1 /\ i_allocated_1 = 0  ->  p_mkdir_pc_1' = 21
+  p_mkdir_pc_1 = 20 /\ p_inode_1 = 1 /\ i_allocated_1 > 0  ->  p_mkdir_pc_1' = 25
+  p_mkdir_pc_1 = 20 /\ p_inode_1 = 2 /\ i_allocated_2 = 0  ->  p_mkdir_pc_1' = 21
+  p_mkdir_pc_1 = 20 /\ p_inode_1 = 2 /\ i_allocated_2 > 0  ->  p_mkdir_pc_1' = 25
+  p_mkdir_pc_1 = 20 /\ p_inode_1 = 3 /\ i_allocated_3 = 0  ->  p_mkdir_pc_1' = 21
+  p_mkdir_pc_1 = 20 /\ p_inode_1 = 3 /\ i_allocated_3 > 0  ->  p_mkdir_pc_1' = 25
+  p_mkdir_pc_1 = 20 /\ p_inode_1 = 4 /\ i_allocated_4 = 0  ->  p_mkdir_pc_1' = 21
+  p_mkdir_pc_1 = 20 /\ p_inode_1 = 4 /\ i_allocated_4 > 0  ->  p_mkdir_pc_1' = 25
+  p_mkdir_pc_1 = 20 /\ p_inode_1 = 5 /\ i_allocated_5 = 0  ->  p_mkdir_pc_1' = 21
+  p_mkdir_pc_1 = 20 /\ p_inode_1 = 5 /\ i_allocated_5 > 0  ->  p_mkdir_pc_1' = 25
+  p_mkdir_pc_1 = 21 /\ p_file_1 = 2  ->  p_mkdir_pc_1' = 22 /\ d_count_2' = 0 /\ d_allocated_2' = 0 /\ d_parent_2' = 0
+  p_mkdir_pc_1 = 21 /\ p_file_1 = 3  ->  p_mkdir_pc_1' = 22 /\ d_count_3' = 0 /\ d_allocated_3' = 0 /\ d_parent_3' = 0
+  p_mkdir_pc_1 = 21 /\ p_file_1 = 4  ->  p_mkdir_pc_1' = 22 /\ d_count_4' = 0 /\ d_allocated_4' = 0 /\ d_parent_4' = 0
+  p_mkdir_pc_1 = 21 /\ p_file_1 = 5  ->  p_mkdir_pc_1' = 22 /\ d_count_5' = 0 /\ d_allocated_5' = 0 /\ d_parent_5' = 0
+  p_mkdir_pc_1 = 22 /\ p_parent_1 = 1 /\ d_lock_1 > 0 /\ d_count_1 > 0  ->  p_mkdir_pc_1' = 23 /\ d_count_1' = d_count_1 - 1
+  p_mkdir_pc_1 = 22 /\ p_parent_1 = 2 /\ d_lock_2 > 0 /\ d_count_2 > 0  ->  p_mkdir_pc_1' = 23 /\ d_count_2' = d_count_2 - 1
+  p_mkdir_pc_1 = 22 /\ p_parent_1 = 3 /\ d_lock_3 > 0 /\ d_count_3 > 0  ->  p_mkdir_pc_1' = 23 /\ d_count_3' = d_count_3 - 1
+  p_mkdir_pc_1 = 22 /\ p_parent_1 = 4 /\ d_lock_4 > 0 /\ d_count_4 > 0  ->  p_mkdir_pc_1' = 23 /\ d_count_4' = d_count_4 - 1
+  p_mkdir_pc_1 = 22 /\ p_parent_1 = 5 /\ d_lock_5 > 0 /\ d_count_5 > 0  ->  p_mkdir_pc_1' = 23 /\ d_count_5' = d_count_5 - 1
+  p_mkdir_pc_1 = 23  ->  p_mkdir_pc_1' = 24 /\ dcache_lock' = dcache_lock + 1
+  p_mkdir_pc_1 = 24  ->  p_mkdir_pc_1' = 0 /\ p_begin_1' = 0
+  p_mkdir_pc_1 = 25 /\ p_file_1 = 2  ->  p_mkdir_pc_1' = 26 /\ d_subdirs_2' = 1
+  p_mkdir_pc_1 = 25 /\ p_file_1 = 3  ->  p_mkdir_pc_1' = 26 /\ d_subdirs_3' = 1
+  p_mkdir_pc_1 = 25 /\ p_file_1 = 4  ->  p_mkdir_pc_1' = 26 /\ d_subdirs_4' = 1
+  p_mkdir_pc_1 = 25 /\ p_file_1 = 5  ->  p_mkdir_pc_1' = 26 /\ d_subdirs_5' = 1
+  p_mkdir_pc_1 = 26 /\ p_parent_1 = 1  ->  p_mkdir_pc_1' = 27 /\ d_subdirs_1' = d_subdirs_1 + 1
+  p_mkdir_pc_1 = 26 /\ p_parent_1 = 2  ->  p_mkdir_pc_1' = 27 /\ d_subdirs_2' = d_subdirs_2 + 1
+  p_mkdir_pc_1 = 26 /\ p_parent_1 = 3  ->  p_mkdir_pc_1' = 27 /\ d_subdirs_3' = d_subdirs_3 + 1
+  p_mkdir_pc_1 = 26 /\ p_parent_1 = 4  ->  p_mkdir_pc_1' = 27 /\ d_subdirs_4' = d_subdirs_4 + 1
+  p_mkdir_pc_1 = 26 /\ p_parent_1 = 5  ->  p_mkdir_pc_1' = 27 /\ d_subdirs_5' = d_subdirs_5 + 1
+  p_mkdir_pc_1 = 27 /\ p_file_1 = 2 /\ p_parent_1 = 1  ->  p_mkdir_pc_1' = 28 /\ d_count_2' = d_count_2 - 1 /\ d_count_1' = d_count_1 - 1
+  p_mkdir_pc_1 = 27 /\ p_file_1 = 2 /\ p_parent_1 = 2  ->  p_mkdir_pc_1' = 28 /\ d_count_2' = d_count_2 - 1
+  p_mkdir_pc_1 = 27 /\ p_file_1 = 2 /\ p_parent_1 = 3  ->  p_mkdir_pc_1' = 28 /\ d_count_2' = d_count_2 - 1 /\ d_count_3' = d_count_3 - 1
+  p_mkdir_pc_1 = 27 /\ p_file_1 = 2 /\ p_parent_1 = 4  ->  p_mkdir_pc_1' = 28 /\ d_count_2' = d_count_2 - 1 /\ d_count_4' = d_count_4 - 1
+  p_mkdir_pc_1 = 27 /\ p_file_1 = 2 /\ p_parent_1 = 5  ->  p_mkdir_pc_1' = 28 /\ d_count_2' = d_count_2 - 1 /\ d_count_5' = d_count_5 - 1
+  p_mkdir_pc_1 = 27 /\ p_file_1 = 3 /\ p_parent_1 = 1  ->  p_mkdir_pc_1' = 28 /\ d_count_3' = d_count_3 - 1 /\ d_count_1' = d_count_1 - 1
+  p_mkdir_pc_1 = 27 /\ p_file_1 = 3 /\ p_parent_1 = 2  ->  p_mkdir_pc_1' = 28 /\ d_count_3' = d_count_3 - 1 /\ d_count_2' = d_count_2 - 1
+  p_mkdir_pc_1 = 27 /\ p_file_1 = 3 /\ p_parent_1 = 3  ->  p_mkdir_pc_1' = 28 /\ d_count_3' = d_count_3 - 1
+  p_mkdir_pc_1 = 27 /\ p_file_1 = 3 /\ p_parent_1 = 4  ->  p_mkdir_pc_1' = 28 /\ d_count_3' = d_count_3 - 1 /\ d_count_4' = d_count_4 - 1
+  p_mkdir_pc_1 = 27 /\ p_file_1 = 3 /\ p_parent_1 = 5  ->  p_mkdir_pc_1' = 28 /\ d_count_3' = d_count_3 - 1 /\ d_count_5' = d_count_5 - 1
+  p_mkdir_pc_1 = 27 /\ p_file_1 = 4 /\ p_parent_1 = 1  ->  p_mkdir_pc_1' = 28 /\ d_count_4' = d_count_4 - 1 /\ d_count_1' = d_count_1 - 1
+  p_mkdir_pc_1 = 27 /\ p_file_1 = 4 /\ p_parent_1 = 2  ->  p_mkdir_pc_1' = 28 /\ d_count_4' = d_count_4 - 1 /\ d_count_2' = d_count_2 - 1
+  p_mkdir_pc_1 = 27 /\ p_file_1 = 4 /\ p_parent_1 = 3  ->  p_mkdir_pc_1' = 28 /\ d_count_4' = d_count_4 - 1 /\ d_count_3' = d_count_3 - 1
+  p_mkdir_pc_1 = 27 /\ p_file_1 = 4 /\ p_parent_1 = 4  ->  p_mkdir_pc_1' = 28 /\ d_count_4' = d_count_4 - 1
+  p_mkdir_pc_1 = 27 /\ p_file_1 = 4 /\ p_parent_1 = 5  ->  p_mkdir_pc_1' = 28 /\ d_count_4' = d_count_4 - 1 /\ d_count_5' = d_count_5 - 1
+  p_mkdir_pc_1 = 27 /\ p_file_1 = 5 /\ p_parent_1 = 1  ->  p_mkdir_pc_1' = 28 /\ d_count_5' = d_count_5 - 1 /\ d_count_1' = d_count_1 - 1
+  p_mkdir_pc_1 = 27 /\ p_file_1 = 5 /\ p_parent_1 = 2  ->  p_mkdir_pc_1' = 28 /\ d_count_5' = d_count_5 - 1 /\ d_count_2' = d_count_2 - 1
+  p_mkdir_pc_1 = 27 /\ p_file_1 = 5 /\ p_parent_1 = 3  ->  p_mkdir_pc_1' = 28 /\ d_count_5' = d_count_5 - 1 /\ d_count_3' = d_count_3 - 1
+  p_mkdir_pc_1 = 27 /\ p_file_1 = 5 /\ p_parent_1 = 4  ->  p_mkdir_pc_1' = 28 /\ d_count_5' = d_count_5 - 1 /\ d_count_4' = d_count_4 - 1
+  p_mkdir_pc_1 = 27 /\ p_file_1 = 5 /\ p_parent_1 = 5  ->  p_mkdir_pc_1' = 28 /\ d_count_5' = d_count_5 - 1
+  p_mkdir_pc_1 = 28  ->  p_mkdir_pc_1' = 29 /\ dcache_lock' = dcache_lock + 1
+  p_mkdir_pc_1 = 29 /\ p_file_1 = 2 /\ d_inode_2 = 1  ->  p_mkdir_pc_1' = 30 /\ i_mutex_1' = i_mutex_1 + 1
+  p_mkdir_pc_1 = 29 /\ p_file_1 = 2 /\ d_inode_2 = 2  ->  p_mkdir_pc_1' = 30 /\ i_mutex_2' = i_mutex_2 + 1
+  p_mkdir_pc_1 = 29 /\ p_file_1 = 2 /\ d_inode_2 = 3  ->  p_mkdir_pc_1' = 30 /\ i_mutex_3' = i_mutex_3 + 1
+  p_mkdir_pc_1 = 29 /\ p_file_1 = 2 /\ d_inode_2 = 4  ->  p_mkdir_pc_1' = 30 /\ i_mutex_4' = i_mutex_4 + 1
+  p_mkdir_pc_1 = 29 /\ p_file_1 = 2 /\ d_inode_2 = 5  ->  p_mkdir_pc_1' = 30 /\ i_mutex_5' = i_mutex_5 + 1
+  p_mkdir_pc_1 = 29 /\ p_file_1 = 3 /\ d_inode_3 = 1  ->  p_mkdir_pc_1' = 30 /\ i_mutex_1' = i_mutex_1 + 1
+  p_mkdir_pc_1 = 29 /\ p_file_1 = 3 /\ d_inode_3 = 2  ->  p_mkdir_pc_1' = 30 /\ i_mutex_2' = i_mutex_2 + 1
+  p_mkdir_pc_1 = 29 /\ p_file_1 = 3 /\ d_inode_3 = 3  ->  p_mkdir_pc_1' = 30 /\ i_mutex_3' = i_mutex_3 + 1
+  p_mkdir_pc_1 = 29 /\ p_file_1 = 3 /\ d_inode_3 = 4  ->  p_mkdir_pc_1' = 30 /\ i_mutex_4' = i_mutex_4 + 1
+  p_mkdir_pc_1 = 29 /\ p_file_1 = 3 /\ d_inode_3 = 5  ->  p_mkdir_pc_1' = 30 /\ i_mutex_5' = i_mutex_5 + 1
+  p_mkdir_pc_1 = 29 /\ p_file_1 = 4 /\ d_inode_4 = 1  ->  p_mkdir_pc_1' = 30 /\ i_mutex_1' = i_mutex_1 + 1
+  p_mkdir_pc_1 = 29 /\ p_file_1 = 4 /\ d_inode_4 = 2  ->  p_mkdir_pc_1' = 30 /\ i_mutex_2' = i_mutex_2 + 1
+  p_mkdir_pc_1 = 29 /\ p_file_1 = 4 /\ d_inode_4 = 3  ->  p_mkdir_pc_1' = 30 /\ i_mutex_3' = i_mutex_3 + 1
+  p_mkdir_pc_1 = 29 /\ p_file_1 = 4 /\ d_inode_4 = 4  ->  p_mkdir_pc_1' = 30 /\ i_mutex_4' = i_mutex_4 + 1
+  p_mkdir_pc_1 = 29 /\ p_file_1 = 4 /\ d_inode_4 = 5  ->  p_mkdir_pc_1' = 30 /\ i_mutex_5' = i_mutex_5 + 1
+  p_mkdir_pc_1 = 29 /\ p_file_1 = 5 /\ d_inode_5 = 1  ->  p_mkdir_pc_1' = 30 /\ i_mutex_1' = i_mutex_1 + 1
+  p_mkdir_pc_1 = 29 /\ p_file_1 = 5 /\ d_inode_5 = 2  ->  p_mkdir_pc_1' = 30 /\ i_mutex_2' = i_mutex_2 + 1
+  p_mkdir_pc_1 = 29 /\ p_file_1 = 5 /\ d_inode_5 = 3  ->  p_mkdir_pc_1' = 30 /\ i_mutex_3' = i_mutex_3 + 1
+  p_mkdir_pc_1 = 29 /\ p_file_1 = 5 /\ d_inode_5 = 4  ->  p_mkdir_pc_1' = 30 /\ i_mutex_4' = i_mutex_4 + 1
+  p_mkdir_pc_1 = 29 /\ p_file_1 = 5 /\ d_inode_5 = 5  ->  p_mkdir_pc_1' = 30 /\ i_mutex_5' = i_mutex_5 + 1
+  p_mkdir_pc_1 = 30  ->  p_mkdir_pc_1' = 0 /\ p_begin_1' = 0
+
+  p_begin_1 = 4 /\ p_rmdir_pc_1 = 0 /\ p_file_1 = 2 /\ d_allocated_2 = 0  ->  p_rmdir_pc_1' = 1
+  p_begin_1 = 4 /\ p_rmdir_pc_1 = 0 /\ p_file_1 = 2 /\ d_allocated_2 > 0  ->  p_rmdir_pc_1' = 2
+  p_begin_1 = 4 /\ p_rmdir_pc_1 = 0 /\ p_file_1 = 3 /\ d_allocated_3 = 0  ->  p_rmdir_pc_1' = 1
+  p_begin_1 = 4 /\ p_rmdir_pc_1 = 0 /\ p_file_1 = 3 /\ d_allocated_3 > 0  ->  p_rmdir_pc_1' = 2
+  p_begin_1 = 4 /\ p_rmdir_pc_1 = 0 /\ p_file_1 = 4 /\ d_allocated_4 = 0  ->  p_rmdir_pc_1' = 1
+  p_begin_1 = 4 /\ p_rmdir_pc_1 = 0 /\ p_file_1 = 4 /\ d_allocated_4 > 0  ->  p_rmdir_pc_1' = 2
+  p_begin_1 = 4 /\ p_rmdir_pc_1 = 0 /\ p_file_1 = 5 /\ d_allocated_5 = 0  ->  p_rmdir_pc_1' = 1
+  p_begin_1 = 4 /\ p_rmdir_pc_1 = 0 /\ p_file_1 = 5 /\ d_allocated_5 > 0  ->  p_rmdir_pc_1' = 2
+  p_rmdir_pc_1 = 1  ->  p_rmdir_pc_1' = 0 /\ p_begin_1' = 0
+  p_rmdir_pc_1 = 2 /\ p_file_1 = 2 /\ d_parent_2 = 1 /\ dcache_lock > 0  ->  p_rmdir_pc_1' = 3 /\ p_parent_1' = d_parent_2 /\ d_count_1' = d_count_1 + d_allocated_1 /\ d_count_2' = d_count_2 + d_allocated_2
+  p_rmdir_pc_1 = 2 /\ p_file_1 = 2 /\ d_parent_2 = 2 /\ dcache_lock > 0  ->  p_rmdir_pc_1' = 3 /\ p_parent_1' = d_parent_2 /\ d_count_2' = d_count_2 + d_allocated_2
+  p_rmdir_pc_1 = 2 /\ p_file_1 = 2 /\ d_parent_2 = 3 /\ dcache_lock > 0  ->  p_rmdir_pc_1' = 3 /\ p_parent_1' = d_parent_2 /\ d_count_3' = d_count_3 + d_allocated_3 /\ d_count_2' = d_count_2 + d_allocated_2
+  p_rmdir_pc_1 = 2 /\ p_file_1 = 2 /\ d_parent_2 = 4 /\ dcache_lock > 0  ->  p_rmdir_pc_1' = 3 /\ p_parent_1' = d_parent_2 /\ d_count_4' = d_count_4 + d_allocated_4 /\ d_count_2' = d_count_2 + d_allocated_2
+  p_rmdir_pc_1 = 2 /\ p_file_1 = 2 /\ d_parent_2 = 5 /\ dcache_lock > 0  ->  p_rmdir_pc_1' = 3 /\ p_parent_1' = d_parent_2 /\ d_count_5' = d_count_5 + d_allocated_5 /\ d_count_2' = d_count_2 + d_allocated_2
+  p_rmdir_pc_1 = 2 /\ p_file_1 = 3 /\ d_parent_3 = 1 /\ dcache_lock > 0  ->  p_rmdir_pc_1' = 3 /\ p_parent_1' = d_parent_3 /\ d_count_1' = d_count_1 + d_allocated_1 /\ d_count_3' = d_count_3 + d_allocated_3
+  p_rmdir_pc_1 = 2 /\ p_file_1 = 3 /\ d_parent_3 = 2 /\ dcache_lock > 0  ->  p_rmdir_pc_1' = 3 /\ p_parent_1' = d_parent_3 /\ d_count_2' = d_count_2 + d_allocated_2 /\ d_count_3' = d_count_3 + d_allocated_3
+  p_rmdir_pc_1 = 2 /\ p_file_1 = 3 /\ d_parent_3 = 3 /\ dcache_lock > 0  ->  p_rmdir_pc_1' = 3 /\ p_parent_1' = d_parent_3 /\ d_count_3' = d_count_3 + d_allocated_3
+  p_rmdir_pc_1 = 2 /\ p_file_1 = 3 /\ d_parent_3 = 4 /\ dcache_lock > 0  ->  p_rmdir_pc_1' = 3 /\ p_parent_1' = d_parent_3 /\ d_count_4' = d_count_4 + d_allocated_4 /\ d_count_3' = d_count_3 + d_allocated_3
+  p_rmdir_pc_1 = 2 /\ p_file_1 = 3 /\ d_parent_3 = 5 /\ dcache_lock > 0  ->  p_rmdir_pc_1' = 3 /\ p_parent_1' = d_parent_3 /\ d_count_5' = d_count_5 + d_allocated_5 /\ d_count_3' = d_count_3 + d_allocated_3
+  p_rmdir_pc_1 = 2 /\ p_file_1 = 4 /\ d_parent_4 = 1 /\ dcache_lock > 0  ->  p_rmdir_pc_1' = 3 /\ p_parent_1' = d_parent_4 /\ d_count_1' = d_count_1 + d_allocated_1 /\ d_count_4' = d_count_4 + d_allocated_4
+  p_rmdir_pc_1 = 2 /\ p_file_1 = 4 /\ d_parent_4 = 2 /\ dcache_lock > 0  ->  p_rmdir_pc_1' = 3 /\ p_parent_1' = d_parent_4 /\ d_count_2' = d_count_2 + d_allocated_2 /\ d_count_4' = d_count_4 + d_allocated_4
+  p_rmdir_pc_1 = 2 /\ p_file_1 = 4 /\ d_parent_4 = 3 /\ dcache_lock > 0  ->  p_rmdir_pc_1' = 3 /\ p_parent_1' = d_parent_4 /\ d_count_3' = d_count_3 + d_allocated_3 /\ d_count_4' = d_count_4 + d_allocated_4
+  p_rmdir_pc_1 = 2 /\ p_file_1 = 4 /\ d_parent_4 = 4 /\ dcache_lock > 0  ->  p_rmdir_pc_1' = 3 /\ p_parent_1' = d_parent_4 /\ d_count_4' = d_count_4 + d_allocated_4
+  p_rmdir_pc_1 = 2 /\ p_file_1 = 4 /\ d_parent_4 = 5 /\ dcache_lock > 0  ->  p_rmdir_pc_1' = 3 /\ p_parent_1' = d_parent_4 /\ d_count_5' = d_count_5 + d_allocated_5 /\ d_count_4' = d_count_4 + d_allocated_4
+  p_rmdir_pc_1 = 2 /\ p_file_1 = 5 /\ d_parent_5 = 1 /\ dcache_lock > 0  ->  p_rmdir_pc_1' = 3 /\ p_parent_1' = d_parent_5 /\ d_count_1' = d_count_1 + d_allocated_1 /\ d_count_5' = d_count_5 + d_allocated_5
+  p_rmdir_pc_1 = 2 /\ p_file_1 = 5 /\ d_parent_5 = 2 /\ dcache_lock > 0  ->  p_rmdir_pc_1' = 3 /\ p_parent_1' = d_parent_5 /\ d_count_2' = d_count_2 + d_allocated_2 /\ d_count_5' = d_count_5 + d_allocated_5
+  p_rmdir_pc_1 = 2 /\ p_file_1 = 5 /\ d_parent_5 = 3 /\ dcache_lock > 0  ->  p_rmdir_pc_1' = 3 /\ p_parent_1' = d_parent_5 /\ d_count_3' = d_count_3 + d_allocated_3 /\ d_count_5' = d_count_5 + d_allocated_5
+  p_rmdir_pc_1 = 2 /\ p_file_1 = 5 /\ d_parent_5 = 4 /\ dcache_lock > 0  ->  p_rmdir_pc_1' = 3 /\ p_parent_1' = d_parent_5 /\ d_count_4' = d_count_4 + d_allocated_4 /\ d_count_5' = d_count_5 + d_allocated_5
+  p_rmdir_pc_1 = 2 /\ p_file_1 = 5 /\ d_parent_5 = 5 /\ dcache_lock > 0  ->  p_rmdir_pc_1' = 3 /\ p_parent_1' = d_parent_5 /\ d_count_5' = d_count_5 + d_allocated_5
+  p_rmdir_pc_1 = 3 /\ p_file_1 = 2 /\ d_subdirs_2 = 0  ->  p_rmdir_pc_1' = 4
+  p_rmdir_pc_1 = 3 /\ p_file_1 = 2 /\ d_subdirs_2 > 0  ->  p_rmdir_pc_1' = 6
+  p_rmdir_pc_1 = 3 /\ p_file_1 = 3 /\ d_subdirs_3 = 0  ->  p_rmdir_pc_1' = 4
+  p_rmdir_pc_1 = 3 /\ p_file_1 = 3 /\ d_subdirs_3 > 0  ->  p_rmdir_pc_1' = 6
+  p_rmdir_pc_1 = 3 /\ p_file_1 = 4 /\ d_subdirs_4 = 0  ->  p_rmdir_pc_1' = 4
+  p_rmdir_pc_1 = 3 /\ p_file_1 = 4 /\ d_subdirs_4 > 0  ->  p_rmdir_pc_1' = 6
+  p_rmdir_pc_1 = 3 /\ p_file_1 = 5 /\ d_subdirs_5 = 0  ->  p_rmdir_pc_1' = 4
+  p_rmdir_pc_1 = 3 /\ p_file_1 = 5 /\ d_subdirs_5 > 0  ->  p_rmdir_pc_1' = 6
+  p_rmdir_pc_1 = 4 /\ p_file_1 = 2 /\ d_parent_2 = 1  ->  p_rmdir_pc_1' = 5 /\ d_count_2' = d_count_2 - d_allocated_2 /\ d_count_1' = d_count_1 - d_allocated_1
+  p_rmdir_pc_1 = 4 /\ p_file_1 = 2 /\ d_parent_2 = 2  ->  p_rmdir_pc_1' = 5 /\ d_count_2' = d_count_2 - d_allocated_2
+  p_rmdir_pc_1 = 4 /\ p_file_1 = 2 /\ d_parent_2 = 3  ->  p_rmdir_pc_1' = 5 /\ d_count_2' = d_count_2 - d_allocated_2 /\ d_count_3' = d_count_3 - d_allocated_3
+  p_rmdir_pc_1 = 4 /\ p_file_1 = 2 /\ d_parent_2 = 4  ->  p_rmdir_pc_1' = 5 /\ d_count_2' = d_count_2 - d_allocated_2 /\ d_count_4' = d_count_4 - d_allocated_4
+  p_rmdir_pc_1 = 4 /\ p_file_1 = 2 /\ d_parent_2 = 5  ->  p_rmdir_pc_1' = 5 /\ d_count_2' = d_count_2 - d_allocated_2 /\ d_count_5' = d_count_5 - d_allocated_5
+  p_rmdir_pc_1 = 4 /\ p_file_1 = 3 /\ d_parent_3 = 1  ->  p_rmdir_pc_1' = 5 /\ d_count_3' = d_count_3 - d_allocated_3 /\ d_count_1' = d_count_1 - d_allocated_1
+  p_rmdir_pc_1 = 4 /\ p_file_1 = 3 /\ d_parent_3 = 2  ->  p_rmdir_pc_1' = 5 /\ d_count_3' = d_count_3 - d_allocated_3 /\ d_count_2' = d_count_2 - d_allocated_2
+  p_rmdir_pc_1 = 4 /\ p_file_1 = 3 /\ d_parent_3 = 3  ->  p_rmdir_pc_1' = 5 /\ d_count_3' = d_count_3 - d_allocated_3
+  p_rmdir_pc_1 = 4 /\ p_file_1 = 3 /\ d_parent_3 = 4  ->  p_rmdir_pc_1' = 5 /\ d_count_3' = d_count_3 - d_allocated_3 /\ d_count_4' = d_count_4 - d_allocated_4
+  p_rmdir_pc_1 = 4 /\ p_file_1 = 3 /\ d_parent_3 = 5  ->  p_rmdir_pc_1' = 5 /\ d_count_3' = d_count_3 - d_allocated_3 /\ d_count_5' = d_count_5 - d_allocated_5
+  p_rmdir_pc_1 = 4 /\ p_file_1 = 4 /\ d_parent_4 = 1  ->  p_rmdir_pc_1' = 5 /\ d_count_4' = d_count_4 - d_allocated_4 /\ d_count_1' = d_count_1 - d_allocated_1
+  p_rmdir_pc_1 = 4 /\ p_file_1 = 4 /\ d_parent_4 = 2  ->  p_rmdir_pc_1' = 5 /\ d_count_4' = d_count_4 - d_allocated_4 /\ d_count_2' = d_count_2 - d_allocated_2
+  p_rmdir_pc_1 = 4 /\ p_file_1 = 4 /\ d_parent_4 = 3  ->  p_rmdir_pc_1' = 5 /\ d_count_4' = d_count_4 - d_allocated_4 /\ d_count_3' = d_count_3 - d_allocated_3
+  p_rmdir_pc_1 = 4 /\ p_file_1 = 4 /\ d_parent_4 = 4  ->  p_rmdir_pc_1' = 5 /\ d_count_4' = d_count_4 - d_allocated_4
+  p_rmdir_pc_1 = 4 /\ p_file_1 = 4 /\ d_parent_4 = 5  ->  p_rmdir_pc_1' = 5 /\ d_count_4' = d_count_4 - d_allocated_4 /\ d_count_5' = d_count_5 - d_allocated_5
+  p_rmdir_pc_1 = 4 /\ p_file_1 = 5 /\ d_parent_5 = 1  ->  p_rmdir_pc_1' = 5 /\ d_count_5' = d_count_5 - d_allocated_5 /\ d_count_1' = d_count_1 - d_allocated_1
+  p_rmdir_pc_1 = 4 /\ p_file_1 = 5 /\ d_parent_5 = 2  ->  p_rmdir_pc_1' = 5 /\ d_count_5' = d_count_5 - d_allocated_5 /\ d_count_2' = d_count_2 - d_allocated_2
+  p_rmdir_pc_1 = 4 /\ p_file_1 = 5 /\ d_parent_5 = 3  ->  p_rmdir_pc_1' = 5 /\ d_count_5' = d_count_5 - d_allocated_5 /\ d_count_3' = d_count_3 - d_allocated_3
+  p_rmdir_pc_1 = 4 /\ p_file_1 = 5 /\ d_parent_5 = 4  ->  p_rmdir_pc_1' = 5 /\ d_count_5' = d_count_5 - d_allocated_5 /\ d_count_4' = d_count_4 - d_allocated_4
+  p_rmdir_pc_1 = 4 /\ p_file_1 = 5 /\ d_parent_5 = 5  ->  p_rmdir_pc_1' = 5 /\ d_count_5' = d_count_5 - d_allocated_5
+  p_rmdir_pc_1 = 5  ->  p_rmdir_pc_1' = 0 /\ p_begin_1' = 0
+  p_rmdir_pc_1 = 6 /\ dcache_lock > 0  ->  p_rmdir_pc_1' = 7 /\ dcache_lock' = dcache_lock - 1
+  p_rmdir_pc_1 = 7 /\ p_file_1 = 2 /\ d_inode_2 = 1 /\ i_mutex_1 > 0  ->  p_rmdir_pc_1' = 8 /\ i_mutex_1' = i_mutex_1 - 1
+  p_rmdir_pc_1 = 7 /\ p_file_1 = 2 /\ d_inode_2 = 2 /\ i_mutex_2 > 0  ->  p_rmdir_pc_1' = 8 /\ i_mutex_2' = i_mutex_2 - 1
+  p_rmdir_pc_1 = 7 /\ p_file_1 = 2 /\ d_inode_2 = 3 /\ i_mutex_3 > 0  ->  p_rmdir_pc_1' = 8 /\ i_mutex_3' = i_mutex_3 - 1
+  p_rmdir_pc_1 = 7 /\ p_file_1 = 2 /\ d_inode_2 = 4 /\ i_mutex_4 > 0  ->  p_rmdir_pc_1' = 8 /\ i_mutex_4' = i_mutex_4 - 1
+  p_rmdir_pc_1 = 7 /\ p_file_1 = 2 /\ d_inode_2 = 5 /\ i_mutex_5 > 0  ->  p_rmdir_pc_1' = 8 /\ i_mutex_5' = i_mutex_5 - 1
+  p_rmdir_pc_1 = 7 /\ p_file_1 = 3 /\ d_inode_3 = 1 /\ i_mutex_1 > 0  ->  p_rmdir_pc_1' = 8 /\ i_mutex_1' = i_mutex_1 - 1
+  p_rmdir_pc_1 = 7 /\ p_file_1 = 3 /\ d_inode_3 = 2 /\ i_mutex_2 > 0  ->  p_rmdir_pc_1' = 8 /\ i_mutex_2' = i_mutex_2 - 1
+  p_rmdir_pc_1 = 7 /\ p_file_1 = 3 /\ d_inode_3 = 3 /\ i_mutex_3 > 0  ->  p_rmdir_pc_1' = 8 /\ i_mutex_3' = i_mutex_3 - 1
+  p_rmdir_pc_1 = 7 /\ p_file_1 = 3 /\ d_inode_3 = 4 /\ i_mutex_4 > 0  ->  p_rmdir_pc_1' = 8 /\ i_mutex_4' = i_mutex_4 - 1
+  p_rmdir_pc_1 = 7 /\ p_file_1 = 3 /\ d_inode_3 = 5 /\ i_mutex_5 > 0  ->  p_rmdir_pc_1' = 8 /\ i_mutex_5' = i_mutex_5 - 1
+  p_rmdir_pc_1 = 7 /\ p_file_1 = 4 /\ d_inode_4 = 1 /\ i_mutex_1 > 0  ->  p_rmdir_pc_1' = 8 /\ i_mutex_1' = i_mutex_1 - 1
+  p_rmdir_pc_1 = 7 /\ p_file_1 = 4 /\ d_inode_4 = 2 /\ i_mutex_2 > 0  ->  p_rmdir_pc_1' = 8 /\ i_mutex_2' = i_mutex_2 - 1
+  p_rmdir_pc_1 = 7 /\ p_file_1 = 4 /\ d_inode_4 = 3 /\ i_mutex_3 > 0  ->  p_rmdir_pc_1' = 8 /\ i_mutex_3' = i_mutex_3 - 1
+  p_rmdir_pc_1 = 7 /\ p_file_1 = 4 /\ d_inode_4 = 4 /\ i_mutex_4 > 0  ->  p_rmdir_pc_1' = 8 /\ i_mutex_4' = i_mutex_4 - 1
+  p_rmdir_pc_1 = 7 /\ p_file_1 = 4 /\ d_inode_4 = 5 /\ i_mutex_5 > 0  ->  p_rmdir_pc_1' = 8 /\ i_mutex_5' = i_mutex_5 - 1
+  p_rmdir_pc_1 = 7 /\ p_file_1 = 5 /\ d_inode_5 = 1 /\ i_mutex_1 > 0  ->  p_rmdir_pc_1' = 8 /\ i_mutex_1' = i_mutex_1 - 1
+  p_rmdir_pc_1 = 7 /\ p_file_1 = 5 /\ d_inode_5 = 2 /\ i_mutex_2 > 0  ->  p_rmdir_pc_1' = 8 /\ i_mutex_2' = i_mutex_2 - 1
+  p_rmdir_pc_1 = 7 /\ p_file_1 = 5 /\ d_inode_5 = 3 /\ i_mutex_3 > 0  ->  p_rmdir_pc_1' = 8 /\ i_mutex_3' = i_mutex_3 - 1
+  p_rmdir_pc_1 = 7 /\ p_file_1 = 5 /\ d_inode_5 = 4 /\ i_mutex_4 > 0  ->  p_rmdir_pc_1' = 8 /\ i_mutex_4' = i_mutex_4 - 1
+  p_rmdir_pc_1 = 7 /\ p_file_1 = 5 /\ d_inode_5 = 5 /\ i_mutex_5 > 0  ->  p_rmdir_pc_1' = 8 /\ i_mutex_5' = i_mutex_5 - 1
+  p_rmdir_pc_1 = 8 /\ p_file_1 = 2 /\ d_subdirs_2 > 1  ->  p_rmdir_pc_1' = 9
+  p_rmdir_pc_1 = 8 /\ p_file_1 = 2 /\ d_subdirs_2 < 2  ->  p_rmdir_pc_1' = 14
+  p_rmdir_pc_1 = 8 /\ p_file_1 = 3 /\ d_subdirs_3 > 1  ->  p_rmdir_pc_1' = 9
+  p_rmdir_pc_1 = 8 /\ p_file_1 = 3 /\ d_subdirs_3 < 2  ->  p_rmdir_pc_1' = 14
+  p_rmdir_pc_1 = 8 /\ p_file_1 = 4 /\ d_subdirs_4 > 1  ->  p_rmdir_pc_1' = 9
+  p_rmdir_pc_1 = 8 /\ p_file_1 = 4 /\ d_subdirs_4 < 2  ->  p_rmdir_pc_1' = 14
+  p_rmdir_pc_1 = 8 /\ p_file_1 = 5 /\ d_subdirs_5 > 1  ->  p_rmdir_pc_1' = 9
+  p_rmdir_pc_1 = 8 /\ p_file_1 = 5 /\ d_subdirs_5 < 2  ->  p_rmdir_pc_1' = 14
+  p_rmdir_pc_1 = 9  ->  p_rmdir_pc_1' = 10 /\ dcache_lock' = dcache_lock + 1
+  p_rmdir_pc_1 = 10 /\ p_file_1 = 2 /\ d_inode_2 = 1  ->  p_rmdir_pc_1' = 11 /\ i_mutex_1' = i_mutex_1 + 1
+  p_rmdir_pc_1 = 10 /\ p_file_1 = 2 /\ d_inode_2 = 2  ->  p_rmdir_pc_1' = 11 /\ i_mutex_2' = i_mutex_2 + 1
+  p_rmdir_pc_1 = 10 /\ p_file_1 = 2 /\ d_inode_2 = 3  ->  p_rmdir_pc_1' = 11 /\ i_mutex_3' = i_mutex_3 + 1
+  p_rmdir_pc_1 = 10 /\ p_file_1 = 2 /\ d_inode_2 = 4  ->  p_rmdir_pc_1' = 11 /\ i_mutex_4' = i_mutex_4 + 1
+  p_rmdir_pc_1 = 10 /\ p_file_1 = 2 /\ d_inode_2 = 5  ->  p_rmdir_pc_1' = 11 /\ i_mutex_5' = i_mutex_5 + 1
+  p_rmdir_pc_1 = 10 /\ p_file_1 = 3 /\ d_inode_3 = 1  ->  p_rmdir_pc_1' = 11 /\ i_mutex_1' = i_mutex_1 + 1
+  p_rmdir_pc_1 = 10 /\ p_file_1 = 3 /\ d_inode_3 = 2  ->  p_rmdir_pc_1' = 11 /\ i_mutex_2' = i_mutex_2 + 1
+  p_rmdir_pc_1 = 10 /\ p_file_1 = 3 /\ d_inode_3 = 3  ->  p_rmdir_pc_1' = 11 /\ i_mutex_3' = i_mutex_3 + 1
+  p_rmdir_pc_1 = 10 /\ p_file_1 = 3 /\ d_inode_3 = 4  ->  p_rmdir_pc_1' = 11 /\ i_mutex_4' = i_mutex_4 + 1
+  p_rmdir_pc_1 = 10 /\ p_file_1 = 3 /\ d_inode_3 = 5  ->  p_rmdir_pc_1' = 11 /\ i_mutex_5' = i_mutex_5 + 1
+  p_rmdir_pc_1 = 10 /\ p_file_1 = 4 /\ d_inode_4 = 1  ->  p_rmdir_pc_1' = 11 /\ i_mutex_1' = i_mutex_1 + 1
+  p_rmdir_pc_1 = 10 /\ p_file_1 = 4 /\ d_inode_4 = 2  ->  p_rmdir_pc_1' = 11 /\ i_mutex_2' = i_mutex_2 + 1
+  p_rmdir_pc_1 = 10 /\ p_file_1 = 4 /\ d_inode_4 = 3  ->  p_rmdir_pc_1' = 11 /\ i_mutex_3' = i_mutex_3 + 1
+  p_rmdir_pc_1 = 10 /\ p_file_1 = 4 /\ d_inode_4 = 4  ->  p_rmdir_pc_1' = 11 /\ i_mutex_4' = i_mutex_4 + 1
+  p_rmdir_pc_1 = 10 /\ p_file_1 = 4 /\ d_inode_4 = 5  ->  p_rmdir_pc_1' = 11 /\ i_mutex_5' = i_mutex_5 + 1
+  p_rmdir_pc_1 = 10 /\ p_file_1 = 5 /\ d_inode_5 = 1  ->  p_rmdir_pc_1' = 11 /\ i_mutex_1' = i_mutex_1 + 1
+  p_rmdir_pc_1 = 10 /\ p_file_1 = 5 /\ d_inode_5 = 2  ->  p_rmdir_pc_1' = 11 /\ i_mutex_2' = i_mutex_2 + 1
+  p_rmdir_pc_1 = 10 /\ p_file_1 = 5 /\ d_inode_5 = 3  ->  p_rmdir_pc_1' = 11 /\ i_mutex_3' = i_mutex_3 + 1
+  p_rmdir_pc_1 = 10 /\ p_file_1 = 5 /\ d_inode_5 = 4  ->  p_rmdir_pc_1' = 11 /\ i_mutex_4' = i_mutex_4 + 1
+  p_rmdir_pc_1 = 10 /\ p_file_1 = 5 /\ d_inode_5 = 5  ->  p_rmdir_pc_1' = 11 /\ i_mutex_5' = i_mutex_5 + 1
+  p_rmdir_pc_1 = 11 /\ p_file_1 = 2 /\ d_lock_2 > 0 /\ d_count_2 > 0  ->  p_rmdir_pc_1' = 12 /\ d_count_2' = d_count_2 - 1
+  p_rmdir_pc_1 = 11 /\ p_file_1 = 3 /\ d_lock_3 > 0 /\ d_count_3 > 0  ->  p_rmdir_pc_1' = 12 /\ d_count_3' = d_count_3 - 1
+  p_rmdir_pc_1 = 11 /\ p_file_1 = 4 /\ d_lock_4 > 0 /\ d_count_4 > 0  ->  p_rmdir_pc_1' = 12 /\ d_count_4' = d_count_4 - 1
+  p_rmdir_pc_1 = 11 /\ p_file_1 = 5 /\ d_lock_5 > 0 /\ d_count_5 > 0  ->  p_rmdir_pc_1' = 12 /\ d_count_5' = d_count_5 - 1
+  p_rmdir_pc_1 = 12 /\ p_parent_1 = 1 /\ d_lock_1 > 0 /\ d_count_1 > 0  ->  p_rmdir_pc_1' = 13 /\ d_count_1' = d_count_1 - 1
+  p_rmdir_pc_1 = 12 /\ p_parent_1 = 2 /\ d_lock_2 > 0 /\ d_count_2 > 0  ->  p_rmdir_pc_1' = 13 /\ d_count_2' = d_count_2 - 1
+  p_rmdir_pc_1 = 12 /\ p_parent_1 = 3 /\ d_lock_3 > 0 /\ d_count_3 > 0  ->  p_rmdir_pc_1' = 13 /\ d_count_3' = d_count_3 - 1
+  p_rmdir_pc_1 = 12 /\ p_parent_1 = 4 /\ d_lock_4 > 0 /\ d_count_4 > 0  ->  p_rmdir_pc_1' = 13 /\ d_count_4' = d_count_4 - 1
+  p_rmdir_pc_1 = 12 /\ p_parent_1 = 5 /\ d_lock_5 > 0 /\ d_count_5 > 0  ->  p_rmdir_pc_1' = 13 /\ d_count_5' = d_count_5 - 1
+  p_rmdir_pc_1 = 13  ->  p_rmdir_pc_1' = 0 /\ p_begin_1' = 0
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 2 /\ d_inode_2 = 1 /\ i_state_1 = 1  ->  p_rmdir_pc_1' = 38
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 2 /\ d_inode_2 = 1 /\ i_state_1 = 0  ->  p_rmdir_pc_1' = 19
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 2 /\ d_inode_2 = 2 /\ i_state_2 = 1  ->  p_rmdir_pc_1' = 38
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 2 /\ d_inode_2 = 2 /\ i_state_2 = 0  ->  p_rmdir_pc_1' = 19
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 2 /\ d_inode_2 = 3 /\ i_state_3 = 1  ->  p_rmdir_pc_1' = 38
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 2 /\ d_inode_2 = 3 /\ i_state_3 = 0  ->  p_rmdir_pc_1' = 19
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 2 /\ d_inode_2 = 4 /\ i_state_4 = 1  ->  p_rmdir_pc_1' = 38
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 2 /\ d_inode_2 = 4 /\ i_state_4 = 0  ->  p_rmdir_pc_1' = 19
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 2 /\ d_inode_2 = 5 /\ i_state_5 = 1  ->  p_rmdir_pc_1' = 38
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 2 /\ d_inode_2 = 5 /\ i_state_5 = 0  ->  p_rmdir_pc_1' = 19
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 3 /\ d_inode_3 = 1 /\ i_state_1 = 1  ->  p_rmdir_pc_1' = 38
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 3 /\ d_inode_3 = 1 /\ i_state_1 = 0  ->  p_rmdir_pc_1' = 19
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 3 /\ d_inode_3 = 2 /\ i_state_2 = 1  ->  p_rmdir_pc_1' = 38
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 3 /\ d_inode_3 = 2 /\ i_state_2 = 0  ->  p_rmdir_pc_1' = 19
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 3 /\ d_inode_3 = 3 /\ i_state_3 = 1  ->  p_rmdir_pc_1' = 38
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 3 /\ d_inode_3 = 3 /\ i_state_3 = 0  ->  p_rmdir_pc_1' = 19
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 3 /\ d_inode_3 = 4 /\ i_state_4 = 1  ->  p_rmdir_pc_1' = 38
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 3 /\ d_inode_3 = 4 /\ i_state_4 = 0  ->  p_rmdir_pc_1' = 19
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 3 /\ d_inode_3 = 5 /\ i_state_5 = 1  ->  p_rmdir_pc_1' = 38
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 3 /\ d_inode_3 = 5 /\ i_state_5 = 0  ->  p_rmdir_pc_1' = 19
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 4 /\ d_inode_4 = 1 /\ i_state_1 = 1  ->  p_rmdir_pc_1' = 38
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 4 /\ d_inode_4 = 1 /\ i_state_1 = 0  ->  p_rmdir_pc_1' = 19
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 4 /\ d_inode_4 = 2 /\ i_state_2 = 1  ->  p_rmdir_pc_1' = 38
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 4 /\ d_inode_4 = 2 /\ i_state_2 = 0  ->  p_rmdir_pc_1' = 19
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 4 /\ d_inode_4 = 3 /\ i_state_3 = 1  ->  p_rmdir_pc_1' = 38
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 4 /\ d_inode_4 = 3 /\ i_state_3 = 0  ->  p_rmdir_pc_1' = 19
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 4 /\ d_inode_4 = 4 /\ i_state_4 = 1  ->  p_rmdir_pc_1' = 38
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 4 /\ d_inode_4 = 4 /\ i_state_4 = 0  ->  p_rmdir_pc_1' = 19
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 4 /\ d_inode_4 = 5 /\ i_state_5 = 1  ->  p_rmdir_pc_1' = 38
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 4 /\ d_inode_4 = 5 /\ i_state_5 = 0  ->  p_rmdir_pc_1' = 19
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 5 /\ d_inode_5 = 1 /\ i_state_1 = 1  ->  p_rmdir_pc_1' = 38
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 5 /\ d_inode_5 = 1 /\ i_state_1 = 0  ->  p_rmdir_pc_1' = 19
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 5 /\ d_inode_5 = 2 /\ i_state_2 = 1  ->  p_rmdir_pc_1' = 38
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 5 /\ d_inode_5 = 2 /\ i_state_2 = 0  ->  p_rmdir_pc_1' = 19
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 5 /\ d_inode_5 = 3 /\ i_state_3 = 1  ->  p_rmdir_pc_1' = 38
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 5 /\ d_inode_5 = 3 /\ i_state_3 = 0  ->  p_rmdir_pc_1' = 19
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 5 /\ d_inode_5 = 4 /\ i_state_4 = 1  ->  p_rmdir_pc_1' = 38
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 5 /\ d_inode_5 = 4 /\ i_state_4 = 0  ->  p_rmdir_pc_1' = 19
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 5 /\ d_inode_5 = 5 /\ i_state_5 = 1  ->  p_rmdir_pc_1' = 38
+  p_rmdir_pc_1 = 14 /\ p_file_1 = 5 /\ d_inode_5 = 5 /\ i_state_5 = 0  ->  p_rmdir_pc_1' = 19
+  p_rmdir_pc_1 = 38  ->  p_rmdir_pc_1' = 15 /\ dcache_lock' = dcache_lock + 1
+  p_rmdir_pc_1 = 15 /\ p_file_1 = 2 /\ d_lock_2 > 0 /\ d_count_2 > 0  ->  p_rmdir_pc_1' = 16 /\ d_count_2' = d_count_2 - 1
+  p_rmdir_pc_1 = 15 /\ p_file_1 = 3 /\ d_lock_3 > 0 /\ d_count_3 > 0  ->  p_rmdir_pc_1' = 16 /\ d_count_3' = d_count_3 - 1
+  p_rmdir_pc_1 = 15 /\ p_file_1 = 4 /\ d_lock_4 > 0 /\ d_count_4 > 0  ->  p_rmdir_pc_1' = 16 /\ d_count_4' = d_count_4 - 1
+  p_rmdir_pc_1 = 15 /\ p_file_1 = 5 /\ d_lock_5 > 0 /\ d_count_5 > 0  ->  p_rmdir_pc_1' = 16 /\ d_count_5' = d_count_5 - 1
+  p_rmdir_pc_1 = 16 /\ p_parent_1 = 1 /\ d_lock_1 > 0 /\ d_count_1 > 0  ->  p_rmdir_pc_1' = 17 /\ d_count_1' = d_count_1 - 1
+  p_rmdir_pc_1 = 16 /\ p_parent_1 = 2 /\ d_lock_2 > 0 /\ d_count_2 > 0  ->  p_rmdir_pc_1' = 17 /\ d_count_2' = d_count_2 - 1
+  p_rmdir_pc_1 = 16 /\ p_parent_1 = 3 /\ d_lock_3 > 0 /\ d_count_3 > 0  ->  p_rmdir_pc_1' = 17 /\ d_count_3' = d_count_3 - 1
+  p_rmdir_pc_1 = 16 /\ p_parent_1 = 4 /\ d_lock_4 > 0 /\ d_count_4 > 0  ->  p_rmdir_pc_1' = 17 /\ d_count_4' = d_count_4 - 1
+  p_rmdir_pc_1 = 16 /\ p_parent_1 = 5 /\ d_lock_5 > 0 /\ d_count_5 > 0  ->  p_rmdir_pc_1' = 17 /\ d_count_5' = d_count_5 - 1
+  p_rmdir_pc_1 = 17 /\ p_file_1 = 2 /\ d_inode_2 = 1  ->  p_rmdir_pc_1' = 18 /\ i_mutex_1' = i_mutex_1 + 1
+  p_rmdir_pc_1 = 17 /\ p_file_1 = 2 /\ d_inode_2 = 2  ->  p_rmdir_pc_1' = 18 /\ i_mutex_2' = i_mutex_2 + 1
+  p_rmdir_pc_1 = 17 /\ p_file_1 = 2 /\ d_inode_2 = 3  ->  p_rmdir_pc_1' = 18 /\ i_mutex_3' = i_mutex_3 + 1
+  p_rmdir_pc_1 = 17 /\ p_file_1 = 2 /\ d_inode_2 = 4  ->  p_rmdir_pc_1' = 18 /\ i_mutex_4' = i_mutex_4 + 1
+  p_rmdir_pc_1 = 17 /\ p_file_1 = 2 /\ d_inode_2 = 5  ->  p_rmdir_pc_1' = 18 /\ i_mutex_5' = i_mutex_5 + 1
+  p_rmdir_pc_1 = 17 /\ p_file_1 = 3 /\ d_inode_3 = 1  ->  p_rmdir_pc_1' = 18 /\ i_mutex_1' = i_mutex_1 + 1
+  p_rmdir_pc_1 = 17 /\ p_file_1 = 3 /\ d_inode_3 = 2  ->  p_rmdir_pc_1' = 18 /\ i_mutex_2' = i_mutex_2 + 1
+  p_rmdir_pc_1 = 17 /\ p_file_1 = 3 /\ d_inode_3 = 3  ->  p_rmdir_pc_1' = 18 /\ i_mutex_3' = i_mutex_3 + 1
+  p_rmdir_pc_1 = 17 /\ p_file_1 = 3 /\ d_inode_3 = 4  ->  p_rmdir_pc_1' = 18 /\ i_mutex_4' = i_mutex_4 + 1
+  p_rmdir_pc_1 = 17 /\ p_file_1 = 3 /\ d_inode_3 = 5  ->  p_rmdir_pc_1' = 18 /\ i_mutex_5' = i_mutex_5 + 1
+  p_rmdir_pc_1 = 17 /\ p_file_1 = 4 /\ d_inode_4 = 1  ->  p_rmdir_pc_1' = 18 /\ i_mutex_1' = i_mutex_1 + 1
+  p_rmdir_pc_1 = 17 /\ p_file_1 = 4 /\ d_inode_4 = 2  ->  p_rmdir_pc_1' = 18 /\ i_mutex_2' = i_mutex_2 + 1
+  p_rmdir_pc_1 = 17 /\ p_file_1 = 4 /\ d_inode_4 = 3  ->  p_rmdir_pc_1' = 18 /\ i_mutex_3' = i_mutex_3 + 1
+  p_rmdir_pc_1 = 17 /\ p_file_1 = 4 /\ d_inode_4 = 4  ->  p_rmdir_pc_1' = 18 /\ i_mutex_4' = i_mutex_4 + 1
+  p_rmdir_pc_1 = 17 /\ p_file_1 = 4 /\ d_inode_4 = 5  ->  p_rmdir_pc_1' = 18 /\ i_mutex_5' = i_mutex_5 + 1
+  p_rmdir_pc_1 = 17 /\ p_file_1 = 5 /\ d_inode_5 = 1  ->  p_rmdir_pc_1' = 18 /\ i_mutex_1' = i_mutex_1 + 1
+  p_rmdir_pc_1 = 17 /\ p_file_1 = 5 /\ d_inode_5 = 2  ->  p_rmdir_pc_1' = 18 /\ i_mutex_2' = i_mutex_2 + 1
+  p_rmdir_pc_1 = 17 /\ p_file_1 = 5 /\ d_inode_5 = 3  ->  p_rmdir_pc_1' = 18 /\ i_mutex_3' = i_mutex_3 + 1
+  p_rmdir_pc_1 = 17 /\ p_file_1 = 5 /\ d_inode_5 = 4  ->  p_rmdir_pc_1' = 18 /\ i_mutex_4' = i_mutex_4 + 1
+  p_rmdir_pc_1 = 17 /\ p_file_1 = 5 /\ d_inode_5 = 5  ->  p_rmdir_pc_1' = 18 /\ i_mutex_5' = i_mutex_5 + 1
+  p_rmdir_pc_1 = 18  ->  p_rmdir_pc_1' = 0 /\ p_begin_1' = 0
+  p_rmdir_pc_1 = 19 /\ p_file_1 = 2 /\ d_inode_2 = 1  ->  p_rmdir_pc_1' = 20 /\ i_state_1' = 1
+  p_rmdir_pc_1 = 19 /\ p_file_1 = 2 /\ d_inode_2 = 2  ->  p_rmdir_pc_1' = 20 /\ i_state_2' = 1
+  p_rmdir_pc_1 = 19 /\ p_file_1 = 2 /\ d_inode_2 = 3  ->  p_rmdir_pc_1' = 20 /\ i_state_3' = 1
+  p_rmdir_pc_1 = 19 /\ p_file_1 = 2 /\ d_inode_2 = 4  ->  p_rmdir_pc_1' = 20 /\ i_state_4' = 1
+  p_rmdir_pc_1 = 19 /\ p_file_1 = 2 /\ d_inode_2 = 5  ->  p_rmdir_pc_1' = 20 /\ i_state_5' = 1
+  p_rmdir_pc_1 = 19 /\ p_file_1 = 3 /\ d_inode_3 = 1  ->  p_rmdir_pc_1' = 20 /\ i_state_1' = 1
+  p_rmdir_pc_1 = 19 /\ p_file_1 = 3 /\ d_inode_3 = 2  ->  p_rmdir_pc_1' = 20 /\ i_state_2' = 1
+  p_rmdir_pc_1 = 19 /\ p_file_1 = 3 /\ d_inode_3 = 3  ->  p_rmdir_pc_1' = 20 /\ i_state_3' = 1
+  p_rmdir_pc_1 = 19 /\ p_file_1 = 3 /\ d_inode_3 = 4  ->  p_rmdir_pc_1' = 20 /\ i_state_4' = 1
+  p_rmdir_pc_1 = 19 /\ p_file_1 = 3 /\ d_inode_3 = 5  ->  p_rmdir_pc_1' = 20 /\ i_state_5' = 1
+  p_rmdir_pc_1 = 19 /\ p_file_1 = 4 /\ d_inode_4 = 1  ->  p_rmdir_pc_1' = 20 /\ i_state_1' = 1
+  p_rmdir_pc_1 = 19 /\ p_file_1 = 4 /\ d_inode_4 = 2  ->  p_rmdir_pc_1' = 20 /\ i_state_2' = 1
+  p_rmdir_pc_1 = 19 /\ p_file_1 = 4 /\ d_inode_4 = 3  ->  p_rmdir_pc_1' = 20 /\ i_state_3' = 1
+  p_rmdir_pc_1 = 19 /\ p_file_1 = 4 /\ d_inode_4 = 4  ->  p_rmdir_pc_1' = 20 /\ i_state_4' = 1
+  p_rmdir_pc_1 = 19 /\ p_file_1 = 4 /\ d_inode_4 = 5  ->  p_rmdir_pc_1' = 20 /\ i_state_5' = 1
+  p_rmdir_pc_1 = 19 /\ p_file_1 = 5 /\ d_inode_5 = 1  ->  p_rmdir_pc_1' = 20 /\ i_state_1' = 1
+  p_rmdir_pc_1 = 19 /\ p_file_1 = 5 /\ d_inode_5 = 2  ->  p_rmdir_pc_1' = 20 /\ i_state_2' = 1
+  p_rmdir_pc_1 = 19 /\ p_file_1 = 5 /\ d_inode_5 = 3  ->  p_rmdir_pc_1' = 20 /\ i_state_3' = 1
+  p_rmdir_pc_1 = 19 /\ p_file_1 = 5 /\ d_inode_5 = 4  ->  p_rmdir_pc_1' = 20 /\ i_state_4' = 1
+  p_rmdir_pc_1 = 19 /\ p_file_1 = 5 /\ d_inode_5 = 5  ->  p_rmdir_pc_1' = 20 /\ i_state_5' = 1
+  p_rmdir_pc_1 = 20 /\ p_file_1 = 2 /\ d_inode_2 = 1  ->  p_rmdir_pc_1' = 21 /\ i_mutex_1' = i_mutex_1 + 1
+  p_rmdir_pc_1 = 20 /\ p_file_1 = 2 /\ d_inode_2 = 2  ->  p_rmdir_pc_1' = 21 /\ i_mutex_2' = i_mutex_2 + 1
+  p_rmdir_pc_1 = 20 /\ p_file_1 = 2 /\ d_inode_2 = 3  ->  p_rmdir_pc_1' = 21 /\ i_mutex_3' = i_mutex_3 + 1
+  p_rmdir_pc_1 = 20 /\ p_file_1 = 2 /\ d_inode_2 = 4  ->  p_rmdir_pc_1' = 21 /\ i_mutex_4' = i_mutex_4 + 1
+  p_rmdir_pc_1 = 20 /\ p_file_1 = 2 /\ d_inode_2 = 5  ->  p_rmdir_pc_1' = 21 /\ i_mutex_5' = i_mutex_5 + 1
+  p_rmdir_pc_1 = 20 /\ p_file_1 = 3 /\ d_inode_3 = 1  ->  p_rmdir_pc_1' = 21 /\ i_mutex_1' = i_mutex_1 + 1
+  p_rmdir_pc_1 = 20 /\ p_file_1 = 3 /\ d_inode_3 = 2  ->  p_rmdir_pc_1' = 21 /\ i_mutex_2' = i_mutex_2 + 1
+  p_rmdir_pc_1 = 20 /\ p_file_1 = 3 /\ d_inode_3 = 3  ->  p_rmdir_pc_1' = 21 /\ i_mutex_3' = i_mutex_3 + 1
+  p_rmdir_pc_1 = 20 /\ p_file_1 = 3 /\ d_inode_3 = 4  ->  p_rmdir_pc_1' = 21 /\ i_mutex_4' = i_mutex_4 + 1
+  p_rmdir_pc_1 = 20 /\ p_file_1 = 3 /\ d_inode_3 = 5  ->  p_rmdir_pc_1' = 21 /\ i_mutex_5' = i_mutex_5 + 1
+  p_rmdir_pc_1 = 20 /\ p_file_1 = 4 /\ d_inode_4 = 1  ->  p_rmdir_pc_1' = 21 /\ i_mutex_1' = i_mutex_1 + 1
+  p_rmdir_pc_1 = 20 /\ p_file_1 = 4 /\ d_inode_4 = 2  ->  p_rmdir_pc_1' = 21 /\ i_mutex_2' = i_mutex_2 + 1
+  p_rmdir_pc_1 = 20 /\ p_file_1 = 4 /\ d_inode_4 = 3  ->  p_rmdir_pc_1' = 21 /\ i_mutex_3' = i_mutex_3 + 1
+  p_rmdir_pc_1 = 20 /\ p_file_1 = 4 /\ d_inode_4 = 4  ->  p_rmdir_pc_1' = 21 /\ i_mutex_4' = i_mutex_4 + 1
+  p_rmdir_pc_1 = 20 /\ p_file_1 = 4 /\ d_inode_4 = 5  ->  p_rmdir_pc_1' = 21 /\ i_mutex_5' = i_mutex_5 + 1
+  p_rmdir_pc_1 = 20 /\ p_file_1 = 5 /\ d_inode_5 = 1  ->  p_rmdir_pc_1' = 21 /\ i_mutex_1' = i_mutex_1 + 1
+  p_rmdir_pc_1 = 20 /\ p_file_1 = 5 /\ d_inode_5 = 2  ->  p_rmdir_pc_1' = 21 /\ i_mutex_2' = i_mutex_2 + 1
+  p_rmdir_pc_1 = 20 /\ p_file_1 = 5 /\ d_inode_5 = 3  ->  p_rmdir_pc_1' = 21 /\ i_mutex_3' = i_mutex_3 + 1
+  p_rmdir_pc_1 = 20 /\ p_file_1 = 5 /\ d_inode_5 = 4  ->  p_rmdir_pc_1' = 21 /\ i_mutex_4' = i_mutex_4 + 1
+  p_rmdir_pc_1 = 20 /\ p_file_1 = 5 /\ d_inode_5 = 5  ->  p_rmdir_pc_1' = 21 /\ i_mutex_5' = i_mutex_5 + 1
+  p_rmdir_pc_1 = 21 /\ p_file_1 = 2  ->  p_rmdir_pc_1' = 22 /\ d_parent_2' = 0
+  p_rmdir_pc_1 = 21 /\ p_file_1 = 3  ->  p_rmdir_pc_1' = 22 /\ d_parent_3' = 0
+  p_rmdir_pc_1 = 21 /\ p_file_1 = 4  ->  p_rmdir_pc_1' = 22 /\ d_parent_4' = 0
+  p_rmdir_pc_1 = 21 /\ p_file_1 = 5  ->  p_rmdir_pc_1' = 22 /\ d_parent_5' = 0
+  p_rmdir_pc_1 = 22 /\ p_parent_1 = 1 /\ d_subdirs_1 > 0  ->  p_rmdir_pc_1' = 23 /\ d_subdirs_1' = d_subdirs_1 - 1
+  p_rmdir_pc_1 = 22 /\ p_parent_1 = 2 /\ d_subdirs_2 > 0  ->  p_rmdir_pc_1' = 23 /\ d_subdirs_2' = d_subdirs_2 - 1
+  p_rmdir_pc_1 = 22 /\ p_parent_1 = 3 /\ d_subdirs_3 > 0  ->  p_rmdir_pc_1' = 23 /\ d_subdirs_3' = d_subdirs_3 - 1
+  p_rmdir_pc_1 = 22 /\ p_parent_1 = 4 /\ d_subdirs_4 > 0  ->  p_rmdir_pc_1' = 23 /\ d_subdirs_4' = d_subdirs_4 - 1
+  p_rmdir_pc_1 = 22 /\ p_parent_1 = 5 /\ d_subdirs_5 > 0  ->  p_rmdir_pc_1' = 23 /\ d_subdirs_5' = d_subdirs_5 - 1
+  p_rmdir_pc_1 = 23 /\ p_parent_1 = 1 /\ d_lock_1 > 0 /\ d_count_1 > 0  ->  p_rmdir_pc_1' = 24 /\ d_count_1' = d_count_1 - 1
+  p_rmdir_pc_1 = 23 /\ p_parent_1 = 2 /\ d_lock_2 > 0 /\ d_count_2 > 0  ->  p_rmdir_pc_1' = 24 /\ d_count_2' = d_count_2 - 1
+  p_rmdir_pc_1 = 23 /\ p_parent_1 = 3 /\ d_lock_3 > 0 /\ d_count_3 > 0  ->  p_rmdir_pc_1' = 24 /\ d_count_3' = d_count_3 - 1
+  p_rmdir_pc_1 = 23 /\ p_parent_1 = 4 /\ d_lock_4 > 0 /\ d_count_4 > 0  ->  p_rmdir_pc_1' = 24 /\ d_count_4' = d_count_4 - 1
+  p_rmdir_pc_1 = 23 /\ p_parent_1 = 5 /\ d_lock_5 > 0 /\ d_count_5 > 0  ->  p_rmdir_pc_1' = 24 /\ d_count_5' = d_count_5 - 1
+  p_rmdir_pc_1 = 24  ->  p_rmdir_pc_1' = 25 /\ dcache_lock' = dcache_lock + 1
+  p_rmdir_pc_1 = 25 /\ p_rmdir_wait_1 = 0  ->  p_rmdir_pc_1' = 26
+  p_rmdir_pc_1 = 25 /\ p_rmdir_wait_1 > 0  ->  p_rmdir_pc_1' = 37 /\ p_rmdir_wait_1' = 0
+  p_rmdir_pc_1 = 26 /\ dcache_lock > 0  ->  p_rmdir_pc_1' = 27 /\ dcache_lock' = dcache_lock - 1
+  p_rmdir_pc_1 = 27 /\ p_file_1 = 2 /\ d_lock_2 > 0  ->  p_rmdir_pc_1' = 28 /\ d_lock_2' = d_lock_2 - 1
+  p_rmdir_pc_1 = 27 /\ p_file_1 = 3 /\ d_lock_3 > 0  ->  p_rmdir_pc_1' = 28 /\ d_lock_3' = d_lock_3 - 1
+  p_rmdir_pc_1 = 27 /\ p_file_1 = 4 /\ d_lock_4 > 0  ->  p_rmdir_pc_1' = 28 /\ d_lock_4' = d_lock_4 - 1
+  p_rmdir_pc_1 = 27 /\ p_file_1 = 5 /\ d_lock_5 > 0  ->  p_rmdir_pc_1' = 28 /\ d_lock_5' = d_lock_5 - 1
+  p_rmdir_pc_1 = 28 /\ p_file_1 = 2 /\ d_count_2 = 2  ->  p_rmdir_pc_1' = 29
+  p_rmdir_pc_1 = 28 /\ p_file_1 = 2 /\ d_count_2 != 2  ->  p_rmdir_pc_1' = 35
+  p_rmdir_pc_1 = 28 /\ p_file_1 = 3 /\ d_count_3 = 2  ->  p_rmdir_pc_1' = 29
+  p_rmdir_pc_1 = 28 /\ p_file_1 = 3 /\ d_count_3 != 2  ->  p_rmdir_pc_1' = 35
+  p_rmdir_pc_1 = 28 /\ p_file_1 = 4 /\ d_count_4 = 2  ->  p_rmdir_pc_1' = 29
+  p_rmdir_pc_1 = 28 /\ p_file_1 = 4 /\ d_count_4 != 2  ->  p_rmdir_pc_1' = 35
+  p_rmdir_pc_1 = 28 /\ p_file_1 = 5 /\ d_count_5 = 2  ->  p_rmdir_pc_1' = 29
+  p_rmdir_pc_1 = 28 /\ p_file_1 = 5 /\ d_count_5 != 2  ->  p_rmdir_pc_1' = 35
+  p_rmdir_pc_1 = 29 /\ p_file_1 = 2 /\ d_inode_2 = 1 /\ i_lock_1 > 0  ->  p_rmdir_pc_1' = 30 /\ i_lock_1' = i_lock_1 - 1
+  p_rmdir_pc_1 = 29 /\ p_file_1 = 2 /\ d_inode_2 = 2 /\ i_lock_2 > 0  ->  p_rmdir_pc_1' = 30 /\ i_lock_2' = i_lock_2 - 1
+  p_rmdir_pc_1 = 29 /\ p_file_1 = 2 /\ d_inode_2 = 3 /\ i_lock_3 > 0  ->  p_rmdir_pc_1' = 30 /\ i_lock_3' = i_lock_3 - 1
+  p_rmdir_pc_1 = 29 /\ p_file_1 = 2 /\ d_inode_2 = 4 /\ i_lock_4 > 0  ->  p_rmdir_pc_1' = 30 /\ i_lock_4' = i_lock_4 - 1
+  p_rmdir_pc_1 = 29 /\ p_file_1 = 2 /\ d_inode_2 = 5 /\ i_lock_5 > 0  ->  p_rmdir_pc_1' = 30 /\ i_lock_5' = i_lock_5 - 1
+  p_rmdir_pc_1 = 29 /\ p_file_1 = 3 /\ d_inode_3 = 1 /\ i_lock_1 > 0  ->  p_rmdir_pc_1' = 30 /\ i_lock_1' = i_lock_1 - 1
+  p_rmdir_pc_1 = 29 /\ p_file_1 = 3 /\ d_inode_3 = 2 /\ i_lock_2 > 0  ->  p_rmdir_pc_1' = 30 /\ i_lock_2' = i_lock_2 - 1
+  p_rmdir_pc_1 = 29 /\ p_file_1 = 3 /\ d_inode_3 = 3 /\ i_lock_3 > 0  ->  p_rmdir_pc_1' = 30 /\ i_lock_3' = i_lock_3 - 1
+  p_rmdir_pc_1 = 29 /\ p_file_1 = 3 /\ d_inode_3 = 4 /\ i_lock_4 > 0  ->  p_rmdir_pc_1' = 30 /\ i_lock_4' = i_lock_4 - 1
+  p_rmdir_pc_1 = 29 /\ p_file_1 = 3 /\ d_inode_3 = 5 /\ i_lock_5 > 0  ->  p_rmdir_pc_1' = 30 /\ i_lock_5' = i_lock_5 - 1
+  p_rmdir_pc_1 = 29 /\ p_file_1 = 4 /\ d_inode_4 = 1 /\ i_lock_1 > 0  ->  p_rmdir_pc_1' = 30 /\ i_lock_1' = i_lock_1 - 1
+  p_rmdir_pc_1 = 29 /\ p_file_1 = 4 /\ d_inode_4 = 2 /\ i_lock_2 > 0  ->  p_rmdir_pc_1' = 30 /\ i_lock_2' = i_lock_2 - 1
+  p_rmdir_pc_1 = 29 /\ p_file_1 = 4 /\ d_inode_4 = 3 /\ i_lock_3 > 0  ->  p_rmdir_pc_1' = 30 /\ i_lock_3' = i_lock_3 - 1
+  p_rmdir_pc_1 = 29 /\ p_file_1 = 4 /\ d_inode_4 = 4 /\ i_lock_4 > 0  ->  p_rmdir_pc_1' = 30 /\ i_lock_4' = i_lock_4 - 1
+  p_rmdir_pc_1 = 29 /\ p_file_1 = 4 /\ d_inode_4 = 5 /\ i_lock_5 > 0  ->  p_rmdir_pc_1' = 30 /\ i_lock_5' = i_lock_5 - 1
+  p_rmdir_pc_1 = 29 /\ p_file_1 = 5 /\ d_inode_5 = 1 /\ i_lock_1 > 0  ->  p_rmdir_pc_1' = 30 /\ i_lock_1' = i_lock_1 - 1
+  p_rmdir_pc_1 = 29 /\ p_file_1 = 5 /\ d_inode_5 = 2 /\ i_lock_2 > 0  ->  p_rmdir_pc_1' = 30 /\ i_lock_2' = i_lock_2 - 1
+  p_rmdir_pc_1 = 29 /\ p_file_1 = 5 /\ d_inode_5 = 3 /\ i_lock_3 > 0  ->  p_rmdir_pc_1' = 30 /\ i_lock_3' = i_lock_3 - 1
+  p_rmdir_pc_1 = 29 /\ p_file_1 = 5 /\ d_inode_5 = 4 /\ i_lock_4 > 0  ->  p_rmdir_pc_1' = 30 /\ i_lock_4' = i_lock_4 - 1
+  p_rmdir_pc_1 = 29 /\ p_file_1 = 5 /\ d_inode_5 = 5 /\ i_lock_5 > 0  ->  p_rmdir_pc_1' = 30 /\ i_lock_5' = i_lock_5 - 1
+  p_rmdir_pc_1 = 30 /\ p_file_1 = 2 /\ d_inode_2 = 1 /\ i_count_1 > 0  ->  p_rmdir_pc_1' = 31 /\ i_count_1' = i_count_1 - 1
+  p_rmdir_pc_1 = 30 /\ p_file_1 = 2 /\ d_inode_2 = 2 /\ i_count_2 > 0  ->  p_rmdir_pc_1' = 31 /\ i_count_2' = i_count_2 - 1
+  p_rmdir_pc_1 = 30 /\ p_file_1 = 2 /\ d_inode_2 = 3 /\ i_count_3 > 0  ->  p_rmdir_pc_1' = 31 /\ i_count_3' = i_count_3 - 1
+  p_rmdir_pc_1 = 30 /\ p_file_1 = 2 /\ d_inode_2 = 4 /\ i_count_4 > 0  ->  p_rmdir_pc_1' = 31 /\ i_count_4' = i_count_4 - 1
+  p_rmdir_pc_1 = 30 /\ p_file_1 = 2 /\ d_inode_2 = 5 /\ i_count_5 > 0  ->  p_rmdir_pc_1' = 31 /\ i_count_5' = i_count_5 - 1
+  p_rmdir_pc_1 = 30 /\ p_file_1 = 3 /\ d_inode_3 = 1 /\ i_count_1 > 0  ->  p_rmdir_pc_1' = 31 /\ i_count_1' = i_count_1 - 1
+  p_rmdir_pc_1 = 30 /\ p_file_1 = 3 /\ d_inode_3 = 2 /\ i_count_2 > 0  ->  p_rmdir_pc_1' = 31 /\ i_count_2' = i_count_2 - 1
+  p_rmdir_pc_1 = 30 /\ p_file_1 = 3 /\ d_inode_3 = 3 /\ i_count_3 > 0  ->  p_rmdir_pc_1' = 31 /\ i_count_3' = i_count_3 - 1
+  p_rmdir_pc_1 = 30 /\ p_file_1 = 3 /\ d_inode_3 = 4 /\ i_count_4 > 0  ->  p_rmdir_pc_1' = 31 /\ i_count_4' = i_count_4 - 1
+  p_rmdir_pc_1 = 30 /\ p_file_1 = 3 /\ d_inode_3 = 5 /\ i_count_5 > 0  ->  p_rmdir_pc_1' = 31 /\ i_count_5' = i_count_5 - 1
+  p_rmdir_pc_1 = 30 /\ p_file_1 = 4 /\ d_inode_4 = 1 /\ i_count_1 > 0  ->  p_rmdir_pc_1' = 31 /\ i_count_1' = i_count_1 - 1
+  p_rmdir_pc_1 = 30 /\ p_file_1 = 4 /\ d_inode_4 = 2 /\ i_count_2 > 0  ->  p_rmdir_pc_1' = 31 /\ i_count_2' = i_count_2 - 1
+  p_rmdir_pc_1 = 30 /\ p_file_1 = 4 /\ d_inode_4 = 3 /\ i_count_3 > 0  ->  p_rmdir_pc_1' = 31 /\ i_count_3' = i_count_3 - 1
+  p_rmdir_pc_1 = 30 /\ p_file_1 = 4 /\ d_inode_4 = 4 /\ i_count_4 > 0  ->  p_rmdir_pc_1' = 31 /\ i_count_4' = i_count_4 - 1
+  p_rmdir_pc_1 = 30 /\ p_file_1 = 4 /\ d_inode_4 = 5 /\ i_count_5 > 0  ->  p_rmdir_pc_1' = 31 /\ i_count_5' = i_count_5 - 1
+  p_rmdir_pc_1 = 30 /\ p_file_1 = 5 /\ d_inode_5 = 1 /\ i_count_1 > 0  ->  p_rmdir_pc_1' = 31 /\ i_count_1' = i_count_1 - 1
+  p_rmdir_pc_1 = 30 /\ p_file_1 = 5 /\ d_inode_5 = 2 /\ i_count_2 > 0  ->  p_rmdir_pc_1' = 31 /\ i_count_2' = i_count_2 - 1
+  p_rmdir_pc_1 = 30 /\ p_file_1 = 5 /\ d_inode_5 = 3 /\ i_count_3 > 0  ->  p_rmdir_pc_1' = 31 /\ i_count_3' = i_count_3 - 1
+  p_rmdir_pc_1 = 30 /\ p_file_1 = 5 /\ d_inode_5 = 4 /\ i_count_4 > 0  ->  p_rmdir_pc_1' = 31 /\ i_count_4' = i_count_4 - 1
+  p_rmdir_pc_1 = 30 /\ p_file_1 = 5 /\ d_inode_5 = 5 /\ i_count_5 > 0  ->  p_rmdir_pc_1' = 31 /\ i_count_5' = i_count_5 - 1
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 2 /\ d_inode_2 = 1 /\ i_count_1 > 0  ->  p_rmdir_pc_1' = 32
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 2 /\ d_inode_2 = 1 /\ i_count_1 = 0  ->  p_rmdir_pc_1' = 39
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 2 /\ d_inode_2 = 2 /\ i_count_2 > 0  ->  p_rmdir_pc_1' = 32
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 2 /\ d_inode_2 = 2 /\ i_count_2 = 0  ->  p_rmdir_pc_1' = 39
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 2 /\ d_inode_2 = 3 /\ i_count_3 > 0  ->  p_rmdir_pc_1' = 32
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 2 /\ d_inode_2 = 3 /\ i_count_3 = 0  ->  p_rmdir_pc_1' = 39
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 2 /\ d_inode_2 = 4 /\ i_count_4 > 0  ->  p_rmdir_pc_1' = 32
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 2 /\ d_inode_2 = 4 /\ i_count_4 = 0  ->  p_rmdir_pc_1' = 39
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 2 /\ d_inode_2 = 5 /\ i_count_5 > 0  ->  p_rmdir_pc_1' = 32
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 2 /\ d_inode_2 = 5 /\ i_count_5 = 0  ->  p_rmdir_pc_1' = 39
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 3 /\ d_inode_3 = 1 /\ i_count_1 > 0  ->  p_rmdir_pc_1' = 32
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 3 /\ d_inode_3 = 1 /\ i_count_1 = 0  ->  p_rmdir_pc_1' = 39
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 3 /\ d_inode_3 = 2 /\ i_count_2 > 0  ->  p_rmdir_pc_1' = 32
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 3 /\ d_inode_3 = 2 /\ i_count_2 = 0  ->  p_rmdir_pc_1' = 39
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 3 /\ d_inode_3 = 3 /\ i_count_3 > 0  ->  p_rmdir_pc_1' = 32
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 3 /\ d_inode_3 = 3 /\ i_count_3 = 0  ->  p_rmdir_pc_1' = 39
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 3 /\ d_inode_3 = 4 /\ i_count_4 > 0  ->  p_rmdir_pc_1' = 32
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 3 /\ d_inode_3 = 4 /\ i_count_4 = 0  ->  p_rmdir_pc_1' = 39
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 3 /\ d_inode_3 = 5 /\ i_count_5 > 0  ->  p_rmdir_pc_1' = 32
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 3 /\ d_inode_3 = 5 /\ i_count_5 = 0  ->  p_rmdir_pc_1' = 39
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 4 /\ d_inode_4 = 1 /\ i_count_1 > 0  ->  p_rmdir_pc_1' = 32
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 4 /\ d_inode_4 = 1 /\ i_count_1 = 0  ->  p_rmdir_pc_1' = 39
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 4 /\ d_inode_4 = 2 /\ i_count_2 > 0  ->  p_rmdir_pc_1' = 32
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 4 /\ d_inode_4 = 2 /\ i_count_2 = 0  ->  p_rmdir_pc_1' = 39
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 4 /\ d_inode_4 = 3 /\ i_count_3 > 0  ->  p_rmdir_pc_1' = 32
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 4 /\ d_inode_4 = 3 /\ i_count_3 = 0  ->  p_rmdir_pc_1' = 39
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 4 /\ d_inode_4 = 4 /\ i_count_4 > 0  ->  p_rmdir_pc_1' = 32
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 4 /\ d_inode_4 = 4 /\ i_count_4 = 0  ->  p_rmdir_pc_1' = 39
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 4 /\ d_inode_4 = 5 /\ i_count_5 > 0  ->  p_rmdir_pc_1' = 32
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 4 /\ d_inode_4 = 5 /\ i_count_5 = 0  ->  p_rmdir_pc_1' = 39
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 5 /\ d_inode_5 = 1 /\ i_count_1 > 0  ->  p_rmdir_pc_1' = 32
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 5 /\ d_inode_5 = 1 /\ i_count_1 = 0  ->  p_rmdir_pc_1' = 39
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 5 /\ d_inode_5 = 2 /\ i_count_2 > 0  ->  p_rmdir_pc_1' = 32
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 5 /\ d_inode_5 = 2 /\ i_count_2 = 0  ->  p_rmdir_pc_1' = 39
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 5 /\ d_inode_5 = 3 /\ i_count_3 > 0  ->  p_rmdir_pc_1' = 32
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 5 /\ d_inode_5 = 3 /\ i_count_3 = 0  ->  p_rmdir_pc_1' = 39
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 5 /\ d_inode_5 = 4 /\ i_count_4 > 0  ->  p_rmdir_pc_1' = 32
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 5 /\ d_inode_5 = 4 /\ i_count_4 = 0  ->  p_rmdir_pc_1' = 39
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 5 /\ d_inode_5 = 5 /\ i_count_5 > 0  ->  p_rmdir_pc_1' = 32
+  p_rmdir_pc_1 = 31 /\ p_file_1 = 5 /\ d_inode_5 = 5 /\ i_count_5 = 0  ->  p_rmdir_pc_1' = 39
+  p_rmdir_pc_1 = 32 /\ p_file_1 = 2 /\ d_inode_2 = 1  ->  p_rmdir_pc_1' = 33 /\ i_state_1' = 0
+  p_rmdir_pc_1 = 32 /\ p_file_1 = 2 /\ d_inode_2 = 2  ->  p_rmdir_pc_1' = 33 /\ i_state_2' = 0
+  p_rmdir_pc_1 = 32 /\ p_file_1 = 2 /\ d_inode_2 = 3  ->  p_rmdir_pc_1' = 33 /\ i_state_3' = 0
+  p_rmdir_pc_1 = 32 /\ p_file_1 = 2 /\ d_inode_2 = 4  ->  p_rmdir_pc_1' = 33 /\ i_state_4' = 0
+  p_rmdir_pc_1 = 32 /\ p_file_1 = 2 /\ d_inode_2 = 5  ->  p_rmdir_pc_1' = 33 /\ i_state_5' = 0
+  p_rmdir_pc_1 = 32 /\ p_file_1 = 3 /\ d_inode_3 = 1  ->  p_rmdir_pc_1' = 33 /\ i_state_1' = 0
+  p_rmdir_pc_1 = 32 /\ p_file_1 = 3 /\ d_inode_3 = 2  ->  p_rmdir_pc_1' = 33 /\ i_state_2' = 0
+  p_rmdir_pc_1 = 32 /\ p_file_1 = 3 /\ d_inode_3 = 3  ->  p_rmdir_pc_1' = 33 /\ i_state_3' = 0
+  p_rmdir_pc_1 = 32 /\ p_file_1 = 3 /\ d_inode_3 = 4  ->  p_rmdir_pc_1' = 33 /\ i_state_4' = 0
+  p_rmdir_pc_1 = 32 /\ p_file_1 = 3 /\ d_inode_3 = 5  ->  p_rmdir_pc_1' = 33 /\ i_state_5' = 0
+  p_rmdir_pc_1 = 32 /\ p_file_1 = 4 /\ d_inode_4 = 1  ->  p_rmdir_pc_1' = 33 /\ i_state_1' = 0
+  p_rmdir_pc_1 = 32 /\ p_file_1 = 4 /\ d_inode_4 = 2  ->  p_rmdir_pc_1' = 33 /\ i_state_2' = 0
+  p_rmdir_pc_1 = 32 /\ p_file_1 = 4 /\ d_inode_4 = 3  ->  p_rmdir_pc_1' = 33 /\ i_state_3' = 0
+  p_rmdir_pc_1 = 32 /\ p_file_1 = 4 /\ d_inode_4 = 4  ->  p_rmdir_pc_1' = 33 /\ i_state_4' = 0
+  p_rmdir_pc_1 = 32 /\ p_file_1 = 4 /\ d_inode_4 = 5  ->  p_rmdir_pc_1' = 33 /\ i_state_5' = 0
+  p_rmdir_pc_1 = 32 /\ p_file_1 = 5 /\ d_inode_5 = 1  ->  p_rmdir_pc_1' = 33 /\ i_state_1' = 0
+  p_rmdir_pc_1 = 32 /\ p_file_1 = 5 /\ d_inode_5 = 2  ->  p_rmdir_pc_1' = 33 /\ i_state_2' = 0
+  p_rmdir_pc_1 = 32 /\ p_file_1 = 5 /\ d_inode_5 = 3  ->  p_rmdir_pc_1' = 33 /\ i_state_3' = 0
+  p_rmdir_pc_1 = 32 /\ p_file_1 = 5 /\ d_inode_5 = 4  ->  p_rmdir_pc_1' = 33 /\ i_state_4' = 0
+  p_rmdir_pc_1 = 32 /\ p_file_1 = 5 /\ d_inode_5 = 5  ->  p_rmdir_pc_1' = 33 /\ i_state_5' = 0
+  p_rmdir_pc_1 = 39 /\ p_file_1 = 2 /\ d_inode_2 = 1  ->  p_rmdir_pc_1' = 33 /\ i_state_1' = 0 /\ i_allocated_1' = 0
+  p_rmdir_pc_1 = 39 /\ p_file_1 = 2 /\ d_inode_2 = 2  ->  p_rmdir_pc_1' = 33 /\ i_state_2' = 0 /\ i_allocated_2' = 0
+  p_rmdir_pc_1 = 39 /\ p_file_1 = 2 /\ d_inode_2 = 3  ->  p_rmdir_pc_1' = 33 /\ i_state_3' = 0 /\ i_allocated_3' = 0
+  p_rmdir_pc_1 = 39 /\ p_file_1 = 2 /\ d_inode_2 = 4  ->  p_rmdir_pc_1' = 33 /\ i_state_4' = 0 /\ i_allocated_4' = 0
+  p_rmdir_pc_1 = 39 /\ p_file_1 = 2 /\ d_inode_2 = 5  ->  p_rmdir_pc_1' = 33 /\ i_state_5' = 0 /\ i_allocated_5' = 0
+  p_rmdir_pc_1 = 39 /\ p_file_1 = 3 /\ d_inode_3 = 1  ->  p_rmdir_pc_1' = 33 /\ i_state_1' = 0 /\ i_allocated_1' = 0
+  p_rmdir_pc_1 = 39 /\ p_file_1 = 3 /\ d_inode_3 = 2  ->  p_rmdir_pc_1' = 33 /\ i_state_2' = 0 /\ i_allocated_2' = 0
+  p_rmdir_pc_1 = 39 /\ p_file_1 = 3 /\ d_inode_3 = 3  ->  p_rmdir_pc_1' = 33 /\ i_state_3' = 0 /\ i_allocated_3' = 0
+  p_rmdir_pc_1 = 39 /\ p_file_1 = 3 /\ d_inode_3 = 4  ->  p_rmdir_pc_1' = 33 /\ i_state_4' = 0 /\ i_allocated_4' = 0
+  p_rmdir_pc_1 = 39 /\ p_file_1 = 3 /\ d_inode_3 = 5  ->  p_rmdir_pc_1' = 33 /\ i_state_5' = 0 /\ i_allocated_5' = 0
+  p_rmdir_pc_1 = 39 /\ p_file_1 = 4 /\ d_inode_4 = 1  ->  p_rmdir_pc_1' = 33 /\ i_state_1' = 0 /\ i_allocated_1' = 0
+  p_rmdir_pc_1 = 39 /\ p_file_1 = 4 /\ d_inode_4 = 2  ->  p_rmdir_pc_1' = 33 /\ i_state_2' = 0 /\ i_allocated_2' = 0
+  p_rmdir_pc_1 = 39 /\ p_file_1 = 4 /\ d_inode_4 = 3  ->  p_rmdir_pc_1' = 33 /\ i_state_3' = 0 /\ i_allocated_3' = 0
+  p_rmdir_pc_1 = 39 /\ p_file_1 = 4 /\ d_inode_4 = 4  ->  p_rmdir_pc_1' = 33 /\ i_state_4' = 0 /\ i_allocated_4' = 0
+  p_rmdir_pc_1 = 39 /\ p_file_1 = 4 /\ d_inode_4 = 5  ->  p_rmdir_pc_1' = 33 /\ i_state_5' = 0 /\ i_allocated_5' = 0
+  p_rmdir_pc_1 = 39 /\ p_file_1 = 5 /\ d_inode_5 = 1  ->  p_rmdir_pc_1' = 33 /\ i_state_1' = 0 /\ i_allocated_1' = 0
+  p_rmdir_pc_1 = 39 /\ p_file_1 = 5 /\ d_inode_5 = 2  ->  p_rmdir_pc_1' = 33 /\ i_state_2' = 0 /\ i_allocated_2' = 0
+  p_rmdir_pc_1 = 39 /\ p_file_1 = 5 /\ d_inode_5 = 3  ->  p_rmdir_pc_1' = 33 /\ i_state_3' = 0 /\ i_allocated_3' = 0
+  p_rmdir_pc_1 = 39 /\ p_file_1 = 5 /\ d_inode_5 = 4  ->  p_rmdir_pc_1' = 33 /\ i_state_4' = 0 /\ i_allocated_4' = 0
+  p_rmdir_pc_1 = 39 /\ p_file_1 = 5 /\ d_inode_5 = 5  ->  p_rmdir_pc_1' = 33 /\ i_state_5' = 0 /\ i_allocated_5' = 0
+  p_rmdir_pc_1 = 33 /\ p_file_1 = 2 /\ d_inode_2 = 1  ->  p_rmdir_pc_1' = 34 /\ i_lock_1' = i_lock_1 + 1
+  p_rmdir_pc_1 = 33 /\ p_file_1 = 2 /\ d_inode_2 = 2  ->  p_rmdir_pc_1' = 34 /\ i_lock_2' = i_lock_2 + 1
+  p_rmdir_pc_1 = 33 /\ p_file_1 = 2 /\ d_inode_2 = 3  ->  p_rmdir_pc_1' = 34 /\ i_lock_3' = i_lock_3 + 1
+  p_rmdir_pc_1 = 33 /\ p_file_1 = 2 /\ d_inode_2 = 4  ->  p_rmdir_pc_1' = 34 /\ i_lock_4' = i_lock_4 + 1
+  p_rmdir_pc_1 = 33 /\ p_file_1 = 2 /\ d_inode_2 = 5  ->  p_rmdir_pc_1' = 34 /\ i_lock_5' = i_lock_5 + 1
+  p_rmdir_pc_1 = 33 /\ p_file_1 = 3 /\ d_inode_3 = 1  ->  p_rmdir_pc_1' = 34 /\ i_lock_1' = i_lock_1 + 1
+  p_rmdir_pc_1 = 33 /\ p_file_1 = 3 /\ d_inode_3 = 2  ->  p_rmdir_pc_1' = 34 /\ i_lock_2' = i_lock_2 + 1
+  p_rmdir_pc_1 = 33 /\ p_file_1 = 3 /\ d_inode_3 = 3  ->  p_rmdir_pc_1' = 34 /\ i_lock_3' = i_lock_3 + 1
+  p_rmdir_pc_1 = 33 /\ p_file_1 = 3 /\ d_inode_3 = 4  ->  p_rmdir_pc_1' = 34 /\ i_lock_4' = i_lock_4 + 1
+  p_rmdir_pc_1 = 33 /\ p_file_1 = 3 /\ d_inode_3 = 5  ->  p_rmdir_pc_1' = 34 /\ i_lock_5' = i_lock_5 + 1
+  p_rmdir_pc_1 = 33 /\ p_file_1 = 4 /\ d_inode_4 = 1  ->  p_rmdir_pc_1' = 34 /\ i_lock_1' = i_lock_1 + 1
+  p_rmdir_pc_1 = 33 /\ p_file_1 = 4 /\ d_inode_4 = 2  ->  p_rmdir_pc_1' = 34 /\ i_lock_2' = i_lock_2 + 1
+  p_rmdir_pc_1 = 33 /\ p_file_1 = 4 /\ d_inode_4 = 3  ->  p_rmdir_pc_1' = 34 /\ i_lock_3' = i_lock_3 + 1
+  p_rmdir_pc_1 = 33 /\ p_file_1 = 4 /\ d_inode_4 = 4  ->  p_rmdir_pc_1' = 34 /\ i_lock_4' = i_lock_4 + 1
+  p_rmdir_pc_1 = 33 /\ p_file_1 = 4 /\ d_inode_4 = 5  ->  p_rmdir_pc_1' = 34 /\ i_lock_5' = i_lock_5 + 1
+  p_rmdir_pc_1 = 33 /\ p_file_1 = 5 /\ d_inode_5 = 1  ->  p_rmdir_pc_1' = 34 /\ i_lock_1' = i_lock_1 + 1
+  p_rmdir_pc_1 = 33 /\ p_file_1 = 5 /\ d_inode_5 = 2  ->  p_rmdir_pc_1' = 34 /\ i_lock_2' = i_lock_2 + 1
+  p_rmdir_pc_1 = 33 /\ p_file_1 = 5 /\ d_inode_5 = 3  ->  p_rmdir_pc_1' = 34 /\ i_lock_3' = i_lock_3 + 1
+  p_rmdir_pc_1 = 33 /\ p_file_1 = 5 /\ d_inode_5 = 4  ->  p_rmdir_pc_1' = 34 /\ i_lock_4' = i_lock_4 + 1
+  p_rmdir_pc_1 = 33 /\ p_file_1 = 5 /\ d_inode_5 = 5  ->  p_rmdir_pc_1' = 34 /\ i_lock_5' = i_lock_5 + 1
+  p_rmdir_pc_1 = 34 /\ p_file_1 = 2  ->  p_rmdir_pc_1' = 35 /\ d_count_2' = 0 /\ d_allocated_2' = 0 /\ d_parent_2' = 0 /\ p_rmdir_wait_1' = 1 /\ d_subdirs_2' = 0 /\ d_inode_2' = 0
+  p_rmdir_pc_1 = 34 /\ p_file_1 = 3  ->  p_rmdir_pc_1' = 35 /\ d_count_3' = 0 /\ d_allocated_3' = 0 /\ d_parent_3' = 0 /\ p_rmdir_wait_1' = 1 /\ d_subdirs_3' = 0 /\ d_inode_3' = 0
+  p_rmdir_pc_1 = 34 /\ p_file_1 = 4  ->  p_rmdir_pc_1' = 35 /\ d_count_4' = 0 /\ d_allocated_4' = 0 /\ d_parent_4' = 0 /\ p_rmdir_wait_1' = 1 /\ d_subdirs_4' = 0 /\ d_inode_4' = 0
+  p_rmdir_pc_1 = 34 /\ p_file_1 = 5  ->  p_rmdir_pc_1' = 35 /\ d_count_5' = 0 /\ d_allocated_5' = 0 /\ d_parent_5' = 0 /\ p_rmdir_wait_1' = 1 /\ d_subdirs_5' = 0 /\ d_inode_5' = 0
+  p_rmdir_pc_1 = 35 /\ p_file_1 = 2  ->  p_rmdir_pc_1' = 36 /\ d_lock_2' = d_lock_2 + 1
+  p_rmdir_pc_1 = 35 /\ p_file_1 = 3  ->  p_rmdir_pc_1' = 36 /\ d_lock_3' = d_lock_3 + 1
+  p_rmdir_pc_1 = 35 /\ p_file_1 = 4  ->  p_rmdir_pc_1' = 36 /\ d_lock_4' = d_lock_4 + 1
+  p_rmdir_pc_1 = 35 /\ p_file_1 = 5  ->  p_rmdir_pc_1' = 36 /\ d_lock_5' = d_lock_5 + 1
+  p_rmdir_pc_1 = 36  ->  p_rmdir_pc_1' = 25 /\ dcache_lock' = dcache_lock + 1
+  p_rmdir_pc_1 = 37  ->  p_rmdir_pc_1' = 0 /\ p_begin_1' = 0
+Properties
+  !EX(true)

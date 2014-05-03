@@ -1,0 +1,74 @@
+\FOIL{Experimental results of terminal SCC computations}
+
+%\vfill
+%\FPSCENTERWIDE{exp-tscc}{\textwidth}
+%\vfill
+
+\renewcommand{\baselinestretch}{0.95}
+\small
+\setlength{\tabcolsep}{0.60ex}
+\begin{tabular}{|r|r|r|r|r| r|r|r|r|r|}
+%\multicolumn{10}{l}{\cellcolor[gray]{0.8} \textbf{Results for the terminal SCC computation}} \\
+\hline
+\multicolumn{2}{|c|}{Model} & \multirow{2}{*}{TSCCs} & States& \multicolumn{2}{|c|}{TC} & \multicolumn{2}{|c|}{XBSat} & \multicolumn{2}{|c|}{XBBFS} \\
+                       \cline{1-2}\cline{5-10}
+                                                                    name & N &  & in TSCCs  & mem(MB) & time(sec) & mem(MB) & time(sec) & mem(MB) & time(sec)\\
+\hline \hline
+%\hline
+%\multicolumn{2}{|c|}{Model} & \multirow{2}{*}{TSCC} & \multirow{2}{*}{States}& \multicolumn{2}{|c|}{TC} & \multicolumn{2}{|c|}{Lockstep-SAT} & \multicolumn{2}{|c|}{Lockstep} \\
+%                       \cline{1-2}\cline{5-10}
+%name & N &  &  & mem(MB) & time(sec) & mem(MB) & time(sec) & mem(MB) & time(sec)\\
+%\hline
+%cqn & \multicolumn{8}{|c|}{} \\
+%\hline
+\multirow{3}{*}{$cqn$}        &10 &10 &2.09e+10       &37.9   &15.5           &21.4       &$<$0.1 &33.5       &3.4      \\
+                                                &15 &15 &2.18e+15       &64.8   &79.6           &23.0       &0.3        &59.4   &33.7 \\
+                                                &20 &20 &2.31e+20       &72.7   &691.3      &26.2       &0.8        &90.0   &280.5 \\
+%\hline
+%phil. & \multicolumn{8}{|c|}{}  \\
+\hline
+\multirow{3}{*}{$phil$}  &100        &2  &2      &26.5   &0.5            &20.9   &$<$0.1     &39.2   &8.7 \\
+                                            &500        &2  &2      &34.3   &4.1            &23.2   &$<$0.1     &--     &to \\
+                                            &1000   &2  &2      &44.4   &11.3           &26.5   &0.2            &--     &to \\
+%\hline
+%queens & \multicolumn{8}{|c|}{ } \\
+\hline
+\multirow{3}{*}{$queens$} & 10    &1.28e+04   &1.28e+4        &36.2       &3.0        &46.7       &2.8        &62.3       &35.1 \\
+                                                & 11    &6.11e+04   &6.11e+4        &76.5       &19.3       &70.6       &24.5       &145.2      &364.2 \\
+                                                & 12    &3.14e+05   &3.14e+5        &244.1      &205.4      &98.8       &179.4      &mo         &-- \\
+                                                & 13    &1.72e+06   &1.72e+6        &mo         &--         &269.0      &1940.81    &mo         &-- \\
+%\hline
+%leader & \multicolumn{8}{|c|}{ } \\
+\hline
+\multirow{4}{*}{$leader$} &3  &3  &3  &26.6       &1.5            &20.7   &$<$0.1       &21.4   &0.1 \\
+                                                &4  &4  &4  &70.6       &75.1           &24.4   &0.9            &38.0   &4.5 \\
+                                                &5  &5  &5  &119.3      &3845.3         &30.6   &26.9           &41.1   &87.6 \\
+                                                &6  &6  &6  &--         &to             &39.0   &492.9          &44.8   &1341.5 \\
+%\hline
+%arbiter1 & \multicolumn{8}{|c|}{ } \\
+\hline
+\multirow{3}{*}{$arbiter1$}&10    &1  &2.05e+4        &24.1   &1.2        &20.4             &$<$0.1     &22.4   &0.4  \\
+                                                &15 &1  &9.83e+5        &128.3  &63.1       &20.4       &$<$0.1     &65.3   &23.3 \\
+                                                &20 &1  &4.19e+7        &mo     &--         &20.5       &$<$0.1     &--     &to     \\
+%\hline
+%arbiter2 & \multicolumn{8}{|c|}{ } \\
+\hline
+\multirow{3}{*}{$arbiter2$}   &10 & 1 & 1     &20.4   & $<$0.1        &20.9       & $<$0.1         &39.6       & 6.4  \\
+                              &15 & 1 & 1     &20.5   & $<$0.1        &40.6       & 4.6            &--     & to     \\
+                              &20 & 1 & 1     &20.5   & $<$0.1        &450.0      & 2897.8         &--     & to    \\
+\hline
+\end{tabular}
+
+%\FOIL{Experimental results of terminal SCC computations (cont.)}
+%\vfill
+%\LIST{
+%\BULL $\id{XBSaturation}$ works consistently better than the original method, while $\id{TSCC\_TC}$ is less efficient
+%for most models.
+%\\
+%\BULL $\id{TSCC\_TC}$ is more
+%expensive than $\id{SCC\_TC}$ due to the computation of the
+%$\mapsto$ relation, which has large memory and runtime requirements.
+%\\
+%\BULL For models with large numbers of terminal SCCs, such as $queens$, $\id{TSCC\_TC}$ is superior to the Xie-Beerel algorithm.
+%}
+\vfill

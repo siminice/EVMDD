@@ -1,0 +1,77 @@
+\FOIL{Experimental results of SCC computations}
+%\vfill
+%\FPSCENTERWIDE{exp-scc}{\textwidth}
+%\vfill
+
+\renewcommand{\baselinestretch}{0.85}
+\small %\scriptsize
+\setlength{\tabcolsep}{0.43ex}
+\begin{tabular}{|r|r|r|r|r| r|r|r|r|r|}
+%\hline
+\hline
+\multicolumn{2}{|c|}{Model} & \multirow{2}{*}{SCCs} & States& \multicolumn{2}{|c|}{TC} & \multicolumn{2}{|c|}{XBSat} & \multicolumn{2}{|c|}{Lockstep} \\
+                       \cline{1-2}\cline{5-10}
+                                                                    name & N &  & in SCCs  & mem(MB) & time(sec) & mem(MB) & time(sec) & mem(MB) & time(sec)\\
+\hline \hline
+%\multicolumn{10}{l}{\cellcolor[gray]{0.8} \textbf{Results for the SCC computation}} \\
+%cqn & \multicolumn{8}{|c|}{} \\
+%\hline
+\multirow{3}{*}{$cqn$}  &10 &11     &2.09e+10   & 34.2      & 13.6  & 3.4   & $<$0.1    & 4.0   &3.9 \\
+                        &15 &16     &2.20e+15   & 64.4  & 73.8  & 5.0   & 0.2       & 89.1  &44.5 \\
+                        &20 &21     &2.32e+20   & 72.7  &687.8      &25.8   &0.5        &118.7  &275.0  \\
+\hline
+%phil. & \multicolumn{8}{|c|}{}  \\
+%\hline
+\multirow{3}{*}{$phil$} &100        &1  &4.96e+62       &5.0    &0.5        &3.2    &$<$0.1     &52.0   &4.5 \\
+                        &500        &1  &3.03e+316      &33.0   &4.0        &24.5   &0.1        &--     &to  \\
+                        &1000       &1  &9.18e+626      &40.5   &7.8        &29.1   &0.3        &--     &to  \\
+\hline
+%queens & \multicolumn{8}{|c|}{ } \\
+%\hline
+\multirow{4}{*}{$queens$} &10 &3.22e+4    &3.23e+4        &8.2    &1.6        &64.4   &14.5       &63.9   &12.4   \\
+                          &11 &1.53e+5    &1.53e+5        &45.8   &9.0        &94.2   &108.6      &96.3   &93.6   \\
+                          &12 &7.95e+5    &7.95e+5        &184.8  &60.6       &170.2  &1220.4     &281.9  &1663.9 \\
+                          &13 &4.37e+6    &4.37e+6        &916.5  &840.6      &--     &to         &--     &to     \\
+
+\hline
+%leader & \multicolumn{8}{|c|}{ } \\
+%\hline
+\multirow{4}{*}{$leader$} &3  &4  &6.78e+2        &6.0    &1.4        &20.8   &$<$0.1     &20.8   &$<$0.1 \\
+                          &4  &11 &9.50e+3        &70.3   &73.1       &25.4   &1.1        &23.8   &0.3  \\
+                          &5  &26 &1.25e+5        &116.6  &3830.4     &35.6   &40.8       &49.4   &6.4  \\
+                          &6  &57 &1.54e+6        &--     &to         &41.6   &1494.9     &417.2  &387.9 \\
+\hline
+%arbiter1 & \multicolumn{8}{|c|}{ } \\
+%\hline
+\multirow{3}{*}{$arbiter1$} &10 &1  &2.05e+4        &24.1   &1.2        &21.4   &$<$0.1     &21.8   &0.1 \\
+                            &15 &1  &9.83e+5        &128.3  &63.0       &45.1   &$<$0.1     &62.1   &6.8 \\
+                            &20 &1  &4.19e+7        &mo     &--         &709.7  &$<$0.1     &mo     &--  \\
+\hline
+%arbiter2 & \multicolumn{8}{|c|}{ } \\
+%\hline
+\multirow{4}{*}{$arbiter2$} 	&10 	& 1024          & 1.02e+4           &20.3       &$<$0.1     &26.2       &0.7        &31.1       & 1.1   \\
+                        	&15 	& 32768         & 4.91e+5           &20.4       &$<$0.1     &31.1       &51.8       &211.3  & 990.3     \\
+                        	&20 	& 1.05e+6       & 2.10e+7           &20.4       &$<$0.1     &31.2       &2393.3     & --        & to    \\
+                        	&500 	&\textbf{3.27e+150}        & \textbf{1.64e+151}        &\textbf{41.0}      &\textbf{4.0}       &--         &to         &--         & to   \\
+\hline
+\end{tabular}
+%\caption{Results for the SCC computation.} \label{tab:SCC}
+
+%\FOIL{Experimental results of SCC computations (cont.)}
+%\vfill
+%\LIST{
+%\BULL Coupled with saturation, the improved Xie-Beerel algorithm is better than
+%Lockstep for most models in both runtime and memory.
+%\\
+%\BULL Compared with Lockstep, the $TC$-based algorithm is often more expensive.
+%However, for two models, $queens$ and $arbiter2$,
+%the $TC$-based algorithm completes within the time limit while the other
+%two algorithms fail.
+%\\
+%\BULL  For $arbiter2$, our $TC$-based algorithm can
+%explore over $10^{150}$ SCCs in a few seconds, while it is obviously
+%not feasible for SCC enumeration algorithms to exhaustively enumerate all SCCs.
+%\\
+%\STRESS{$TC$-based algorithm is not sensitive to the number of SCCs.}
+%}
+\vfill

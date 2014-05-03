@@ -1,0 +1,22 @@
+(set-logic QF_NIA)
+(set-info :source |
+    Sequential equivalence checking.
+    Calypto Design Systems, Inc. <www.calypto.com>
+  |)
+(set-info :smt-lib-version 2.0)
+(set-info :category "industrial")
+(set-info :status unsat)
+(declare-fun P_2 () Bool)
+(declare-fun P_3 () Int)
+(declare-fun P_4 () Int)
+(assert (<= 0 P_3))
+(assert (<= P_3 255))
+(assert (<= (* 8192 (- 1)) P_4))
+(assert (<= P_4 8191))
+(declare-fun dz () Int)
+(declare-fun rz () Int)
+(assert (let ((?v_1 (ite (>= P_4 0) P_4 (+ P_4 16384))) (?v_0 (not P_2))) (= (+ (* 4194304 dz) rz) (- (ite ?v_0 (* P_3 ?v_1) 0) (* (ite ?v_0 P_3 0) ?v_1)))))
+(assert (> rz 0))
+(assert (< rz 4194304))
+(check-sat)
+(exit)

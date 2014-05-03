@@ -1,0 +1,174 @@
+// FILE: rubik.sm, SMART input file for rubik
+// CS 246  Fall 2008
+
+spn rub := {
+	for (int Mark in {1..12}) {
+		place Edge[Mark];
+		//partition(2 * Mark - 1:Edge[Mark]);
+		place EdgeOr[Mark];
+		//partition(2 * Mark:EdgeOr[Mark]);
+	}
+	partition(1:Edge[9]);
+	partition(2:Edge[2]);
+	partition(3:Edge[3]);
+	partition(4:Edge[10]);
+	partition(5:Edge[6]);
+	partition(6:Edge[5]);
+	partition(7:Edge[7]);
+	partition(8:Edge[8]);
+	partition(9:Edge[11]);
+	partition(10:Edge[4]);
+	partition(11:Edge[12]);
+	partition(12:Edge[1]);
+	partition(13:EdgeOr[1]);
+	partition(14:EdgeOr[2]);
+	partition(15:EdgeOr[3]);
+	partition(16:EdgeOr[4]);
+	partition(17:EdgeOr[11]);
+	partition(18:EdgeOr[10]);
+	partition(19:EdgeOr[7]);
+	partition(20:EdgeOr[6]);
+	partition(21:EdgeOr[9]);
+	partition(22:EdgeOr[5]);
+	partition(23:EdgeOr[8]);
+	partition(24:EdgeOr[12]);
+
+	for (int Mark in {1..12}) {
+		init(Edge[Mark]:Mark);
+	}
+
+
+	for (int Side in {1..6}) {
+		for(int Twist in {1..1}) {
+			trans Move[Side][Twist];
+		}
+	}
+	
+	// first move (front clockwise)
+	arcs(Edge[1]:Move[1][1]:tk(Edge[1]));
+	arcs(Move[1][1]:Edge[2]:tk(Edge[1]));
+	arcs(Edge[2]:Move[1][1]:tk(Edge[2]));
+	arcs(Move[1][1]:Edge[3]:tk(Edge[2]));
+	arcs(Edge[3]:Move[1][1]:tk(Edge[3]));
+	arcs(Move[1][1]:Edge[4]:tk(Edge[3]));
+	arcs(Edge[4]:Move[1][1]:tk(Edge[4]));
+	arcs(Move[1][1]:Edge[1]:tk(Edge[4]));
+	arcs(EdgeOr[1]:Move[1][1]:mod((tk(EdgeOr[1]) + 0) , 2));
+	arcs(Move[1][1]:EdgeOr[2]:mod((tk(EdgeOr[1]) + 1) , 2));
+	arcs(EdgeOr[2]:Move[1][1]:mod((tk(EdgeOr[2]) + 0) , 2));
+	arcs(Move[1][1]:EdgeOr[3]:mod((tk(EdgeOr[2]) + 1) , 2));
+	arcs(EdgeOr[3]:Move[1][1]:mod((tk(EdgeOr[3]) + 0) , 2));
+	arcs(Move[1][1]:EdgeOr[4]:mod((tk(EdgeOr[3]) + 1) , 2));
+	arcs(EdgeOr[4]:Move[1][1]:mod((tk(EdgeOr[4]) + 0) , 2));
+	arcs(Move[1][1]:EdgeOr[1]:mod((tk(EdgeOr[4]) + 1) , 2));
+
+	// back clockwise)
+	arcs(Edge[6]:Move[6][1]:tk(Edge[6]));
+	arcs(Move[6][1]:Edge[5]:tk(Edge[6]));
+	arcs(Edge[5]:Move[6][1]:tk(Edge[5]));
+	arcs(Move[6][1]:Edge[8]:tk(Edge[5]));
+	arcs(Edge[8]:Move[6][1]:tk(Edge[8]));
+	arcs(Move[6][1]:Edge[7]:tk(Edge[8]));
+	arcs(Edge[7]:Move[6][1]:tk(Edge[7]));
+	arcs(Move[6][1]:Edge[6]:tk(Edge[7]));
+	
+	arcs(EdgeOr[6]:Move[6][1]:mod((tk(EdgeOr[6]) + 0) , 2));
+	arcs(Move[6][1]:EdgeOr[5]:mod((tk(EdgeOr[6]) + 1) , 2));
+	arcs(EdgeOr[5]:Move[6][1]:mod((tk(EdgeOr[5]) + 0) , 2));
+	arcs(Move[6][1]:EdgeOr[8]:mod((tk(EdgeOr[5]) + 1) , 2));
+	arcs(EdgeOr[8]:Move[6][1]:mod((tk(EdgeOr[8]) + 0) , 2));
+	arcs(Move[6][1]:EdgeOr[7]:mod((tk(EdgeOr[8]) + 1) , 2));
+	arcs(EdgeOr[7]:Move[6][1]:mod((tk(EdgeOr[7]) + 0) , 2));
+	arcs(Move[6][1]:EdgeOr[6]:mod((tk(EdgeOr[7]) + 1) , 2));
+
+	// right clockwise)
+	arcs(Edge[2]:Move[3][1]:tk(Edge[2]));
+	arcs(Move[3][1]:Edge[9]:tk(Edge[2]));
+	arcs(Edge[9]:Move[3][1]:tk(Edge[9]));
+	arcs(Move[3][1]:Edge[6]:tk(Edge[9]));
+	arcs(Edge[6]:Move[3][1]:tk(Edge[6]));
+	arcs(Move[3][1]:Edge[10]:tk(Edge[6]));
+	arcs(Edge[10]:Move[3][1]:tk(Edge[10]));
+	arcs(Move[3][1]:Edge[2]:tk(Edge[10]));
+
+	arcs(EdgeOr[2]:Move[3][1]:mod((tk(EdgeOr[2]) + 0) , 2));
+	arcs(Move[3][1]:EdgeOr[9]:mod((tk(EdgeOr[2]) + 1) , 2));
+	arcs(EdgeOr[9]:Move[3][1]:mod((tk(EdgeOr[9]) + 0) , 2));
+	arcs(Move[3][1]:EdgeOr[6]:mod((tk(EdgeOr[9]) + 1) , 2));
+	arcs(EdgeOr[6]:Move[3][1]:mod((tk(EdgeOr[6]) + 0) , 2));
+	arcs(Move[3][1]:EdgeOr[10]:mod((tk(EdgeOr[6]) + 1) , 2));
+	arcs(EdgeOr[10]:Move[3][1]:mod((tk(EdgeOr[10]) + 0) , 2));
+	arcs(Move[3][1]:EdgeOr[2]:mod((tk(EdgeOr[10]) + 1) , 2));
+
+	// left clockwise)
+	arcs(Edge[12]:Move[5][1]:tk(Edge[12]));
+	arcs(Move[5][1]:Edge[4]:tk(Edge[12]));
+	arcs(Edge[4]:Move[5][1]:tk(Edge[4]));
+	arcs(Move[5][1]:Edge[11]:tk(Edge[4]));
+	arcs(Edge[11]:Move[5][1]:tk(Edge[11]));
+	arcs(Move[5][1]:Edge[8]:tk(Edge[11]));
+	arcs(Edge[8]:Move[5][1]:tk(Edge[8]));
+	arcs(Move[5][1]:Edge[12]:tk(Edge[8]));
+
+	arcs(EdgeOr[12]:Move[5][1]:mod((tk(EdgeOr[12]) + 0) , 2));
+	arcs(Move[5][1]:EdgeOr[4]:mod((tk(EdgeOr[12]) + 1) , 2));
+	arcs(EdgeOr[4]:Move[5][1]:mod((tk(EdgeOr[4]) + 0) , 2));
+	arcs(Move[5][1]:EdgeOr[11]:mod((tk(EdgeOr[4]) + 1) , 2));
+	arcs(EdgeOr[11]:Move[5][1]:mod((tk(EdgeOr[11]) + 0) , 2));
+	arcs(Move[5][1]:EdgeOr[8]:mod((tk(EdgeOr[11]) + 1) , 2));
+	arcs(EdgeOr[8]:Move[5][1]:mod((tk(EdgeOr[8]) + 0) , 2));
+	arcs(Move[5][1]:EdgeOr[12]:mod((tk(EdgeOr[8]) + 1) , 2));
+
+	// top clockwise)
+	arcs(Edge[1]:Move[2][1]:tk(Edge[1]));
+	arcs(Move[2][1]:Edge[12]:tk(Edge[1]));
+	arcs(Edge[12]:Move[2][1]:tk(Edge[12]));
+	arcs(Move[2][1]:Edge[5]:tk(Edge[12]));
+	arcs(Edge[5]:Move[2][1]:tk(Edge[5]));
+	arcs(Move[2][1]:Edge[9]:tk(Edge[5]));
+	arcs(Edge[9]:Move[2][1]:tk(Edge[9]));
+	arcs(Move[2][1]:Edge[1]:tk(Edge[9]));
+
+	arcs(EdgeOr[1]:Move[2][1]:mod((tk(EdgeOr[1]) + 0) , 2));
+	arcs(Move[2][1]:EdgeOr[12]:mod((tk(EdgeOr[1]) + 1) , 2));
+	arcs(EdgeOr[12]:Move[2][1]:mod((tk(EdgeOr[12]) + 0) , 2));
+	arcs(Move[2][1]:EdgeOr[5]:mod((tk(EdgeOr[12]) + 1) , 2));
+	arcs(EdgeOr[5]:Move[2][1]:mod((tk(EdgeOr[5]) + 0) , 2));
+	arcs(Move[2][1]:EdgeOr[9]:mod((tk(EdgeOr[5]) + 1) , 2));
+	arcs(EdgeOr[9]:Move[2][1]:mod((tk(EdgeOr[9]) + 0) , 2));
+	arcs(Move[2][1]:EdgeOr[1]:mod((tk(EdgeOr[9]) + 1) , 2));
+
+	// bottom clockwise)
+	arcs(Edge[3]:Move[4][1]:tk(Edge[3]));
+	arcs(Move[4][1]:Edge[10]:tk(Edge[3]));
+	arcs(Edge[10]:Move[4][1]:tk(Edge[10]));
+	arcs(Move[4][1]:Edge[7]:tk(Edge[10]));
+	arcs(Edge[7]:Move[4][1]:tk(Edge[7]));
+	arcs(Move[4][1]:Edge[11]:tk(Edge[7]));
+	arcs(Edge[11]:Move[4][1]:tk(Edge[11]));
+	arcs(Move[4][1]:Edge[3]:tk(Edge[11]));
+	
+	arcs(EdgeOr[3]:Move[4][1]:mod((tk(EdgeOr[3]) + 0) , 2));
+	arcs(Move[4][1]:EdgeOr[10]:mod((tk(EdgeOr[3]) + 1) , 2));
+	arcs(EdgeOr[10]:Move[4][1]:mod((tk(EdgeOr[10]) + 0) , 2));
+	arcs(Move[4][1]:EdgeOr[7]:mod((tk(EdgeOr[10]) + 1) , 2));
+	arcs(EdgeOr[7]:Move[4][1]:mod((tk(EdgeOr[7]) + 0) , 2));
+	arcs(Move[4][1]:EdgeOr[11]:mod((tk(EdgeOr[7]) + 1) , 2));
+	arcs(EdgeOr[11]:Move[4][1]:mod((tk(EdgeOr[11]) + 0) , 2));
+	arcs(Move[4][1]:EdgeOr[3]:mod((tk(EdgeOr[11]) + 1) , 2));
+
+	// count states
+	bigint numstates := num_states(false);
+};
+
+# MDDUnionStrategy MDD_FI_EXT
+# StateStorage MDD_SATURATION_TRANSITION
+# Verbose true
+# Report true
+//# Dump_MDD true
+//# MDDL_CacheMemBound 1000000000
+//# MDDL_UTMemBound 1000000000
+# MDDL_MemBound 100000
+# MDDL_CleanUp_Threshold 400000
+
+print("The number of rubiks states is: ",rub.numstates,"\n");

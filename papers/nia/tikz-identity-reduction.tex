@@ -1,0 +1,42 @@
+\begin{tikzpicture}
+  [xscale=2, yscale=1.5, auto]
+  \begin{scope}
+    \node              (top)     at ( 0, 4) {};
+    \node [mdd node=4] (l3n0)    at ( 0, 3) {$x_k$\nodepart{two}0\nodepart{three}1\nodepart{four}2};
+    \node [mdd node=4] (l2n0)    at (-1, 2) {$x_k'$\nodepart{two}0\nodepart{three}1\nodepart{four}2};
+    \node [mdd node=4] (l2n1)    at ( 0, 2) {$x_k'$\nodepart{two}0\nodepart{three}1\nodepart{four}2};
+    \node [mdd node=4] (l2n2)    at ( 1, 2) {$x_k'$\nodepart{two}0\nodepart{three}1\nodepart{four}2};
+    \node [mdd node=5] (l1n0)    at ( 0, 1) {$x_{k-1}$\nodepart{two}0\nodepart{three}1\nodepart{four}2\nodepart{five}3};
+    \node              (bottom1) at (-1, 0) {};
+    \node              (bottom2) at ( 0, 0) {};
+    \node              (bottom3) at ( 1, 0) {};
+    \node              (bottom4) at ( 2, 0) {};
+    
+    \draw [outgoing edge] (top)                      to (l3n0);
+    \draw [regular edge]  (l3n0.two   |- l3n0.south) to (l2n0);
+    \draw [regular edge]  (l3n0.three |- l3n0.south) to (l2n1);
+    \draw [regular edge]  (l3n0.four  |- l3n0.south) to (l2n2);
+    \draw [regular edge]  (l2n0.two   |- l2n0.south) to (l1n0);
+    \draw [regular edge]  (l2n1.three |- l2n1.south) to (l1n0);
+    \draw [regular edge]  (l2n2.four  |- l2n2.south) to (l1n0);
+    \draw [outgoing edge] (l1n0.two   |- l1n0.south) to (bottom1);
+    \draw [outgoing edge] (l1n0.three |- l1n0.south) to (bottom2);
+    \draw [outgoing edge] (l1n0.four  |- l1n0.south) to (bottom3);
+    \draw [outgoing edge] (l1n0.five  |- l1n0.south) to (bottom4);
+  \end{scope}
+
+  \begin{scope}[xshift=4cm]
+    \node              (top')     at ( 0, 4) {};
+    \node [mdd node=5] (l1n0')    at ( 0, 1) {$x_{k-1}$\nodepart{two}0\nodepart{three}1\nodepart{four}2\nodepart{five}3};
+    \node              (bottom1') at (-1, 0) {};
+    \node              (bottom2') at ( 0, 0) {};
+    \node              (bottom3') at ( 1, 0) {};
+    \node              (bottom4') at ( 2, 0) {};
+    
+    \draw [outgoing edge] (top')                       to (l1n0');
+    \draw [outgoing edge] (l1n0'.two   |- l1n0'.south) to (bottom1');
+    \draw [outgoing edge] (l1n0'.three |- l1n0'.south) to (bottom2');
+    \draw [outgoing edge] (l1n0'.four  |- l1n0'.south) to (bottom3');
+    \draw [outgoing edge] (l1n0'.five  |- l1n0'.south) to (bottom4');
+  \end{scope}
+\end{tikzpicture}

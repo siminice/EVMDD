@@ -1,0 +1,36 @@
+Example:
+Declarations
+x [0,2]
+y [0,3]
+Expressions
+x+2 < 2*y
+
+Grammar:
+Input   := Decls Exps
+
+Decls   := "Declarations"
+         | Decls "\n"
+         | Decls Decl "\n"
+
+Exps    := "Expressions"
+         | Exps "\n"
+         | Exps Exp "\n"
+
+Decl    := Ident "\in" "[" Num "," Num "]"
+
+Ident   := [A-Za-z][A-Za-z0-9_]*
+
+Num     := [0-9]+
+
+Exp     := BoolExp
+         | IntExp
+
+BoolExp := IntExp "<" IntExp
+
+IntExp  := Num
+         | Ident
+         | IntExp "+" IntExp
+         | IntExp "-" IntExp
+         | IntExp "*" IntExp
+         | "-" IntExp
+         | "(" IntExp ")"

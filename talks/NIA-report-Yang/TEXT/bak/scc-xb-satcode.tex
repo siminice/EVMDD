@@ -1,0 +1,42 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\FOIL{Pseudocode for the improved Xie-Beerel algorithm using saturation}
+\FOIL{Improving the Xie-Beerel algorithm using saturation}
+
+\vfill 
+
+%\FPSCENTERWIDE{xbsatcode}{\textwidth}
+
+{
+%\scriptsize
+\ALGORITHM{$mdd ~~ \id{XBSaturation}(mdd~P)$} {
+\LISTING{0}{
+\LL if($P=\emptyset$) then return $\emptyset$;
+\LL $mdd~ans \!\ASSIGN\! \emptyset$; ~$mdd~seed \!\ASSIGN\! \id{Pick}(P)$;
+\LL $mdd~F_{front} \!\ASSIGN\! \nset(seed)\cap P$; ~ $mdd~ B_{front} \!\ASSIGN\! \nset^{-1}(seed)\cap P$;
+\LL $mdd~F \!\ASSIGN\! \id{Saturate}(\{\nset_{L} \cdots \nset_{1}\}, F_{front}) \cap P$;
+\LL $mdd~B \!\ASSIGN\! \id{ConsSaturate}(\{\nset_{L}^{-1} \cdots \nset_{1}^{-1}\}, F, B_{front}) \cap P$;
+%\LISTINGSETCOUNTER{5} \LISTINGBAR
+\LL $mdd~C \!\ASSIGN\! F \cap B$; ~~~~ if $C \neq \emptyset$ then $ans \!\ASSIGN\! C$; endif
+%\REMARK {Line $6-8$ are for computing SCCs}
+\LL $ans \!\ASSIGN\! ans \cup \id{XBSaturation} (F \setminus C) \cup \id{XBSaturation}(P \setminus F) $;
+\LL return $ans$;
+%\LISTINGTYPE{'} \LISTINGSETCOUNTER{5} \LISTINGBAR
+%\LL if $F \setminus B = \emptyset$ then $ans \!\ASSIGN\! ans \cup F$; endif
+%\REMARK {Line $6$'$-8$' are for computing terminal SCCs}
+%\LL $ans \!\ASSIGN\! ans \cup \id{XBSaturation}(P \setminus B) $;
+%\LL return $ans$;
+}}
+}
+
+\vfill 
+Experimental results show that, for most models, the saturation-based
+Xie-Beerel algorithm outperforms $Lockstep$, sometimes by orders of magnitude.
+
+Our algorithm and Lockstep improve the Xie-Beerel algorithm in different ways
+\LIST{
+\BULL Lockstep aims at reducing the number of image computations.
+\BULL Our algorithm aims as improving state-space exploration by scheduling
+event firings based on locality.
+}
+
+\vfill

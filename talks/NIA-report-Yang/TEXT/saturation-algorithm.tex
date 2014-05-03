@@ -1,0 +1,45 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\FOIL{Saturation: an iteration strategy based on the model structure}
+
+MDD node $p$ at level $k$ is \emph{\textbf{saturated}} if
+it encodes a fixpoint w.r.t.\ any event $\alpha$ s.t.\ $\Top(\alpha) \leq k$
+\FPSCENTERWIDE{sat_relprod}{6cm}
+
+\LIST{
+\BULL build the $L$-level MDD encoding of $\sset_{init}$
+      \hfill \COFFEE{if $|\sset_{init}|=1$, there is one node per level}
+      \\[-2.5ex]
+\BULL saturate each node at level $1$:
+      fire in them all events $\alpha$ s.t.\ $\Top(\alpha) = 1$
+      \\[-2.5ex]
+\BULL saturate each node at level $2$:
+      fire in them all events $\alpha$ s.t.\ $\Top(\alpha) = 2$\\
+      (if this creates nodes at level $1$,
+      saturate them immediately upon creation)
+      \\[-2.5ex]
+\BULL saturate each node at level $3$:
+      fire in them all events $\alpha$ s.t.\ $\Top(\alpha) = 3$\\
+      (if this creates nodes at levels $2$ or $1$,
+      saturate them immediately upon creation)
+      \\[-2.5ex]
+\BULL \ldots \\[-2.5ex]
+\BULL saturate the root node at level $L$:
+      fire in it all events $\alpha$ s.t.\ $\Top(\alpha) = L$\\
+      (if this creates nodes at levels $L\!-\!1$, $L\!-\!2$, \ldots, $1$,
+      saturate them immediately upon creation)
+}
+\vfill
+
+\FOIL{Saturation vs. BFS}
+\vfill 
+Breadth-first search (BFS): \\
+\FPSCENTERWIDE{bfs}{6cm}
+\vfill 
+Saturation: \\
+\FPSCENTERWIDE{sat}{7cm}
+\vfill
+\LIST{
+\BULL {\DARKGREEN{states are \textbf{not} discovered in breadth-first order}}
+\BULL {\DARKGREEN{enormous time and memory savings for asynchronous systems}}
+}
+\vfill

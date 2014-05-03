@@ -1,0 +1,195 @@
+main.o main.o: main.c /usr/include/stdlib.h /usr/include/Availability.h \
+  /usr/include/AvailabilityInternal.h /usr/include/_types.h \
+  /usr/include/sys/_types.h /usr/include/sys/cdefs.h \
+  /usr/include/machine/_types.h /usr/include/i386/_types.h \
+  /usr/include/sys/wait.h /usr/include/sys/signal.h \
+  /usr/include/sys/appleapiopts.h /usr/include/machine/signal.h \
+  /usr/include/i386/signal.h /usr/include/i386/_structs.h \
+  /usr/include/sys/_structs.h /usr/include/machine/_structs.h \
+  /usr/include/mach/i386/_structs.h /usr/include/sys/resource.h \
+  /usr/include/machine/endian.h /usr/include/i386/endian.h \
+  /usr/include/sys/_endian.h /usr/include/libkern/_OSByteOrder.h \
+  /usr/include/libkern/i386/_OSByteOrder.h /usr/include/alloca.h \
+  /usr/include/machine/types.h /usr/include/i386/types.h \
+  /usr/include/i386/_types.h /usr/include/string.h \
+  /usr/include/secure/_string.h /usr/include/secure/_common.h \
+  /usr/include/time.h /usr/include/_structs.h \
+  /usr/lib/gcc/i686-apple-darwin10/4.2.1/include/limits.h \
+  /usr/lib/gcc/i686-apple-darwin10/4.2.1/include/syslimits.h \
+  /usr/include/limits.h /usr/include/machine/limits.h \
+  /usr/include/i386/limits.h /usr/include/i386/_limits.h \
+  /usr/include/sys/syslimits.h /usr/local/include/evmdd/evmdd.h \
+  /usr/local/include/evmdd/mdd_manager.h \
+  /usr/local/include/evmdd/mdd_node.h /usr/include/stdio.h \
+  /usr/include/secure/_stdio.h /usr/local/include/evmdd/bigint.h \
+  /usr/local/include/evmdd/mdd_ops.h \
+  /usr/local/include/evmdd/evmdd_node.h \
+  /usr/local/include/evmdd/evmdd_ops.h /usr/local/include/evmdd/events.h \
+  /usr/local/include/evmdd/saturate.h \
+  /usr/local/include/evmdd/saturate_dist.h \
+  /usr/local/include/evmdd/saturate_dist2.h \
+  /usr/local/include/evmdd/saturate_bounded.h env.h normalize.h ast.h \
+  bfs.h /usr/local/include/evmdd/mdd_manager.h test_cudd.h ../config.h \
+  build.h /usr/local/include/evmdd/evmdd_node.h implicit_identities.h \
+  ../../cudd/include/util.h /usr/include/unistd.h \
+  /usr/include/sys/unistd.h /usr/include/sys/select.h \
+  /usr/include/sys/_select.h /usr/include/ctype.h /usr/include/runetype.h \
+  /usr/include/assert.h ../../cudd/include/cudd.h \
+  ../../cudd/include/mtr.h ../../cudd/include/epd.h cuthill_mckee.h \
+  ef_trace.h clock.h utils.h
+
+/usr/include/stdlib.h:
+
+/usr/include/Availability.h:
+
+/usr/include/AvailabilityInternal.h:
+
+/usr/include/_types.h:
+
+/usr/include/sys/_types.h:
+
+/usr/include/sys/cdefs.h:
+
+/usr/include/machine/_types.h:
+
+/usr/include/i386/_types.h:
+
+/usr/include/sys/wait.h:
+
+/usr/include/sys/signal.h:
+
+/usr/include/sys/appleapiopts.h:
+
+/usr/include/machine/signal.h:
+
+/usr/include/i386/signal.h:
+
+/usr/include/i386/_structs.h:
+
+/usr/include/sys/_structs.h:
+
+/usr/include/machine/_structs.h:
+
+/usr/include/mach/i386/_structs.h:
+
+/usr/include/sys/resource.h:
+
+/usr/include/machine/endian.h:
+
+/usr/include/i386/endian.h:
+
+/usr/include/sys/_endian.h:
+
+/usr/include/libkern/_OSByteOrder.h:
+
+/usr/include/libkern/i386/_OSByteOrder.h:
+
+/usr/include/alloca.h:
+
+/usr/include/machine/types.h:
+
+/usr/include/i386/types.h:
+
+/usr/include/i386/_types.h:
+
+/usr/include/string.h:
+
+/usr/include/secure/_string.h:
+
+/usr/include/secure/_common.h:
+
+/usr/include/time.h:
+
+/usr/include/_structs.h:
+
+/usr/lib/gcc/i686-apple-darwin10/4.2.1/include/limits.h:
+
+/usr/lib/gcc/i686-apple-darwin10/4.2.1/include/syslimits.h:
+
+/usr/include/limits.h:
+
+/usr/include/machine/limits.h:
+
+/usr/include/i386/limits.h:
+
+/usr/include/i386/_limits.h:
+
+/usr/include/sys/syslimits.h:
+
+/usr/local/include/evmdd/evmdd.h:
+
+/usr/local/include/evmdd/mdd_manager.h:
+
+/usr/local/include/evmdd/mdd_node.h:
+
+/usr/include/stdio.h:
+
+/usr/include/secure/_stdio.h:
+
+/usr/local/include/evmdd/bigint.h:
+
+/usr/local/include/evmdd/mdd_ops.h:
+
+/usr/local/include/evmdd/evmdd_node.h:
+
+/usr/local/include/evmdd/evmdd_ops.h:
+
+/usr/local/include/evmdd/events.h:
+
+/usr/local/include/evmdd/saturate.h:
+
+/usr/local/include/evmdd/saturate_dist.h:
+
+/usr/local/include/evmdd/saturate_dist2.h:
+
+/usr/local/include/evmdd/saturate_bounded.h:
+
+env.h:
+
+normalize.h:
+
+ast.h:
+
+bfs.h:
+
+/usr/local/include/evmdd/mdd_manager.h:
+
+test_cudd.h:
+
+../config.h:
+
+build.h:
+
+/usr/local/include/evmdd/evmdd_node.h:
+
+implicit_identities.h:
+
+../../cudd/include/util.h:
+
+/usr/include/unistd.h:
+
+/usr/include/sys/unistd.h:
+
+/usr/include/sys/select.h:
+
+/usr/include/sys/_select.h:
+
+/usr/include/ctype.h:
+
+/usr/include/runetype.h:
+
+/usr/include/assert.h:
+
+../../cudd/include/cudd.h:
+
+../../cudd/include/mtr.h:
+
+../../cudd/include/epd.h:
+
+cuthill_mckee.h:
+
+ef_trace.h:
+
+clock.h:
+
+utils.h:

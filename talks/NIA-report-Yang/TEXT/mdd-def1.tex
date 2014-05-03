@@ -1,0 +1,53 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\FOIL{Multi-valued decision diagrams (MDDs)}
+
+\vfill
+
+An MDD is an acyclic directed edge-labeled graph where:
+\LIST{
+\BULL
+The only \STRESS{terminal} nodes can be $\0$ and $\1$,
+and are at \STRESS{level $0$}
+\hfill
+\STRESS{$\0.lvl = \1.lvl = 0$}
+\BULL
+A \STRESS{nonterminal} node $p$ at \STRESS{level $k$}
+is associated with a \STRESS{state variable $x_k$}.
+\hfill \STRESS{$p.lvl = k$, $L \geq k \geq 1$}
+\BULL
+For each $i_k \in \sset_k$, a nonterminal node $p$ at level $k$ has
+an outgoing edge pointing to \STRESS{child} $p[i_k]$
+\BULL
+The level of a child is lower than that of $p$
+\hfill \STRESS{$p[i_k].lvl < p.lvl$}
+\BULL
+%A node $p$ at level $k$ encodes the
+%\STRESS{function $v_p : \sset_k \times \cdots \times \sset_1 \rightarrow \Booleans$}
+%defined recursively by
+%$$\STRESS{
+%  v_p(x_k,...,x_1)  = \left\{  \begin{array}{l @{~~~} l}
+%     p
+%     &  \mbox{if $k = 0$} 
+%\\[1ex]
+%     v_{p[x_k]}(x_{k-1},...,x_1)
+%     &  \mbox{if $k > 0$}
+%   \end{array}
+%  \right.
+%  }
+%$$
+%}
+%
+%\vfill
+%
+An $L$-level MDD encodes a set of states
+$\xset \subseteq \potsset \!=\! \sset_L \!\times\! \cdots \!\times\! \sset_1$
+\STRESS{
+$$
+\vi  \in \xset ~ \IFF ~
+ \mbox{the path $(i_L,...,i_1)$ from the root leads to terminal $\1$, corresponding to $\vi$.}
+$$ 
+}
+}
+\vfill
+
+

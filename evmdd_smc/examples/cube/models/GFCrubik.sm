@@ -1,0 +1,130 @@
+// FILE: GFCrubik.sm, SMART input file for Rubik's Cube, parametrized:
+// - it asks whether to ignore all orientations, just center orientations, or no orientation
+// - it asks whether to allow half-rotations
+// - it asks whether to ignore rotations around any of the X, Y, or Z axes (for debugging purposes)
+// Each cube piece is indexed in a 3-dimensional coordinate system with values 0, 1, or 2;
+// 000 is a corner cube, 101 is cube in the center of a face, and so on.
+
+
+bool OrFlag        := read_bool("Do you want to use orientations?");
+bool CenterOrFlag  := cond(OrFlag,read_bool("Do you want to use also center orientations?"),false);
+bool HalfFlag      := read_bool("Do you want to allow half rotations?");
+bool DoX           := read_bool("Do rotations around X axis?");
+bool DoY           := read_bool("Do rotations around Y axis?");
+bool DoZ           := read_bool("Do rotations around Z axis?");
+
+print("** Using ",cond(!OrFlag,"no",cond(OrFlag&CenterOrFlag,"all","no center"))," orientations and",cond(HalfFlag," "," no "),"half rotations\n");
+print("** Allowing rotations for X: ",DoX," Y: ",DoY," Z: ",DoZ,"\n");
+
+print("** Generating the coordinates of the eight corner pieces (no 1's):\n");
+for (int x in {0,2}, int y in {0,2}, int z in {0,2}) { print(x:4, y:4, z:4, "\n"); }
+print("** Generating the coordinates of the twelve edge pieces (one 1):\n");
+for (int x in {0..2}, int y in {0..2..cond(x==1,2,1)}, int z in {cond(x==1|y==1,0,1)..cond(x==1|y==1,2,1)..2}) { print(x:4, y:4, z:4, "\n"); }
+print("** Generating the coordinates of the six center pieces (two 1's):\n");
+for (int x in {0..2}, int y in {cond(x==1,0,1)..cond(x==1,2,1)}, int z in {cond(x==1&y==1,0,1)..cond(x==1&y==1,2,1)..2}) { print(x:4, y:4, z:4, "\n"); }
+
+// For corners, Next(i,j): 00 => 02 => 22 => 20 => 00 => ...     (-1 is to catch errors)
+int iNextCorn(int i, int j) := cond(i==0&j==0, 0 ,cond(i==0&j==2, 2 ,cond(i==2&j==2, 2 ,cond(i==2&j==0, 0 ,-1))));
+int jNextCorn(int i, int j) := cond(i==0&j==0, 2 ,cond(i==0&j==2, 2 ,cond(i==2&j==2, 0 ,cond(i==2&j==0, 0 ,-1))));
+int iPrevCorn(int i, int j) := cond(i==0&j==0, 2 ,cond(i==0&j==2, 0 ,cond(i==2&j==2, 0 ,cond(i==2&j==0, 2 ,-1))));
+int jPrevCorn(int i, int j) := cond(i==0&j==0, 0 ,cond(i==0&j==2, 0 ,cond(i==2&j==2, 2 ,cond(i==2&j==0, 2 ,-1))));
+int iHalfCorn(int i, int j) := cond(i==0&j==0, 2 ,cond(i==0&j==2, 2 ,cond(i==2&j==2, 0 ,cond(i==2&j==0, 0 ,-1))));
+int jHalfCorn(int i, int j) := cond(i==0&j==0, 2 ,cond(i==0&j==2, 0 ,cond(i==2&j==2, 0 ,cond(i==2&j==0, 2 ,-1))));
+
+// For edges,   Next(i,j): 01 => 12 => 21 => 10 => 01 => ...
+int iNextEdge(int i, int j) := cond(i==0&j==1, 1 ,cond(i==1&j==2, 2 ,cond(i==2&j==1, 1 ,cond(i==1&j==0, 0 ,-1))));
+int jNextEdge(int i, int j) := cond(i==0&j==1, 2 ,cond(i==1&j==2, 1 ,cond(i==2&j==1, 0 ,cond(i==1&j==0, 1 ,-1))));
+int iPrevEdge(int i, int j) := cond(i==0&j==1, 1 ,cond(i==1&j==2, 0 ,cond(i==2&j==1, 1 ,cond(i==1&j==0, 2 ,-1))));
+int jPrevEdge(int i, int j) := cond(i==0&j==1, 0 ,cond(i==1&j==2, 1 ,cond(i==2&j==1, 2 ,cond(i==1&j==0, 1 ,-1))));
+int iHalfEdge(int i, int j) := cond(i==0&j==1, 2 ,cond(i==1&j==2, 1 ,cond(i==2&j==1, 0 ,cond(i==1&j==0, 1 ,-1))));
+int jHalfEdge(int i, int j) := cond(i==0&j==1, 1 ,cond(i==1&j==2, 0 ,cond(i==2&j==1, 1 ,cond(i==1&j==0, 2 ,-1))));
+
+spn rubik := {
+	// Declare the places for the cube corners
+        for (int x in {0,2}, int y in {0,2}, int z in {0,2}) {
+		place Corn[x][y][z];		init(Corn[x][y][z]:x+10*y+100*z);
+	}
+	// Declare places for cube edges
+        for (int x in {0..2}, int y in {0..2..cond(x==1,2,1)}, int z in {cond(x==1|y==1,0,1)..cond(x==1|y==1,2,1)..2}) {
+		place Edge[x][y][z];		init(Edge[x][y][z]:x+10*y+100*z);
+	}
+
+	// Declare places for cube corner orientations (uses a hack to avoid declaring places if OrFlag==false)
+        for (int x in {0..cond(OrFlag,0,-1),2..cond(OrFlag,2,-1)}, int y in {0,2}, int z in {0,2}) {
+		place CornOr[x][y][z];
+	}
+
+	// Declare places for cube edge orientations (uses a hack to avoid declaring places if OrFlag==false)
+        for (int x in {0..cond(OrFlag,2,-1)}, int y in {0..2..cond(x==1,2,1)}, int z in {cond(x==1|y==1,0,1)..cond(x==1|y==1,2,1)..2}) {
+		place EdgeOr[x][y][z];
+	}
+        // Declare places for center orientations
+        for (int x in {0..cond(OrFlag&CenterOrFlag,2,-1)}, int y in {cond(x==1,0,1)..cond(x==1,2,1)}, int z in {cond(x==1&y==1,0,1)..cond(x==1&y==1,2,1)..2}) {
+		place CenterOr[x][y][z];
+	}
+
+	// Map places to levels using past experience of what works (magic!!!)
+	////////////////////////  TBD
+	
+
+	// Declare the transitions for the moves
+        for (int x in {0..2}, int y in {cond(x==1,0,1)..cond(x==1,2,1)}, int z in {cond(x==1&y==1,0,1)..cond(x==1&y==1,2,1)..2}) {
+		trans	Next[x][y][z];
+		trans	Prev[x][y][z];
+		trans	Half[x][y][z];
+	}
+
+	// Add the arcs
+        for (int x in {0..cond(DoX,2,-1)..2}) {
+		for (int i in {0,2}, int j in {0,2}) {
+			arcs(Corn[x][i][j]:Next[x][1][1]:tk(Corn[x][i][j]),Next[x][1][1]:Corn[x][i][j]:tk(Corn[x][iNextCorn(i,j)][jNextCorn(i,j)]));
+			arcs(Corn[x][i][j]:Prev[x][1][1]:tk(Corn[x][i][j]),Prev[x][1][1]:Corn[x][i][j]:tk(Corn[x][iPrevCorn(i,j)][jPrevCorn(i,j)]));
+	cond(HalfFlag,  arcs(Corn[x][i][j]:Half[x][1][1]:tk(Corn[x][i][j]),Half[x][1][1]:Corn[x][i][j]:tk(Corn[x][iHalfCorn(i,j)][jHalfCorn(i,j)])),null);
+                }
+		for (int i in {0..2}, int j in {cond(i==1,0,1)..cond(i==1,2,1)..2}) {
+			arcs(Edge[x][i][j]:Next[x][1][1]:tk(Edge[x][i][j]),Next[x][1][1]:Edge[x][i][j]:tk(Edge[x][iNextEdge(i,j)][jNextEdge(i,j)]));
+			arcs(Edge[x][i][j]:Prev[x][1][1]:tk(Edge[x][i][j]),Prev[x][1][1]:Edge[x][i][j]:tk(Edge[x][iPrevEdge(i,j)][jPrevEdge(i,j)]));
+	cond(HalfFlag,  arcs(Edge[x][i][j]:Half[x][1][1]:tk(Edge[x][i][j]),Half[x][1][1]:Edge[x][i][j]:tk(Edge[x][iHalfEdge(i,j)][jHalfEdge(i,j)])),null);
+		}
+        }
+        for (int y in {0..cond(DoY,2,-1)..2}) {
+		for (int i in {0,2}, int j in {0,2}) {
+			arcs(Corn[i][y][j]:Next[1][y][1]:tk(Corn[i][y][j]),Next[1][y][1]:Corn[i][y][j]:tk(Corn[iNextCorn(i,j)][y][jNextCorn(i,j)]));
+			arcs(Corn[i][y][j]:Prev[1][y][1]:tk(Corn[i][y][j]),Prev[1][y][1]:Corn[i][y][j]:tk(Corn[iPrevCorn(i,j)][y][jPrevCorn(i,j)]));
+	cond(HalfFlag,  arcs(Corn[i][y][j]:Half[1][y][1]:tk(Corn[i][y][j]),Half[1][y][1]:Corn[i][y][j]:tk(Corn[iHalfCorn(i,j)][y][jHalfCorn(i,j)])),null);
+                }
+		for (int i in {0..2}, int j in {cond(i==1,0,1)..cond(i==1,2,1)..2}) {
+			arcs(Edge[i][y][j]:Next[1][y][1]:tk(Edge[i][y][j]),Next[1][y][1]:Edge[i][y][j]:tk(Edge[iNextEdge(i,j)][y][jNextEdge(i,j)]));
+			arcs(Edge[i][y][j]:Prev[1][y][1]:tk(Edge[i][y][j]),Prev[1][y][1]:Edge[i][y][j]:tk(Edge[iPrevEdge(i,j)][y][jPrevEdge(i,j)]));
+	cond(HalfFlag,  arcs(Edge[i][y][j]:Half[1][y][1]:tk(Edge[i][y][j]),Half[1][y][1]:Edge[i][y][j]:tk(Edge[iHalfEdge(i,j)][y][jHalfEdge(i,j)])),null);
+		}
+        }
+        for (int z in {0..cond(DoZ,2,-1)..2}) {
+		for (int i in {0,2}, int j in {0,2}) {
+			arcs(Corn[i][j][z]:Next[1][1][z]:tk(Corn[i][j][z]),Next[1][1][z]:Corn[i][j][z]:tk(Corn[iNextCorn(i,j)][jNextCorn(i,j)][z]));
+			arcs(Corn[i][j][z]:Prev[1][1][z]:tk(Corn[i][j][z]),Prev[1][1][z]:Corn[i][j][z]:tk(Corn[iPrevCorn(i,j)][jPrevCorn(i,j)][z]));
+	cond(HalfFlag,  arcs(Corn[i][j][z]:Half[1][1][z]:tk(Corn[i][j][z]),Half[1][1][z]:Corn[i][j][z]:tk(Corn[iHalfCorn(i,j)][jHalfCorn(i,j)][z])),null);
+                }
+		for (int i in {0..2}, int j in {cond(i==1,0,1)..cond(i==1,2,1)..2}) {
+			arcs(Edge[i][j][z]:Next[1][1][z]:tk(Edge[i][j][z]),Next[1][1][z]:Edge[i][j][z]:tk(Edge[iNextEdge(i,j)][jNextEdge(i,j)][z]));
+			arcs(Edge[i][j][z]:Prev[1][1][z]:tk(Edge[i][j][z]),Prev[1][1][z]:Edge[i][j][z]:tk(Edge[iPrevEdge(i,j)][jPrevEdge(i,j)][z]));
+	cond(HalfFlag,  arcs(Edge[i][j][z]:Half[1][1][z]:tk(Edge[i][j][z]),Half[1][1][z]:Edge[i][j][z]:tk(Edge[iHalfEdge(i,j)][jHalfEdge(i,j)][z])),null);
+		}
+        }
+
+	bigint numstates := num_states(true);
+};
+
+# MDDUnionStrategy MDD_FI_EXT
+# StateStorage MDD_SATURATION_TRANSITION
+# Verbose true
+# Report true
+//# Dump_MDD true
+# MDDL_MemBound 30000
+//# MDDL_CacheMemBound 2000
+//# MDDL_UTMemBound 1000
+# MDDL_CleanUp_Threshold 400000
+
+print("** The number of Rubik's cube states is: ", rubik.numstates, "\n");
+
+

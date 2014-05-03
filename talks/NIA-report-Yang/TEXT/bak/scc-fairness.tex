@@ -1,0 +1,20 @@
+\FOIL{B\"{u}chi fairness}
+
+\vfill
+B\"{u}chi fairness (weak fairness) can be specified as a set of sets of states $\{\fset_1, \ldots, \fset_n\}$.
+
+A fair loop satisfies B\"{u}chi fairness iff it contains a state in $\fset_i$,
+for each $i=\{1,\ldots,n\}$
+
+\STRESS{$TC$-based approach}: 
+Assume $TC$ and $TC^{-1}$ have been built, let 
+
+\begin{displaymath}
+\mathcal{S}_{weak} = \left\{ \vi ~ \Big | ~ \bigcap_{m=1,\ldots,n}
+[
+\exists \vf_{m} \!\in\! \fset_m. (TC(\vf_{m}, \vi) \land TC^{-1}(\vf_{m}, \vi))
+] \right\}
+\end{displaymath}
+
+$\mathcal{S}_{weak}$ contains all the states in fair loops. 
+\vfill

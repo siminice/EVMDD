@@ -1,0 +1,40 @@
+ctl.o ctl.o: ctl.c ctl.h /usr/local/include/evmdd/mdd_manager.h \
+  /usr/local/include/evmdd/mdd_node.h /usr/include/stdio.h \
+  /usr/include/_types.h /usr/include/sys/_types.h \
+  /usr/include/sys/cdefs.h /usr/include/machine/_types.h \
+  /usr/include/i386/_types.h /usr/include/secure/_stdio.h \
+  /usr/include/secure/_common.h /usr/local/include/evmdd/mdd_manager.h \
+  /usr/local/include/evmdd/bigint.h /usr/local/include/evmdd/mdd_ops.h \
+  /usr/local/include/evmdd/mdd_node.h /usr/local/include/evmdd/events.h
+
+ctl.h:
+
+/usr/local/include/evmdd/mdd_manager.h:
+
+/usr/local/include/evmdd/mdd_node.h:
+
+/usr/include/stdio.h:
+
+/usr/include/_types.h:
+
+/usr/include/sys/_types.h:
+
+/usr/include/sys/cdefs.h:
+
+/usr/include/machine/_types.h:
+
+/usr/include/i386/_types.h:
+
+/usr/include/secure/_stdio.h:
+
+/usr/include/secure/_common.h:
+
+/usr/local/include/evmdd/mdd_manager.h:
+
+/usr/local/include/evmdd/bigint.h:
+
+/usr/local/include/evmdd/mdd_ops.h:
+
+/usr/local/include/evmdd/mdd_node.h:
+
+/usr/local/include/evmdd/events.h:

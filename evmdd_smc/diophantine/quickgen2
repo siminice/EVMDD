@@ -1,0 +1,6 @@
+#!/bin/bash
+
+./dio -n $1 -m $2 -d 2 > examples/dio-$1-$2-$3.sm 2> examples/dio-$1-$2-$3.ys
+../src/evmdd-smc -q < examples/dio-$1-$2-$3.sm
+#time yices -e examples/dio-$1-$2-$3.ys
+time yices examples/dio-$1-$2-$3.ys

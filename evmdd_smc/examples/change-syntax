@@ -1,0 +1,9 @@
+#!/bin/bash
+
+for f in *.cc test* dio* *.sm chess cruisecontrol fiveknights knights5 ssp ucr-rubik cube/gencube.cc
+do
+ echo 'Editting '$f'...'
+# sed -e 's/Declarations/Variables/' $f > temp
+ sed -e 's/Expressions/Equations/' $f > temp
+ mv -f temp $f
+done

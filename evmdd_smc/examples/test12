@@ -1,0 +1,10 @@
+Variables
+x2 [0, 2]
+x [0, 7]
+y [0, 4]
+y2 [0, 3]
+Initial states
+y = 1 /\ x < 1 /\ x2 < 2
+Transitions
+xp2: x < 5 -> x' = x+2
+xp3: x < 3 -> x' = x+3

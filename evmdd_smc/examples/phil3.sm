@@ -1,0 +1,35 @@
+Variables
+   fork0 [0, 1]
+   phil0 [0, 4]
+   fork1 [0, 1]
+   phil1 [0, 4]
+   fork2 [0, 1]
+   phil2 [0, 4]
+Initial states
+   fork0 = 0
+   phil0 = 0
+   fork1 = 0
+   phil1 = 0
+   fork2 = 0
+   phil2 = 0
+Transitions
+  phil0 = 0 -> phil0' = 1
+  phil0 = 1 /\ fork0 = 0 -> phil0' = 2 /\ fork0' = 1
+  phil0 = 1 /\ fork1 = 0 -> phil0' = 3 /\ fork1' = 1
+  phil0 = 2 /\ fork1 = 0 -> phil0' = 4 /\ fork1' = 1
+  phil0 = 3 /\ fork0 = 0 -> phil0' = 4 /\ fork0' = 1
+  phil0 = 4 -> phil0' = 0 /\ fork0' = 0 /\ fork1' = 0
+  phil1 = 0 -> phil1' = 1
+  phil1 = 1 /\ fork1 = 0 -> phil1' = 2 /\ fork1' = 1
+  phil1 = 1 /\ fork2 = 0 -> phil1' = 3 /\ fork2' = 1
+  phil1 = 2 /\ fork2 = 0 -> phil1' = 4 /\ fork2' = 1
+  phil1 = 3 /\ fork1 = 0 -> phil1' = 4 /\ fork1' = 1
+  phil1 = 4 -> phil1' = 0 /\ fork1' = 0 /\ fork2' = 0
+  phil2 = 0 -> phil2' = 1
+  phil2 = 1 /\ fork2 = 0 -> phil2' = 2 /\ fork2' = 1
+  phil2 = 1 /\ fork0 = 0 -> phil2' = 3 /\ fork0' = 1
+  phil2 = 2 /\ fork0 = 0 -> phil2' = 4 /\ fork0' = 1
+  phil2 = 3 /\ fork2 = 0 -> phil2' = 4 /\ fork2' = 1
+  phil2 = 4 -> phil2' = 0 /\ fork2' = 0 /\ fork0' = 0
+Properties
+  !EX(true)

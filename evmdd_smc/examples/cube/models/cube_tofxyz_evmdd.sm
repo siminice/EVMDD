@@ -1,0 +1,136 @@
+Declarations
+  Corn222 [0, 7]
+  Corn220 [0, 7]
+  Corn000 [0, 7]
+  Corn002 [0, 7]
+  Corn200 [0, 7]
+  Corn202 [0, 7]
+  Corn022 [0, 7]
+  Corn020 [0, 7]
+  CornOr002 [0, 2]
+  CornOr202 [0, 2]
+  CornOr000 [0, 2]
+  CornOr200 [0, 2]
+  CornOr020 [0, 2]
+  CornOr022 [0, 2]
+  CornOr220 [0, 2]
+  CornOr222 [0, 2]
+  Edge001 [0, 11]
+  Edge102 [0, 11]
+  Edge100 [0, 11]
+  Edge201 [0, 11]
+  Edge210 [0, 11]
+  Edge212 [0, 11]
+  Edge221 [0, 11]
+  Edge122 [0, 11]
+  Edge021 [0, 11]
+  Edge120 [0, 11]
+  Edge010 [0, 11]
+  Edge012 [0, 11]
+  EdgeOr001 [0, 1]
+  EdgeOr102 [0, 1]
+  EdgeOr100 [0, 1]
+  EdgeOr201 [0, 1]
+  EdgeOr210 [0, 1]
+  EdgeOr212 [0, 1]
+  EdgeOr221 [0, 1]
+  EdgeOr122 [0, 1]
+  EdgeOr021 [0, 1]
+  EdgeOr120 [0, 1]
+  EdgeOr010 [0, 1]
+  EdgeOr012 [0, 1]
+  Center101 [0, 3]
+  Center112 [0, 3]
+  Center211 [0, 3]
+  Center110 [0, 3]
+  Center011 [0, 3]
+  Center121 [0, 3]
+Initial states
+  /* Initialize cube corners */
+  Corn000 = 0
+  Corn002 = 1
+  Corn020 = 2
+  Corn022 = 3
+  Corn200 = 4
+  Corn202 = 5
+  Corn220 = 6
+  Corn222 = 7
+  /* Initialize cube edges */
+  Edge001 = 0
+  Edge010 = 1
+  Edge012 = 2
+  Edge021 = 3
+  Edge100 = 4
+  Edge102 = 5
+  Edge120 = 6
+  Edge122 = 7
+  Edge201 = 8
+  Edge210 = 9
+  Edge212 = 10
+  Edge221 = 11
+  /* Initialize cube corner orientations */
+  CornOr000 = 0
+  CornOr002 = 0
+  CornOr020 = 0
+  CornOr022 = 0
+  CornOr200 = 0
+  CornOr202 = 0
+  CornOr220 = 0
+  CornOr222 = 0
+  /* Initialize cube edge orientations */
+  EdgeOr001 = 0
+  EdgeOr010 = 0
+  EdgeOr012 = 0
+  EdgeOr021 = 0
+  EdgeOr100 = 0
+  EdgeOr102 = 0
+  EdgeOr120 = 0
+  EdgeOr122 = 0
+  EdgeOr201 = 0
+  EdgeOr210 = 0
+  EdgeOr212 = 0
+  EdgeOr221 = 0
+  /* Initialize center cube orientations */
+  Center101 = 0
+  Center121 = 0
+  Center211 = 0
+  Center011 = 0
+  Center112 = 0
+  Center110 = 0
+Transitions
+  /* left, half turn */
+  Corn022' = Corn000 /\ Corn020' = Corn002 /\ Corn002' = Corn020 /\ Corn000' = Corn022 /\ CornOr022' = CornOr000 /\ CornOr020' = CornOr002 /\ CornOr002' = CornOr020 /\ CornOr000' = CornOr022 /\ Edge021' = Edge001 /\ Edge012' = Edge010 /\ Edge010' = Edge012 /\ Edge001' = Edge021 /\ EdgeOr021' = EdgeOr001 /\ EdgeOr012' = EdgeOr010 /\ EdgeOr010' = EdgeOr012 /\ EdgeOr001' = EdgeOr021 /\ Center011' = (Center011+2)%4
+  /* left, counter-clockwise quarter turn */
+  Corn002' = Corn000 /\ Corn022' = Corn002 /\ Corn000' = Corn020 /\ Corn020' = Corn022 /\ CornOr002' = (CornOr000+2)%3 /\ CornOr022' = (CornOr002+1)%3 /\ CornOr000' = (CornOr020+1)%3 /\ CornOr020' = (CornOr022+2)%3 /\ Edge012' = Edge001 /\ Edge001' = Edge010 /\ Edge021' = Edge012 /\ Edge010' = Edge021 /\ EdgeOr012' = 1-EdgeOr001 /\ EdgeOr001' = 1-EdgeOr010 /\ EdgeOr021' = 1-EdgeOr012 /\ EdgeOr010' = 1-EdgeOr021 /\ Center011' = (Center011+3)%4
+  /* left, clockwise quarter turn */
+  Corn020' = Corn000 /\ Corn000' = Corn002 /\ Corn022' = Corn020 /\ Corn002' = Corn022 /\ CornOr020' = (CornOr000+2)%3 /\ CornOr000' = (CornOr002+1)%3 /\ CornOr022' = (CornOr020+1)%3 /\ CornOr002' = (CornOr022+2)%3 /\ Edge010' = Edge001 /\ Edge021' = Edge010 /\ Edge001' = Edge012 /\ Edge012' = Edge021 /\ EdgeOr010' = 1-EdgeOr001 /\ EdgeOr021' = 1-EdgeOr010 /\ EdgeOr001' = 1-EdgeOr012 /\ EdgeOr012' = 1-EdgeOr021 /\ Center011' = (Center011+1)%4
+  /* right, half turn */
+  Corn222' = Corn200 /\ Corn220' = Corn202 /\ Corn202' = Corn220 /\ Corn200' = Corn222 /\ CornOr222' = CornOr200 /\ CornOr220' = CornOr202 /\ CornOr202' = CornOr220 /\ CornOr200' = CornOr222 /\ Edge221' = Edge201 /\ Edge212' = Edge210 /\ Edge210' = Edge212 /\ Edge201' = Edge221 /\ EdgeOr221' = EdgeOr201 /\ EdgeOr212' = EdgeOr210 /\ EdgeOr210' = EdgeOr212 /\ EdgeOr201' = EdgeOr221 /\ Center211' = (Center211+2)%4
+  /* right, counter-clockwise quarter turn */
+  Corn220' = Corn200 /\ Corn200' = Corn202 /\ Corn222' = Corn220 /\ Corn202' = Corn222 /\ CornOr220' = (CornOr200+1)%3 /\ CornOr200' = (CornOr202+2)%3 /\ CornOr222' = (CornOr220+2)%3 /\ CornOr202' = (CornOr222+1)%3 /\ Edge210' = Edge201 /\ Edge221' = Edge210 /\ Edge201' = Edge212 /\ Edge212' = Edge221 /\ EdgeOr210' = 1-EdgeOr201 /\ EdgeOr221' = 1-EdgeOr210 /\ EdgeOr201' = 1-EdgeOr212 /\ EdgeOr212' = 1-EdgeOr221 /\ Center211' = (Center211+3)%4
+  /* right, clockwise quarter turn */
+  Corn202' = Corn200 /\ Corn222' = Corn202 /\ Corn200' = Corn220 /\ Corn220' = Corn222 /\ CornOr202' = (CornOr200+1)%3 /\ CornOr222' = (CornOr202+2)%3 /\ CornOr200' = (CornOr220+2)%3 /\ CornOr220' = (CornOr222+1)%3 /\ Edge212' = Edge201 /\ Edge201' = Edge210 /\ Edge221' = Edge212 /\ Edge210' = Edge221 /\ EdgeOr212' = 1-EdgeOr201 /\ EdgeOr201' = 1-EdgeOr210 /\ EdgeOr221' = 1-EdgeOr212 /\ EdgeOr210' = 1-EdgeOr221 /\ Center211' = (Center211+1)%4
+  /* front, half turn */
+  Corn202' = Corn000 /\ Corn200' = Corn002 /\ Corn002' = Corn200 /\ Corn000' = Corn202 /\ CornOr202' = CornOr000 /\ CornOr200' = CornOr002 /\ CornOr002' = CornOr200 /\ CornOr000' = CornOr202 /\ Edge201' = Edge001 /\ Edge102' = Edge100 /\ Edge100' = Edge102 /\ Edge001' = Edge201 /\ EdgeOr201' = EdgeOr001 /\ EdgeOr102' = EdgeOr100 /\ EdgeOr100' = EdgeOr102 /\ EdgeOr001' = EdgeOr201 /\ Center101' = (Center101+2)%4
+  /* front, counter-clockwise quarter turn */
+  Corn002' = Corn000 /\ Corn202' = Corn002 /\ Corn000' = Corn200 /\ Corn200' = Corn202 /\ CornOr002' = (CornOr000+1)%3 /\ CornOr202' = (CornOr002+2)%3 /\ CornOr000' = (CornOr200+2)%3 /\ CornOr200' = (CornOr202+1)%3 /\ Edge102' = Edge001 /\ Edge001' = Edge100 /\ Edge201' = Edge102 /\ Edge100' = Edge201 /\ EdgeOr102' = EdgeOr001 /\ EdgeOr001' = EdgeOr100 /\ EdgeOr201' = EdgeOr102 /\ EdgeOr100' = EdgeOr201 /\ Center101' = (Center101+3)%4
+  /* front, clockwise quarter turn */
+  Corn200' = Corn000 /\ Corn000' = Corn002 /\ Corn202' = Corn200 /\ Corn002' = Corn202 /\ CornOr200' = (CornOr000+1)%3 /\ CornOr000' = (CornOr002+2)%3 /\ CornOr202' = (CornOr200+2)%3 /\ CornOr002' = (CornOr202+1)%3 /\ Edge100' = Edge001 /\ Edge201' = Edge100 /\ Edge001' = Edge102 /\ Edge102' = Edge201 /\ EdgeOr100' = EdgeOr001 /\ EdgeOr201' = EdgeOr100 /\ EdgeOr001' = EdgeOr102 /\ EdgeOr102' = EdgeOr201 /\ Center101' = (Center101+1)%4
+  /* back, half turn */
+  Corn222' = Corn020 /\ Corn220' = Corn022 /\ Corn022' = Corn220 /\ Corn020' = Corn222 /\ CornOr222' = CornOr020 /\ CornOr220' = CornOr022 /\ CornOr022' = CornOr220 /\ CornOr020' = CornOr222 /\ Edge221' = Edge021 /\ Edge122' = Edge120 /\ Edge120' = Edge122 /\ Edge021' = Edge221 /\ EdgeOr221' = EdgeOr021 /\ EdgeOr122' = EdgeOr120 /\ EdgeOr120' = EdgeOr122 /\ EdgeOr021' = EdgeOr221 /\ Center121' = (Center121+2)%4
+  /* back, counter-clockwise quarter turn */
+  Corn220' = Corn020 /\ Corn020' = Corn022 /\ Corn222' = Corn220 /\ Corn022' = Corn222 /\ CornOr220' = (CornOr020+2)%3 /\ CornOr020' = (CornOr022+1)%3 /\ CornOr222' = (CornOr220+1)%3 /\ CornOr022' = (CornOr222+2)%3 /\ Edge120' = Edge021 /\ Edge221' = Edge120 /\ Edge021' = Edge122 /\ Edge122' = Edge221 /\ EdgeOr120' = EdgeOr021 /\ EdgeOr221' = EdgeOr120 /\ EdgeOr021' = EdgeOr122 /\ EdgeOr122' = EdgeOr221 /\ Center121' = (Center121+3)%4
+  /* back, clockwise quarter turn */
+  Corn022' = Corn020 /\ Corn222' = Corn022 /\ Corn020' = Corn220 /\ Corn220' = Corn222 /\ CornOr022' = (CornOr020+2)%3 /\ CornOr222' = (CornOr022+1)%3 /\ CornOr020' = (CornOr220+1)%3 /\ CornOr220' = (CornOr222+2)%3 /\ Edge122' = Edge021 /\ Edge021' = Edge120 /\ Edge221' = Edge122 /\ Edge120' = Edge221 /\ EdgeOr122' = EdgeOr021 /\ EdgeOr021' = EdgeOr120 /\ EdgeOr221' = EdgeOr122 /\ EdgeOr120' = EdgeOr221 /\ Center121' = (Center121+1)%4
+  /* down, half turn */
+  Corn220' = Corn000 /\ Corn200' = Corn020 /\ Corn020' = Corn200 /\ Corn000' = Corn220 /\ CornOr220' = CornOr000 /\ CornOr200' = CornOr020 /\ CornOr020' = CornOr200 /\ CornOr000' = CornOr220 /\ Edge210' = Edge010 /\ Edge120' = Edge100 /\ Edge100' = Edge120 /\ Edge010' = Edge210 /\ EdgeOr210' = EdgeOr010 /\ EdgeOr120' = EdgeOr100 /\ EdgeOr100' = EdgeOr120 /\ EdgeOr010' = EdgeOr210 /\ Center110' = (Center110+2)%4
+  /* down, counter-clockwise quarter turn */
+  Corn020' = Corn000 /\ Corn220' = Corn020 /\ Corn000' = Corn200 /\ Corn200' = Corn220 /\ CornOr020' = CornOr000 /\ CornOr220' = CornOr020 /\ CornOr000' = CornOr200 /\ CornOr200' = CornOr220 /\ Edge120' = Edge010 /\ Edge010' = Edge100 /\ Edge210' = Edge120 /\ Edge100' = Edge210 /\ EdgeOr120' = EdgeOr010 /\ EdgeOr010' = EdgeOr100 /\ EdgeOr210' = EdgeOr120 /\ EdgeOr100' = EdgeOr210 /\ Center110' = (Center110+3)%4
+  /* down, clockwise quarter turn */
+  Corn200' = Corn000 /\ Corn000' = Corn020 /\ Corn220' = Corn200 /\ Corn020' = Corn220 /\ CornOr200' = CornOr000 /\ CornOr000' = CornOr020 /\ CornOr220' = CornOr200 /\ CornOr020' = CornOr220 /\ Edge100' = Edge010 /\ Edge210' = Edge100 /\ Edge010' = Edge120 /\ Edge120' = Edge210 /\ EdgeOr100' = EdgeOr010 /\ EdgeOr210' = EdgeOr100 /\ EdgeOr010' = EdgeOr120 /\ EdgeOr120' = EdgeOr210 /\ Center110' = (Center110+1)%4
+  /* up, half turn */
+  Corn222' = Corn002 /\ Corn202' = Corn022 /\ Corn022' = Corn202 /\ Corn002' = Corn222 /\ CornOr222' = CornOr002 /\ CornOr202' = CornOr022 /\ CornOr022' = CornOr202 /\ CornOr002' = CornOr222 /\ Edge212' = Edge012 /\ Edge122' = Edge102 /\ Edge102' = Edge122 /\ Edge012' = Edge212 /\ EdgeOr212' = EdgeOr012 /\ EdgeOr122' = EdgeOr102 /\ EdgeOr102' = EdgeOr122 /\ EdgeOr012' = EdgeOr212 /\ Center112' = (Center112+2)%4
+  /* up, counter-clockwise quarter turn */
+  Corn202' = Corn002 /\ Corn002' = Corn022 /\ Corn222' = Corn202 /\ Corn022' = Corn222 /\ CornOr202' = CornOr002 /\ CornOr002' = CornOr022 /\ CornOr222' = CornOr202 /\ CornOr022' = CornOr222 /\ Edge102' = Edge012 /\ Edge212' = Edge102 /\ Edge012' = Edge122 /\ Edge122' = Edge212 /\ EdgeOr102' = EdgeOr012 /\ EdgeOr212' = EdgeOr102 /\ EdgeOr012' = EdgeOr122 /\ EdgeOr122' = EdgeOr212 /\ Center112' = (Center112+3)%4
+  /* up, clockwise quarter turn */
+  Corn022' = Corn002 /\ Corn222' = Corn022 /\ Corn002' = Corn202 /\ Corn202' = Corn222 /\ CornOr022' = CornOr002 /\ CornOr222' = CornOr022 /\ CornOr002' = CornOr202 /\ CornOr202' = CornOr222 /\ Edge122' = Edge012 /\ Edge012' = Edge102 /\ Edge212' = Edge122 /\ Edge102' = Edge212 /\ EdgeOr122' = EdgeOr012 /\ EdgeOr012' = EdgeOr102 /\ EdgeOr212' = EdgeOr122 /\ EdgeOr102' = EdgeOr212 /\ Center112' = (Center112+1)%4

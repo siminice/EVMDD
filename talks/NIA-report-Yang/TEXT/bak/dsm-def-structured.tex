@@ -1,0 +1,50 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\FOIL{Structured discrete-state models}
+
+\vfill
+
+A structured \STRESS{discrete-state model} is specified by $\langle \potsset, \sset_{init}, \eset \rangle$:
+\\
+\LIST{
+\BULL a \STRESS{potential state space}
+      $\potsset = \sset_L \times \cdots \times \sset_1
+        %= \makebox{\Large$\times$}_{L \geq k \geq 1} \sset_k
+        $
+       \LIST{
+       \CIRC the (global) state is of the form $\vi = (i_L,...,i_1)$
+       \CIRC $\sset_k$ is the (discrete) \STRESS{local state space} for
+             submodel $k$ or \STRESS{local domain} for state variable $x_k$
+       \CIRC if $\sset_k$ is finite, we can map it
+             to $\{0,1,\ldots,n_k\!-\!1\}$
+             \hfill \STRESS{$n_k$ is known after state-space generation}
+\\
+       }
+\BULL a set of \STRESS{initial states} $\sset_{init} \subseteq \potsset$
+      \LIST{
+      \CIRC often there is a single initial state $\vs_{init}$
+\\
+      }
+\BULL a set of \STRESS{events} $\eset$ defining 
+      \STRESS{disjunctively-partitioned next-state functions}
+      or \STRESS{transition relations}
+       \LIST{
+       \CIRC $\nset_{\alpha} : \potsset \rightarrow 2^{\potsset}$
+             ~~~~~~~ $\vj \in \nset_{\alpha}(\vi)$ iff state $\vj$ can be
+             reached by \STRESS{firing} event $\alpha$ in state $\vi$
+       \CIRC $\nset : \potsset \rightarrow 2^{\potsset}$
+             ~~~~~~~~ $\nset(\vi)=\bigcup_{\alpha\in\eset} \nset_{\alpha}(\vi)$
+	     \hfill
+	     \STRESS{image computation}
+       \CIRC naturally extended to sets of states \hfill
+             $\nset_{\alpha}(\xset) = \bigcup_{\vi\in\xset} \nset_{\alpha}(\vi)$
+             ~ and ~
+             $\nset(\xset) = \bigcup_{\vi \in \xset} \nset(\vi)$ 
+       \CIRC $\alpha$ is \STRESS{enabled} in $\vi$
+             iff $\nset_{\alpha}(\vi) \neq \emptyset$,
+             otherwise it is \STRESS{disabled}
+       %\CIRC $\vi$ is \STRESS{absorbing}, or \STRESS{dead}, ~
+       %      if $\nset(\vi)=\emptyset$
+       }
+}
+
+\vfill

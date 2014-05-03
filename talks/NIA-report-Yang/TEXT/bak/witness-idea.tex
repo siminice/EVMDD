@@ -1,0 +1,32 @@
+\FOIL{Basic idea}
+
+\LIST{
+\BULL $\mathcal{D}_{init}(\vi)$ is the length of the shortest path from $\sset_{init}$ to $\vi$. $\mathcal{D}_{init}(\sset_{init})=0$
+\BULL $\mathcal{D}(\vi,\vj)$ is the length of the shortest non-trival path from $\vi$ to $\vj$.
+}
+Let $\mathcal{LW}$ be a function $\sset_{rch} \mapsto \mathbb{N} \cup \{\infty$\} and 
+$$
+\mathcal{LW}(\vi) = \mathcal{D}_{init}(\vi) + \mathcal{D}(\vi, \vi)
+$$
+The length of the shortest witness is: $\id{Min}(\mathcal{LW}(\vi))$
+
+\FPSCENTERWIDE{witness2}{4cm}
+
+\LIST{
+\BULL $\mathcal{D}_{init}(\vi)$: \emph{``Using Edge-Valued Decision Diagrams for Symbolic Generation of Shortest Paths''} (FMCAD'02)
+    \LIST{
+    \CIRC employ edge-valued decision diagrams (EVMDD) to encode the distance function to the initial state.
+    \CIRC build the distance function using saturation.
+    \CIRC find the shortest path from each state to the initial state.
+    }
+
+\BLUE{
+\BULL $\mathcal{D}(\vi, \vi)$: ongoing.  
+    \LIST{
+    \CIRC employ a $2L$-level EVMDD to encode $\mathcal{D}(\vi,\vj)$, where $\vi, \vj \in \sset_{rch}$. 
+    \CIRC build $\mathcal{D}(\vi,\vj)$ using saturation combining the saturation-based transitive closure computation and idea in FMCAD'02 paper. 
+    }
+}
+}
+
+

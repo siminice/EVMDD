@@ -1,0 +1,40 @@
+\FOIL{Supported syntax summary}
+
+\begin{table}
+\begin{center}
+\small
+\begin{tabular}{|l|c|c|}
+\hline
+ Syntax in SAL & New SAL & EVMDD-SMC \\
+\hline
+\multicolumn{3}{|l|}{Variable Type:} \\
+\hline
+Basic type	& $\surd$ 	& $\surd$  \\
+Enumeration	& $\surd$	& $\times$ \\			  
+Array		& $\surd$	& $\times$ \\			
+Record		& $\times$	& $\times$ \\			
+\hline
+\multicolumn{3}{|l|}{Transition language:} \\
+\hline
+Assignment		& $\surd$ 	& $\surd$  \\
+Guarded command	& $\surd$	& $\surd$ \\			  
+Undeterministic assignment & $\surd$	& $\times$ \\			
+IF statement	& $\times$	& $\times$ \\		
+Statement composition & $\star$ & $\star$ \\
+\hline
+\multicolumn{3}{|l|}{Module:} \\
+\hline
+Parameter			& $\surd$ & $\times$ \\
+Module composition 	& $\star$ & $\times$ \\
+\hline
+\multicolumn{3}{|l|}{Other feature:} \\
+\hline
+Variable ordering & Ongoing & $\times$ \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+{ \footnotesize
+$~~~~~\star$: \emph{Asynchronous only}
+}

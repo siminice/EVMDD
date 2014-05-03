@@ -1,0 +1,73 @@
+Declarations
+  Corn200 [0, 7]
+  Corn000 [0, 7]
+  Corn202 [0, 7]
+  Corn002 [0, 7]
+  Corn022 [0, 7]
+  Corn222 [0, 7]
+  Corn020 [0, 7]
+  Corn220 [0, 7]
+  CornOr002 [0, 2]
+  CornOr202 [0, 2]
+  CornOr000 [0, 2]
+  CornOr200 [0, 2]
+  CornOr220 [0, 2]
+  CornOr020 [0, 2]
+  CornOr222 [0, 2]
+  CornOr022 [0, 2]
+Initial states
+  /* Initialize cube corners */
+  Corn000 = 0
+  Corn002 = 1
+  Corn020 = 2
+  Corn022 = 3
+  Corn200 = 4
+  Corn202 = 5
+  Corn220 = 6
+  Corn222 = 7
+  /* Initialize cube corner orientations */
+  CornOr000 = 0
+  CornOr002 = 0
+  CornOr020 = 0
+  CornOr022 = 0
+  CornOr200 = 0
+  CornOr202 = 0
+  CornOr220 = 0
+  CornOr222 = 0
+Transitions
+  /* left, half turn */
+  Corn022' = Corn000 /\ Corn020' = Corn002 /\ Corn002' = Corn020 /\ Corn000' = Corn022 /\ CornOr022' = CornOr000 /\ CornOr020' = CornOr002 /\ CornOr002' = CornOr020 /\ CornOr000' = CornOr022
+  /* left, counter-clockwise quarter turn */
+  Corn002' = Corn000 /\ Corn022' = Corn002 /\ Corn000' = Corn020 /\ Corn020' = Corn022 /\ CornOr002' = (CornOr000+2)%3 /\ CornOr022' = (CornOr002+1)%3 /\ CornOr000' = (CornOr020+1)%3 /\ CornOr020' = (CornOr022+2)%3
+  /* left, clockwise quarter turn */
+  Corn020' = Corn000 /\ Corn000' = Corn002 /\ Corn022' = Corn020 /\ Corn002' = Corn022 /\ CornOr020' = (CornOr000+2)%3 /\ CornOr000' = (CornOr002+1)%3 /\ CornOr022' = (CornOr020+1)%3 /\ CornOr002' = (CornOr022+2)%3
+  /* right, half turn */
+  Corn222' = Corn200 /\ Corn220' = Corn202 /\ Corn202' = Corn220 /\ Corn200' = Corn222 /\ CornOr222' = CornOr200 /\ CornOr220' = CornOr202 /\ CornOr202' = CornOr220 /\ CornOr200' = CornOr222
+  /* right, counter-clockwise quarter turn */
+  Corn220' = Corn200 /\ Corn200' = Corn202 /\ Corn222' = Corn220 /\ Corn202' = Corn222 /\ CornOr220' = (CornOr200+1)%3 /\ CornOr200' = (CornOr202+2)%3 /\ CornOr222' = (CornOr220+2)%3 /\ CornOr202' = (CornOr222+1)%3
+  /* right, clockwise quarter turn */
+  Corn202' = Corn200 /\ Corn222' = Corn202 /\ Corn200' = Corn220 /\ Corn220' = Corn222 /\ CornOr202' = (CornOr200+1)%3 /\ CornOr222' = (CornOr202+2)%3 /\ CornOr200' = (CornOr220+2)%3 /\ CornOr220' = (CornOr222+1)%3
+  /* front, half turn */
+  Corn202' = Corn000 /\ Corn200' = Corn002 /\ Corn002' = Corn200 /\ Corn000' = Corn202 /\ CornOr202' = CornOr000 /\ CornOr200' = CornOr002 /\ CornOr002' = CornOr200 /\ CornOr000' = CornOr202
+  /* front, counter-clockwise quarter turn */
+  Corn002' = Corn000 /\ Corn202' = Corn002 /\ Corn000' = Corn200 /\ Corn200' = Corn202 /\ CornOr002' = (CornOr000+1)%3 /\ CornOr202' = (CornOr002+2)%3 /\ CornOr000' = (CornOr200+2)%3 /\ CornOr200' = (CornOr202+1)%3
+  /* front, clockwise quarter turn */
+  Corn200' = Corn000 /\ Corn000' = Corn002 /\ Corn202' = Corn200 /\ Corn002' = Corn202 /\ CornOr200' = (CornOr000+1)%3 /\ CornOr000' = (CornOr002+2)%3 /\ CornOr202' = (CornOr200+2)%3 /\ CornOr002' = (CornOr202+1)%3
+  /* back, half turn */
+  Corn222' = Corn020 /\ Corn220' = Corn022 /\ Corn022' = Corn220 /\ Corn020' = Corn222 /\ CornOr222' = CornOr020 /\ CornOr220' = CornOr022 /\ CornOr022' = CornOr220 /\ CornOr020' = CornOr222
+  /* back, counter-clockwise quarter turn */
+  Corn220' = Corn020 /\ Corn020' = Corn022 /\ Corn222' = Corn220 /\ Corn022' = Corn222 /\ CornOr220' = (CornOr020+2)%3 /\ CornOr020' = (CornOr022+1)%3 /\ CornOr222' = (CornOr220+1)%3 /\ CornOr022' = (CornOr222+2)%3
+  /* back, clockwise quarter turn */
+  Corn022' = Corn020 /\ Corn222' = Corn022 /\ Corn020' = Corn220 /\ Corn220' = Corn222 /\ CornOr022' = (CornOr020+2)%3 /\ CornOr222' = (CornOr022+1)%3 /\ CornOr020' = (CornOr220+1)%3 /\ CornOr220' = (CornOr222+2)%3
+  /* down, half turn */
+  Corn220' = Corn000 /\ Corn200' = Corn020 /\ Corn020' = Corn200 /\ Corn000' = Corn220 /\ CornOr220' = CornOr000 /\ CornOr200' = CornOr020 /\ CornOr020' = CornOr200 /\ CornOr000' = CornOr220
+  /* down, counter-clockwise quarter turn */
+  Corn020' = Corn000 /\ Corn220' = Corn020 /\ Corn000' = Corn200 /\ Corn200' = Corn220 /\ CornOr020' = CornOr000 /\ CornOr220' = CornOr020 /\ CornOr000' = CornOr200 /\ CornOr200' = CornOr220
+  /* down, clockwise quarter turn */
+  Corn200' = Corn000 /\ Corn000' = Corn020 /\ Corn220' = Corn200 /\ Corn020' = Corn220 /\ CornOr200' = CornOr000 /\ CornOr000' = CornOr020 /\ CornOr220' = CornOr200 /\ CornOr020' = CornOr220
+  /* up, half turn */
+  Corn222' = Corn002 /\ Corn202' = Corn022 /\ Corn022' = Corn202 /\ Corn002' = Corn222 /\ CornOr222' = CornOr002 /\ CornOr202' = CornOr022 /\ CornOr022' = CornOr202 /\ CornOr002' = CornOr222
+  /* up, counter-clockwise quarter turn */
+  Corn202' = Corn002 /\ Corn002' = Corn022 /\ Corn222' = Corn202 /\ Corn022' = Corn222 /\ CornOr202' = CornOr002 /\ CornOr002' = CornOr022 /\ CornOr222' = CornOr202 /\ CornOr022' = CornOr222
+  /* up, clockwise quarter turn */
+  Corn022' = Corn002 /\ Corn222' = Corn022 /\ Corn002' = Corn202 /\ Corn202' = Corn222 /\ CornOr022' = CornOr002 /\ CornOr222' = CornOr022 /\ CornOr002' = CornOr202 /\ CornOr202' = CornOr222

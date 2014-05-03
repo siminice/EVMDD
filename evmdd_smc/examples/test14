@@ -1,0 +1,7 @@
+Variables
+y [0, 7]
+x [0, 4]
+Initial states
+x = 2
+Transitions
+x' = x+1 /\ y' = y+2

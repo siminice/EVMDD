@@ -1,0 +1,12 @@
+Variables
+x [0, 1]
+y [0, 6]
+z [0, 2]
+Initial states
+y = 2
+z = 1
+Transitions
+y < 5 -> y' = y+1
+y = 5 -> y' = y
+Properties
+EG y > 4

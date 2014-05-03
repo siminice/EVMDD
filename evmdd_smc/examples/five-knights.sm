@@ -1,0 +1,143 @@
+// FILE: 5knights.sm
+// SMART input file for the 5x5 knights problem:
+// Find a sequence of moves to swap the knight positions (x=black, o=white):
+//
+//          xxxxo        oooox
+//          xxxoo        oooxx
+//          xx oo    =>  oo xx
+//          xxooo        ooxxx
+//          xoooo        oxxxx
+//
+// The variable ordering (partition) is hardcoded in the array perm (it was
+// determined with a genetic algorithm that minimizes the "saturation cost".
+// Saturation cost is a heuristic function that computes the sum of the spans
+// of MDD levels affected by events:  Sum_{events e} (Top(e)-Bot(e))
+//
+// WARNING: state-space generation is time- and memory-efficient, but
+// the EF trace (knights.T) needs +4GB of memory.
+
+for (int r in {1..5}) {
+  for (int c in {1..5}) {
+  int perm[r][c] := 
+  cond(r==1, cond(c==1, 2,
+             cond(c==2, 5,
+             cond(c==3, 13,
+             cond(c==4, 18, 24)))),
+  cond(r==2, cond(c==1, 14,
+             cond(c==2, 20,
+             cond(c==3, 10,
+             cond(c==4, 4, 12)))),
+  cond(r==3, cond(c==1, 7,
+             cond(c==2, 3,
+             cond(c==3, 15,
+             cond(c==4, 23, 11)))),
+  cond(r==4, cond(c==1, 21,
+             cond(c==2, 17,
+             cond(c==3, 6,
+             cond(c==4, 9, 19)))),
+/*cond(r==5*/cond(c==1, 1,
+             cond(c==2, 8,
+             cond(c==3, 22,
+             cond(c==4, 16, 25))))))));
+  }
+}  	     
+             	
+spn knights := {
+  for (int i in {-2..6}) {
+    for (int j in {-2..6}) {
+      place k[i][j];
+      cond(((i<0)|(i>4)|(j<0)|(j>4)),
+        partition(25:k[i][j]),
+        partition(perm[i+1][j+1]:k[i][j])
+      );
+    }
+  }
+  for (int i in {0..4}) {
+    for (int j in {0..4}) {
+      for (int h in {0..7}) {
+        trans movew[i][j][h], moveb[i][j][h];
+        firing(movew[i][j][h]:expo(1), moveb[i][j][h]:expo(1));
+      }
+    }
+  }
+  for (int i in {0..4}) {
+    for (int j in {0..4}) {
+      arcs(
+        k[i-2][j-1]:movew[i][j][0],
+        k[i-2][j+1]:movew[i][j][1],
+        k[i-1][j-2]:movew[i][j][2],
+        k[i-1][j+2]:movew[i][j][3],
+        k[i+1][j-2]:movew[i][j][4],
+        k[i+1][j+2]:movew[i][j][5],
+        k[i+2][j-1]:movew[i][j][6],
+        k[i+2][j+1]:movew[i][j][7],
+        movew[i][j][0]:k[i][j],
+        movew[i][j][1]:k[i][j],
+        movew[i][j][2]:k[i][j],
+        movew[i][j][3]:k[i][j],
+        movew[i][j][4]:k[i][j],
+        movew[i][j][5]:k[i][j],
+        movew[i][j][6]:k[i][j],
+        movew[i][j][7]:k[i][j],
+        k[i-2][j-1]:moveb[i][j][0]:2,
+        k[i-2][j+1]:moveb[i][j][1]:2,
+        k[i-1][j-2]:moveb[i][j][2]:2,
+        k[i-1][j+2]:moveb[i][j][3]:2,
+        k[i+1][j-2]:moveb[i][j][4]:2,
+        k[i+1][j+2]:moveb[i][j][5]:2,
+        k[i+2][j-1]:moveb[i][j][6]:2,
+        k[i+2][j+1]:moveb[i][j][7]:2,
+        moveb[i][j][0]:k[i][j]:2,
+        moveb[i][j][1]:k[i][j]:2,
+        moveb[i][j][2]:k[i][j]:2,
+        moveb[i][j][3]:k[i][j]:2,
+        moveb[i][j][4]:k[i][j]:2,
+        moveb[i][j][5]:k[i][j]:2,
+        moveb[i][j][6]:k[i][j]:2,
+        moveb[i][j][7]:k[i][j]:2
+      );
+      for (int h in {0..7}) {
+        inhibit(
+          k[i][j]:movew[i][j][h], 
+          k[i][j]:moveb[i][j][h]
+        );
+      }
+      inhibit(
+        k[i-2][j-1]:movew[i][j][0]:2,
+        k[i-2][j+1]:movew[i][j][1]:2,
+        k[i-1][j-2]:movew[i][j][2]:2,
+        k[i-1][j+2]:movew[i][j][3]:2,
+        k[i+1][j-2]:movew[i][j][4]:2,
+        k[i+1][j+2]:movew[i][j][5]:2,
+        k[i+2][j-1]:movew[i][j][6]:2,
+        k[i+2][j+1]:movew[i][j][7]:2
+      );
+    }
+  }
+  init(
+    k[0][0]:2, k[0][1]:2, k[0][2]:2, k[0][3]:2, k[0][4]:1,
+    k[1][0]:2, k[1][1]:2, k[1][2]:2, k[1][3]:1, k[1][4]:1,
+    k[2][0]:2, k[2][1]:2,            k[2][3]:1, k[2][4]:1,
+    k[3][0]:2, k[3][1]:2, k[3][2]:1, k[3][3]:1, k[3][4]:1,
+    k[4][0]:2, k[4][1]:1, k[4][2]:1, k[4][3]:1, k[4][4]:1
+  );
+
+  bigint numstates := num_states(false);
+  stateset Final   := potential(
+    tk(k[0][0])==1 & tk(k[0][1])==1 & tk(k[0][2])==1 & tk(k[0][3])==1 & tk(k[0][4])==2 &
+    tk(k[1][0])==1 & tk(k[1][1])==1 & tk(k[1][2])==1 & tk(k[1][3])==2 & tk(k[1][4])==2 &
+    tk(k[2][0])==1 & tk(k[2][1])==1 & tk(k[2][2])==0 & tk(k[2][3])==2 & tk(k[2][4])==2 &
+    tk(k[3][0])==1 & tk(k[3][1])==1 & tk(k[3][2])==2 & tk(k[3][3])==2 & tk(k[3][4])==2 &
+    tk(k[4][0])==1 & tk(k[4][1])==2 & tk(k[4][2])==2 & tk(k[4][3])==2 & tk(k[4][4])==2
+  );
+  bool prFinal := printset(Final);
+  int  D       := dist(initialstate, Final);
+  bool T       := EFtrace(initialstate, Final);
+};
+
+# StateStorage MDD_SATURATION
+# TraceStorage TS_EVMDD_SAT
+# BFSTrace     JOIN
+
+knights.numstates;
+knights.T;              // uncomment only if you have 4Gbyte of RAM !!!

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+scp radu@gecko:/home/radu/src/EVMDD/trunk/papers/nasa-cr/cr-evmdds.pdf .

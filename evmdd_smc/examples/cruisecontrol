@@ -1,0 +1,28 @@
+Variables
+  semaphore      [0, 10]
+  distance       [0, 15]
+  speed          [0, 3]
+  cruise         [0, 1]
+  cruise_speed   [0, 3]
+Initial states
+  semaphore      = 10
+  distance       = 15
+  speed          = 1
+  cruise         = 0
+  cruise_speed   = 0
+Transitions
+  distance > 6 /\ speed < 2  ->  semaphore' = semaphore - 1 /\ distance' = distance - speed /\ speed' = speed + 1
+  distance > 6 /\ speed > 2  ->  semaphore' = semaphore - 1 /\ distance' = distance - speed /\ speed' = speed - 1
+  distance > 6 /\ speed = 2 /\ cruise = 0  ->  semaphore' = semaphore - 1 /\ distance' = distance - speed /\ cruise' = 1 /\ cruise_speed' = speed
+  distance > 6 /\ speed = 2 /\ cruise = 1  ->  semaphore' = semaphore - 1 /\ distance' = distance - speed
+  distance >= 5 /\ distance <=6  ->  semaphore' = semaphore - 1 /\ distance' = distance - speed /\ speed' = speed + 1
+  distance >= 5 /\ distance <=6  ->  semaphore' = semaphore - 1 /\ distance' = distance - speed /\ speed' = speed - 1
+  distance <5 /\ semaphore > 4 /\ speed = 2  ->  semaphore' = semaphore - 1 /\ distance' = distance - speed
+  distance <5 /\ semaphore > 4 /\ cruise = 1 /\ speed > cruise_speed  ->  semaphore' = semaphore - 1 /\ distance' = distance - speed /\ speed' = speed - 1
+  distance <5 /\ semaphore > 4 /\ cruise = 1 /\ speed < cruise_speed  ->  semaphore' = semaphore - 1 /\ distance' = distance - speed /\ speed' = speed + 1
+  distance <5 /\ semaphore <= 4 /\ cruise = 1 /\ speed = cruise_speed  ->  semaphore' = semaphore - 1 /\ distance' = distance - speed
+  distance <5 /\ semaphore <= 4 /\ cruise = 1 /\ speed = cruise_speed  ->  semaphore' = semaphore - 1 /\ distance' = distance - speed /\ cruise' = 0
+  distance <5 /\ semaphore <= 4 /\ cruise = 1 /\ speed > cruise_speed  ->  semaphore' = semaphore - 1 /\ distance' = distance - speed /\ speed' = speed - 1
+  distance <5 /\ semaphore <= 4 /\ cruise = 0 /\ speed > 0  ->  semaphore' = semaphore - 1 /\ distance' = distance - speed /\ speed' = speed - 1
+Properties
+   distance >= 0 

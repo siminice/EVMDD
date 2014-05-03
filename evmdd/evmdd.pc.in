@@ -1,0 +1,10 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: EVMDD
+Description: Symbolic model checking library implementing EVMDD and saturation.
+Version: @VERSION@
+Libs: -L${libdir} -levmdd
+Cflags: -I${includedir}

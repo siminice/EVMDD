@@ -1,0 +1,13 @@
+Variables
+  x [0, 1]
+  y [0, 2]
+Initial states
+  x = 0
+  y = 0
+Transitions
+  x = 0  ->  x' + y' > x + y
+Properties
+  y = 0 /\ x = 0
+  y = 1 /\ x = 1
+  !EX(true)
+  EF(x>0 /\ y>0)

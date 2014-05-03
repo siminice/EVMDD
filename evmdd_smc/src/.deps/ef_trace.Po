@@ -1,0 +1,56 @@
+ef_trace.o ef_trace.o: ef_trace.c ef_trace.h \
+  /usr/local/include/evmdd/evmdd.h /usr/local/include/evmdd/mdd_manager.h \
+  /usr/local/include/evmdd/mdd_node.h /usr/include/stdio.h \
+  /usr/include/_types.h /usr/include/sys/_types.h \
+  /usr/include/sys/cdefs.h /usr/include/machine/_types.h \
+  /usr/include/i386/_types.h /usr/include/secure/_stdio.h \
+  /usr/include/secure/_common.h /usr/local/include/evmdd/bigint.h \
+  /usr/local/include/evmdd/mdd_ops.h \
+  /usr/local/include/evmdd/evmdd_node.h \
+  /usr/local/include/evmdd/evmdd_ops.h /usr/local/include/evmdd/events.h \
+  /usr/local/include/evmdd/saturate.h \
+  /usr/local/include/evmdd/saturate_dist.h \
+  /usr/local/include/evmdd/saturate_dist2.h \
+  /usr/local/include/evmdd/saturate_bounded.h
+
+ef_trace.h:
+
+/usr/local/include/evmdd/evmdd.h:
+
+/usr/local/include/evmdd/mdd_manager.h:
+
+/usr/local/include/evmdd/mdd_node.h:
+
+/usr/include/stdio.h:
+
+/usr/include/_types.h:
+
+/usr/include/sys/_types.h:
+
+/usr/include/sys/cdefs.h:
+
+/usr/include/machine/_types.h:
+
+/usr/include/i386/_types.h:
+
+/usr/include/secure/_stdio.h:
+
+/usr/include/secure/_common.h:
+
+/usr/local/include/evmdd/bigint.h:
+
+/usr/local/include/evmdd/mdd_ops.h:
+
+/usr/local/include/evmdd/evmdd_node.h:
+
+/usr/local/include/evmdd/evmdd_ops.h:
+
+/usr/local/include/evmdd/events.h:
+
+/usr/local/include/evmdd/saturate.h:
+
+/usr/local/include/evmdd/saturate_dist.h:
+
+/usr/local/include/evmdd/saturate_dist2.h:
+
+/usr/local/include/evmdd/saturate_bounded.h:

@@ -1,0 +1,45 @@
+spn slot(int N) := {
+  for (int i in {0..N-1}) {
+    place
+	 pA[i], pB[i], pC[i], pD[i], pE[i], pF[i], pG[i], pH[i];
+
+    trans
+	 other[i], owner[i], write[i], go[i],
+	 give[i], put[i], used[i], free[i];
+
+    firing(
+  	 other[i]:expo(1.0), owner[i]:expo(1.0), write[i]:expo(1.0), go[i]:expo(1.0),
+	 give[i]:expo(1.0), put[i]:expo(1.0), free[i]:expo(1.0), used[i]:expo(1.0)
+          );
+ 
+    partition(pA[i]:pB[i]:pH[i]:pC[i]:pD[i]:pE[i]:pF[i]:pG[i]);
+
+    init(pC[i]:1, pE[i]:1);
+  }
+
+  for (int i in {0..N-1}) {
+    arcs(
+	 used[mod(i+1,N)]:pA[i], pA[i]:other[i], pA[i]:owner[i],
+	 free[mod(i+1,N)]:pB[i], owner[i]:pB[i], pB[i]:go[i], pB[i]:write[i],
+	 write[i]:pD[i], other[i]:pD[i], pD[i]:put[i],
+	 go[i]:pH[i], pH[i]:give[i],
+	 give[i]:pC[i], put[i]:pC[i], pC[i]:free[mod(i+1,N)], pC[i]:used[mod(i+1,N)],
+	 free[i]:pF[i], used[i]:pF[i], pF[i]:give[i], pF[i]:put[i],
+	 give[i]:pE[i], pE[i]:free[i], put[i]:pG[i], pG[i]:used[i]
+        );
+  }
+
+
+  bigint m1 := num_states(false);
+};
+
+# StateStorage MDD_SATURATION
+# MDDCompactionType RELATIVE
+# MDDCompactionThreshold 30
+# Report true
+# Verbose true
+
+int N := read_int("# slots");
+print("Slotted Ring Network model\n");
+print("1 slot per level\n");
+slot(N).m1;

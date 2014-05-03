@@ -1,0 +1,40 @@
+* reduce in saturate_dist.c
+
+* 64bit portability (longs for pointers, ints for contents) ???
+
+* garbage collection heuristic:
+  keep trace of the number of calls to ref/unref
+  when, say 90% of refs have been unrefed, garbage collect
+
+* comment, cleanup, write doc, ...
+
+* saturation with EVMDD: done, probably bogus (very slow on knights example)
+
+* Support for printing execution traces/counterexamples
+
+-------------------------------
+Long term:
+* SAL integration
+ - BNF of SAL language
+ - CUDD mapping -> MDDL mapping
+
+-------------------------------
+
+Theoretical work:
+- Extensions 
+ - EVMDD2+, for weighted/prioritized, timed tr. relations
+ - EV*MDD
+    - canonization rule
+    - operations with mixed operands EV+MDD with EV*MDD (transformations?)
+ - Discrete domains of arbitrary values
+ - Interval decision diagrams for hybrid systems
+     - state-space construction algorithms
+
+- Connections with SMT solving / decision procedures for arithmetic ??
+
+- ??
+
+TECHNICAL REPORTS:
+- EVMDD "algebra" (algorithms to manipulate EVMDDs)
+- implementation of the full MDD library (design decisions)
+- comparative study vs CUDD

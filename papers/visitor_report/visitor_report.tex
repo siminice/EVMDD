@@ -1,0 +1,119 @@
+% Compile with pdflatex visitor_report.tex
+
+\documentclass[a4paper,oneside,12pt,pdftex]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{xspace}
+\usepackage{times}
+%%\usepackage{hyperref}
+\usepackage{varioref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\renewcommand{\O}{\mathrm{O}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\m}{\mbox}
+
+\everymath{\displaystyle}
+\setlength{\headheight}{0cm}
+\setlength{\headsep}{0cm}
+\setlength{\topmargin}{0cm}
+\setlength{\oddsidemargin}{0cm} \setlength{\evensidemargin}{0cm}
+\setlength{\textheight}{24cm}
+\setlength{\textwidth}{16.2cm}
+
+\usepackage{url}
+
+\title{Visitor Research Report}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\textbf{
+\begin{tabular}{ll}
+Visitor Name:&Pierre Roux\\
+&\\
+Area of Research:&Formal Methods\\
+\\
+Period of Visit:&February 26 - April 16, 2009
+\end{tabular}
+}
+
+\vspace{2cm}
+
+\noindent\textbf{Aim:}
+\vspace{0.1cm}
+
+\noindent Investigate the use of edge valued decision diagrams for representing general 
+arithmetic expressions. Comparing saturation algorithm against currently used model-checking 
+libraries.
+
+\vspace{0.8cm}
+\noindent\textbf{Strategy:}
+\vspace{0.1cm}
+
+\noindent Compare theoretically edge valued diagrams against currently used arithmetic diagrams. 
+Implement a little model checker using both saturation and current libraries.
+
+\vspace{0.8cm}
+\noindent\textbf{Accomplishments:}
+\vspace{0.1cm}
+
+\noindent Edge valued diagrams have been theoretically proved not worse than arithmetic 
+diagrams. Experimental results with our implementation show the interest of edge valued diagrams 
+and saturation.
+
+\vspace{0.8cm}
+\noindent\textbf{Future Work:}
+\vspace{0.1cm}
+
+\noindent Document and release library. Using it in SAL model checker.
+
+\vspace{0.8cm}
+\noindent\textbf{Pending Publications:}
+\vspace{0.1cm}
+
+\noindent NIA Technical Report
+
+\vspace{0.8cm}
+\noindent\textbf{Seminar Presented:}
+\vspace{0.1cm}
+
+\noindent "Model checking with edge-valued decision diagrams"\\
+April 15 , NIA Room 141
+
+\clearpage
+
+\noindent\textbf{Note: Brief report addressing all areas mentioned abovenot to exceed 3 pages.}
+\vspace{0.8cm}
+
+\noindent Binary decision diagrams (BDD) are the cornerstone of symbolic model checking. The 
+efficient encoding and manipulation of boolean functions with BDDs have facilitated significant 
+advances in automated system verification. Traditionally, BDDs are also used for encoding 
+arithmetic functions, but the efficiency of this encoding is not equally efficient.
+
+\vspace{0.8cm}
+
+\noindent Variations and extensions of BDDs have been proposed for more specific, purposes, 
+without a major impact, especially when dealing with arithmetic functions.
+
+\vspace{0.8cm}
+
+\noindent We propose the use of edge-valued decision diagrams (EVMDD) for a more efficient 
+encoding of general arithmetic expressions. We show that distributing values along the paths in 
+the diagram dramatically increases the chances of sharing subdiagrams, hence providing a more 
+compact representation.
+
+\vspace{0.8cm}
+
+\noindent We have implemented a complete algebra of EVMDDs in an ANSI C library as a back-end 
+for symbolic model checking. We compare its performance to CUDD, the most widely used decision 
+diagram library. For specific types of arithmetic expressions, such as some polynomials (which 
+are the foundation of the hybrid abstraction technique being developed in support of NASA's IVHM 
+project), EVMDDs are clearly superior to ADDs.
+
+\end{document}

@@ -1,0 +1,81 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\FOIL{Locality}
+
+%A $2L$-level MDD encodes the
+%next-state function $\nset : \potsset \rightarrow 2^{\potsset}$
+%\STRESS{
+%$$
+%\vj \in \nset(\vi) ~ \IFF ~
+% \mbox{the path $(i_L, j_L, ...,i_1, j_1)$ from the root leads to terminal $\1$}.
+%$$
+%}
+
+\emph{Locality} in events:
+\LIST{
+\BULL $\alpha$ is \STRESS{independent} of the $k^{th}$ submodel if:
+    \LIST{
+    \CIRC its enabling does not depend on $i_k$,
+    \CIRC and its firing does not change the value of $i_k$.
+    }
+\BULL A level $k$ belongs to 
+%the \STRESS{support} set of
+%event $\alpha$, denoted 
+$supp(\alpha)$, if $\alpha$ is not
+independent of $k^{th}$ submodel.
+\BULL Let $\Top(\alpha)$ be the highest-numbered level in $supp(\alpha)$.
+\BULL Let  $\eset_k$ be the set of events $\{\alpha \in \eset : \Top(\alpha) = k\}$.
+\BULL Let $\nset_k$ be the next-state function corresponding to all events in $\eset_k$:
+$$\nset_k = \bigcup_{\alpha \in \eset_k} \nset_{\alpha}$$
+}
+
+\medskip
+
+\begin{center}
+$\alpha:$ ~~~ \texttt{z=0 ==> y'=x+1}
+\end{center}
+
+\LIST{
+\BULL $supp(\alpha)=\{x,y,z\}$
+\BULL $\Top(\alpha)=\id{Max}(x.\id{lvl}, y.\id{lvl}, z.\id{lvl})$
+}
+
+\FOIL{Example: 2-bit counter}
+\vfill 
+\FPSCENTERWIDE{counter-example}{11cm}
+\vfill 
+
+%The state space $\sset_{rch}$ is the fixpoint of the iteration
+%\STRESS{
+%$$
+%\sset_{init} ~~ \cup ~~
+%\nset(\sset_{init}) ~~ \cup ~~
+%\nset(\nset(\sset_{init})) ~~ \cup ~~
+%\nset(\nset(\nset(\sset_{init}))) ~~ \cup ~~
+%\cdots ~~
+%$$
+%}
+%
+%
+%
+%\begin{center}
+%\STRESS{
+%\setlength{\LISTINGSPACING}{-0.50ex}
+%\begin{minipage}{0.45 \columnwidth}
+%\ALGORITHM{$\id{AllExploreMdd}(\initstateset, \nset)$ is}{
+%\vspace*{0.5ex}
+%\LISTING{0}{
+%\LL $\yset \ASSIGN \initstateset$;
+%\LL repeat
+%\LLx $\oset \ASSIGN \yset$; \REMARK{old states}
+%\LLx $\yset \ASSIGN \oset \cup \nset(\oset)$; \REMARK{new states}
+%\LL until~ $\oset = \yset$;
+%\LL return $\yset$;
+%}
+%}
+%\end{minipage}
+%}
+%\end{center}
+
+%\vfill
+
+%\SHOUT{\DARKGREEN{Example: 2-bit counter}}

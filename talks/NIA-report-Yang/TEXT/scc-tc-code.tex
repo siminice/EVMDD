@@ -1,0 +1,54 @@
+\FOIL{Computing the transitive closure (cont.)}
+
+\vfill
+
+\begin{figure}
+\begin{minipage}[t]{\textwidth}
+{\scriptsize
+\ALGORITHM{$mdd ~~ \id{TransClosureSat}(mdd~n)$} {
+\LISTING{0}{
+\LL if $\id{InCache}_{\id{TransClosureSat}}(n,t)$ then return $t$;
+\LL $level~k \ASSIGN \id{n.\id{lvl}}$; ~
+    $mdd~t \ASSIGN \id{NewNode}(k)$;~
+        $mdd~r \ASSIGN \id \nset^{-1}_{\id{Unprimed}(k)}$
+\LL foreach $i,j \in \sset_{k}$ s.t.\ $n[i][j]\neq\0$ do    \label{line:} 
+\LLx $t[i][j] \!\ASSIGN\! \id{TransClosureSat}(n[i][j])$; 
+\LL endfor
+\LL foreach $i \in \sset_{\id{Unprimed}(k)}$ s.t. $ n[i]\!\neq\!\0$
+\LLx repeat \REMARK{Build a local fixed point}
+\LLxx foreach $j,j' \in \sset_{\id{Unprimed}(k)}$ s.t.\ $ n[i][j]\!\neq\!\0$ and $r[j][j']\!\neq\!\0$ do
+\LLxxx $mdd~u \!\ASSIGN\! \id{TCRelProdSat}(\!t[i][j],\!r[j][j'])$; ~
+	       $t[i][j'] \ASSIGN \id{Or}(t[i][j'],u)$;
+\LLxx endfor
+\LLx until $t$ does not change;
+\LL endfor
+\LL $t \!\ASSIGN \!\!\id{UniqueTablePut}(t)$; ~
+	           $\id{CacheAdd}_{\id{TransClosureSat}}(n,t)$;
+		   \LL return $t$;
+}}
+%\ALGORITHM{$mdd ~~ \id{TCRelProdSat}(mdd ~ n, mdd ~ r)$} {
+%\LISTING{0}{
+%\LL if $n = \1$ and $r = \1$ then return $\1$;
+%\LL if $\id{InCache}_{\id{TCRelProdSat}}(n,r,t)$ then return $t$;
+%\LL $level~k \ASSIGN n.\id{lvl}$; ~
+%    $mdd~t \ASSIGN \0$;
+%\LL foreach $i \in \sset_{\id{Unprimed}(k)}$ s.t. $n[i] \!\neq\!\0 $ do
+%\LLx foreach $j,j' \in \sset_{\id{Unprimed}(k)}$ s.t. $n[i][j]\!\neq\!\0$ and $r[j][j']\!\neq\!\0$ do
+%\LLxx $mdd~u \!\ASSIGN\! \id{TCRelProdSat}(n[i][j],\!r[j][j'])$;
+%\LLxx if $u\neq \0$ then
+%\LLxxx if $t=\0$ then $t \ASSIGN \id{NewNode}(k)$; endif ~~
+%\LLxxx $t[i][j'] \ASSIGN \id{Or}(t[i][j'],u)$;
+%\LLxx endif
+%\LLx endfor
+%\LL endfor
+%\LL $t \ASSIGN \id{TransClosureSat}(\id{UniqueTablePut}(t))$; ~~ $\id{CacheAdd}_{\id{TCRelProdSat}}(n,r,t)$;
+%\LL return $t$;
+%}}
+}
+\end{minipage}
+\end{figure}
+
+Similar to the idea of saturation, 
+this function runs node-wise on primed level and fires lower level events exhaustively until the local fixed point is obtained.
+
+\vfill

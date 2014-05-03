@@ -1,0 +1,9 @@
+Variables
+x2 [0, 2]
+x [0, 2]
+y [0, 2]
+y2 [0, 3]
+Initial states
+y = 1 /\ x < 1
+Transitions
+x' = x+1

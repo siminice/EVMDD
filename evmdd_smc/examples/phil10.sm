@@ -1,0 +1,105 @@
+Variables
+   fork0 [0, 1]
+   phil0 [0, 4]
+   fork1 [0, 1]
+   phil1 [0, 4]
+   fork2 [0, 1]
+   phil2 [0, 4]
+   fork3 [0, 1]
+   phil3 [0, 4]
+   fork4 [0, 1]
+   phil4 [0, 4]
+   fork5 [0, 1]
+   phil5 [0, 4]
+   fork6 [0, 1]
+   phil6 [0, 4]
+   fork7 [0, 1]
+   phil7 [0, 4]
+   fork8 [0, 1]
+   phil8 [0, 4]
+   fork9 [0, 1]
+   phil9 [0, 4]
+Initial states
+   fork0 = 0
+   phil0 = 0
+   fork1 = 0
+   phil1 = 0
+   fork2 = 0
+   phil2 = 0
+   fork3 = 0
+   phil3 = 0
+   fork4 = 0
+   phil4 = 0
+   fork5 = 0
+   phil5 = 0
+   fork6 = 0
+   phil6 = 0
+   fork7 = 0
+   phil7 = 0
+   fork8 = 0
+   phil8 = 0
+   fork9 = 0
+   phil9 = 0
+Transitions
+  phil0 = 0 -> phil0' = 1
+  phil0 = 1 /\ fork0 = 0 -> phil0' = 2 /\ fork0' = 1
+  phil0 = 1 /\ fork1 = 0 -> phil0' = 3 /\ fork1' = 1
+  phil0 = 2 /\ fork1 = 0 -> phil0' = 4 /\ fork1' = 1
+  phil0 = 3 /\ fork0 = 0 -> phil0' = 4 /\ fork0' = 1
+  phil0 = 4 -> phil0' = 0 /\ fork0' = 0 /\ fork1' = 0
+  phil1 = 0 -> phil1' = 1
+  phil1 = 1 /\ fork1 = 0 -> phil1' = 2 /\ fork1' = 1
+  phil1 = 1 /\ fork2 = 0 -> phil1' = 3 /\ fork2' = 1
+  phil1 = 2 /\ fork2 = 0 -> phil1' = 4 /\ fork2' = 1
+  phil1 = 3 /\ fork1 = 0 -> phil1' = 4 /\ fork1' = 1
+  phil1 = 4 -> phil1' = 0 /\ fork1' = 0 /\ fork2' = 0
+  phil2 = 0 -> phil2' = 1
+  phil2 = 1 /\ fork2 = 0 -> phil2' = 2 /\ fork2' = 1
+  phil2 = 1 /\ fork3 = 0 -> phil2' = 3 /\ fork3' = 1
+  phil2 = 2 /\ fork3 = 0 -> phil2' = 4 /\ fork3' = 1
+  phil2 = 3 /\ fork2 = 0 -> phil2' = 4 /\ fork2' = 1
+  phil2 = 4 -> phil2' = 0 /\ fork2' = 0 /\ fork3' = 0
+  phil3 = 0 -> phil3' = 1
+  phil3 = 1 /\ fork3 = 0 -> phil3' = 2 /\ fork3' = 1
+  phil3 = 1 /\ fork4 = 0 -> phil3' = 3 /\ fork4' = 1
+  phil3 = 2 /\ fork4 = 0 -> phil3' = 4 /\ fork4' = 1
+  phil3 = 3 /\ fork3 = 0 -> phil3' = 4 /\ fork3' = 1
+  phil3 = 4 -> phil3' = 0 /\ fork3' = 0 /\ fork4' = 0
+  phil4 = 0 -> phil4' = 1
+  phil4 = 1 /\ fork4 = 0 -> phil4' = 2 /\ fork4' = 1
+  phil4 = 1 /\ fork5 = 0 -> phil4' = 3 /\ fork5' = 1
+  phil4 = 2 /\ fork5 = 0 -> phil4' = 4 /\ fork5' = 1
+  phil4 = 3 /\ fork4 = 0 -> phil4' = 4 /\ fork4' = 1
+  phil4 = 4 -> phil4' = 0 /\ fork4' = 0 /\ fork5' = 0
+  phil5 = 0 -> phil5' = 1
+  phil5 = 1 /\ fork5 = 0 -> phil5' = 2 /\ fork5' = 1
+  phil5 = 1 /\ fork6 = 0 -> phil5' = 3 /\ fork6' = 1
+  phil5 = 2 /\ fork6 = 0 -> phil5' = 4 /\ fork6' = 1
+  phil5 = 3 /\ fork5 = 0 -> phil5' = 4 /\ fork5' = 1
+  phil5 = 4 -> phil5' = 0 /\ fork5' = 0 /\ fork6' = 0
+  phil6 = 0 -> phil6' = 1
+  phil6 = 1 /\ fork6 = 0 -> phil6' = 2 /\ fork6' = 1
+  phil6 = 1 /\ fork7 = 0 -> phil6' = 3 /\ fork7' = 1
+  phil6 = 2 /\ fork7 = 0 -> phil6' = 4 /\ fork7' = 1
+  phil6 = 3 /\ fork6 = 0 -> phil6' = 4 /\ fork6' = 1
+  phil6 = 4 -> phil6' = 0 /\ fork6' = 0 /\ fork7' = 0
+  phil7 = 0 -> phil7' = 1
+  phil7 = 1 /\ fork7 = 0 -> phil7' = 2 /\ fork7' = 1
+  phil7 = 1 /\ fork8 = 0 -> phil7' = 3 /\ fork8' = 1
+  phil7 = 2 /\ fork8 = 0 -> phil7' = 4 /\ fork8' = 1
+  phil7 = 3 /\ fork7 = 0 -> phil7' = 4 /\ fork7' = 1
+  phil7 = 4 -> phil7' = 0 /\ fork7' = 0 /\ fork8' = 0
+  phil8 = 0 -> phil8' = 1
+  phil8 = 1 /\ fork8 = 0 -> phil8' = 2 /\ fork8' = 1
+  phil8 = 1 /\ fork9 = 0 -> phil8' = 3 /\ fork9' = 1
+  phil8 = 2 /\ fork9 = 0 -> phil8' = 4 /\ fork9' = 1
+  phil8 = 3 /\ fork8 = 0 -> phil8' = 4 /\ fork8' = 1
+  phil8 = 4 -> phil8' = 0 /\ fork8' = 0 /\ fork9' = 0
+  phil9 = 0 -> phil9' = 1
+  phil9 = 1 /\ fork9 = 0 -> phil9' = 2 /\ fork9' = 1
+  phil9 = 1 /\ fork0 = 0 -> phil9' = 3 /\ fork0' = 1
+  phil9 = 2 /\ fork0 = 0 -> phil9' = 4 /\ fork0' = 1
+  phil9 = 3 /\ fork9 = 0 -> phil9' = 4 /\ fork9' = 1
+  phil9 = 4 -> phil9' = 0 /\ fork9' = 0 /\ fork0' = 0
+Properties
+  !EX(true)

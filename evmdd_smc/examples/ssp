@@ -1,0 +1,121 @@
+Variables
+  tick [0, 39]
+  ticket [0, 1]
+
+  node_turn_0     [0, 1]
+  node_state_0    [0, 2]
+  node_delta_0    [0, 4]
+  node_delta_en_0 [0, 1]
+  node_timer_0    [0, 11]
+
+  mon_turn_0_0    [0, 1]
+  mon_state_0_0   [0, 3]
+  mon_delta_0_0   [0, 4]
+  mon_message_0_0 [0, 2]
+  link_0_0        [0, 2]
+
+  mon_turn_0_1    [0, 1]
+  mon_state_0_1   [0, 3]
+  mon_delta_0_1   [0, 4]
+  mon_message_0_1 [0, 2]
+  link_0_1        [0, 2]
+
+  node_turn_1     [0, 1]
+  node_state_1    [0, 2]
+  node_delta_1    [0, 4]
+  node_delta_en_1 [0, 1]
+  node_timer_1    [0, 11]
+
+  mon_turn_1_0    [0, 1]
+  mon_state_1_0   [0, 3]
+  mon_delta_1_0   [0, 4]
+  mon_message_1_0 [0, 2]
+  link_1_0        [0, 2]
+
+  mon_turn_1_1    [0, 1]
+  mon_state_1_1   [0, 3]
+  mon_delta_1_1   [0, 4]
+  mon_message_1_1 [0, 2]
+  link_1_1        [0, 2]
+
+  node_turn_2     [0, 1]
+  node_state_2    [0, 2]
+  node_delta_2    [0, 4]
+  node_delta_en_2 [0, 1]
+  node_timer_2    [0, 11]
+
+  mon_turn_2_0    [0, 1]
+  mon_state_2_0   [0, 3]
+  mon_delta_2_0   [0, 4]
+  mon_message_2_0 [0, 2]
+  link_2_0        [0, 2]
+
+  mon_turn_2_1    [0, 1]
+  mon_state_2_1   [0, 3]
+  mon_delta_2_1   [0, 4]
+  mon_message_2_1 [0, 2]
+  link_2_1        [0, 2]
+
+Initial states
+  tick   = 0
+  ticket = 0
+
+  node_turn_0      = 0
+  node_state_0    >= 0
+  node_delta_0    >= 0
+  node_delta_en_0 >= 0
+  node_timer_0    >= 0
+  mon_turn_0_0     = 0
+  mon_state_0_0   >= 0
+  mon_delta_0_0   >= 0
+  mon_message_0_0 >= 0
+  link_0_0        >= 0
+  mon_turn_0_1     = 0
+  mon_state_0_1   >= 0
+  mon_delta_0_1   >= 0
+  mon_message_0_1 >= 0
+  link_0_1        >= 0
+  node_turn_1      = 0
+  node_state_1    >= 0
+  node_delta_1    >= 0
+  node_delta_en_1 >= 0
+  node_timer_1    >= 0
+  mon_turn_1_0     = 0
+  mon_state_1_0   >= 0
+  mon_delta_1_0   >= 0
+  mon_message_1_0 >= 0
+  link_1_0        >= 0
+  mon_turn_1_1     = 0
+  mon_state_1_1   >= 0
+  mon_delta_1_1   >= 0
+  mon_message_1_1 >= 0
+  link_1_1        >= 0
+  node_turn_2      = 0
+  node_state_2    >= 0
+  node_delta_2    >= 0
+  node_delta_en_2 >= 0
+  node_timer_2    >= 0
+  mon_turn_2_0     = 0
+  mon_state_2_0   >= 0
+  mon_delta_2_0   >= 0
+  mon_message_2_0 >= 0
+  link_2_0        >= 0
+  mon_turn_2_1     = 0
+  mon_state_2_1   >= 0
+  mon_delta_2_1   >= 0
+  mon_message_2_1 >= 0
+  link_2_1        >= 0
+Transitions
+  ticket = 0 /\ mon_turn_0_0 = 0 /\ mon_turn_0_1 = 0 /\ mon_turn_1_0 = 0 /\ mon_turn_1_1 = 0 /\ mon_turn_2_0 = 0 /\ mon_turn_2_1 = 0 /\ tick <= 39 -> node_turn_0' = 1 /\ node_turn_1' = 1 /\ node_turn_2' = 1 /\ ticket' = 1 /\ tick' = tick+1
+  ticket = 1 /\ node_turn_0 = 0 /\ node_turn_1 = 0 /\ node_turn_2 = 0 -> mon_turn_0_0' = 1 /\ mon_turn_0_1' = 1 /\ mon_turn_1_0' = 1 /\ mon_turn_1_1' = 1 /\ mon_turn_2_0' = 1 /\ mon_turn_2_1' = 1 /\ ticket' = 0
+  node_turn_0 = 1 -> node_turn_0' = 0 /\ node_timer_0' = (node_timer_0 + 1) % 11
+  node_turn_1 = 1 -> node_turn_1' = 0 /\ node_timer_1' = (node_timer_1 + 1) % 11
+  node_turn_2 = 1 -> node_turn_2' = 0 /\ node_timer_2' = (node_timer_2 + 1) % 11
+  mon_turn_0_0 = 1 -> mon_turn_0_0' = 0
+  mon_turn_0_1 = 1 -> mon_turn_0_1' = 0
+  mon_turn_1_0 = 1 -> mon_turn_1_0' = 0
+  mon_turn_1_1 = 1 -> mon_turn_1_1' = 0
+  mon_turn_2_0 = 1 -> mon_turn_2_0' = 0
+  mon_turn_2_1 = 1 -> mon_turn_2_1' = 0
+Properties
+  !EX(true)

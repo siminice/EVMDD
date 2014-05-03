@@ -1,0 +1,21 @@
+(set-logic QF_NIA)
+(set-info :source |
+    Sequential equivalence checking.
+    Calypto Design Systems, Inc. <www.calypto.com>
+  |)
+(set-info :smt-lib-version 2.0)
+(set-info :category "industrial")
+(set-info :status unsat)
+(declare-fun P_2 () Int)
+(declare-fun P_3 () Int)
+(assert (<= (* 16777216 (- 1)) P_2))
+(assert (<= P_2 16777215))
+(assert (<= (* 2097152 (- 1)) P_3))
+(assert (<= P_3 2097151))
+(declare-fun dz () Int)
+(declare-fun rz () Int)
+(assert (let ((?v_1 (< P_2 0)) (?v_0 (< P_3 0))) (let ((?v_5 (not ?v_0)) (?v_2 (not ?v_1)) (?v_6 (* 1 (- 1))) (?v_3 (- P_2 (* 16777216 (- 1))))) (let ((?v_4 (- ?v_6 (ite (< ?v_3 8388608) ?v_3 (- ?v_3 16777216)))) (?v_7 (- P_3 (* 2097152 (- 1))))) (let ((?v_8 (- ?v_6 (ite (< ?v_7 1048576) ?v_7 (- ?v_7 2097152))))) (let ((?v_9 (* (ite ?v_2 P_2 (+ (ite (>= ?v_4 0) ?v_4 (+ ?v_4 16777216)) 1)) (ite ?v_5 P_3 (+ (ite (>= ?v_8 0) ?v_8 (+ ?v_8 2097152)) 1))))) (= (+ (* 140737488355328 dz) rz) (- (ite (not (or (and ?v_1 ?v_5) (and ?v_0 ?v_2))) ?v_9 (- ?v_9)) (* P_2 P_3)))))))))
+(assert (> rz 0))
+(assert (< rz 140737488355328))
+(check-sat)
+(exit)

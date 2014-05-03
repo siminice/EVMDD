@@ -1,0 +1,7 @@
+#!/bin/bash
+
+export EV='/home/radu/src/EVMDD/trunk/evmdd_smc/src/evmdd-smc'
+
+../dio -n $1 -m $2 -d $3 > ../examples/dio-n$1-m$2-d$3-$4.sm 2> ../examples/dio-n$1-m$2-d$3-$4.ys
+$EV -q --solutions=1 --gc 11900000000 < ../examples/dio-n$1-m$2-d$3-$4.sm &> ../results/dio-n$1-m$2-d$3-$4.out
+#time yices ../examples/dio-n$1-m$2-d$3-$4.ys >>  ../results/dio-n$1-m$2-d$3-$4.out 2>&1

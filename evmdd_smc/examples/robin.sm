@@ -1,0 +1,36 @@
+// FILE: robin.sm
+// An example of state-space generation.
+
+print("*** Round robin mutex protocol ***\n\n");
+
+spn robin(int N) := {
+  place Res;
+  partition(1:Res);
+  for (int i in {0..N-1}) {
+    place R[i], Bidle[i], Bfull[i], Pwt[i], Pask[i], Pok[i], Pld[i], Psnd[i]; 
+    trans Task[i], Tbuf[i], T1ld[i], T2ld[i], T1snd[i], T2snd[i]; 
+    partition(i+2:Bidle[i]:Bfull[i]:Pwt[i]:Pask[i]:Pok[i]:Pld[i]:Psnd[i],
+              1  :R[i]); 
+    firing(Task[i]:expo(1.0), Tbuf[i]:expo(1.0), T1ld[i]:expo(1.0),
+	   T1snd[i]:expo(1.0), T2ld[i]:expo(1.0), T2snd[i]:expo(1.0)); 
+  } 
+  for (int i in {0..N-1}) {
+    arcs(Res:Task[i], Pask[i]:Task[i], Task[i]:R[i], Task[i]:Pok[i],
+	 R[i]:Tbuf[i], Bidle[i]:Tbuf[i], Tbuf[i]:Bfull[i], Tbuf[i]:Res,
+	 Bfull[i]:T1ld[i], Pok[i]:T1ld[i], T1ld[i]:Bidle[i], T1ld[i]:Psnd[i],
+	 Bfull[i]:T2ld[i], Pld[i]:T2ld[i], T2ld[i]:Bidle[i], T2ld[i]:Pwt[i],
+	 Pok[i]:T1snd[i], Pwt[mod(i+1,N)]:T1snd[i], T1snd[i]:Pld[i],
+         T1snd[i]:Pask[mod(i+1,N)], Psnd[i]:T2snd[i], Pwt[mod(i+1,N)]:T2snd[i],
+         T2snd[i]:Pwt[i], T2snd[i]:Pask[mod(i+1,N)]);
+  } 
+  init(Res:1, Pask[0]:1);
+  for (int i in {1..N-1}) { init (Pwt[i]:1); }
+  for (int i in {0..N-1}) { init(Bidle[i]:1); }
+  bigint m := num_states(false);
+};
+
+# StateStorage MDD_SATURATION
+# MDDCompactionThreshold 50
+
+int N := read_int("the number of processes");
+print("The number of reachable states when N=",N," is ",robin(N).m,".\n");

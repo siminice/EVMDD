@@ -1,0 +1,112 @@
+Declarations
+  Corn5 [0, 7]
+  Corn8 [0, 7]
+  Corn4 [0, 7]
+  Corn1 [0, 7]
+  Corn3 [0, 7]
+  Corn2 [0, 7]
+  Corn6 [0, 7]
+  Corn7 [0, 7]
+  CornOr1 [0, 2]
+  CornOr2 [0, 2]
+  CornOr4 [0, 2]
+  CornOr3 [0, 2]
+  CornOr8 [0, 2]
+  CornOr5 [0, 2]
+  CornOr7 [0, 2]
+  CornOr6 [0, 2]
+  Edge3 [0, 11]
+  Edge4 [0, 11]
+  Edge1 [0, 11]
+  Edge2 [0, 11]
+  Edge10 [0, 11]
+  Edge9 [0, 11]
+  Edge6 [0, 11]
+  Edge5 [0, 11]
+  Edge8 [0, 11]
+  Edge7 [0, 11]
+  Edge11 [0, 11]
+  Edge12 [0, 11]
+  EdgeOr3 [0, 1]
+  EdgeOr001 [0, 1]
+  EdgeOr1 [0, 1]
+  EdgeOr2 [0, 1]
+  EdgeOr10 [0, 1]
+  EdgeOr9 [0, 1]
+  EdgeOr6 [0, 1]
+  EdgeOr5 [0, 1]
+  EdgeOr8 [0, 1]
+  EdgeOr7 [0, 1]
+  EdgeOr11 [0, 1]
+  EdgeOr12 [0, 1]
+  Center6 [0, 3]
+  Center5 [0, 3]
+  Center4 [0, 3]
+  Center3 [0, 3]
+  Center2 [0, 3]
+  Center1 [0, 3]
+Initial states
+  /* Initialize cube corners */
+  Corn4 = 0
+  Corn1 = 1
+  Corn7 = 2
+  Corn6 = 3
+  Corn3 = 4
+  Corn2 = 5
+  Corn8 = 6
+  Corn5 = 7
+  /* Initialize cube edges */
+  Edge4 = 0
+  Edge11 = 1
+  Edge12 = 2
+  Edge8 = 3
+  Edge3 = 4
+  Edge1 = 5
+  Edge7 = 6
+  Edge5 = 7
+  Edge2 = 8
+  Edge10 = 9
+  Edge9 = 10
+  Edge6 = 11
+  /* Initialize cube corner orientations */
+  CornOr4 = 0
+  CornOr1 = 0
+  CornOr7 = 0
+  CornOr6 = 0
+  CornOr3 = 0
+  CornOr2 = 0
+  CornOr8 = 0
+  CornOr5 = 0
+  /* Initialize cube edge orientations */
+  EdgeOr001 = 0
+  EdgeOr11 = 0
+  EdgeOr12 = 0
+  EdgeOr8 = 0
+  EdgeOr3 = 0
+  EdgeOr1 = 0
+  EdgeOr7 = 0
+  EdgeOr5 = 0
+  EdgeOr2 = 0
+  EdgeOr10 = 0
+  EdgeOr9 = 0
+  EdgeOr6 = 0
+  /* Initialize center cube orientations */
+  Center1 = 0
+  Center6 = 0
+  Center3 = 0
+  Center5 = 0
+  Center2 = 0
+  Center4 = 0
+Transitions
+  Corn1' = Corn4 /\ Corn6' = Corn1 /\ Corn4' = Corn7 /\ Corn7' = Corn6 /\ CornOr1' = (CornOr4+2)%3 /\ CornOr6' = (CornOr1+1)%3 /\ CornOr4' = (CornOr7+1)%3 /\ CornOr7' = (CornOr6+2)%3 /\ Edge12' = Edge4 /\ Edge4' = Edge11 /\ Edge8' = Edge12 /\ Edge11' = Edge8 /\ EdgeOr12' = 1-EdgeOr001 /\ EdgeOr001' = 1-EdgeOr11 /\ EdgeOr8' = 1-EdgeOr12 /\ EdgeOr11' = 1-EdgeOr8 /\ Center5' = (Center5+3)%4
+  Corn7' = Corn4 /\ Corn4' = Corn1 /\ Corn6' = Corn7 /\ Corn1' = Corn6 /\ CornOr7' = (CornOr4+2)%3 /\ CornOr4' = (CornOr1+1)%3 /\ CornOr6' = (CornOr7+1)%3 /\ CornOr1' = (CornOr6+2)%3 /\ Edge11' = Edge4 /\ Edge8' = Edge11 /\ Edge4' = Edge12 /\ Edge12' = Edge8 /\ EdgeOr11' = 1-EdgeOr001 /\ EdgeOr8' = 1-EdgeOr11 /\ EdgeOr001' = 1-EdgeOr12 /\ EdgeOr12' = 1-EdgeOr8 /\ Center5' = (Center5+1)%4
+  Corn2' = Corn3 /\ Corn5' = Corn2 /\ Corn3' = Corn8 /\ Corn8' = Corn5 /\ CornOr2' = (CornOr3+1)%3 /\ CornOr5' = (CornOr2+2)%3 /\ CornOr3' = (CornOr8+2)%3 /\ CornOr8' = (CornOr5+1)%3 /\ Edge9' = Edge2 /\ Edge2' = Edge10 /\ Edge6' = Edge9 /\ Edge10' = Edge6 /\ EdgeOr9' = 1-EdgeOr2 /\ EdgeOr2' = 1-EdgeOr10 /\ EdgeOr6' = 1-EdgeOr9 /\ EdgeOr10' = 1-EdgeOr6 /\ Center3' = (Center3+1)%4
+  Corn8' = Corn3 /\ Corn3' = Corn2 /\ Corn5' = Corn8 /\ Corn2' = Corn5 /\ CornOr8' = (CornOr3+1)%3 /\ CornOr3' = (CornOr2+2)%3 /\ CornOr5' = (CornOr8+2)%3 /\ CornOr2' = (CornOr5+1)%3 /\ Edge10' = Edge2 /\ Edge6' = Edge10 /\ Edge2' = Edge9 /\ Edge9' = Edge6 /\ EdgeOr10' = 1-EdgeOr2 /\ EdgeOr6' = 1-EdgeOr10 /\ EdgeOr2' = 1-EdgeOr9 /\ EdgeOr9' = 1-EdgeOr6 /\ Center3' = (Center3+3)%4
+  Corn1' = Corn4 /\ Corn2' = Corn1 /\ Corn4' = Corn3 /\ Corn3' = Corn2 /\ CornOr1' = (CornOr4+1)%3 /\ CornOr2' = (CornOr1+2)%3 /\ CornOr4' = (CornOr3+2)%3 /\ CornOr3' = (CornOr2+1)%3 /\ Edge1' = Edge4 /\ Edge4' = Edge3 /\ Edge2' = Edge1 /\ Edge3' = Edge2 /\ EdgeOr1' = EdgeOr001 /\ EdgeOr001' = EdgeOr3 /\ EdgeOr2' = EdgeOr1 /\ EdgeOr3' = EdgeOr2 /\ Center1' = (Center1+3)%4
+  Corn3' = Corn4 /\ Corn4' = Corn1 /\ Corn2' = Corn3 /\ Corn1' = Corn2 /\ CornOr3' = (CornOr4+1)%3 /\ CornOr4' = (CornOr1+2)%3 /\ CornOr2' = (CornOr3+2)%3 /\ CornOr1' = (CornOr2+1)%3 /\ Edge3' = Edge4 /\ Edge2' = Edge3 /\ Edge4' = Edge1 /\ Edge1' = Edge2 /\ EdgeOr3' = EdgeOr001 /\ EdgeOr2' = EdgeOr3 /\ EdgeOr001' = EdgeOr1 /\ EdgeOr1' = EdgeOr2 /\ Center1' = (Center1+1)%4
+  Corn6' = Corn7 /\ Corn5' = Corn6 /\ Corn7' = Corn8 /\ Corn8' = Corn5 /\ CornOr6' = (CornOr7+2)%3 /\ CornOr5' = (CornOr6+1)%3 /\ CornOr7' = (CornOr8+1)%3 /\ CornOr8' = (CornOr5+2)%3 /\ Edge5' = Edge8 /\ Edge8' = Edge7 /\ Edge6' = Edge5 /\ Edge7' = Edge6 /\ EdgeOr5' = EdgeOr8 /\ EdgeOr8' = EdgeOr7 /\ EdgeOr6' = EdgeOr5 /\ EdgeOr7' = EdgeOr6 /\ Center6' = (Center6+1)%4
+  Corn8' = Corn7 /\ Corn7' = Corn6 /\ Corn5' = Corn8 /\ Corn6' = Corn5 /\ CornOr8' = (CornOr7+2)%3 /\ CornOr7' = (CornOr6+1)%3 /\ CornOr5' = (CornOr8+1)%3 /\ CornOr6' = (CornOr5+2)%3 /\ Edge7' = Edge8 /\ Edge6' = Edge7 /\ Edge8' = Edge5 /\ Edge5' = Edge6 /\ EdgeOr7' = EdgeOr8 /\ EdgeOr6' = EdgeOr7 /\ EdgeOr8' = EdgeOr5 /\ EdgeOr5' = EdgeOr6 /\ Center6' = (Center6+3)%4
+  Corn7' = Corn4 /\ Corn8' = Corn7 /\ Corn4' = Corn3 /\ Corn3' = Corn8 /\ CornOr7' = CornOr4 /\ CornOr8' = CornOr7 /\ CornOr4' = CornOr3 /\ CornOr3' = CornOr8 /\ Edge7' = Edge11 /\ Edge11' = Edge3 /\ Edge10' = Edge7 /\ Edge3' = Edge10 /\ EdgeOr7' = EdgeOr11 /\ EdgeOr11' = EdgeOr3 /\ EdgeOr10' = EdgeOr7 /\ EdgeOr3' = EdgeOr10 /\ Center4' = (Center4+3)%4
+  Corn3' = Corn4 /\ Corn4' = Corn7 /\ Corn8' = Corn3 /\ Corn7' = Corn8 /\ CornOr3' = CornOr4 /\ CornOr4' = CornOr7 /\ CornOr8' = CornOr3 /\ CornOr7' = CornOr8 /\ Edge3' = Edge11 /\ Edge10' = Edge3 /\ Edge11' = Edge7 /\ Edge7' = Edge10 /\ EdgeOr3' = EdgeOr11 /\ EdgeOr10' = EdgeOr3 /\ EdgeOr11' = EdgeOr7 /\ EdgeOr7' = EdgeOr10 /\ Center4' = (Center4+1)%4
+  Corn6' = Corn1 /\ Corn5' = Corn6 /\ Corn1' = Corn2 /\ Corn2' = Corn5 /\ CornOr6' = CornOr1 /\ CornOr5' = CornOr6 /\ CornOr1' = CornOr2 /\ CornOr2' = CornOr5 /\ Edge5' = Edge12 /\ Edge12' = Edge1 /\ Edge9' = Edge5 /\ Edge1' = Edge9 /\ EdgeOr5' = EdgeOr12 /\ EdgeOr12' = EdgeOr1 /\ EdgeOr9' = EdgeOr5 /\ EdgeOr1' = EdgeOr9 /\ Center2' = (Center2+1)%4
+  Corn2' = Corn1 /\ Corn1' = Corn6 /\ Corn5' = Corn2 /\ Corn6' = Corn5 /\ CornOr2' = CornOr1 /\ CornOr1' = CornOr6 /\ CornOr5' = CornOr2 /\ CornOr6' = CornOr5 /\ Edge1' = Edge12 /\ Edge9' = Edge1 /\ Edge12' = Edge5 /\ Edge5' = Edge9 /\ EdgeOr1' = EdgeOr12 /\ EdgeOr9' = EdgeOr1 /\ EdgeOr12' = EdgeOr5 /\ EdgeOr5' = EdgeOr9 /\ Center2' = (Center2+3)%4

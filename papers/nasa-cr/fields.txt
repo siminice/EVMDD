@@ -1,0 +1,19 @@
+\NasaCenter{Langley Research Center\\Hampton, Virginia 23681-2199}
+\Type{CR}                    % TM, TP, CR, CP, SP, TT
+\SubjectCategory{}           % two digit number
+\LNumber{}                   % Langley L-number
+\Number{}                    % Report number
+\Month{03}                   % two digit number
+\Year{2010}                  % four digit number
+\SubjectTerms{formal methods, hybrid abstraction, model checking, decision diagrams}
+\Pages{24}                   % all the pages from the front to back covers
+\DatesCovered{3/2009--8/2009}% 10/2000--9/2002
+\ContractNumber{}            % NAS1-12345
+\GrantNumber{}               % NAG1-1234
+\ProgramElementNumber{}
+\ProjectNumber{}             % NCC1-123
+\TaskNumber{}                % Task 123
+\WorkUnitNumber{}            % 123-45-67-89
+\SupplementaryNotes{}
+\Acknowledgment{This work has been supported by
+NASA Cooperative Agreement NNX08AC59A subagreement number 27-001310}

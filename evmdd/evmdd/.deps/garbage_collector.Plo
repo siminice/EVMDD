@@ -1,0 +1,48 @@
+garbage_collector.lo garbage_collector.o: garbage_collector.c \
+  /usr/include/stdio.h /usr/include/_types.h /usr/include/sys/_types.h \
+  /usr/include/sys/cdefs.h /usr/include/machine/_types.h \
+  /usr/include/i386/_types.h garbage_collector_priv.h mdd_manager_priv.h \
+  mdd_manager.h mdd_node_priv.h mdd_node.h bigint.h evmdd_node_priv.h \
+  evmdd_node.h unique_table_priv.h cache_priv.h clock_priv.h \
+  /usr/include/sys/resource.h /usr/include/sys/appleapiopts.h \
+  /usr/include/sys/_structs.h
+
+/usr/include/stdio.h:
+
+/usr/include/_types.h:
+
+/usr/include/sys/_types.h:
+
+/usr/include/sys/cdefs.h:
+
+/usr/include/machine/_types.h:
+
+/usr/include/i386/_types.h:
+
+garbage_collector_priv.h:
+
+mdd_manager_priv.h:
+
+mdd_manager.h:
+
+mdd_node_priv.h:
+
+mdd_node.h:
+
+bigint.h:
+
+evmdd_node_priv.h:
+
+evmdd_node.h:
+
+unique_table_priv.h:
+
+cache_priv.h:
+
+clock_priv.h:
+
+/usr/include/sys/resource.h:
+
+/usr/include/sys/appleapiopts.h:
+
+/usr/include/sys/_structs.h:

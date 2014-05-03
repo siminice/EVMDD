@@ -1,0 +1,35 @@
+\FOIL{SAL input language: module compposition \footnote{\STRESS{Yellow}: supported feature; \RED{Red}: unsupported feature}}
+
+\LIST{
+\vfill
+\BULL \STRESS{Asynchronous composition} : \texttt{M1[]M2}
+  \LIST{
+  \CIRC Initialization: combining the initializations in different modules.
+  $$\id{init\_M1} \land \id{init\_M2}$$
+  \CIRC Transition: the union of transition definitions.
+  $$\id{trans\_M1\_stat1} \lor \cdots \lor \id{trans\_M2\_stat1} \lor \cdots $$
+  }
+
+\vfill
+\BULL \RED{Synchronous composition} : \texttt{M1||M2}
+  \LIST{
+  \CIRC Difficulty: applying saturation on 
+  $$(\id{trans\_M1\_stat1} \lor \cdots) \land (\id{trans\_M2\_stat1} \lor \cdots) $$
+  }
+}
+
+\vfill
+%\BULL Definition: 
+%	\LIST{
+%	\CIRC \RED{DEFINITION} 
+%	}
+
+%\vfill
+%\BULL Transitions:
+%	\LIST{
+%	\CIRC \STRESS{Next-state variable}: \texttt{x'}
+%	\CIRC \STRESS{Assignment}: \texttt{x'=x+1}
+%	\CIRC \STRESS{Guarded Commands}: $Guard \to Assignments$
+%	\CIRC \RED{If statement}
+%	}
+%\vfill

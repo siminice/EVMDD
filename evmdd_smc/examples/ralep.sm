@@ -1,0 +1,227 @@
+/* 
+The randomized asynchronous leader election protocol by [Itai & Rodeh 1980].
+
+DESCRIPTION: 
+
+The protocol solves the following problem: given a ring of N processors,
+the participants are required to designate a unique processor as the
+leader (``lord of the ring'') by sending messages along the net. The ring
+is unidirectional, meaning that the processes send messages to their
+unique successor (e.g. the one to the right), and receive messages from
+their unique predecessor. It is known that if the processors are
+indistinguishable (no unique id's are assigned), then there is no
+deterministic algorithm to solve the problem.
+
+The randomized algorithm works in phases. At the beginning of every round,
+each process flips a coin to decide whether it will continue running for
+election or not (initially all processes are valid candidates). After
+choosing a value (0 = don't run this round, 1 = run), this is communicated
+to the neighbour. A process is eliminated from the race only if it chose
+not to run and it's predecessor chose to run. After being eliminated, a
+process never becomes eligible again (it enters the inactive state), and
+it is used only to relay messages between active nodes around the ring.
+They do no initiate any communication. Termination is detected by the
+active processes (at least one active node exists at all times) by sending
+a token around the ring to count the inactive nodes.  The process that
+receives its own token with count $N-1$ is the elected leader.
+
+SMART MODEL:
+
+Each processes has 5 state variables:
+ - choose : initial state (in each round);
+ - wait : has not received preference from neighbour yet;
+ - active : has received preference, still running for election;
+ - inactive : no longer eligible (sink state);
+ - leader : elected leader (sink state);
+
+3 state variables for the send/receive status:
+ - none
+ - choice
+ - counter
+
+the preference (0 or 1)
+ = own preference, if active;
+ = predecessor's preference (received), if inactive;
+
+and the value of the counter (0..N-1)
+ = the number of inactive processes found by the circulating token.
+
+Partitioning: variables of process i occupy levels 2*i-1 and 2*i.
+*/
+
+spn leader(int N) := {
+
+  for (int i in {0..N-1}) {
+    place st_choose[i], st_wait[i], 
+          st_active[i], st_inactive[i], 
+          st_leader[i], pref[i], c[i],
+          rec_none[i], rec_choice[i], rec_counter[i],
+          sent_none[i], sent_choice[i], sent_counter[i];
+
+    trans
+          pick_value0[i], pick_value1[i], send_pref[i],
+          recv_stay_active0[i], recv_stay_active1[i], 
+          recv_become_inactive[i], send_new_counter[i],
+          recv_counter[i], become_leader[i], 
+          i_recv_pref0[i], i_recv_pref1[i],
+          i_send_pref[i], i_send_counter[i];
+
+    firing(
+          pick_value0[i]:expo(1), pick_value1[i]:expo(1),
+          send_pref[i]:expo(1),
+          recv_stay_active0[i]:expo(1), recv_stay_active1[i]:expo(1), 
+          recv_become_inactive[i]:expo(1),
+          send_new_counter[i]:expo(1), recv_counter[i]:expo(1),
+          become_leader[i]:expo(1), 
+          i_send_pref[i]:expo(1), i_send_counter[i]:expo(1),
+          i_recv_pref0[i]:expo(1), i_recv_pref1[i]:expo(1)
+         );
+
+    for (int j in {0..N-1}) {
+      trans inc_counter[i][j];
+      firing(inc_counter[i][j]:expo(1));
+    }
+
+    partition(st_choose[i]:st_wait[i]:st_active[i]:st_inactive[i]:
+              st_leader[i]:pref[i]:c[i],
+              rec_none[i]:rec_choice[i]:rec_counter[i]:
+              sent_none[i]:sent_choice[i]:sent_counter[i]);
+
+    init(st_choose[i]:1, sent_none[i]:1, rec_none[i]:1);
+  }
+ 
+  for (int i in {0..N-1}) {
+    arcs(
+      st_choose[i]:pick_value0[i], pick_value0[i]:st_wait[i],
+      sent_none[i]:pick_value0[i], pick_value0[i]:sent_none[i],
+      rec_none[i]:pick_value0[i], pick_value0[i]:rec_none[i],
+      pref[i]:pick_value0[i]:tk(pref[i]),
+
+      st_choose[i]:pick_value1[i], pick_value1[i]:st_wait[i], 
+      sent_none[i]:pick_value1[i], pick_value1[i]:sent_none[i],
+      rec_none[i]:pick_value1[i], pick_value1[i]:rec_none[i],
+      pref[i]:pick_value1[i]:tk(pref[i]), pick_value1[i]:pref[i],
+
+      st_wait[i]:send_pref[i], send_pref[i]:st_wait[i],
+      sent_none[i]:send_pref[i], send_pref[i]:sent_choice[i],
+
+      st_wait[i]:recv_stay_active0[i], recv_stay_active0[i]:st_active[i], 
+      rec_none[i]:recv_stay_active0[i],  recv_stay_active0[i]:rec_choice[i],
+      sent_choice[i]:recv_stay_active0[i], recv_stay_active0[i]:sent_choice[i],
+
+      st_wait[i]:recv_stay_active1[i], rec_none[i]:recv_stay_active1[i],
+      recv_stay_active1[i]:st_active[i], recv_stay_active1[i]:rec_choice[i],
+      pref[i]:recv_stay_active1[i], recv_stay_active1[i]:pref[i],
+      sent_choice[i]:recv_stay_active1[i], recv_stay_active1[i]:sent_choice[i],
+
+      st_wait[i]:recv_become_inactive[i], rec_none[i]:recv_become_inactive[i],
+      recv_become_inactive[i]:st_inactive[i], recv_become_inactive[i]:rec_choice[i],
+      sent_choice[i]:recv_become_inactive[i], recv_become_inactive[i]:sent_choice[i],
+      pref[mod(i+1,N)]:recv_become_inactive[i], recv_become_inactive[i]:pref[mod(i+1,N)],
+
+      st_active[i]:send_new_counter[i], send_new_counter[i]:st_active[i], 
+      sent_choice[i]:send_new_counter[i], send_new_counter[i]:sent_counter[i], 
+
+      st_active[i]:recv_counter[i], recv_counter[i]:st_choose[i],
+      rec_choice[i]:recv_counter[i], recv_counter[i]:rec_none[i],
+      sent_counter[mod(i+1,N)]:recv_counter[i], recv_counter[i]:sent_none[mod(i+1,N)],
+      pref[i]:recv_counter[i]:tk(pref[i]), c[i]:recv_counter[i]:tk(c[i]),
+      c[mod(i+1,N)]:recv_counter[i]:tk(c[mod(i+1,N)]),
+
+      st_active[i]:become_leader[i], become_leader[i]:st_leader[i],
+      rec_choice[i]:become_leader[i], become_leader[i]:rec_none[i],
+      sent_counter[mod(i+1,N)]:become_leader[i], become_leader[i]:sent_none[mod(i+1,N)],
+      c[mod(i+1,N)]:become_leader[i]:N-1,
+      
+      st_inactive[i]:i_recv_pref0[i], i_recv_pref0[i]:st_inactive[i], 
+      rec_none[i]:i_recv_pref0[i], i_recv_pref0[i]:rec_choice[i],
+      pref[i]:i_recv_pref0[i]:tk(pref[i]),
+      c[i]:i_recv_pref0[i]:tk(c[i]),
+
+      st_inactive[i]:i_recv_pref1[i], i_recv_pref1[i]:st_inactive[i], 
+      rec_none[i]:i_recv_pref1[i], i_recv_pref1[i]:rec_choice[i],
+      pref[mod(i+1,N)]:i_recv_pref1[i], i_recv_pref1[i]:pref[mod(i+1,N)],
+      pref[i]:i_recv_pref1[i]:tk(pref[i]), i_recv_pref1[i]:pref[i],
+      c[i]:i_recv_pref1[i]:tk(c[i]),
+
+      st_inactive[i]:i_send_pref[i], i_send_pref[i]:st_inactive[i], 
+      sent_none[i]:i_send_pref[i], i_send_pref[i]:sent_choice[i], 
+
+      st_inactive[i]:i_send_counter[i], i_send_counter[i]:st_inactive[i], 
+      rec_counter[i]:i_send_counter[i], i_send_counter[i]:rec_none[i],
+      sent_choice[i]:i_send_counter[i], i_send_counter[i]:sent_counter[i],
+      pref[i]:i_send_counter[i]:tk(pref[i])
+    );
+
+    for (int j in {0..N-1}) {
+      arcs(
+        st_inactive[i]:inc_counter[i][j], inc_counter[i][j]:st_inactive[i], 
+        rec_choice[i]:inc_counter[i][j], inc_counter[i][j]:rec_counter[i],
+        sent_counter[mod(i+1,N)]:inc_counter[i][j], inc_counter[i][j]:sent_none[mod(i+1,N)],
+        c[mod(i+1,N)]:inc_counter[i][j]:j, inc_counter[i][j]:c[i]:j+1);
+    }
+  
+    inhibit(
+// needed by PREGEN methods
+      st_wait[i]:pick_value0[i], 
+      st_wait[i]:pick_value1[i],
+      sent_choice[i]:send_pref[i],
+      st_active[i]:recv_stay_active0[i], 
+        rec_choice[i]:recv_stay_active0[i],
+      st_active[i]:recv_stay_active1[i], 
+        rec_choice[i]:recv_stay_active1[i],
+      st_inactive[i]:recv_become_inactive[i], 
+        rec_choice[i]:recv_become_inactive[i],
+      sent_counter[i]:send_new_counter[i], 
+      st_leader[i]:become_leader[i],
+        rec_none[i]:become_leader[i],
+        sent_none[mod(i+1,N)]:become_leader[i],
+      st_choose[i]:recv_counter[i], 
+        rec_none[i]:recv_counter[i], 
+        sent_none[mod(i+1,N)]:recv_counter[i],
+      sent_choice[i]:i_send_pref[i],
+      sent_counter[i]:i_send_counter[i], 
+        rec_none[i]:i_send_counter[i],
+      rec_choice[i]:i_recv_pref0[i],
+      rec_choice[i]:i_recv_pref1[i],
+// needed by all methods
+      pref[mod(i+1,N)]:recv_stay_active0[i],
+      sent_none[mod(i+1,N)]:recv_stay_active0[i],
+      sent_none[mod(i+1,N)]:recv_stay_active1[i],
+      sent_none[mod(i+1,N)]:recv_become_inactive[i],
+      sent_none[mod(i+1,N)]:i_recv_pref0[i],
+      sent_none[mod(i+1,N)]:i_recv_pref1[i],
+      pref[i]:recv_become_inactive[i],
+      sent_choice[i]:recv_counter[i],
+      c[mod(i+1,N)]:recv_counter[i]:N-1,
+      pref[mod(i+1,N)]:i_recv_pref0[i],
+      rec_none[i]:i_send_pref[i]
+    );
+
+    for (int j in {0..N-1}) {
+      inhibit(
+//        sent_none[mod(i+1,N)]:inc_counter[i][j],
+        c[mod(i+1,N)]:inc_counter[i][j]:j+1
+      );
+    }
+
+  }
+
+  bigint numstates := num_states(false);
+  bool tr1 := EFtrace(initialstate, potential(tk(st_leader[0])==1));
+};
+
+//#Verbose true
+#StateStorage MDD_SATURATION
+
+
+print("***********************************\n");
+print("The randomized leader election protocol\n");
+print("Recomended values for the number of processes:\n");
+print(" * 3..10 for state space generation;\n");
+print(" * 3..5  for the execution trace;\n");
+print("***********************************\n");
+int n := read_int("number of processes");
+print("\nNumber of states: ", leader(n).numstates, "\n");
+print("\nTrace to target state (leader elected):\n");
+compute(leader(n).tr1);

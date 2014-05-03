@@ -1,0 +1,10 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: EVMDD
+Description: Symbolic model checking library implementing EVMDD and saturation.
+Version: 0.0.9
+Libs: -L${libdir} -levmdd
+Cflags: -I${includedir}

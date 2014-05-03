@@ -1,0 +1,14 @@
+EVMDD Algorithms for Distance Functions
+
+Breadth First Search, classically used to compute state spaces in
+symbolic model checking, not only provides reachability information
+but also a minimal distance to the initial state. This information can,
+for instance, be used to compute the diameter of a state space or shortest
+counterexamples for certain temporal logic properties.
+The saturation algorithm proved to be orders of magnitude faster than BFS
+for computing reachability but it does not implicitly provide any 
+distance information.
+A modified version of saturation exists using EVMDD to compute distance 
+functions.
+We have experimented with algorithms using reachability information to 
+improve the distance computation.
