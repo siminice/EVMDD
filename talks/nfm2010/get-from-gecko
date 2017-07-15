@@ -1,3 +1,0 @@
-#!/bin/sh
-
-scp radu@gecko:/home/radu/src/EVMDD/trunk/talks/nfm2010/slides.pdf .

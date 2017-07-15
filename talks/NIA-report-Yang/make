@@ -1,8 +1,0 @@
-rm -f *.aux *.dvi *.out *.toc *.idx *.blg *.bbl *.log *.ilg *.pdf
-export TEXINPUTS=$TEXINPUTS:~/Project/VerificationLab/TeX/inputs:~/Project/VerificationLab/TeX/template:~/Project/VerificationLab/TeX/bib
-echo $TEXINPUTS
-export BIBINPUTS=$BIBINPUTS:~/Project/VerificationLab/TeX/inputs:~/Project/VerificationLab/TeX/template:~/Project/VerificationLab/TeX/bib
-latex NIA-report
-dvips -Ppdf  -t landscape  NIA-report.dvi
-ps2pdf NIA-report.ps
-xpdf NIA-report.pdf
